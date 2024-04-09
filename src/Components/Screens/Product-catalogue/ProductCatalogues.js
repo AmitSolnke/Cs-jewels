@@ -7,8 +7,12 @@ import {
   CardMedia,
   Chip,
   Divider,
+  FormControl,
   Grid,
+  InputLabel,
   ListItem,
+  MenuItem,
+  Select,
   Stack,
 } from "@mui/material";
 
@@ -58,6 +62,107 @@ export const ProductCatalogues = () => {
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
         <img src={productBannerImage} alt="banner image" />
+      </div>
+
+      <div className="filter-dropdowns container">
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="category-dropdown">CATEGORY</InputLabel>
+          <Select
+            labelId="category-dropdown"
+            id="demo-simple-select-standard"
+            // value={age}
+            // onChange={handleChange}
+            label="CATEGORY"
+          >
+            <MenuItem value={10}>Category 1</MenuItem>
+            <MenuItem value={20}>Category 2</MenuItem>
+            <MenuItem value={30}>Category 3</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="category-gender">GENDER</InputLabel>
+          <Select
+            labelId="category-gender"
+            id="demo-simple-select-standard"
+            // value={age}
+            // onChange={handleChange}
+            label="GENDER"
+          >
+            <MenuItem value={10}>Female</MenuItem>
+            <MenuItem value={20}>Male</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="category-price-range">PRICE RANGE</InputLabel>
+          <Select
+            labelId="category-price-range"
+            id="demo-simple-select-standard"
+            // value={age}
+            // onChange={handleChange}
+            label="PRICE RANGE"
+          >
+            <MenuItem value={10}>Female</MenuItem>
+            <MenuItem value={20}>Male</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="category-price-range">PRICE RANGE</InputLabel>
+          <Select
+            labelId="category-price-range"
+            id="demo-simple-select-standard"
+            // value={age}
+            // onChange={handleChange}
+            label="PRICE RANGE"
+          >
+            <MenuItem value={10}>PRICE RANGE</MenuItem>
+            <MenuItem value={20}>PRICE RANGE</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="category-metal-type"> METAL TYPE </InputLabel>
+          <Select
+            labelId="category-metal-type"
+            id="demo-simple-select-standard"
+            // value={age}
+            // onChange={handleChange}
+            label="METAL TYPE"
+          >
+            <MenuItem value={10}>METAL TYPE</MenuItem>
+            <MenuItem value={20}>METAL TYPE</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="category-metal-type"> SIZEWISE </InputLabel>
+          <Select
+            labelId="category-metal-type"
+            id="demo-simple-select-standard"
+            // value={age}
+            // onChange={handleChange}
+            label="SIZEWISE"
+          >
+            <MenuItem value={10}>SIZEWISE</MenuItem>
+            <MenuItem value={20}>SIZEWISE</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="category-sort-by"> SORT BY </InputLabel>
+          <Select
+            labelId="category-sort-by"
+            id="demo-simple-select-standard"
+            // value={age}
+            // onChange={handleChange}
+            label="SORT BY"
+          >
+            <MenuItem value={10}>SORT BY</MenuItem>
+            <MenuItem value={20}>SORT BY</MenuItem>
+          </Select>
+        </FormControl>
       </div>
 
       <div className="container">

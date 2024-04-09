@@ -52,6 +52,23 @@ export const ProductCatalogues = () => {
     { key: 3, label: "SILVER RINGS", selected: false },
   ]);
 
+  const [filters, setFilters] = useState({
+    category: "",
+    gender: "",
+    priceRange: "",
+    metalType: "",
+    sizeWise: "",
+    sortBy: "",
+  });
+
+  const handleFilterChange = (filterName, value) => {
+    console.log(filters);
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterName]: value,
+    }));
+  };
+
   const handleChipDelete = (chipToDelete) => () => {
     setChipData((chips) =>
       chips.filter((chip) => chip.key !== chipToDelete.key)
@@ -70,13 +87,13 @@ export const ProductCatalogues = () => {
           <Select
             labelId="category-dropdown"
             id="demo-simple-select-standard"
-            // value={age}
-            // onChange={handleChange}
             label="CATEGORY"
+            value={filters.category}
+            onChange={(e) => handleFilterChange("category", e.target.value)}
           >
-            <MenuItem value={10}>Category 1</MenuItem>
-            <MenuItem value={20}>Category 2</MenuItem>
-            <MenuItem value={30}>Category 3</MenuItem>
+            <MenuItem value="cat1">Category 1</MenuItem>
+            <MenuItem value="cat2">Category 2</MenuItem>
+            <MenuItem value="cat3">Category 3</MenuItem>
           </Select>
         </FormControl>
 
@@ -85,12 +102,12 @@ export const ProductCatalogues = () => {
           <Select
             labelId="category-gender"
             id="demo-simple-select-standard"
-            // value={age}
-            // onChange={handleChange}
             label="GENDER"
+            value={filters.gender}
+            onChange={(e) => handleFilterChange("gender", e.target.value)}
           >
-            <MenuItem value={10}>Female</MenuItem>
-            <MenuItem value={20}>Male</MenuItem>
+            <MenuItem value="female">Female</MenuItem>
+            <MenuItem value="male">Male</MenuItem>
           </Select>
         </FormControl>
 
@@ -99,12 +116,12 @@ export const ProductCatalogues = () => {
           <Select
             labelId="category-price-range"
             id="demo-simple-select-standard"
-            // value={age}
-            // onChange={handleChange}
             label="PRICE RANGE"
+            value={filters.priceRange}
+            onChange={(e) => handleFilterChange("priceRange", e.target.value)}
           >
-            <MenuItem value={10}>PRICE RANGE</MenuItem>
-            <MenuItem value={20}>PRICE RANGE</MenuItem>
+            <MenuItem value="priceRange1">PRICE RANGE</MenuItem>
+            <MenuItem value="priceRange2">PRICE RANGE</MenuItem>
           </Select>
         </FormControl>
 
@@ -113,12 +130,13 @@ export const ProductCatalogues = () => {
           <Select
             labelId="category-metal-type"
             id="demo-simple-select-standard"
-            // value={age}
-            // onChange={handleChange}
             label="METAL TYPE"
+            value={filters.metalType}
+            onChange={(e) => handleFilterChange("metalType", e.target.value)}
           >
-            <MenuItem value={10}>METAL TYPE</MenuItem>
-            <MenuItem value={20}>METAL TYPE</MenuItem>
+            <MenuItem value="gold">Gold</MenuItem>
+            <MenuItem value="silver">Silver</MenuItem>
+            <MenuItem value="platinum">Platinum</MenuItem>
           </Select>
         </FormControl>
 
@@ -127,24 +145,29 @@ export const ProductCatalogues = () => {
           <Select
             labelId="category-metal-type"
             id="demo-simple-select-standard"
-            // value={age}
-            // onChange={handleChange}
             label="SIZEWISE"
+            value={filters.sizeWise}
+            onChange={(e) => handleFilterChange("sizeWise", e.target.value)}
           >
-            <MenuItem value={10}>SIZEWISE</MenuItem>
-            <MenuItem value={20}>SIZEWISE</MenuItem>
+            <MenuItem value="size1">SIZEWISE</MenuItem>
+            <MenuItem value="size2">SIZEWISE</MenuItem>
           </Select>
         </FormControl>
 
-        <FormControl variant="standard" sx={{ m: 1, minWidth: 120, marginLeft: "auto" }}>
+        <FormControl
+          variant="standard"
+          sx={{ m: 1, minWidth: 120, marginLeft: "auto" }}
+        >
           <InputLabel id="category-sort-by"> SORT BY </InputLabel>
           <Select
             labelId="category-sort-by"
             id="demo-simple-select-standard"
             label="SORT BY"
+            value={filters.sortBy}
+            onChange={(e) => handleFilterChange("sortBy", e.target.value)}
           >
-            <MenuItem value={10}>SORT BY</MenuItem>
-            <MenuItem value={20}>SORT BY</MenuItem>
+            <MenuItem value="sortBy1">SORT BY</MenuItem>
+            <MenuItem value="sortBy2">SORT BY</MenuItem>
           </Select>
         </FormControl>
       </div>

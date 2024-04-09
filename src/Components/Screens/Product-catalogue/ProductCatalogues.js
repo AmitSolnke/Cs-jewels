@@ -64,7 +64,7 @@ export const ProductCatalogues = () => {
         <img src={productBannerImage} alt="banner image" />
       </div>
 
-      <div className="filter-dropdowns container">
+      <div className="filter-dropdowns d-flex container">
         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id="category-dropdown">CATEGORY</InputLabel>
           <Select
@@ -88,20 +88,6 @@ export const ProductCatalogues = () => {
             // value={age}
             // onChange={handleChange}
             label="GENDER"
-          >
-            <MenuItem value={10}>Female</MenuItem>
-            <MenuItem value={20}>Male</MenuItem>
-          </Select>
-        </FormControl>
-
-        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel id="category-price-range">PRICE RANGE</InputLabel>
-          <Select
-            labelId="category-price-range"
-            id="demo-simple-select-standard"
-            // value={age}
-            // onChange={handleChange}
-            label="PRICE RANGE"
           >
             <MenuItem value={10}>Female</MenuItem>
             <MenuItem value={20}>Male</MenuItem>
@@ -150,13 +136,11 @@ export const ProductCatalogues = () => {
           </Select>
         </FormControl>
 
-        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120, marginLeft: "auto" }}>
           <InputLabel id="category-sort-by"> SORT BY </InputLabel>
           <Select
             labelId="category-sort-by"
             id="demo-simple-select-standard"
-            // value={age}
-            // onChange={handleChange}
             label="SORT BY"
           >
             <MenuItem value={10}>SORT BY</MenuItem>
@@ -164,6 +148,8 @@ export const ProductCatalogues = () => {
           </Select>
         </FormControl>
       </div>
+
+      <hr />
 
       <div className="container">
         <div className="filter-chips p-3">

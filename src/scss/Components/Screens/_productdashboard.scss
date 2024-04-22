@@ -52,7 +52,9 @@
 
 .product-page-clear-all-button {
     text-align: left;
-    text-decoration: underline !important;
+    height: 33px;
+    border-bottom: 1px solid #333333 !important;
+    border-radius: 0 !important;
     font: normal normal medium 12px/15px Lato;
     letter-spacing: 1.8px !important;
     color: #333333 !important;
@@ -62,6 +64,8 @@
 
 .product-page-clear-all-button:hover {
     border: none !important;
+    background-color: transparent !important;
+    color: #333333 !important;
 }
 
 .product-page-divider {

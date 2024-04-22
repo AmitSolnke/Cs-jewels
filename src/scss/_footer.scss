@@ -1,3 +1,31 @@
+.whatsapp-button {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 99;
+    background: #39C04C 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 1);
+    animation: effect 5s infinite ease-in;
+
+    a {
+        text-decoration: none;
+        color: #ffffff;
+        font: normal normal 600 16px/21px Playfair Display;
+        padding: 15px;
+        align-items: center;
+        display: flex;
+        gap: 4px;
+    }
+}
+
 footer {
     position: relative;
     height: 508px;

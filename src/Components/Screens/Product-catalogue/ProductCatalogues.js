@@ -1,19 +1,16 @@
 import React, { useState } from "react";
-import productBannerImage from "../../../images/banners/desktop/3.jpg";
-import productImage from "../../../images/products/3.jpg";
+import productBannerImage from "../../../images/product-banner.png";
+import productImage from "../../../images/products/5.png";
 import {
   Box,
-  Card,
-  CardMedia,
   Chip,
-  Divider,
   FormControl,
   Grid,
   InputLabel,
-  ListItem,
   MenuItem,
   Select,
   Stack,
+  Button
 } from "@mui/material";
 
 export const ProductCatalogues = () => {
@@ -182,12 +179,13 @@ export const ProductCatalogues = () => {
                 key={chip.key}
                 label={chip.label}
                 onDelete={handleChipDelete(chip)}
+                className="filter-chip"
                 sx={{
                   borderRadius: "0px",
-                  border: "1px solid #000",
-                  borderColor: "#000",
-                  color: chip.selected ? "#fff" : "#000",
-                  backgroundColor: chip.selected ? "#000" : "#fff",
+                  border: "1px solid #333",
+                  borderColor: "#333",
+                  color: "#fff",
+                  backgroundColor:  "#333",
                 }}
                 clickable
                 onClick={() => {
@@ -199,11 +197,12 @@ export const ProductCatalogues = () => {
                 }}
               />
             ))}
+            <Button className='product-page-clear-all-button' >CLEAR ALL</Button>
           </Stack>
         </div>
 
         <Box>
-          <Grid container spacing={1} className="p-3">
+          <Grid container spacing={1} className="p-3 product-item-wrapper">
             {products.map((product) => {
               return (
                 <Grid

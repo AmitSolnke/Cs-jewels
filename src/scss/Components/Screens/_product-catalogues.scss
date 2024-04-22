@@ -8,12 +8,23 @@
     }
   }
 
-  .filter-chips {
+  .product-item-wrapper {
+    gap: 21px;
+  }
+
+  .filter {
+    background-color: #333333;
+    color: #fff;
+  }
+
+  .filter-chip {
+    svg {
+      color: #fff;
+    }
   }
 
   .product-item-card {
-    width: 350px;
-    height: 300px;
+    max-width: 32%;
 
     img {
       width: 100%;

@@ -36,7 +36,7 @@ export default function ProductCard({ productImage, productName, id = 0, isWishl
             className="images"
             image={productImage}
             alt="green iguana"
-            onClick={() => navigate(`/product-details/${id}`)}
+            onClick={() => navigate(`/product-details-latest/${id}`)}
           />
           <div
             style={{ position: "absolute", bottom: 0, right: 0 }}

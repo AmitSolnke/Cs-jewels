@@ -20,6 +20,7 @@ import { PaymentSuccess } from './Components/Screens/Checkout/PaymentSuccess';
 import { YourDetails } from './Components/Screens/Checkout/YourDetails';
 import { Delivery } from './Components/Screens/Checkout/Delivery';
 import { Navigate } from 'react-router-dom';
+import { ProductDetailsLatest } from './Components/Screens/Product-details/ProductDetailsLatest';
 
 export const normalRouts = [
   {
@@ -127,6 +128,13 @@ export const frontAppRoutes = [
     path: '/product-details/:id',
     name: 'Product Details',
     element: <ProductDetails />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/product-details-latest/:id',
+    name: 'Product Details',
+    element: <ProductDetailsLatest />,
     exact: true,
     strict: false,
   },

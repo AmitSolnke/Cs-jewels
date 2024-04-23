@@ -76,6 +76,10 @@ export const ProductCatalogues = () => {
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
         <img src={productBannerImage} alt="banner image" />
+        <div className="catalogue-header-wrapper">
+          <h4>Unique Ring’s</h4>
+          <p></p>
+        </div>
       </div>
 
       <div className="filter-dropdowns d-flex container">

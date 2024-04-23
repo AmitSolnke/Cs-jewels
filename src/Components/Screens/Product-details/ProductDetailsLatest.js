@@ -7,7 +7,6 @@ import { Box, Grid } from "@mui/material";
 export const ProductDetailsLatest = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
   const [productDetails, setProductDetails] = useState({
     product_name: "",
     metal_description: "",
@@ -18,6 +17,23 @@ export const ProductDetailsLatest = () => {
     sales_price: 0,
     gross_wt: 0,
   });
+
+  const getProductData = async () => {
+    // // const result = await getProductDetails({product_id: id})
+    // // setProductDetails(result.data.data)
+
+    setProductDetails({
+      product_name: "Ganesha Diamond Ring",
+      metal_description: "24 KT | 1 GM",
+      metal_amount: "94,000",
+      item_description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      purity: "",
+      description: "desc",
+      sales_price: 0,
+      gross_wt: 0,
+    });
+  };
 
   //   images array for image gallery
 
@@ -42,13 +58,17 @@ export const ProductDetailsLatest = () => {
   }));
 
   return (
-    <Box>
+    <Box className="product-details-latest">
       <Grid container spacing={1} className="p-3">
         <Grid item md={6}>
           <div className="">
             {/* product images gallery */}
             <div className="product-gallery">
-              <ImageGallery items={imageItems} showNav={false} showPlayButton={false}  />
+              <ImageGallery
+                items={imageItems}
+                showNav={false}
+                showPlayButton={false}
+              />
             </div>
           </div>
         </Grid>
@@ -57,7 +77,11 @@ export const ProductDetailsLatest = () => {
           <div className="">
             {/* section for product information */}
             <h1>This is product information</h1>
-            </div>
+
+            <span className="new-arrival-badge">NEW ARRIVAL</span>
+
+            <h2 className="product-name">Ganesha Diamond Ring</h2>
+          </div>
         </Grid>
       </Grid>
     </Box>

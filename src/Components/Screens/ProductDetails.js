@@ -23,7 +23,7 @@ export default function ProductDetails() {
         product_name: '',
         metal_description: '',
         metal_amount: '',
-        item_description: '',
+        item_description: '',   
         purity: '',
         description: '',
         sales_price: 0,

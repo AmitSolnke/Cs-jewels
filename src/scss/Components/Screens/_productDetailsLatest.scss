@@ -11,4 +11,50 @@
     letter-spacing: 0.48px;
     color: #333333;
   }
+
+  .metal-description {
+    font: normal normal medium 16px/19px Lato;
+    letter-spacing: 1.6px;
+    color: #672a2f;
+    text-transform: uppercase;
+  }
+
+  .product-price {
+    font: normal normal 900 26px/32px Lato;
+    letter-spacing: 0px;
+    color: #333333;
+    text-transform: uppercase;
+  }
+
+  .product-description {
+    font: normal normal normal 16px/22px Lato;
+    letter-spacing: 0px;
+    color: #666666;
+  }
+
+  .product-informations {
+    .product-details-title-link {
+      text-decoration: underline;
+      font: normal normal medium 12px/15px Lato;
+      letter-spacing: 1.8px;
+      color: #333333;
+      text-transform: uppercase;
+    }
+
+    div {
+      padding-top: 0.2rem;
+      font: normal normal normal 12px/30px Lato;
+      color: #666666;
+    }
+  }
+
+  .product-information-table {
+    width: 100%;
+
+    tr,
+    td {
+      border: 1px solid;
+      padding: 15px;
+    }
+  }
 }

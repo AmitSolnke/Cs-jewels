@@ -74,6 +74,20 @@
   .product-catalogues {
     .product-catalogue-banner {
       height: 250px;
+
+      .catalogue-header-wrapper {
+        bottom: 16px;
+        left: 15px;
+
+        h4 {
+          font: normal normal 600 24px / 22px Playfair Display;
+          padding: 8px;
+        }
+  
+        p {
+          font: normal normal normal 16px/22px Lato;
+        }
+      }
     }
     .product-item-card {
       max-width: 46%;

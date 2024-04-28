@@ -15,8 +15,12 @@ export const AddressBook = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const result = await getAllAddAddress();
-    setData(result.data.data)
+    try {
+      const result = await getAllAddAddress();
+      setData(result.data.data)
+    } catch (error) {
+      setData([])
+    }
   }
 
   useEffect(() => {
@@ -45,91 +49,85 @@ export const AddressBook = () => {
   };
 
   return (
-    <div className="d-flex col-12">
-      <div className="col-0 col-md-5 col-lg-4">
-        <Sidebar />
-      </div>
+    <div className="address-book-container p-3 col-12 col-md-7 col-lg-8">
+      {!showAddressForm ? (
+        <div className="col-12 col-md-10 col-lg-8">
+          <h5>ADDRESS BOOK</h5>
 
-      <div className="address-book-container p-3 col-12 col-md-7 col-lg-8">
-        {!showAddressForm ? (
-          <div className="col-12 col-md-10 col-lg-8">
-            <h5>ADDRESS BOOK</h5>
+          <div className="new-address-btn-wrapper p-3 my-4 bg-white">
+            <Button
+              className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"
+              variant="contained"
+              type="submit"
+              onClick={handleOpenForm}
+            >
+              ADD NEW ADDRESS &nbsp;
+              <EastIcon />
+            </Button>
+          </div>
+          <div className="saved-address-cards-container p-3 bg-white">
+            <h5>SAVED ADDRESS</h5>
 
-            <div className="new-address-btn-wrapper p-3 my-4 bg-white">
-              <Button
-                className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"
-                variant="contained"
-                type="submit"
-                onClick={handleOpenForm}
-              >
-                ADD NEW ADDRESS &nbsp;
-                <EastIcon />
-              </Button>
-            </div>
-            <div className="saved-address-cards-container p-3 bg-white">
-              <h5>SAVED ADDRESS</h5>
+            <div className="cards-container">
+              {data.map((address) => (
+                <Card
+                  key={address.id}
+                  sx={{ minWidth: 100 }}
+                  variant="outlined"
+                  className="mt-3 p-2"
+                >
+                  <CardContent>
+                    <Typography variant="h6" component="div">
+                      {address.first_name + " " + address.last_name}
+                    </Typography>
 
-              <div className="cards-container">
-                {data.map((address) => (
-                  <Card
-                    key={address.id}
-                    sx={{ minWidth: 100 }}
-                    variant="outlined"
-                    className="mt-3 p-2"
-                  >
-                    <CardContent>
-                      <Typography variant="h6" component="div">
-                        {address.first_name + " " + address.last_name}
-                      </Typography>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {address.flat_no}, {address.street_name},
+                    </Typography>
 
-                      <Typography
-                        sx={{ fontSize: 14 }}
-                        color="text.secondary"
-                        gutterBottom
-                      >
-                        {address.flat_no}, {address.street_name},
-                      </Typography>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {address.city},  {address.country}, {address.pincode}.
+                    </Typography>
 
-                      <Typography
-                        sx={{ fontSize: 14 }}
-                        color="text.secondary"
-                        gutterBottom
-                      >
-                        {address.city},  {address.country}, {address.pincode}.
-                      </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      variant="outlined"
+                      className="outlined-black"
+                      onClick={() => handleEditClick(address)}
+                    >
+                      EDIT &nbsp;
+                      <EastIcon />
+                    </Button>
 
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        variant="outlined"
-                        className="outlined-black"
-                        onClick={() => handleEditClick(address)}
-                      >
-                        EDIT &nbsp;
-                        <EastIcon />
-                      </Button>
-
-                      <Button
-                        variant="outlined"
-                        className="outlined-black"
-                        onClick={() => handleRemoveClick(address.id)}
-                      >
-                        REMOVE &nbsp;
-                        <EastIcon />
-                      </Button>
-                    </CardActions>
-                  </Card>
-                ))}
-              </div>
+                    <Button
+                      variant="outlined"
+                      className="outlined-black"
+                      onClick={() => handleRemoveClick(address.id)}
+                    >
+                      REMOVE &nbsp;
+                      <EastIcon />
+                    </Button>
+                  </CardActions>
+                </Card>
+              ))}
             </div>
           </div>
-        ) : (
-          <AddressForm
-            handleCloseForm={handleCloseForm}
-            addressData={addressData}
-          />
-        )}
-      </div>
+        </div>
+      ) : (
+        <AddressForm
+          handleCloseForm={handleCloseForm}
+          addressData={addressData}
+        />
+      )}
     </div>
   );
 };

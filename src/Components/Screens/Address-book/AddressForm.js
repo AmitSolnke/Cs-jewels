@@ -18,7 +18,7 @@ import { addAddress } from "../../../services/profile";
 import ErrorList from "../../Common/ErrorList";
 import SuccessMsg from "../../Common/SuccessMsg";
 
-export const AddressForm = ({ handleCloseForm, addressData = null }) => {
+export const AddressForm = ({ handleCloseForm }) => {
   const countries = ["India", "Indonasia", "Iran", "Irac"];
   const cities = ["Baramati", "Pune", "Nasik", "Nagpur", "Thane"];
   const [errors, setErrors] = useState([])

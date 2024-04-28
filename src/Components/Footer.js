@@ -45,7 +45,7 @@ function Footer() {
     <footer>
       <div className="footer-container">
         <div className="logo">
-          <a href="/home">
+          <a href="/">
             <img src={logo} alt="Logo" className="image" />
           </a>
         </div>

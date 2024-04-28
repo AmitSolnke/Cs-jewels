@@ -40,5 +40,6 @@ export const logout = () => {
   const result = getLoginUserInfo()
   if (result) {
     tokenService.removeToken(getTokenKey())
+    window.location = "/";
   }
 }

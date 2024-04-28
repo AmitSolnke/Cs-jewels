@@ -1,44 +1,35 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export const NavigationDropdown = () => {
-  const navigations = {
-    jewelleryTypes: ["Gold", "Diamonds", "Silver"],
-    jwewlleries: [
-      "Rings",
-      "Mangalsutra",
-      "Earrings",
-      "Chain",
-      "Pendants",
-      "Necklace",
-      "Bangles",
-      "Toe rings",
-      "Nosepins",
-      "Anklet",
-      "Bracelets",
-    ],
-  };
+export const NavigationDropdown = ({metalData, setShowDropdown}) => {
+
+  const closeModal = () => {
+    setShowDropdown(false)
+  }
+  
   return (
     <Box>
       <Grid>
         <div className="navigation-dropdown-wrapper p-4">
           <div className="jewellery-links">
-            {navigations.jewelleryTypes.map((jewelleryType) => {
+            {metalData.map((data, index) => {
               return (
-                <div className="catergory-section" key={jewelleryType}>
-                  <h5
+                <div className="catergory-section" key={index}>
+                  <Link
                     variant="h5"
                     color="initial"
                     className="jewellwery-type mb-4"
+                    to={`/bullions?metal=${data.metal}`}
+                    onClick={closeModal}
                   >
-                    {jewelleryType}
-                  </h5>
+                    {data.metal}
+                  </Link>
                   <div className="jewelleries">
-                    {navigations.jwewlleries.map((jewellery) => (
-                      <div className="" key={jewellery}>
-                        <Link className="jewellery-link" to="#" onClick={() => { console.log("Jai shree ram") }}>
-                          {jewellery}
+                    {data.metal_items.map((item, key) => (
+                      <div className="" key={key}>
+                        <Link className="jewellery-link" to={`/bullions?metal=${data.id}&item_type=${item.item_name}`} onClick={closeModal}>
+                          {item.item_name}
                         </Link>
                       </div>
                     ))}

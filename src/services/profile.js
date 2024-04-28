@@ -22,6 +22,14 @@ export const removeAddress = async (id) => {
   return await httpService.get(`profile/address/remove/${id}`)
 }
 
+export const updateAddress = async (id, data) => {
+  return await httpService.post(`profile/address/edit/${id}`, data)
+}
+
+export const getAddressById = async (id) => {
+  return await httpService.get(`profile/address/${id}`)
+}
+
 export const myOrders = async () => {
   return await httpService.get(`order/myOrders`)
 }

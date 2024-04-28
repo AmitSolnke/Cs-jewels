@@ -6,63 +6,79 @@ export default class BaseHttpService {
   _accessToken = null;
   _accessTokenKey = null;
   _headers = {};
+  _guestSessionId = null;
 
   //constructor() {}
 
   async get(endpoint, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .get(`${this.BASE_URL}/${endpoint}`, options)
       .catch((error) => this._handleHttpError(error));
   }
 
   async post(endpoint, data = {}, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .post(`${this.BASE_URL}/${endpoint}`, data, options)
       .catch((error) => this._handleHttpError(error));
   }
 
   async delete(endpoint, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .delete(`${this.BASE_URL}/${endpoint}`, options)
       .catch((error) => this._handleHttpError(error));
   }
 
   async patch(endpoint, data = {}, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .patch(`${this.BASE_URL}/${endpoint}`, data, options)
       .catch((error) => this._handleHttpError(error));
   }
 
   async put(endpoint, data = {}, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .put(`${this.BASE_URL}/${endpoint}`, data, options)
       .catch((error) => this._handleHttpError(error));
   }
 
   _handleHttpError(error) {
-    console.log(error)
-    // const { statusCode } = error.response.data;
-
-    // if (statusCode !== 401) {
-    //   throw error;
-    // } else {
-    //   return this._handle401(error);
-    // }
+    const statusCode = error.response.status;
+    if (statusCode == 401) {
+      return this._handle401(error);
+    } else {
+      throw error;
+    }
   }
 
   _handle401(error) {
-    window.location = "/home";
+    window.location = "/";
   }
 
-  _getCommonOptions() {
+  async createGuestId() {
+    const data = {
+      secret_key: process.env.REACT_APP_LOGIN_SECRET_KEY
+    }
+    const result = await axios
+      .post(`${this.BASE_URL}/indexAction`, data);
+
+    return result.data.guest_id;
+  }
+
+  async _getCommonOptions() {
     const token = this.loadToken();
+    let guestSessionId = this.loadGuestSessionId();
     if (token) {
       this.addHeader("Authorization", `Bearer ${token}`);
+    } else if (guestSessionId) {
+      this.addHeader("Guest-Session-ID", guestSessionId)
+    } else {
+      guestSessionId = await this.createGuestId()
+      tokenService.saveGuestSessionId(guestSessionId)
+      this.addHeader("Guest-Session-ID", guestSessionId)
     }
 
     return {
@@ -92,6 +108,12 @@ export default class BaseHttpService {
     const token = tokenService.getToken(this._accessTokenKey);
     this._accessToken = token;
     return token;
+  }
+
+  loadGuestSessionId() {
+    const guestSessionId = tokenService.getGuestSessionId();
+    this._guestSessionId = guestSessionId;
+    return guestSessionId;
   }
 
   removeToken() {

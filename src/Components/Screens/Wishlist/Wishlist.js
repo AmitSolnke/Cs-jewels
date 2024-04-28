@@ -61,14 +61,6 @@ export const ProductCard = ({ product = null, refrashCount, setRefrashCount }) =
           product={product}
           handleClose={handleClose}
         />
-        <div
-          style={{ position: "absolute", bottom: 0, right: 0 }}
-          className="favourite-button-container"
-        >
-          <IconButton style={{ color: "#5b382e" }}>
-            <FavoriteIcon />
-          </IconButton>
-        </div>
       </div>
       <CardContent>
         <Typography className="product-name">{product.product_name}</Typography>

@@ -2,7 +2,6 @@ import { styled } from "@mui/material/styles";
 import { Drawer } from "@mui/material";
 import { Table, TableBody, TableCell, TableContainer, TableRow, Paper } from "@mui/material";
 import web from "../../images/Group265.png";
-import Sidebar from "../Common/Sidebar";
 import { myOrders } from "../../services/profile";
 import { useEffect, useState } from "react";
 import { formatDate } from "../../utilities/date";
@@ -29,11 +28,6 @@ export default function MyOrder() {
     getData()
   }, [])
   return (
-    <div className="d-flex">
-      <div className="col-0 col-md-5 col-lg-4">
-        <Sidebar />
-      </div>
-      {/* order page*/}
       <div className="p-3 myorder-container p-3 col-12 col-md-7 col-lg-8">
         <h5>MY ORDERS</h5>
         <div className="orders-wrapper">
@@ -91,8 +85,15 @@ export default function MyOrder() {
               </TableContainer>
             </div>
           ))}
+          {data.length <= 0 ? 
+            (
+              <div className="p-4">
+                <div className="d-flex p-3 no-data-wrapper" style={{ backgroundColor: "rgb(254 251 255)" }}>
+                  <p>No order found</p>
+                </div>
+              </div>
+            ) : ''}
         </div>
       </div>
-    </div>
   );
 }

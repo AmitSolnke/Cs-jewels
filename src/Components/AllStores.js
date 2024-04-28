@@ -5,25 +5,10 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import plusIcon from "../images/icons/plusicon.svg"
 import minusIcon from "../images/icons/minusicon.svg"
-import { getStores } from '../services/FrontApp/index.service';
 
-export default function AllStores() {
+export default function AllStores({ data }) {
     const [expanded, setExpanded] = React.useState(false);
-    const [data, setData] = useState([]);
-
-    const getData = async () => {
-        try {
-            const result = await getStores();
-            setData(result.data.data)
-        } catch (error) {
-            console.error(error.message)
-        }
-    }
-
-    useEffect(() => {
-        getData()
-    }, [])
-
+    
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };

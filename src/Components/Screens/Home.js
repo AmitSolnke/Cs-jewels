@@ -32,7 +32,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-const prodImages = [prod1, prod2, prod3, prod4]; 
+const prodImages = [prod1, prod2, prod3, prod4];
 const offerImages = [CardImageLarge, CardImageLarge, CardImageLarge, CardImageLarge];
 const shineImages = [CardImageNoPadding, CardImageNoPadding, CardImageNoPadding, CardImageNoPadding];
 const catImgs = [catImg1, catImg2, catImg3, catImg4, catImg5, catImg6];
@@ -103,7 +103,7 @@ function Home() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid item xs={11} md={7} className="p-0 w-100">
-            <ImageSliderHome width={550} height={550} CardImage={CardImageLarge} padding={40} CardImageType={"Offers"} className="offer-slider" imagesArray={offerImages}/>
+            <ImageSliderHome width={550} height={550} CardImage={CardImageLarge} padding={40} CardImageType={"Offers"} className="offer-slider" imagesArray={offerImages} />
           </Grid>
           <Grid className='extra-empty-container-exclusive-offers w-100' item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>

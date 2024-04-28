@@ -16,12 +16,20 @@ import { PersonalDetails } from './Components/Screens/PersonalDetails';
 import { AddressBook } from './Components/Screens/Address-book/AddressBook';
 import { ShoppingBag } from './Components/Screens/ShoppingBag';
 import { Wishlist } from './Components/Screens/Wishlist/Wishlist';
-import CheckOut from './Components/Screens/Checkout/CheckOut';
+import { PaymentSuccess } from './Components/Screens/Checkout/PaymentSuccess';
 import { YourDetails } from './Components/Screens/Checkout/YourDetails';
 import { Delivery } from './Components/Screens/Checkout/Delivery';
-import { Payment } from './Components/Screens/Checkout/Payment';
 import { Navigate } from 'react-router-dom';
 
+export const normalRouts = [
+  {
+    path: '/success/payment/:order_id',
+    name: 'PaymentSuccess',
+    element: <PaymentSuccess />,
+    exact: true,
+    strict: false,
+  },
+]
 
 export const frontAppRoutes = [
   {
@@ -102,13 +110,6 @@ export const frontAppRoutes = [
     strict: false,
   },
   {
-    path: '/address-book',
-    name: 'Address Book',
-    element: <AddressBook />,
-    exact: true,
-    strict: false,
-  },
-  {
     path: '/wishlist',
     name: 'Wish List',
     element: <Wishlist />,
@@ -146,6 +147,13 @@ export const dashboardRoutes = [
     exact: true,
     strict: false,
   },
+  {
+    path: '/dashboard/address-book',
+    name: 'Address Book',
+    element: <AddressBook />,
+    exact: true,
+    strict: false,
+  },
 ]
 
 export const orderRoutes = [
@@ -167,13 +175,6 @@ export const orderRoutes = [
     path: '/order/check-out/delivery',
     name: 'Delivery',
     element: <Delivery />,
-    exact: true,
-    strict: false,
-  },
-  {
-    path: '/order/check-out/payment',
-    name: 'Payment',
-    element: <Payment />,
     exact: true,
     strict: false,
   },

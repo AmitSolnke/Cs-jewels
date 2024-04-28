@@ -1,8 +1,8 @@
 import UserHTTPService from "../user-http.service"
 
 const httpService = new UserHTTPService()
-export const getLiveRateForCSPL = async () => {
-  return await httpService.get(`getliveRateForCSPL/Z2V0bGl2ZVJhdGVGb3JDU1BM`)
+export const getLiveRateForCSP = async () => {
+  return await httpService.get(`getliveRateForCSP`)
 }
 
 export const login = async (data) => {
@@ -30,6 +30,9 @@ export const getStores = async () => {
   return await httpService.get(`stores`)
 }
 
+export const searchStores = async (data) => {
+  return await httpService.post(`stores/search`, data)
+}
 
 export const getProducts = async (data) => {
   return await httpService.post(`products`, data)
@@ -65,4 +68,16 @@ export const removeProductFromCat = async (id) => {
 
 export const contactUs = async (data) => {
   return await httpService.post(`support/add`, data)
+}
+
+export const getMetals = async () => {
+  return await httpService.post(`metalType`)
+}
+
+export const getProductCategory = async () => {
+  return await httpService.post(`productCategory`)
+}
+
+export const getMetalItems = async (data) => {
+  return await httpService.post(`items`, data)
 }

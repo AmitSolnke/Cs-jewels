@@ -125,9 +125,14 @@ export default function Bullions() {
   const [products, setProducts] = useState([]);
 
   const getData = async () => {
-    const { data } = await getProducts(filterData);
-    setProducts(data.data.data);
-    setTotalPages(data.data.last_page);
+    try {
+      const { data } = await getProducts(filterData);
+      setProducts(data.data.data);
+      setTotalPages(data.data.last_page);
+    } catch (error) {
+      setProducts([]);
+      setTotalPages(0)
+    }
   };
 
   useEffect(() => {

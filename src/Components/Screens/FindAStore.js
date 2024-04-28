@@ -66,7 +66,7 @@ export default function FindAStore() {
     return (
         <div className='find-store-main-container'>
             <div className='section-title' style={{ backgroundImage: `url(${storeLocaterTitleImage})` }}>
-                <div class="section-contents">
+                <div className="section-contents">
                     <div className="header-title">
                         <img src={fillWhiteLeftIcon} alt="React Logo" />
                         <h4>Store Locator</h4>

@@ -43,7 +43,7 @@ function Footer() {
   }
   return (
     <>
-    <div class="whatsapp-button">
+    <div className="whatsapp-button">
       <a target="_blank" href="https://api.whatsapp.com/send?phone=8708526164&text=hlo" >
         <WhatsAppIcon /> <span> WhatsApp Us! </span>
       </a>

@@ -12,8 +12,17 @@ import {
   Stack,
   Button
 } from "@mui/material";
+import Paper from "@mui/material/Paper";
+import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { BullionsFilter } from "../Bullions/BullionsFilter";
+import { FilterMenu } from "../Bullions/FilterMenu";
+import { SortMenu } from "../Bullions/SortMenu";
 
 export const ProductCatalogues = () => {
+  const [bullionsFilterOpen, setBullionsFilterOpen] = useState(false);
+  const [bullionsFilterValue, setBullionsFilterValue] = useState(-1);
+  const [openSortMenu, setOpenSortMenu] = useState(false);
+  const [openFilterMenu, setOpenFilterMenu] = useState(false);
   const products = [
     {
       id: 1,
@@ -65,6 +74,31 @@ export const ProductCatalogues = () => {
       [filterName]: value,
     }));
   };
+  const handleOpenBullionsFilter = () => {
+    setBullionsFilterOpen(true);
+  };
+
+  const handleOpenFilterMenu = () => {
+    setOpenFilterMenu(true);
+    setOpenSortMenu(false);
+    handleOpenBullionsFilter();
+  };
+
+  const handleOpenSortMenu = () => {
+    setOpenSortMenu(true);
+    setOpenFilterMenu(false);
+    handleOpenBullionsFilter();
+  };
+
+  const handleCloseBullionsFilter = () => {
+    setBullionsFilterValue(-1);
+    setBullionsFilterOpen(false);
+  };
+
+  const handleApplyFilter = () => {
+    // Todo : Apply filter logic
+    handleCloseBullionsFilter();
+  }
 
   const handleChipDelete = (chipToDelete) => () => {
     setChipData((chips) =>
@@ -80,6 +114,41 @@ export const ProductCatalogues = () => {
           <p>40+ Rings options available</p>
         </div>
       </div>
+      <Paper
+        className="mobile-filter-section"
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: "9999",
+        }}
+      >
+        <BottomNavigation
+          showLabels
+          value={bullionsFilterValue}
+          onChange={(event, newValue) => {
+            setBullionsFilterValue(newValue);
+          }}
+        >
+          {bullionsFilterValue == -1 && <BottomNavigationAction label="Filter" onClick={handleOpenFilterMenu} />}
+          {bullionsFilterValue == -1 && <BottomNavigationAction label="Sort" onClick={handleOpenSortMenu} />}
+
+          {bullionsFilterValue == 0 && <BottomNavigationAction label="CLOSE" onClick={handleCloseBullionsFilter} />}
+          {bullionsFilterValue == 0 && <BottomNavigationAction label="APPLY" onClick={handleApplyFilter} />}
+          {bullionsFilterValue == 1 && <BottomNavigationAction label="CLEAR" onClick={handleCloseBullionsFilter} />}
+          {bullionsFilterValue == 1 && <BottomNavigationAction label="APPLY" onClick={handleApplyFilter} />}
+
+        </BottomNavigation>
+
+        <BullionsFilter
+          isOpen={bullionsFilterOpen}
+          onClose={handleCloseBullionsFilter}
+          style={{ borderLeft: "2px solid" }}
+        >
+          {openSortMenu ? <SortMenu onClose={handleCloseBullionsFilter} /> : <FilterMenu />}
+        </BullionsFilter>
+      </Paper>
       <div className="d-none d-md-block">
         <div className="filter-dropdowns d-flex container">
           <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>

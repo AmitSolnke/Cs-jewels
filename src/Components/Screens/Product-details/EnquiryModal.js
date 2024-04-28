@@ -55,10 +55,11 @@ const EnquiryModal = ({ open, handleClose }) => {
       >
         <Fade in={open}>
           <Box
+          className="box-container"
             sx={Boxstyle}
             style={{ border: "12px solid #ede5e5", width: "50em" }}
           >
-            <div style={{ display: "flex", flexDirection: "row" }}>
+            <div className="side-product-image-wrapper" style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ flex: "1" }}>
                 <img
                   src={productImage}
@@ -67,7 +68,7 @@ const EnquiryModal = ({ open, handleClose }) => {
                 />
               </div>
 
-              <div style={{ flex: "1" }}>
+              <div className="dialog-main" style={{ flex: "1" }}>
                 <DialogActions>
                   <IconButton aria-label="close" onClick={handleCloseButton}>
                     <CloseIcon />

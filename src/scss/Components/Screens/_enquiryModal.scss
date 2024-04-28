@@ -22,4 +22,22 @@
   .input-field {
     margin-bottom: 12px;
   }
+
+  @media screen and (max-width: 750px) {
+    .box-container {
+      width: 26em !important;
+    }
+
+    .dialog-main {
+      transform: translateY(-40px) !important;
+    }
+    .side-product-image-wrapper {
+      flex-direction: column !important;
+
+      .side-product-image {
+        width: calc(100% + 64px);
+        height: 370px !important;
+      }
+    }
+  }
 }

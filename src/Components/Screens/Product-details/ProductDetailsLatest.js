@@ -79,11 +79,23 @@ export const ProductDetailsLatest = () => {
         <Grid item md={6}>
           <div className="">
             {/* product images gallery */}
-            <div className="product-gallery">
+            <div className="d-none product-gallery d-md-block">
               <ImageGallery
                 items={imageItems}
                 showNav={false}
                 showPlayButton={false}
+                showFullscreenButton={false}
+              />
+            </div>
+
+            <div className="d-block product-gallery d-md-none">
+              <ImageGallery
+                items={imageItems}
+                showNav={false}
+                showPlayButton={false}
+                showFullscreenButton={false}
+                showBullets={true}
+                showThumbnails={false}
               />
             </div>
           </div>

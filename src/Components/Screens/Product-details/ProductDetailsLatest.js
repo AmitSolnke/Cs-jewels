@@ -18,12 +18,14 @@ export const ProductDetailsLatest = () => {
     description: "",
     sales_price: 0,
     gross_wt: 0,
+    images: [],
   });
 
   const getProductData = async () => {
     // // const result = await getProductDetails({product_id: id})
     // // setProductDetails(result.data.data)
 
+    // Todo: remove while integrating api calls refer above.
     setProductDetails({
       product_name: "Ganesha Diamond Ring",
       metal_description: "24 KT | 1 GM",
@@ -34,31 +36,32 @@ export const ProductDetailsLatest = () => {
       description: "desc",
       sales_price: 0,
       gross_wt: 0,
+      images: [
+        {
+          url: "https://source.unsplash.com/random/?sig=1&count=5&orientation=landscape",
+          thumbnailUrl:
+            "https://source.unsplash.com/random/?sig=1&count=5&orientation=landscape",
+        },
+        {
+          url: "https://source.unsplash.com/random/?sig=2&count=5&orientation=landscape",
+          thumbnailUrl:
+            "https://source.unsplash.com/random/?sig=2&count=5&orientation=landscape",
+        },
+        {
+          url: "https://source.unsplash.com/random/?sig=3&count=5&orientation=landscape",
+          thumbnailUrl:
+            "https://source.unsplash.com/random/?sig=3&count=5&orientation=landscape",
+        },
+      ],
     });
   };
 
-  //   images array for image gallery
-
-  const [images, setImages] = useState([]);
-
   useEffect(() => {
-    setImages([
-      {
-        url: "https://source.unsplash.com/random/?sig=1&count=5",
-        thumbnailUrl: "https://source.unsplash.com/random/?sig=1&count=5",
-      },
-      {
-        url: "https://source.unsplash.com/random/?sig=2&count=5",
-        thumbnailUrl: "https://source.unsplash.com/random/?sig=2&count=5",
-      },
-      {
-        url: "https://source.unsplash.com/random/?sig=3&count=5",
-        thumbnailUrl: "https://source.unsplash.com/random/?sig=3&count=5",
-      },
-    ]);
+    getProductData();
   }, []);
 
-  const imageItems = images.map((image) => ({
+  // Todo: this is the image array refactor code to use images from the api call
+  const imageItems = productDetails.images.map((image) => ({
     original: image.url,
     thumbnail: image.thumbnailUrl,
   }));
@@ -75,7 +78,12 @@ export const ProductDetailsLatest = () => {
 
   return (
     <Box className="product-details-latest">
-      <Grid container spacing={1} className="p-3">
+      <Grid
+        container
+        spacing={1}
+        className="p-3"
+        style={{ background: "#fff" }}
+      >
         <Grid item md={6}>
           <div className="">
             {/* product images gallery */}
@@ -101,7 +109,7 @@ export const ProductDetailsLatest = () => {
           </div>
         </Grid>
 
-        <Grid item md={6}>
+        <Grid item md={6} style={{paddingLeft: '1rem'}}>
           <div className="">
             <span className="new-arrival-badge">NEW ARRIVAL</span>
 

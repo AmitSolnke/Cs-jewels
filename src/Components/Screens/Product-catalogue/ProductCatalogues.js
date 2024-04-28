@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import productBannerImage from "../../../images/product-banner.png";
 import productImage from "../../../images/products/5.png";
 import {
@@ -17,12 +17,15 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { BullionsFilter } from "../Bullions/BullionsFilter";
 import { FilterMenu } from "../Bullions/FilterMenu";
 import { SortMenu } from "../Bullions/SortMenu";
+import { useSearchParams } from "react-router-dom";
 
 export const ProductCatalogues = () => {
   const [bullionsFilterOpen, setBullionsFilterOpen] = useState(false);
   const [bullionsFilterValue, setBullionsFilterValue] = useState(-1);
   const [openSortMenu, setOpenSortMenu] = useState(false);
-  const [openFilterMenu, setOpenFilterMenu] = useState(false);
+  const [searchParams] = useSearchParams();
+  const [metal, setMetal] = useState('');
+  const [itemType, setItemType] = useState('');
   const products = [
     {
       id: 1,
@@ -79,14 +82,11 @@ export const ProductCatalogues = () => {
   };
 
   const handleOpenFilterMenu = () => {
-    setOpenFilterMenu(true);
     setOpenSortMenu(false);
     handleOpenBullionsFilter();
   };
 
   const handleOpenSortMenu = () => {
-    setOpenSortMenu(true);
-    setOpenFilterMenu(false);
     handleOpenBullionsFilter();
   };
 
@@ -106,11 +106,16 @@ export const ProductCatalogues = () => {
     );
   };
 
+  useEffect(() => {
+    setMetal(searchParams.get('metal') ? searchParams.get('metal') : '')
+    setItemType(searchParams.get('item_type') ? searchParams.get('item_type') : '')
+  }, [])
+
   return (
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
         <div className="catalogue-header-wrapper">
-          <h4>Unique Ring’s</h4>
+          <h4>{metal} {itemType}</h4>
           <p>40+ Rings options available</p>
         </div>
       </div>

@@ -1,0 +1,36 @@
+.filter-section {
+}
+
+.mobile-filter-section {
+  button:hover {
+    border: none !important;
+    background-color: transparent !important;
+    color: #333333 !important;
+  }
+  display: none;
+}
+.bullions-filter {
+  justify-content: space-around;
+}
+
+.bullions-filter-header {
+  background-color: #f0eee5;
+  color: #333333;
+  font: normal normal bold 14px/17px Lato;
+  letter-spacing: 2.1px;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .filter-section {
+    display: none;
+  }
+
+  .mobile-filter-section {
+    display: block;
+  }
+}

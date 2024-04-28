@@ -124,15 +124,15 @@ export const frontAppRoutes = [
     exact: true,
     strict: false,
   },
+  // {
+  //   path: '/product-details/:id',
+  //   name: 'Product Details',
+  //   element: <ProductDetails />,
+  //   exact: true,
+  //   strict: false,
+  // },
   {
     path: '/product-details/:id',
-    name: 'Product Details',
-    element: <ProductDetails />,
-    exact: true,
-    strict: false,
-  },
-  {
-    path: '/product-details-latest/:id',
     name: 'Product Details',
     element: <ProductDetailsLatest />,
     exact: true,

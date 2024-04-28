@@ -113,15 +113,14 @@ export const ProductDetailsLatest = () => {
           <div className="">
             <span className="new-arrival-badge">NEW ARRIVAL</span>
 
-            <h2 className="product-name">Ganesha Diamond Ring</h2>
+            <h2 className="product-title">{productDetails.product_name}</h2>
 
-            <div className="metal-description">24 KT | 1 GM</div>
+            <div className="metal-description">{productDetails.metal_description}</div>
 
             <div className="product-price"> &#8377; 94000</div>
 
             <div className="product-description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              {productDetails.item_description}
             </div>
 
             <div className="product-informations my-2">

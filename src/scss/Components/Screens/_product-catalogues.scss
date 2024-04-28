@@ -1,8 +1,10 @@
 .product-catalogues {
   .product-catalogue-banner {
     position: relative;
-    max-height: 350px;
-    overflow: hidden; // Todo : remove after attaching actual image
+    overflow: hidden;
+    background-image: url('../../../images/product-banner.png');
+    height: 374px;
+
     img {
       width: 100%;
       height: 100%;
@@ -10,13 +12,20 @@
 
     .catalogue-header-wrapper {
       position: absolute;
-      bottom: 160px;
-      left: 120px;
+      bottom: 126px;
+      left: 80px;
 
       h4 {
         font: normal normal 600 60px/80px Playfair Display;
         color: #333333;
         background: #FFFFFF 0% 0% no-repeat padding-box;
+        padding: 15px;
+      }
+
+      p {
+        font: normal normal normal 30px/42px Lato;
+        color: #FFFFFF;
+        padding-top: 4px;
       }
     }
   }
@@ -59,5 +68,16 @@
         padding: 0;
       }
     }
+  }
+}
+@media (max-width: 768px) {
+  .product-catalogues {
+    .product-catalogue-banner {
+      height: 250px;
+    }
+    .product-item-card {
+      max-width: 46%;
+    }
+
   }
 }

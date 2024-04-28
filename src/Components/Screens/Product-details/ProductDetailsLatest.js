@@ -109,13 +109,15 @@ export const ProductDetailsLatest = () => {
           </div>
         </Grid>
 
-        <Grid item md={6} style={{paddingLeft: '1rem'}}>
+        <Grid item md={6} style={{ paddingLeft: "1rem" }}>
           <div className="">
             <span className="new-arrival-badge">NEW ARRIVAL</span>
 
             <h2 className="product-title">{productDetails.product_name}</h2>
 
-            <div className="metal-description">{productDetails.metal_description}</div>
+            <div className="metal-description">
+              {productDetails.metal_description}
+            </div>
 
             <div className="product-price"> &#8377; 94000</div>
 
@@ -136,7 +138,7 @@ export const ProductDetailsLatest = () => {
             </div>
           </div>
 
-          <table border={2} className="product-information-table my-2">
+          <table className="product-information-table my-2">
             <tr>
               <td>Rate:</td>
               <td> &#8377; 94000</td>

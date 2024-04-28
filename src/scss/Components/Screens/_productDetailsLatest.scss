@@ -51,10 +51,16 @@
   .product-information-table {
     width: 100%;
 
+    table,
     tr,
     td {
       border: 1px solid;
       padding: 15px;
     }
   }
+}
+
+.image-gallery-bullets .image-gallery-bullet {
+  width: 10px !important;
+  height: 10px !important;
 }

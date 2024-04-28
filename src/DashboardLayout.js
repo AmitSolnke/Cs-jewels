@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import Sidebar from './Components/Common/Sidebar';
 import Header from './Components/Header';
 import { Outlet } from 'react-router-dom';
+import { ShoppingBag } from './Components/Screens/ShoppingBag';
 
 const DashboardLayout = () => {
     const [openDrawer, setOpenDrawer] = useState(false);

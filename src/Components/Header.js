@@ -367,7 +367,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
       {searchDropdown && (
         <div
           id="search-dropdown-wrapper"
-          className="dropdown-wrapper"
+          className="dropdown-wrapper position-sticky"
+          style={{position: 'sticky', top: '120px', zIndex:'2'}}
         >
           <SearchDropdown setSearchDropdown={setSearchDropdown} />
         </div>

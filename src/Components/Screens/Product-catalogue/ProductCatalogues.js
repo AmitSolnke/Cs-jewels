@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import productBannerImage from "../../../images/product-banner.png";
-import productImage from "../../../images/products/5.png";
 import {
   Box,
   Chip,
@@ -18,6 +16,7 @@ import { BullionsFilter } from "../Bullions/BullionsFilter";
 import { FilterMenu } from "../Bullions/FilterMenu";
 import { SortMenu } from "../Bullions/SortMenu";
 import { useSearchParams } from "react-router-dom";
+import { getMetals, getProductCategory, getProducts } from "../../../services/FrontApp/index.service";
 
 export const ProductCatalogues = () => {
   const [bullionsFilterOpen, setBullionsFilterOpen] = useState(false);
@@ -26,33 +25,11 @@ export const ProductCatalogues = () => {
   const [searchParams] = useSearchParams();
   const [metal, setMetal] = useState('');
   const [itemType, setItemType] = useState('');
-  const products = [
-    {
-      id: 1,
-      image: productImage,
-      name: "product category here",
-    },
-    {
-      id: 2,
-      image: productImage,
-      name: "product category here",
-    },
-    {
-      id: 3,
-      image: productImage,
-      name: "product category here",
-    },
-    {
-      id: 4,
-      image: productImage,
-      name: "product category here",
-    },
-    {
-      id: 5,
-      image: productImage,
-      name: "product category here",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  const [refreshCount, setRefreshCount] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [categories, setCategories] = useState([])
+  const [metals, setMetals] = useState([])
 
   const [chipData, setChipData] = useState([
     { key: 0, label: "ALL", selected: false },
@@ -62,13 +39,45 @@ export const ProductCatalogues = () => {
   ]);
 
   const [filters, setFilters] = useState({
-    category: "",
+    'type[0]': "",
+    'metal_type[0]': "",
+    'min_weight': "",
     gender: "",
     priceRange: "",
     metalType: "",
     sizeWise: "",
     sortBy: "",
   });
+
+  const getFiltersData = async () => {
+    try {
+      const result = await getProductCategory();
+      setCategories(result.data.data)
+      const metalResult = await getMetals();
+      setMetals(metalResult.data.data)
+    } catch (error) {
+      setCategories([]);
+    }
+  }
+
+  useEffect(() => {
+    getFiltersData()
+  }, [])
+
+  const getData = async () => {
+    try {
+      const { data } = await getProducts(filterData);
+      setProducts(data.data.data);
+      setTotalPages(data.data.last_page);
+    } catch (error) {
+      setProducts([]);
+      setTotalPages(0)
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, [refreshCount]);
 
   const handleFilterChange = (filterName, value) => {
     console.log(filters);
@@ -109,6 +118,7 @@ export const ProductCatalogues = () => {
   useEffect(() => {
     setMetal(searchParams.get('metal') ? searchParams.get('metal') : '')
     setItemType(searchParams.get('item_type') ? searchParams.get('item_type') : '')
+    handleFilterChange("search_query", searchParams.get('item_type') ? searchParams.get('item_type') : '')
   }, [])
 
   return (
@@ -163,11 +173,11 @@ export const ProductCatalogues = () => {
               id="demo-simple-select-standard"
               label="CATEGORY"
               value={filters.category}
-              onChange={(e) => handleFilterChange("category", e.target.value)}
+              onChange={(e) => handleFilterChange("type[0]", e.target.value)}
             >
-              <MenuItem value="cat1">Category 1</MenuItem>
-              <MenuItem value="cat2">Category 2</MenuItem>
-              <MenuItem value="cat3">Category 3</MenuItem>
+              {categories.map((item) => (
+                <MenuItem value={item.category_name}>{item.category_name}</MenuItem>
+              ))}
             </Select>
           </FormControl>
 
@@ -180,8 +190,8 @@ export const ProductCatalogues = () => {
               value={filters.gender}
               onChange={(e) => handleFilterChange("gender", e.target.value)}
             >
-              <MenuItem value="female">Female</MenuItem>
-              <MenuItem value="male">Male</MenuItem>
+              <MenuItem value="0">Male</MenuItem>
+              <MenuItem value="1">Female</MenuItem>
             </Select>
           </FormControl>
 
@@ -206,11 +216,11 @@ export const ProductCatalogues = () => {
               id="demo-simple-select-standard"
               label="METAL TYPE"
               value={filters.metalType}
-              onChange={(e) => handleFilterChange("metalType", e.target.value)}
+              onChange={(e) => handleFilterChange("metal_type[0]", e.target.value)}
             >
-              <MenuItem value="gold">Gold</MenuItem>
-              <MenuItem value="silver">Silver</MenuItem>
-              <MenuItem value="platinum">Platinum</MenuItem>
+              {metals.map((data) => (
+                <MenuItem value={data.metal_type}>{data.metal_type}</MenuItem>
+              ))}
             </Select>
           </FormControl>
 
@@ -238,10 +248,13 @@ export const ProductCatalogues = () => {
               id="demo-simple-select-standard"
               label="SORT BY"
               value={filters.sortBy}
-              onChange={(e) => handleFilterChange("sortBy", e.target.value)}
+              onChange={(e) => handleFilterChange("sort_by", e.target.value)}
             >
-              <MenuItem value="sortBy1">SORT BY</MenuItem>
-              <MenuItem value="sortBy2">SORT BY</MenuItem>
+              <MenuItem value="low_to_high">Price - low to high</MenuItem>
+              <MenuItem value="high_to_low">Price - high to low</MenuItem>
+              <MenuItem value="is_popular">Popularity</MenuItem>
+              <MenuItem value="newly_added">Newly added</MenuItem>
+              <MenuItem value="bestseller">Bestsellers</MenuItem>
             </Select>
           </FormControl>
         </div>

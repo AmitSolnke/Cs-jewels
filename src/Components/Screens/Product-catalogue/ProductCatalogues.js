@@ -38,15 +38,30 @@ export const ProductCatalogues = () => {
     { key: 3, label: "SILVER RINGS", selected: false },
   ]);
 
+  const sizes = ["5", "10", "15", "20", "25"];
+
   const [filters, setFilters] = useState({
-    'type[0]': "",
-    'metal_type[0]': "",
-    'min_weight': "",
-    gender: "",
-    priceRange: "",
-    metalType: "",
-    sizeWise: "",
-    sortBy: "",
+    // 'type[0]': "",
+    // 'metal_type[0]': "",
+    // 'min_weight': "",
+    // gender: "",
+    // priceRange: "",
+    // metalType: "",
+    // sizeWise: "",
+    // sortBy: "",
+
+    // 'limit': 10,
+    // 'page': 1,
+    'type[0]': 4,
+    'metal_type[0]': null,
+    'min_weight': null,
+    'max_weight': null,
+    'sort_by': null,
+    'search_query': null,
+    'size': null,
+    'gender': null,
+    'min_price': null,
+    'max_price': null,
   });
 
   const getFiltersData = async () => {
@@ -66,7 +81,7 @@ export const ProductCatalogues = () => {
 
   const getData = async () => {
     try {
-      const { data } = await getProducts(filterData);
+      const { data } = await getProducts(filters);
       setProducts(data.data.data);
       setTotalPages(data.data.last_page);
     } catch (error) {
@@ -80,11 +95,12 @@ export const ProductCatalogues = () => {
   }, [refreshCount]);
 
   const handleFilterChange = (filterName, value) => {
-    console.log(filters);
     setFilters((prevFilters) => ({
       ...prevFilters,
       [filterName]: value,
     }));
+
+    getData();
   };
   const handleOpenBullionsFilter = () => {
     setBullionsFilterOpen(true);
@@ -176,7 +192,7 @@ export const ProductCatalogues = () => {
               onChange={(e) => handleFilterChange("type[0]", e.target.value)}
             >
               {categories.map((item) => (
-                <MenuItem value={item.category_name}>{item.category_name}</MenuItem>
+                <MenuItem value={item.id}>{item.category_name}</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -204,8 +220,7 @@ export const ProductCatalogues = () => {
               value={filters.priceRange}
               onChange={(e) => handleFilterChange("priceRange", e.target.value)}
             >
-              <MenuItem value="priceRange1">PRICE RANGE</MenuItem>
-              <MenuItem value="priceRange2">PRICE RANGE</MenuItem>
+              <MenuItem value="priceRange1">1000 - 20000</MenuItem>
             </Select>
           </FormControl>
 
@@ -224,19 +239,23 @@ export const ProductCatalogues = () => {
             </Select>
           </FormControl>
 
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          {/* Todo: uncomment while integrating, giving error */}
+          {/* <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id="category-metal-type"> SIZEWISE </InputLabel>
             <Select
               labelId="category-metal-type"
               id="demo-simple-select-standard"
               label="SIZEWISE"
               value={filters.sizeWise}
-              onChange={(e) => handleFilterChange("sizeWise", e.target.value)}
+              onChange={(e) => handleFilterChange("size", e.target.value)}
             >
-              <MenuItem value="size1">SIZEWISE</MenuItem>
-              <MenuItem value="size2">SIZEWISE</MenuItem>
+              {
+                sizes.map((data) => (
+                  <MenuItem value={data}>{data}</MenuItem>
+                ))
+              }
             </Select>
-          </FormControl>
+          </FormControl> */}
 
           <FormControl
             variant="standard"
@@ -304,7 +323,7 @@ export const ProductCatalogues = () => {
               >
                 {/* <Card variant="outlined"> */}
                 <img
-                  src={product.image}
+                  src={product.image_path}
                   alt="product image"
                   className="image"
                 />

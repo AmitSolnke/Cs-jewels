@@ -25,7 +25,7 @@
 
   @media screen and (max-width: 750px) {
     .box-container {
-      width: 26em !important;
+      width: 25em !important;
     }
 
     .dialog-main {
@@ -38,6 +38,12 @@
         width: calc(100% + 64px);
         height: 370px !important;
       }
+    }
+  }
+
+  @media screen and (max-width: 376px) {
+    .box-container {
+      width: 22em !important;
     }
   }
 }

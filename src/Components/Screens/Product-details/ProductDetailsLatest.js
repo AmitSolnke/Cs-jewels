@@ -81,7 +81,7 @@ export const ProductDetailsLatest = () => {
       <Grid
         container
         spacing={1}
-        className="p-3"
+        className="p-3 grid-container"
         style={{ background: "#fff" }}
       >
         <Grid item md={6}>
@@ -109,7 +109,7 @@ export const ProductDetailsLatest = () => {
           </div>
         </Grid>
 
-        <Grid item md={6} style={{ paddingLeft: "1rem" }}>
+        <Grid item md={6} style={{ paddingLeft: "1rem" }} className="product-details-wrapper">
           <div className="">
             <span className="new-arrival-badge">NEW ARRIVAL</span>
 

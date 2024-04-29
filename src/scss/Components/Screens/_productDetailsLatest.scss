@@ -60,6 +60,17 @@
   }
 }
 
+@media screen and (max-width: 750px) {
+  .grid-container {
+    padding: 0 !important;
+  }
+
+  .product-details-wrapper {
+    padding: 0 !important;
+    padding: 1rem !important;
+  }
+}
+
 .image-gallery-bullets .image-gallery-bullet {
   width: 10px !important;
   height: 10px !important;

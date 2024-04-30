@@ -17,6 +17,7 @@ import { FilterMenu } from "../Bullions/FilterMenu";
 import { SortMenu } from "../Bullions/SortMenu";
 import { useSearchParams } from "react-router-dom";
 import { getMetals, getProductCategory, getProducts } from "../../../services/FrontApp/index.service";
+import { Paginator } from "../../Common/Paginator";
 
 export const ProductCatalogues = () => {
   const [bullionsFilterOpen, setBullionsFilterOpen] = useState(false);
@@ -62,7 +63,16 @@ export const ProductCatalogues = () => {
     'gender': null,
     'min_price': null,
     'max_price': null,
+    page: 1,
+    limit: 10
   });
+
+  const handleChangePage = (event, newPage) => {
+    filters["page"] = newPage;
+    const temp = Object.assign({}, filters);
+    setFilters(temp);
+    setRefreshCount(refreshCount + 1);
+  };
 
   const getFiltersData = async () => {
     try {
@@ -81,7 +91,44 @@ export const ProductCatalogues = () => {
 
   const getData = async () => {
     try {
-      const { data } = await getProducts(filters);
+      const requestParams = new FormData();
+      if (filters["type[0]"]) {
+        requestParams.append("type[0]", filters["type[0]"])
+      }
+      if (filters["metal_type[0]"]) {
+        requestParams.append("metal_type[0]", filters["metal_type[0]"])
+      }
+      if (filters["min_weight"]) {
+        requestParams.append("min_weight", filters["min_weight"])
+      }
+      if (filters["max_weight"]) {
+        requestParams.append("max_weight", filters["max_weight"])
+      }
+      if (filters["sort_by"]) {
+        requestParams.append("sort_by", filters["sort_by"])
+      }
+      if (filters["search_query"]) {
+        requestParams.append("search_query", filters["search_query"])
+      }
+      if (filters["size"]) {
+        requestParams.append("size", filters["size"])
+      }
+      if (filters["gender"]) {
+        requestParams.append("gender", filters["gender"])
+      }
+      if (filters["min_price"]) {
+        requestParams.append("min_price", filters["min_price"])
+      }
+      if (filters["max_price"]) {
+        requestParams.append("max_price", filters["max_price"])
+      }
+      if (filters.page) {
+        requestParams.append("page", filters["page"])
+      }
+      if (filters.limit) {
+        requestParams.append("limit", filters["limit"])
+      }
+      const { data } = await getProducts(requestParams);
       setProducts(data.data.data);
       setTotalPages(data.data.last_page);
     } catch (error) {
@@ -335,6 +382,11 @@ export const ProductCatalogues = () => {
           })}
         </Grid>
       </Box>
+      <Paginator
+        currentPage={filters.page}
+        totalPage={totalPages}
+        handleChangePage={handleChangePage}
+      />
     </div>
   );
 };

@@ -15,11 +15,12 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { BullionsFilter } from "../Bullions/BullionsFilter";
 import { FilterMenu } from "../Bullions/FilterMenu";
 import { SortMenu } from "../Bullions/SortMenu";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { getMetals, getProductCategory, getProducts } from "../../../services/FrontApp/index.service";
 import { Paginator } from "../../Common/Paginator";
 
 export const ProductCatalogues = () => {
+  const navigate = useNavigate()
   const [bullionsFilterOpen, setBullionsFilterOpen] = useState(false);
   const [bullionsFilterValue, setBullionsFilterValue] = useState(-1);
   const [openSortMenu, setOpenSortMenu] = useState(false);
@@ -364,9 +365,10 @@ export const ProductCatalogues = () => {
             return (
               <Grid
                 item
-                key={product.id}
+                key={product.product_id}
                 md={4}
                 className="product-item-card"
+                onClick={()=>navigate('/product-details/'+product.product_id)}
               >
                 {/* <Card variant="outlined"> */}
                 <img

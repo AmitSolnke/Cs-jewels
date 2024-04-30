@@ -15,6 +15,8 @@ import EastIcon from "@mui/icons-material/East";
 import { useNavigate } from "react-router-dom";
 import successCheckIcon from "../../../images/icons/successful-checkbox.svg";
 import productImage from "../../../images/MaskGroup18.png";
+import { enquireProduct } from "../../../services/FrontApp/index.service";
+import ErrorList from "../../Common/ErrorList";
 
 const Boxstyle = {
   position: "absolute",
@@ -28,7 +30,20 @@ const Boxstyle = {
   p: 4,
 };
 
-const EnquiryModal = ({ open, handleClose }) => {
+const EnquiryModal = ({ open, handleClose, productId }) => {
+  const [errors, setErrors] = useState([])
+  const [data, setData] = useState({
+    name: '',
+    mobile_no: '',
+    product_id: productId,
+  })
+
+  const handleChange = ({ target }) => {
+    data[target.name] = target.value
+    const temp = Object.assign({}, data)
+    setData(temp)
+  }
+
   const [showEnquiryScreen, setShowEnquiryScreen] = useState(true);
   const [showThankYouScreen, setShowThankYouScreen] = useState(false);
 
@@ -38,9 +53,16 @@ const EnquiryModal = ({ open, handleClose }) => {
     handleClose();
   };
 
-  const handleGetUpdates = () => {
-    setShowEnquiryScreen(false);
-    setShowThankYouScreen(true);
+  const handleGetUpdates = async (event) => {
+    event.preventDefault();
+    setErrors([])
+    try {
+      await enquireProduct(data);
+      setShowEnquiryScreen(false);
+      setShowThankYouScreen(true);
+    } catch (error) {
+      setErrors(error.response.data.message)
+    }
   };
 
   return (
@@ -67,7 +89,7 @@ const EnquiryModal = ({ open, handleClose }) => {
                   alt=""
                 />
               </div>
-
+              <ErrorList errors={errors} />
               <div className="dialog-main" style={{ flex: "1" }}>
                 <DialogActions>
                   <IconButton aria-label="close" onClick={handleCloseButton}>
@@ -95,12 +117,18 @@ const EnquiryModal = ({ open, handleClose }) => {
                       className="mb-2"
                       fullWidth
                       required
+                      name="name"
+                      value={data.name}
+                      onChange={handleChange}
                     />
                     <TextField
                       label="Phone Number"
                       className="mb-4"
                       fullWidth
                       required
+                      name="mobile_no"
+                      value={data.mobile_no}
+                      onChange={handleChange}
                     />
                     <Button
                       className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"

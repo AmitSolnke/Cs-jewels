@@ -81,3 +81,7 @@ export const getProductCategory = async () => {
 export const getMetalItems = async (data) => {
   return await httpService.post(`items`, data)
 }
+
+export const enquireProduct = async (data) => {
+  return await httpService.post(`enquiry/addEnquiry`, data)
+}

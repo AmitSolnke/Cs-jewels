@@ -5,6 +5,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import { Box, Button, Grid } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import EnquiryModal from "./EnquiryModal";
+import { getProductDetails } from "../../../services/FrontApp/index.service";
 
 export const ProductDetailsLatest = () => {
   const { id } = useParams();
@@ -18,42 +19,43 @@ export const ProductDetailsLatest = () => {
     description: "",
     sales_price: 0,
     gross_wt: 0,
+    stones_details: [],
     images: [],
   });
 
   const getProductData = async () => {
-    // // const result = await getProductDetails({product_id: id})
-    // // setProductDetails(result.data.data)
+    const result = await getProductDetails({product_id: id})
+    setProductDetails(result.data.data)
 
     // Todo: remove while integrating api calls refer above.
-    setProductDetails({
-      product_name: "Ganesha Diamond Ring",
-      metal_description: "24 KT | 1 GM",
-      metal_amount: "94,000",
-      item_description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      purity: "",
-      description: "desc",
-      sales_price: 0,
-      gross_wt: 0,
-      images: [
-        {
-          url: "https://source.unsplash.com/random/?sig=1&count=5&orientation=landscape",
-          thumbnailUrl:
-            "https://source.unsplash.com/random/?sig=1&count=5&orientation=landscape",
-        },
-        {
-          url: "https://source.unsplash.com/random/?sig=2&count=5&orientation=landscape",
-          thumbnailUrl:
-            "https://source.unsplash.com/random/?sig=2&count=5&orientation=landscape",
-        },
-        {
-          url: "https://source.unsplash.com/random/?sig=3&count=5&orientation=landscape",
-          thumbnailUrl:
-            "https://source.unsplash.com/random/?sig=3&count=5&orientation=landscape",
-        },
-      ],
-    });
+    // setProductDetails({
+    //   product_name: "Ganesha Diamond Ring",
+    //   metal_description: "24 KT | 1 GM",
+    //   metal_amount: "94,000",
+    //   item_description:
+    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    //   purity: "",
+    //   description: "desc",
+    //   sales_price: 0,
+    //   gross_wt: 0,
+    //   images: [
+    //     {
+    //       url: "https://source.unsplash.com/random/?sig=1&count=5&orientation=landscape",
+    //       thumbnailUrl:
+    //         "https://source.unsplash.com/random/?sig=1&count=5&orientation=landscape",
+    //     },
+    //     {
+    //       url: "https://source.unsplash.com/random/?sig=2&count=5&orientation=landscape",
+    //       thumbnailUrl:
+    //         "https://source.unsplash.com/random/?sig=2&count=5&orientation=landscape",
+    //     },
+    //     {
+    //       url: "https://source.unsplash.com/random/?sig=3&count=5&orientation=landscape",
+    //       thumbnailUrl:
+    //         "https://source.unsplash.com/random/?sig=3&count=5&orientation=landscape",
+    //     },
+    //   ],
+    // });
   };
 
   useEffect(() => {
@@ -62,8 +64,8 @@ export const ProductDetailsLatest = () => {
 
   // Todo: this is the image array refactor code to use images from the api call
   const imageItems = productDetails.images.map((image) => ({
-    original: image.url,
-    thumbnail: image.thumbnailUrl,
+    original: image.image_path,
+    thumbnail: image.image_path,
   }));
 
   const [open, setOpen] = useState(false);
@@ -119,7 +121,7 @@ export const ProductDetailsLatest = () => {
               {productDetails.metal_description}
             </div>
 
-            <div className="product-price"> &#8377; 94000</div>
+            <div className="product-price"> &#8377; {productDetails.sales_price}</div>
 
             <div className="product-description">
               {productDetails.item_description}
@@ -130,18 +132,19 @@ export const ProductDetailsLatest = () => {
                 PRODUCT DETAILS
               </span>
 
-              <div>Gross weight: 64g</div>
-              <div>Net weight: 64g</div>
-              <div>Purity: </div>
-              <div>Stone1 weight: </div>
-              <div>Stone2 weight: </div>
+              <div>Gross weight: {productDetails.gross_wt}g</div>
+              <div>Net weight: {productDetails.net_wt}g</div>
+              <div>Purity: {productDetails.purity}</div>
+              {productDetails.stones_details.map((stone, index) => (
+                <div>Stone {index + 1} weight: {stone.net_wt}g</div>
+              ))}
             </div>
           </div>
 
           <table className="product-information-table my-2">
             <tr>
               <td>Rate:</td>
-              <td> &#8377; 94000</td>
+              <td> &#8377; {productDetails.regular_price}</td>
             </tr>
 
             <tr>
@@ -151,7 +154,7 @@ export const ProductDetailsLatest = () => {
 
             <tr>
               <td>Metal amount:</td>
-              <td>&#8377; 20000</td>
+              <td>&#8377; {productDetails.metal_amount}</td>
             </tr>
 
             <tr>
@@ -166,7 +169,7 @@ export const ProductDetailsLatest = () => {
 
             <tr>
               <td>Final product amount:</td>
-              <td>&#8377; 94000</td>
+              <td>&#8377; {productDetails.sales_price}</td>
             </tr>
           </table>
 
@@ -180,7 +183,7 @@ export const ProductDetailsLatest = () => {
             <EastIcon />
           </Button>
 
-          <EnquiryModal open={open} handleClose={handleCloseEnquiryModal} />
+          <EnquiryModal open={open} handleClose={handleCloseEnquiryModal} productId={id} />
         </Grid>
       </Grid>
     </Box>

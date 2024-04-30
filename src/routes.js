@@ -21,6 +21,7 @@ import { YourDetails } from './Components/Screens/Checkout/YourDetails';
 import { Delivery } from './Components/Screens/Checkout/Delivery';
 import { Navigate } from 'react-router-dom';
 import { ProductCatalogues } from './Components/Screens/Product-catalogue/ProductCatalogues';
+import { ProductDetailsLatest } from './Components/Screens/Product-details/ProductDetailsLatest';
 
 export const normalRouts = [
   {
@@ -124,10 +125,17 @@ export const frontAppRoutes = [
     exact: true,
     strict: false,
   },
+  // {
+  //   path: '/product-details/:id',
+  //   name: 'Product Details',
+  //   element: <ProductDetails />,
+  //   exact: true,
+  //   strict: false,
+  // },
   {
     path: '/product-details/:id',
     name: 'Product Details',
-    element: <ProductDetails />,
+    element: <ProductDetailsLatest />,
     exact: true,
     strict: false,
   },

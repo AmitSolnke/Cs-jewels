@@ -500,6 +500,7 @@ export const ProductCatalogues = () => {
         <div>{products.length <= 0 ? (<div className="no-data"> Products not found</div>) : ''}</div>
 
       </Box>
+      {products.length > 0 ? (
         <Paginator
           currentPage={filters.page}
           totalPage={totalPages}

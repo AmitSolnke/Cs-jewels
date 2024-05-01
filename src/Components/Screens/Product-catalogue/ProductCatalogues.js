@@ -18,6 +18,7 @@ import { SortMenu } from "../Bullions/SortMenu";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { getMetals, getProductCategory, getProducts, getMetalTypeById, getItemGroupById } from "../../../services/FrontApp/index.service";
 import { Paginator } from "../../Common/Paginator";
+import { render } from "@testing-library/react";
 
 export const ProductCatalogues = () => {
   const navigate = useNavigate()
@@ -137,9 +138,9 @@ export const ProductCatalogues = () => {
   const handleFilterChange = (filterName, value) => {
     let count = 0;
     if (filterName == "type[0]" && value) {
-      if (!chipData.includes('Category' )) {
+      if (!chipData.includes('Category')) {
         count++;
-        setChipData([...chipData, 'Category' ])
+        setChipData([...chipData, 'Category'])
       }
     }
     if (filterName == "metal_type[0]" && value) {
@@ -272,7 +273,7 @@ export const ProductCatalogues = () => {
         filterName = 'type[0]'
       } else if (chipToDelete == 'Metal Type') {
         filterName = 'metal_type[0]'
-        
+
       } else if (chipToDelete == 'min_weight') {
         filterName = 'min_weight'
       } else if (chipToDelete == 'max_weight') {
@@ -292,7 +293,7 @@ export const ProductCatalogues = () => {
         ...prevFilters,
         [filterName]: null,
       }));
-      setRefreshCount(refreshCount+1)
+      setRefreshCount(refreshCount + 1)
     }
   };
 
@@ -312,7 +313,7 @@ export const ProductCatalogues = () => {
         name: result.data.data
       })
       handleFilterChange("search_query", result.data.data)
-      handleFilterChange("metal_type[0]", metalId)
+      handleFilterChange("metal_type[0]", metalId);
 
     } catch (error) {
       console.error(error)
@@ -368,7 +369,7 @@ export const ProductCatalogues = () => {
       </Paper>
       <div className="d-none d-md-block">
         <div className="filter-dropdowns d-flex container">
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
             <InputLabel id="category-dropdown">CATEGORY</InputLabel>
             <Select
               labelId="category-dropdown"
@@ -397,7 +398,7 @@ export const ProductCatalogues = () => {
             </Select>
           </FormControl>
 
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <FormControl variant="standard" sx={{ m: 1, minWidth: 160 }}>
             <InputLabel id="category-price-range">PRICE RANGE</InputLabel>
             <Select
               labelId="category-price-range"
@@ -410,16 +411,17 @@ export const ProductCatalogues = () => {
             </Select>
           </FormControl>
 
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
             <InputLabel id="category-metal-type"> METAL TYPE </InputLabel>
             <Select
               labelId="category-metal-type"
-              id="demo-simple-select-standard"
+              label="METAL TYPE"
+              id="category-metal-type-standard"
               value={filters["metal_type[0]"]}
               onChange={(e) => handleFilterChange("metal_type[0]", e.target.value)}
             >
               {metals.map((data) => (
-                <MenuItem value={data.id}>{data.metal_type}</MenuItem>
+                <MenuItem key={data.id} value={data.id}>{data.metal_type}</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -481,6 +483,7 @@ export const ProductCatalogues = () => {
                 item
                 key={product.product_id}
                 md={4}
+                style={{ cursor: 'pointer' }}
                 className="product-item-card"
                 onClick={() => navigate('/product-details/' + product.product_id)}
               >

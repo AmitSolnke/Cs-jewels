@@ -24,7 +24,7 @@ export const ProductDetailsLatest = () => {
   });
 
   const getProductData = async () => {
-    const result = await getProductDetails({product_id: id})
+    const result = await getProductDetails({ product_id: id })
     setProductDetails(result.data.data)
 
     // Todo: remove while integrating api calls refer above.
@@ -121,7 +121,8 @@ export const ProductDetailsLatest = () => {
               {productDetails.metal_description}
             </div>
 
-            <div className="product-price"> &#8377; {productDetails.sales_price}</div>
+            {/* commented temporary
+            <div className="product-price"> &#8377; {productDetails.sales_price}</div> */}
 
             <div className="product-description">
               {productDetails.item_description}
@@ -141,6 +142,7 @@ export const ProductDetailsLatest = () => {
             </div>
           </div>
 
+          {/* commented temporary
           <table className="product-information-table my-2">
             <tr>
               <td>Rate:</td>
@@ -164,14 +166,14 @@ export const ProductDetailsLatest = () => {
 
             <tr>
               <td>GST:</td>
-              <td>&#8377; {(productDetails.regular_price/100) * 18}</td>
+              <td>&#8377; {(productDetails.regular_price / 100) * 18}</td>
             </tr>
 
             <tr>
               <td>Final product amount:</td>
               <td>&#8377; {productDetails.sales_price}</td>
             </tr>
-          </table>
+          </table> */}
 
           <Button
             className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"

@@ -6,7 +6,7 @@ import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import _ from 'lodash';
 
-function ImageSliderHome({ height, width, CardImage, padding, CardImageType, className, imagesArray }) {
+function ImageSliderHome({ height, width, data, padding, CardImageType, className, imagesArray, isSlideArrowEnabled = true }) {
   const {
     scrollRef, pages, activePageIndex, next, prev, goTo
   } = useSnapCarousel();
@@ -14,25 +14,30 @@ function ImageSliderHome({ height, width, CardImage, padding, CardImageType, cla
   return (
     <>
       {windoDimensions[0] >= 768 && <div className={(padding == 0 ? ('image-slider-navigation-icon image-slider-navigation-icon-no-width') : 'image-slider-navigation-icon')}>
-        <button className="arrow-icon-generic round-border" type="button" onClick={() => prev()}>
-          <WestIcon/>
-        </button>
-        <button className="arrow-icon-generic round-border" type="button" onClick={() => next()}>
-          <EastIcon />
-        </button>
+        {isSlideArrowEnabled && (
+          <>
+            <button className="arrow-icon-generic round-border" type="button" onClick={() => prev()}>
+              <WestIcon />
+            </button>
+            <button className="arrow-icon-generic round-border" type="button" onClick={() => next()}>
+              <EastIcon />
+            </button>
+          </>
+        )
+        }
       </div>}
       <ul
         className={`image-slider-component ${className}`}
         ref={scrollRef}
       >
-        {CardImageType == "Favourites" && windoDimensions[0] <= 768 ? _.chunk(imagesArray, 4).map((item, key) => (
+        {CardImageType == "Favourites" && windoDimensions[0] <= 768 ? _.chunk(data, 4).map((item, key) => (
           <div className="item-section" key={key}>
             {item.map((inneritem, index) => (
-              <ImageSliderCardHome CardImageType={CardImageType} key={index} CardImage={inneritem} />
+              <ImageSliderCardHome CardImageType={CardImageType} key={index} CardImage={inneritem.img} name={inneritem.name} />
             ))}
           </div>
-        )) : imagesArray.map((item, index) => (
-          <ImageSliderCardHome CardImageType={CardImageType} height={height} width={width} key={index} CardImage={item} padding={padding} />
+        )) : data.map((item, index) => (
+          <ImageSliderCardHome CardImageType={CardImageType} height={height} width={width} key={index} CardImage={item.img} padding={padding} name={item.name} />
         ))}
       </ul>
       {CardImageType == "Favourites" && windoDimensions[0] < 768 && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0", marginTop: 24, marginBottom: 0 }}>

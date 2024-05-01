@@ -271,7 +271,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               setShowDropdown(true);
                             }}
                           >
-                            Jewellerys
+                            Jewellery
                           </div>
                         </li>
                         <li>

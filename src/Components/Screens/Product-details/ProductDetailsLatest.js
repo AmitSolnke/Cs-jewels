@@ -117,7 +117,7 @@ export const ProductDetailsLatest = () => {
 
             <h2 className="product-title">{productDetails.product_name}</h2>
 
-            <div className="metal-description">
+            <div className="metal-description my-2">
               {productDetails.metal_description}
             </div>
 

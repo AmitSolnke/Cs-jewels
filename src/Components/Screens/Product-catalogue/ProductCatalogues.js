@@ -497,12 +497,15 @@ export const ProductCatalogues = () => {
             );
           })}
         </Grid>
+        <div>{products.length <= 0 ? (<div className="no-data"> Products not found</div>) : ''}</div>
+
       </Box>
-      <Paginator
-        currentPage={filters.page}
-        totalPage={totalPages}
-        handleChangePage={handleChangePage}
-      />
+        <Paginator
+          currentPage={filters.page}
+          totalPage={totalPages}
+          handleChangePage={handleChangePage}
+        />
+      ) : ''}
     </div>
   );
 };

@@ -292,7 +292,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                 </div>
                 <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
                   <div className="header-icon-list">
-                    <ul className="w-100">
+                    {/* <ul className="w-100">
                       <li>
                         <Link onClick={() => setSearchDropdown(true)}>
                           <img
@@ -310,9 +310,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             alt="Logo"
                             className="image"
                           />
-                        </Link>
+                        </Link> */}
                         {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
-                      </li>
+                     {/*  </li>
                       <li>
                         <Link to="/wishlist">
                           <img
@@ -348,7 +348,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           />
                         </li>
                       )}
-                    </ul>
+                    </ul> */}
                   </div>
                 </div>
               </div>

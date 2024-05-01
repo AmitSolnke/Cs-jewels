@@ -149,7 +149,7 @@ export const ProductDetailsLatest = () => {
 
             <tr>
               <td>Making charges:</td>
-              <td> &#8377; 24000</td>
+              <td> &#8377; {productDetails.stones_amount}</td>
             </tr>
 
             <tr>
@@ -159,12 +159,12 @@ export const ProductDetailsLatest = () => {
 
             <tr>
               <td>Stone amount:</td>
-              <td>&#8377; 20000</td>
+              <td>&#8377; {productDetails.stones_amount}</td>
             </tr>
 
             <tr>
               <td>GST:</td>
-              <td>1234567</td>
+              <td>&#8377; {(productDetails.regular_price/100) * 18}</td>
             </tr>
 
             <tr>

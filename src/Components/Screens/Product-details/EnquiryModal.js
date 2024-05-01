@@ -89,7 +89,6 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                   alt=""
                 />
               </div>
-              <ErrorList errors={errors} />
               <div className="dialog-main" style={{ flex: "1" }}>
                 <DialogActions>
                   <IconButton aria-label="close" onClick={handleCloseButton}>
@@ -105,6 +104,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                     >
                       Thank you for inquiring with us.
                     </Typography>
+                    <ErrorList errors={errors} />
                     <Typography
                       variant="subtitle1"
                       className="form-subtitle"

@@ -20,7 +20,7 @@ export const NavigationDropdown = ({metalData, setShowDropdown}) => {
                     variant="h5"
                     color="initial"
                     className="jewellwery-type mb-4"
-                    to={`/product-catalogues?metal=${data.metal}`}
+                    to={`/product-catalogues?metal=${data.id}`}
                     onClick={closeModal}
                   >
                     {data.metal}
@@ -28,7 +28,7 @@ export const NavigationDropdown = ({metalData, setShowDropdown}) => {
                   <div className="jewelleries">
                     {data.metal_items.map((item, key) => (
                       <div className="" key={key}>
-                        <Link className="jewellery-link" to={`/product-catalogues?metal=${data.metal}&item_type=${item.item_name}`} onClick={closeModal}>
+                        <Link className="jewellery-link" to={`/product-catalogues?metal=${data.id}&item_type=${item.id}`} onClick={closeModal}>
                           {item.item_name}
                         </Link>
                       </div>

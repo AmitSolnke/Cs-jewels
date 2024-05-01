@@ -16,7 +16,7 @@ import { BullionsFilter } from "../Bullions/BullionsFilter";
 import { FilterMenu } from "../Bullions/FilterMenu";
 import { SortMenu } from "../Bullions/SortMenu";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { getMetals, getProductCategory, getProducts } from "../../../services/FrontApp/index.service";
+import { getMetals, getProductCategory, getProducts, getMetalTypeById, getItemGroupById } from "../../../services/FrontApp/index.service";
 import { Paginator } from "../../Common/Paginator";
 
 export const ProductCatalogues = () => {
@@ -25,36 +25,26 @@ export const ProductCatalogues = () => {
   const [bullionsFilterValue, setBullionsFilterValue] = useState(-1);
   const [openSortMenu, setOpenSortMenu] = useState(false);
   const [searchParams] = useSearchParams();
-  const [metal, setMetal] = useState('');
-  const [itemType, setItemType] = useState('');
+  const [metal, setMetal] = useState({
+    id: '',
+    name: ''
+  });
+  const [itemType, setItemType] = useState({
+    id: '',
+    name: ''
+  });
   const [products, setProducts] = useState([]);
   const [refreshCount, setRefreshCount] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [categories, setCategories] = useState([])
   const [metals, setMetals] = useState([])
 
-  const [chipData, setChipData] = useState([
-    { key: 0, label: "ALL", selected: false },
-    { key: 1, label: "DIAMOND RINGS", selected: false },
-    { key: 2, label: "GOLD RINGS", selected: false },
-    { key: 3, label: "SILVER RINGS", selected: false },
-  ]);
+  const [chipData, setChipData] = useState([]);
 
   const sizes = ["5", "10", "15", "20", "25"];
 
   const [filters, setFilters] = useState({
-    // 'type[0]': "",
-    // 'metal_type[0]': "",
-    // 'min_weight': "",
-    // gender: "",
-    // priceRange: "",
-    // metalType: "",
-    // sizeWise: "",
-    // sortBy: "",
-
-    // 'limit': 10,
-    // 'page': 1,
-    'type[0]': 4,
+    'type[0]': null,
     'metal_type[0]': null,
     'min_weight': null,
     'max_weight': null,
@@ -81,7 +71,9 @@ export const ProductCatalogues = () => {
       setCategories(result.data.data)
       const metalResult = await getMetals();
       setMetals(metalResult.data.data)
+      getMetalTypeById()
     } catch (error) {
+      setMetals([]);
       setCategories([]);
     }
   }
@@ -130,7 +122,7 @@ export const ProductCatalogues = () => {
         requestParams.append("limit", filters["limit"])
       }
       const { data } = await getProducts(requestParams);
-      setProducts(data.data.data);
+      setProducts(data.data);
       setTotalPages(data.data.last_page);
     } catch (error) {
       setProducts([]);
@@ -143,13 +135,95 @@ export const ProductCatalogues = () => {
   }, [refreshCount]);
 
   const handleFilterChange = (filterName, value) => {
+    let count = 0;
+    if (filterName == "type[0]" && value) {
+      if (!chipData.includes('Category' )) {
+        count++;
+        setChipData([...chipData, 'Category' ])
+      }
+    }
+    if (filterName == "metal_type[0]" && value) {
+      if (!chipData.includes('Metal Type')) {
+        count++;
+        setChipData([...chipData, 'Metal Type'])
+      }
+    }
+    if (filterName == "min_weight" && value) {
+      if (!chipData.includes(filterName)) {
+        count++;
+        setChipData([...chipData, filterName])
+      }
+    }
+    if (filterName == "max_weight" && value) {
+      if (!chipData.includes(filterName)) {
+        count++;
+        setChipData([...chipData, filterName])
+
+      }
+    }
+    if (filterName == "sort_by" && value) {
+      if (!chipData.includes('Sorted By')) {
+        count++;
+        setChipData([...chipData, 'Sorted By'])
+
+      }
+    }
+    if (filterName == "size" && value) {
+      if (!chipData.includes('Size')) {
+        count++;
+        setChipData([...chipData, 'Size'])
+
+      }
+    }
+    if (filterName == "gender" && value) {
+      if (!chipData.includes('Gender')) {
+        count++;
+        setChipData([...chipData, 'Gender'])
+
+      }
+    }
+    if (filterName == "min_price" && value) {
+      if (!chipData.includes(filterName)) {
+        count++;
+        setChipData([...chipData, filterName])
+
+      }
+    }
+    if (filterName == "max_price" && value) {
+      if (!chipData.includes(filterName)) {
+        count++;
+        setChipData([...chipData, filterName])
+
+      }
+    }
+    if (count >= 9) {
+      setChipData(["ALL"])
+    }
     setFilters((prevFilters) => ({
       ...prevFilters,
       [filterName]: value,
     }));
-
-    getData();
+    setRefreshCount(refreshCount + 1)
   };
+
+  const clearAll = () => {
+    setChipData([]);
+    setFilters({
+      'type[0]': null,
+      'metal_type[0]': null,
+      'min_weight': null,
+      'max_weight': null,
+      'sort_by': null,
+      'search_query': null,
+      'size': null,
+      'gender': null,
+      'min_price': null,
+      'max_price': null,
+      page: 1,
+      limit: 10
+    })
+    setRefreshCount(refreshCount + 1)
+  }
   const handleOpenBullionsFilter = () => {
     setBullionsFilterOpen(true);
   };
@@ -175,21 +249,85 @@ export const ProductCatalogues = () => {
 
   const handleChipDelete = (chipToDelete) => () => {
     setChipData((chips) =>
-      chips.filter((chip) => chip.key !== chipToDelete.key)
+      chips.filter((chip) => chip !== chipToDelete)
     );
+    if (chipToDelete == 'All') {
+      setFilters({
+        'type[0]': null,
+        'metal_type[0]': null,
+        'min_weight': null,
+        'max_weight': null,
+        'sort_by': null,
+        'search_query': null,
+        'size': null,
+        'gender': null,
+        'min_price': null,
+        'max_price': null,
+        page: 1,
+        limit: 10
+      })
+    } else {
+      let filterName = ''
+      if (chipToDelete == 'Category') {
+        filterName = 'type[0]'
+      } else if (chipToDelete == 'Metal Type') {
+        filterName = 'metal_type[0]'
+        
+      } else if (chipToDelete == 'min_weight') {
+        filterName = 'min_weight'
+      } else if (chipToDelete == 'max_weight') {
+        filterName = 'max_weight'
+      } else if (chipToDelete == 'Sorted By') {
+        filterName = 'sorted_by'
+      } else if (chipToDelete == 'Size') {
+        filterName = 'size'
+      } else if (chipToDelete == 'Gender') {
+        filterName = 'gender'
+      } else if (chipToDelete == 'min_price') {
+        filterName = 'min_price'
+      } else if (chipToDelete == 'max_price') {
+        filterName = 'max_price'
+      }
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        [filterName]: null,
+      }));
+      setRefreshCount(refreshCount+1)
+    }
   };
 
+  const setParamsData = async () => {
+    try {
+      const metalId = searchParams.get('metal') ? searchParams.get('metal') : '';
+      console.log(metalId)
+      let result = await getMetalTypeById(metalId)
+      setMetal({
+        id: metalId,
+        name: result.data.data
+      })
+      const itemTypeId = searchParams.get('item_type') ? searchParams.get('item_type') : '';
+      result = await getItemGroupById(itemTypeId)
+      setItemType({
+        id: itemTypeId,
+        name: result.data.data
+      })
+      handleFilterChange("search_query", result.data.data)
+      handleFilterChange("metal_type[0]", metalId)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffect(() => {
-    setMetal(searchParams.get('metal') ? searchParams.get('metal') : '')
-    setItemType(searchParams.get('item_type') ? searchParams.get('item_type') : '')
-    handleFilterChange("search_query", searchParams.get('item_type') ? searchParams.get('item_type') : '')
+    setParamsData()
   }, [])
 
   return (
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
         <div className="catalogue-header-wrapper">
-          <h4>{metal} {itemType}</h4>
+          <h4>{metal.name} {itemType.name}</h4>
           <p>40+ Rings options available</p>
         </div>
       </div>
@@ -277,33 +415,14 @@ export const ProductCatalogues = () => {
             <Select
               labelId="category-metal-type"
               id="demo-simple-select-standard"
-              label="METAL TYPE"
-              value={filters.metalType}
+              value={filters["metal_type[0]"]}
               onChange={(e) => handleFilterChange("metal_type[0]", e.target.value)}
             >
               {metals.map((data) => (
-                <MenuItem value={data.metal_type}>{data.metal_type}</MenuItem>
+                <MenuItem value={data.id}>{data.metal_type}</MenuItem>
               ))}
             </Select>
           </FormControl>
-
-          {/* Todo: uncomment while integrating, giving error */}
-          {/* <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="category-metal-type"> SIZEWISE </InputLabel>
-            <Select
-              labelId="category-metal-type"
-              id="demo-simple-select-standard"
-              label="SIZEWISE"
-              value={filters.sizeWise}
-              onChange={(e) => handleFilterChange("size", e.target.value)}
-            >
-              {
-                sizes.map((data) => (
-                  <MenuItem value={data}>{data}</MenuItem>
-                ))
-              }
-            </Select>
-          </FormControl> */}
 
           <FormControl
             variant="standard"
@@ -330,10 +449,10 @@ export const ProductCatalogues = () => {
         <div className="container">
           <div className="filter-chips p-3">
             <Stack direction="row" spacing={1}>
-              {chipData.map((chip) => (
+              {chipData.map((chip, index) => (
                 <Chip
-                  key={chip.key}
-                  label={chip.label}
+                  key={index}
+                  label={chip}
                   onDelete={handleChipDelete(chip)}
                   className="filter-chip"
                   sx={{
@@ -344,16 +463,11 @@ export const ProductCatalogues = () => {
                     backgroundColor: "#333",
                   }}
                   clickable
-                  onClick={() => {
-                    setChipData((chips) =>
-                      chips.map((c) =>
-                        c.key === chip.key ? { ...c, selected: !c.selected } : c
-                      )
-                    );
-                  }}
                 />
               ))}
-              <Button className='product-page-clear-all-button' >CLEAR ALL</Button>
+              {chipData.length > 0 ? (
+                <Button className='product-page-clear-all-button' onClick={clearAll}>CLEAR ALL</Button>
+              ) : ''}
             </Stack>
           </div>
         </div>
@@ -368,7 +482,7 @@ export const ProductCatalogues = () => {
                 key={product.product_id}
                 md={4}
                 className="product-item-card"
-                onClick={()=>navigate('/product-details/'+product.product_id)}
+                onClick={() => navigate('/product-details/' + product.product_id)}
               >
                 {/* <Card variant="outlined"> */}
                 <img

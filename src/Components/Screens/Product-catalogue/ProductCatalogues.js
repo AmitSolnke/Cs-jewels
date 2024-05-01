@@ -18,7 +18,6 @@ import { SortMenu } from "../Bullions/SortMenu";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { getMetals, getProductCategory, getProducts, getMetalTypeById, getItemGroupById } from "../../../services/FrontApp/index.service";
 import { Paginator } from "../../Common/Paginator";
-import { render } from "@testing-library/react";
 
 export const ProductCatalogues = () => {
   const navigate = useNavigate()
@@ -412,7 +411,7 @@ export const ProductCatalogues = () => {
           </FormControl>
 
           <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
-            <InputLabel id="category-metal-type"> METAL TYPE </InputLabel>
+            <InputLabel shrink={Boolean(filters["metal_type[0]"])} id="category-metal-type"> METAL TYPE </InputLabel>
             <Select
               labelId="category-metal-type"
               label="METAL TYPE"

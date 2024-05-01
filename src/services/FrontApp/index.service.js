@@ -93,3 +93,7 @@ export const getMetalTypeById = async (id) => {
 export const getItemGroupById = async (id) => {
   return await httpService.get(`getitemGroupById/${id}`)
 }
+
+export const getBanner = async () => {
+  return await httpService.get(`banner`)
+}

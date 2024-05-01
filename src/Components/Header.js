@@ -277,9 +277,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <li>
                           <Link to="/aboutus">About us</Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link to="/bullions">Bullion</Link>
-                        </li>
+                        </li> */}
                         {/* <li>
                             <Link to="e-gold">E-gold</Link>
                           </li> */}

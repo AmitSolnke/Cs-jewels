@@ -1,88 +1,81 @@
-import React, {useState} from 'react';
-import Carousel from 'react-material-ui-carousel';
-import { Paper } from '@mui/material';
-import rightArrowIcon from '../images/icons/right-arrow.svg';
-import imageMobileView from '../images/mobile-view-corousel.png';
-import useWindowWidthAndHeight from '../utilities/CustomHooks';
-import img1 from '../images/banners/desktop/1.jpg';
-import img2 from '../images/banners/desktop/2.jpg';
-import img3 from '../images/banners/desktop/3.jpg';
-
-const items = [
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img1,
-  },
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img2,
-  },
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img3,
-  },
-];
+import React, { useEffect, useState } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { getBanner } from '../services/FrontApp/index.service';
 
 function CarouselHome() {
-	const [firstDesktopLoaded, setDesktopImgLoaded] = useState(false);
-  const [firstMobileLoaded, setMobileImgLoaded] = useState(false);
-  const windoDimensions = useWindowWidthAndHeight();
+  const [desktopBanner, setDesktopBanner] = useState([]);
+  const [mobileBanner, setMobileBanner] = useState([]);
+
+  const getData = async () => {
+    try {
+      const result = await getBanner();
+      const desktop = result.data.data.filter((banner)=> {
+        return banner.image_for == 'DESKTOP';
+      });
+      const mobile = result.data.data.filter((banner)=> {
+        return banner.image_for == 'MOBILE';
+      });
+      setDesktopBanner(desktop)
+      setMobileBanner(mobile)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000
+  };
+
   return (
     <div className="slider-container">
       <div className="service-slider">
-      <img
-		    src={img1}
-		    onLoad={() => setDesktopImgLoaded(true)}
-		    style={{ display: "none" }}
-		  />
-      <img
-		    src={imageMobileView}
-		    onLoad={() => setMobileImgLoaded(true)}
-		    style={{ display: "none" }}
-		  />
-      {firstDesktopLoaded && firstMobileLoaded && (
-        <Carousel
-          animation="slide"
-          duration={2300}
-          interval={null}
-          className="service-slide active"
-          indicatorIconButtonProps={{
-            style: {
-              padding: '5px',
-              marginTop: '-150px',
-              zIndex: '1',
-              color: '#FFFFFF',
-              opacity: '0.3',
-              height: '100%'
-            },
-          }}
-          activeIndicatorIconButtonProps={{
-            style: {
-              opacity: '1',
-            },
-          }}
-        >
+        <Slider {...settings}  className='d-md-none'>
           {
-            items.map((item) => (
-              <Paper key={item.name} className="carouselPaper" >
-                <img className="carousel-img" src={windoDimensions[0] <= 768 ? `${imageMobileView}`:  `${item.imagepath}` } />
+            mobileBanner.map((item, key) => (
+              <div key={key} className="carouselPaper">
+                <img className="carousel-img" src={ `${item.image_path}`} />
                 <div className="service-slide-text-wrapper">
-                  <h2 className="service-slide-text">{item.name}</h2>
-                  <p className="service-slide-description">{item.description}</p>
-                  <button type="button" className="carousel-explore-now-btn">
-                    EXPORE NOW
-                    {' '}
-                    <img src={rightArrowIcon} alt="rightArrowIcon" />
-                  </button>
+                  {/* <h2 className="service-slide-text">{item.name}</h2>
+                  <p className="service-slide-description">{item.description}</p> */}
+                  {/* <button type="button" className="carousel-explore-now-btn">
+                  EXPORE NOW
+                  {' '}
+                  <img src={rightArrowIcon} alt="rightArrowIcon" />
+                </button> */}
                 </div>
-              </Paper>
+              </div>
             ))
           }
-        </Carousel>
-		  )}
+        </Slider>
+        <Slider {...settings}  className='d-none d-md-block'>
+          {
+            desktopBanner.map((item, key) => (
+              <div key={key} className="carouselPaper">
+                <img className="carousel-img" src={ `${item.image_path}`} />
+                <div className="service-slide-text-wrapper">
+                  {/* <h2 className="service-slide-text">{item.name}</h2>
+                  <p className="service-slide-description">{item.description}</p> */}
+                  {/* <button type="button" className="carousel-explore-now-btn">
+                  EXPORE NOW
+                  {' '}
+                  <img src={rightArrowIcon} alt="rightArrowIcon" />
+                </button> */}
+                </div>
+              </div>
+            ))
+          }
+        </Slider>
       </div>
     </div>
   );

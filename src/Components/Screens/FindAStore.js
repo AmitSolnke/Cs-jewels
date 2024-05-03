@@ -11,7 +11,7 @@ export default function FindAStore() {
     const [errors, setErrors] = useState([])
     const [successMsg, setSuccesMsg] = useState('')
     const { isLoaded } = useLoadScript({
-        googleMapsApiKey: "AIzaSyBCwb6UqVhxWpekGXNFzxy076ziLE55h8c" // API key
+        googleMapsApiKey: process.env.REACT_APP_MAP_KEY // API key
       });
     const [markers, setMarkers] = useState([])
 

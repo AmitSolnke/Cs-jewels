@@ -17,11 +17,11 @@
   }
 
   .jewellery-links {
-    display: flex;
     justify-content: space-between;
     width: 100% !important;
 
     .catergory-section {
+      margin-bottom: 10px;
       .jewellwery-type {
         font: normal normal 900 13px/16px Lato;
         letter-spacing: 1.95px;
@@ -41,6 +41,7 @@
 
         .jewellery-link:hover {
           text-decoration: underline;
+          cursor: pointer;
         }
       }
     }
@@ -58,6 +59,7 @@
 
 @media screen and (min-width: 1440px) {
   .jewellery-links {
+    display: flex;
     justify-content: flex-start;
   }
 }

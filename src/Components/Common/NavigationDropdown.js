@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react";
 import { Box, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const NavigationDropdown = ({metalData, setShowDropdown}) => {
+  const navigate = useNavigate();
 
-  const closeModal = () => {
+  const closeModal = (metalId, itemId) => {
+    navigate(`/product-catalogues?metal=${metalId}&item_type=${itemId}`)
     setShowDropdown(false)
   }
   
@@ -16,21 +18,20 @@ export const NavigationDropdown = ({metalData, setShowDropdown}) => {
             {metalData.map((data, index) => {
               return (
                 <div className="catergory-section" key={index}>
-                  <Link
+                  <div
                     variant="h5"
                     color="initial"
                     className="jewellwery-type mb-4"
-                    to={`/product-catalogues?metal=${data.id}`}
-                    onClick={closeModal}
+                    onClick={()=>closeModal(data.id, 0)}
                   >
                     {data.metal}
-                  </Link>
+                  </div>
                   <div className="jewelleries">
                     {data.metal_items.map((item, key) => (
                       <div className="" key={key}>
-                        <Link className="jewellery-link" to={`/product-catalogues?metal=${data.id}&item_type=${item.id}`} onClick={closeModal}>
+                        <div className="jewellery-link" onClick={()=>closeModal(data.id, item.id)}>
                           {item.item_name}
-                        </Link>
+                        </div>
                       </div>
                     ))}
                   </div>

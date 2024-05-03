@@ -25,6 +25,8 @@ export const ProductCatalogues = () => {
   const [bullionsFilterValue, setBullionsFilterValue] = useState(-1);
   const [openSortMenu, setOpenSortMenu] = useState(false);
   const [searchParams] = useSearchParams();
+  const metalId = searchParams.get('metal') ? searchParams.get('metal') : '';
+  const itemTypeId = searchParams.get('item_type') ? searchParams.get('item_type') : '';
   const [metal, setMetal] = useState({
     id: '',
     name: ''
@@ -298,14 +300,12 @@ export const ProductCatalogues = () => {
 
   const setParamsData = async () => {
     try {
-      const metalId = searchParams.get('metal') ? searchParams.get('metal') : '';
       console.log(metalId)
       let result = await getMetalTypeById(metalId)
       setMetal({
         id: metalId,
         name: result.data.data
       })
-      const itemTypeId = searchParams.get('item_type') ? searchParams.get('item_type') : '';
       result = await getItemGroupById(itemTypeId)
       setItemType({
         id: itemTypeId,
@@ -321,7 +321,7 @@ export const ProductCatalogues = () => {
 
   useEffect(() => {
     setParamsData()
-  }, [])
+  }, [metalId, itemTypeId])
 
   return (
     <div className="product-catalogues">

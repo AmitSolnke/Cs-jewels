@@ -124,9 +124,9 @@ export const ProductDetailsLatest = () => {
             {/* commented temporary
             <div className="product-price"> &#8377; {productDetails.sales_price}</div> */}
 
-            <div className="product-description">
+            {/* <div className="product-description">
               {productDetails.item_description}
-            </div>
+            </div> */}
 
             <div className="product-informations my-2">
               <span className="product-details-title-link">

@@ -16,7 +16,7 @@ export default function AllStores({ data }) {
     return (
         <div className='faqs-container'>
             {data.map((element, index) => (
-                <Accordion expanded={expanded === 'panel' + index} onChange={handleChange('panel' + index)}>
+                <Accordion expanded={expanded === 'panel' + index} onChange={handleChange('panel' + index)} key={index}>
                     <AccordionSummary
                         expandIcon={expanded === 'panel' + index ? <img src={minusIcon} alt="rightArrowIcon" /> : <img src={plusIcon} alt="rightArrowIcon" />}
                         aria-controls="panel1bh-content"

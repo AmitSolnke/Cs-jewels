@@ -36,6 +36,7 @@ export const ProductCatalogues = () => {
     name: ''
   });
   const [products, setProducts] = useState([]);
+  const [productCount, setProductCount] = useState(0);
   const [refreshCount, setRefreshCount] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [categories, setCategories] = useState([])
@@ -57,7 +58,7 @@ export const ProductCatalogues = () => {
     'min_price': null,
     'max_price': null,
     page: 1,
-    limit: 10
+    limit: 9
   });
 
   const handleChangePage = (event, newPage) => {
@@ -124,8 +125,9 @@ export const ProductCatalogues = () => {
         requestParams.append("limit", filters["limit"])
       }
       const { data } = await getProducts(requestParams);
-      setProducts(data.data);
+      setProducts(data.data.data);
       setTotalPages(data.data.last_page);
+      setProductCount(data.data.total)
     } catch (error) {
       setProducts([]);
       setTotalPages(0)
@@ -306,11 +308,11 @@ export const ProductCatalogues = () => {
         id: metalId,
         name: result.data.data
       })
-      result = await getItemGroupById(itemTypeId)
-      setItemType({
-        id: itemTypeId,
-        name: result.data.data
-      })
+      // result = await getItemGroupById(itemTypeId)
+      // setItemType({
+      //   id: itemTypeId,
+      //   name: result.data.data
+      // })
       handleFilterChange("search_query", result.data.data)
       handleFilterChange("metal_type[0]", metalId);
 
@@ -328,7 +330,7 @@ export const ProductCatalogues = () => {
       <div className="product-catalogue-banner">
         <div className="catalogue-header-wrapper">
           <h4>{metal.name} {itemType.name}</h4>
-          <p>40+ Rings options available</p>
+          <p>{productCount}+ Rings options available</p>
         </div>
       </div>
       <Paper
@@ -397,7 +399,7 @@ export const ProductCatalogues = () => {
             </Select>
           </FormControl>
 
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 160 }}>
+          {/* <FormControl variant="standard" sx={{ m: 1, minWidth: 160 }}>
             <InputLabel id="category-price-range">PRICE RANGE</InputLabel>
             <Select
               labelId="category-price-range"
@@ -408,7 +410,7 @@ export const ProductCatalogues = () => {
             >
               <MenuItem value="priceRange1">1000 - 20000</MenuItem>
             </Select>
-          </FormControl>
+          </FormControl> */}
 
           <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
             <InputLabel shrink={Boolean(filters["metal_type[0]"])} id="category-metal-type"> METAL TYPE </InputLabel>

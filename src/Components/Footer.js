@@ -44,7 +44,7 @@ function Footer() {
   return (
     <>
     <div className="whatsapp-button">
-      <a target="_blank" href="https://api.whatsapp.com/send?phone=8708526164&text=hlo" >
+      <a target="_blank" href="https://api.whatsapp.com/send?phone=07969991827&text=hlo" >
         <WhatsAppIcon /> <span> WhatsApp Us! </span>
       </a>
       </div>
@@ -65,12 +65,12 @@ function Footer() {
                         <p className="mb-2">
                           <span>Email: </span>
                           {' '}
-                          care@csjwellers.com
+                          care@csjewels.com
                         </p>
                         <p className="mb-4">
                           <span>Phone: </span>
                           {' '}
-                          1800 267 0999
+                          07969991827
                         </p>
                         <p className="address">
                           Sr. No.32/1/B/5, Gunwadi Road, Baramati, Dist - Pune,

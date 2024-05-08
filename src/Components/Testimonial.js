@@ -1,28 +1,21 @@
 import React, { useState, useEffect } from "react";
 import imageSliderHeaderIconRight from '../images/icons/Group40.svg';
 import imageSliderHeaderIconLeft from '../images/icons/Group45.svg';
-import LeftIcon from '../images/icons/sliderLeftIcon.svg';
-import RightIcon from '../images/icons/sliderRightIcon.svg';
+import EastIcon from "@mui/icons-material/East";
+import WestIcon from "@mui/icons-material/West";
 import Grid from '@mui/material/Grid';
 import useWindowWidthAndHeight from '../utilities/CustomHooks';
-import img from '../images/young-indian-woman-wearing-sari.jpg';
-import StarFilled from '../images/icons/star-filled.svg'
 import { getTestimonial } from '../services/FrontApp/index.service';
 import { useSnapCarousel } from 'react-snap-carousel';
+import ReviewStars from "./Common/ReviewStars";
 
 const TestimonialComponent = ({ data }) => {
   return (
     <div className="testimonial-wrapper">
       <img src={data.image_path} alt="img" className="client-img" />
       <div className="feedback-wrapper">
-        <p> {data.description} </p>
-        <div className="d-flex">
-          <img src={StarFilled} alt="Logo" />
-          <img src={StarFilled} alt="Logo" />
-          <img src={StarFilled} alt="Logo" />
-          <img src={StarFilled} alt="Logo" />
-          <img src={StarFilled} alt="Logo" />
-        </div>
+        <p dangerouslySetInnerHTML={{ __html: data.description}} />
+        <ReviewStars review={data.rating} width={20} height={20} />
         <div className="name-wrapper">
           <hr />
           <small className="client-name"> {data.author} </small>
@@ -79,14 +72,16 @@ export default function Testimonial() {
           In their own words, our customers share their personal experiences
         </div>
       </Grid>
-      {windoDimensions[0] >= 768 && <div className='navigation-icon'>
-        <button className="arrow-icon-generic" type="button" onClick={() => prev()}>
-          <img src={LeftIcon} alt="React Logo" />
-        </button>
-        <button className="arrow-icon-generic" type="button" onClick={() => next()}>
-          <img src={RightIcon} alt="React Logo" />
-        </button>
-      </div>}
+      {windoDimensions[0] >= 768 && (
+        <div className='navigation-icon'>
+          <button className="arrow-icon-generic round-border" type="button" onClick={() => prev()}>
+              <WestIcon />
+            </button>
+            <button className="arrow-icon-generic round-border" type="button" onClick={() => next()}>
+              <EastIcon />
+            </button>
+        </div>
+      ) }
       <ul
         className={`testimonial-slider-component`}
         ref={scrollRef}

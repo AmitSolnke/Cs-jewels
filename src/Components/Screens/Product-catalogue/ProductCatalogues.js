@@ -125,7 +125,11 @@ export const ProductCatalogues = () => {
         requestParams.append("limit", filters["limit"])
       }
       const { data } = await getProducts(requestParams);
-      setProducts(data.data.data);
+      if (data.data.data) {
+        setProducts(data.data.data);
+      } else {
+        setProducts([]);
+      }
       setTotalPages(data.data.last_page);
       setProductCount(data.data.total)
     } catch (error) {

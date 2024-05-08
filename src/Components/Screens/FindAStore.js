@@ -127,7 +127,7 @@ export default function FindAStore() {
                  {isLoaded && markers.length >= 0 ? (<GoogleMap
                         onLoad={handleOnLoad}
                         onClick={() => setActiveMarker(null)}
-                        mapContainerStyle={{ width: "100%", height: "500px" }}
+                        mapContainerStyle={{ width: "100%", minHeight: "500px", height: "100%" }}
                         center={center}
                         zoom={10}
                     >

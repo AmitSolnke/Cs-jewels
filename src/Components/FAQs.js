@@ -32,7 +32,7 @@ export default function FAQs() {
     return (
         <div className='faqs-container'>
             {data.map((element, index) => (
-                <Accordion expanded={expanded === 'panel' + index} onChange={handleChange('panel' + index)}>
+                <Accordion key={index} expanded={expanded === 'panel' + index} onChange={handleChange('panel' + index)}>
                     <AccordionSummary
                         expandIcon={expanded === 'panel' + index ? <img src={minusIcon} alt="rightArrowIcon" /> : <img src={plusIcon} alt="rightArrowIcon" />}
                         aria-controls="panel1bh-content"

@@ -65,7 +65,7 @@ function Footer() {
                         <p className="mb-2">
                           <span>Email: </span>
                           {' '}
-                          care@csjewels.com
+                          custcare@csjewellers.com
                         </p>
                         <p className="mb-4">
                           <span>Phone: </span>
@@ -73,8 +73,7 @@ function Footer() {
                           07969991827
                         </p>
                         <p className="address">
-                          Sr. No.32/1/B/5, Gunwadi Road, Baramati, Dist - Pune,
-                          PIN: 413102
+                          S.No.558, Ground Floor, Indraprastha Plus, Near Appolo Theatre, Rasta Peth, Pune - 411011
                         </p>
                       </div>
                     </div>

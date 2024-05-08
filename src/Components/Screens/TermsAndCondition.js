@@ -57,7 +57,7 @@ export default function TermsAndCondition() {
                                     Order will be treated as CANCELLED, if the patron fails to confirm the order within 5 days.
                                 </ListItem>
                                 <ListItem sx={{ display: 'list-item' }}>
-                                    To cancel an order, please send an email to care@csjewellers.com within 2 days of the confirmation of the order. Please include the order ID in the subject line.
+                                    To cancel an order, please send an email to custcare@csjewellers.com within 2 days of the confirmation of the order. Please include the order ID in the subject line.
                                 </ListItem>
                             </List>
                         </div>
@@ -128,7 +128,7 @@ export default function TermsAndCondition() {
                             If you’re interested in a piece of jewellery that is currently on back order, we will call you and update you when the item will be back in stock. Sometimes with the number of orders we receive, an item may go out of stock before we are able to post a notification on the website. If this happens, we will contact you directly to discuss possible options.
                         </div>
                         <div className="privacy-policy-normal-text">
-                            Data, including prices, may be inaccurately displayed on our website due to system or typographical errors. While we make every attempt to avoid these errors, they may occur. We reserve the right to correct any and all errors when they do occur, and we do not honor inaccurate or erroneous prices. If a product’s listed price is lower than its actual price, we will, at our discretion, either contact you for instructions before shipping the product or cancel the order and notify you of such cancellation. If the order has been shipped, you agree to either return the product or pay the difference between the actual and charged prices. Our prices are also subject to change without prior notice. We apologize for any inconvenience that this may cause. If you have any questions, please do not hesitate to contact one of our customer care executives at care@csjewellers.com or call us on our toll free number 1800-267-0999.
+                            Data, including prices, may be inaccurately displayed on our website due to system or typographical errors. While we make every attempt to avoid these errors, they may occur. We reserve the right to correct any and all errors when they do occur, and we do not honor inaccurate or erroneous prices. If a product’s listed price is lower than its actual price, we will, at our discretion, either contact you for instructions before shipping the product or cancel the order and notify you of such cancellation. If the order has been shipped, you agree to either return the product or pay the difference between the actual and charged prices. Our prices are also subject to change without prior notice. We apologize for any inconvenience that this may cause. If you have any questions, please do not hesitate to contact one of our customer care executives at custcare@csjewellers.com or call us on our toll free number 1800-267-0999.
                         </div>
                         <div className="privacy-policy-normal-text privacy-policy-last-text">
                             We do not negotiate prices on our products. All our prices are final.

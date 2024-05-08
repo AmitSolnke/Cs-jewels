@@ -9,14 +9,16 @@ import { GoogleMap, InfoWindow, Marker, useLoadScript } from "@react-google-maps
 
 export default function FindAStore() {
     const [errors, setErrors] = useState([])
-    const [successMsg, setSuccesMsg] = useState('')
+    const center = {
+        lat: 18.5204,
+        lng: 73.8567
+      };
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_MAP_KEY // API key
       });
     const [markers, setMarkers] = useState([])
 
     useEffect(() => {
-        console.log(isLoaded)
     }, [isLoaded])
     const [searchData, setSearchData] = useState({
         search: ''
@@ -64,7 +66,7 @@ export default function FindAStore() {
             for (let i = 0; i < result.data.data.length; i++) {
                 markerData[i] = {
                     id: i + 1,
-                    name: result.data.data[i].store_name,
+                    address: result.data.data[i].address,
                     position: { lat: parseFloat(result.data.data[i].latitude), lng: parseFloat(result.data.data[i].longitude)}
                   };
                 
@@ -87,7 +89,6 @@ export default function FindAStore() {
 
     const handleOnLoad = (map) => {
         const bounds = new window.google.maps.LatLngBounds();
-        console.log(markers)
         markers.forEach(({ position }) => bounds.extend(position));
         map.fitBounds(bounds);
     };
@@ -127,9 +128,10 @@ export default function FindAStore() {
                         onLoad={handleOnLoad}
                         onClick={() => setActiveMarker(null)}
                         mapContainerStyle={{ width: "100%", height: "500px" }}
-                        re
+                        center={center}
+                        zoom={10}
                     >
-                        {markers.map(({ id, name, position }) => (
+                        {markers.map(({ id, address, position }) => (
                             <Marker
                                 key={id}
                                 position={position}
@@ -137,7 +139,7 @@ export default function FindAStore() {
                             >
                                 {activeMarker === id ? (
                                     <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                                        <div>{name}</div>
+                                        <div>{address}</div>
                                     </InfoWindow>
                                 ) : null}
                             </Marker>

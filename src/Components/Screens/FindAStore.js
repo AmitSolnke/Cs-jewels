@@ -139,7 +139,7 @@ export default function FindAStore() {
                             >
                                 {activeMarker === id ? (
                                     <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                                        <div>{address}</div>
+                                        <a href={`https://maps.google.com/?q=${position.lat},${position.lng}`}>{address}</a>
                                     </InfoWindow>
                                 ) : null}
                             </Marker>

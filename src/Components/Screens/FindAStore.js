@@ -86,7 +86,7 @@ export default function FindAStore() {
     };
 
     const handleOnLoad = (map) => {
-        const bounds = new google.maps.LatLngBounds();
+        const bounds = new window.google.maps.LatLngBounds();
         console.log(markers)
         markers.forEach(({ position }) => bounds.extend(position));
         map.fitBounds(bounds);

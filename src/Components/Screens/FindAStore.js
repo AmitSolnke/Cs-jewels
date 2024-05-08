@@ -34,7 +34,7 @@ export default function FindAStore() {
             for (let i = 0; i < result.data.data.length; i++) {
                 markerData[i] = {
                     id: i + 1,
-                    name: result.data.data[i].store_name,
+                    address: result.data.data[i].address,
                     position: { lat: parseFloat(result.data.data[i].latitude), lng: parseFloat(result.data.data[i].longitude)}
                   };
                 

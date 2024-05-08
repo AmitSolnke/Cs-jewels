@@ -124,7 +124,7 @@ export default function CRSPolicy() {
             <div className="privacy-policy-normal-text">
           <p>  4.1 ‘Act’ means the Companies Act, 2013.</p>
           <p>   4.2 ‘Board’ means the Board of Directors of the Company.</p>
-          <p>  4.3 ‘Company’ means Chandukaka Saraf and Sons Pvt. Ltd.</p>
+          <p>  4.3 ‘Company’ means Chandukaka Saraf Jewels Pvt. Ltd.</p>
           <p>  4.4 ‘CSR Committee or Committee’ means the Corporate Social
             Responsibility Committee of the Board constituted pursuant to
             Section 135 of the Act.</p>

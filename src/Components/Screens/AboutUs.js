@@ -29,7 +29,7 @@ export default function AboutUs() {
     return (
         <div className='col-12 about-us'>
             <div className="head-text-about-us" style={{ backgroundImage: `url(${aboutUsTitleImage})` }}>
-                <p> Legacy of indestructible tradition & customer trust for 196 years and counting </p>
+                <p> Legacy of indestructible tradition & customer trust for 197 years and counting </p>
             </div>
             <Box className="box-about-us" sx={{ flexGrow: 1 }}>
                 <Grid container spacing={1}>
@@ -38,7 +38,7 @@ export default function AboutUs() {
                     </Grid>
                     <Grid item xs={10} md={8}>
                         <ReadMoreText useReadMore={true} limit={350} >
-                            Chandukaka Saraf Jewels Pvt. Ltd. is one of the leading jewellerys in western India, carrying the fervour of crafting jewellery for more than 196 years. As an organization, we have been imparting trust among customers with a legacy of ethical business since 1827. Our foundation was laid by Honourable Shri Chandulal Shah in the prestigious city of Baramati in the 19th century, whose unsullied dedication was instrumental in attaining the initial reputation
+                            Chandukaka Saraf Jewels Pvt. Ltd. is one of the leading jewellerys in western India, carrying the fervour of crafting jewellery for more than 197 years. As an organization, we have been imparting trust among customers with a legacy of ethical business since 1827. Our foundation was laid by Honourable Shri Chandulal Shah in the prestigious city of Baramati in the 19th century, whose unsullied dedication was instrumental in attaining the initial reputation
                         </ReadMoreText>
                     </Grid>
                     <Grid item xs={1} md={2}>
@@ -90,7 +90,7 @@ export default function AboutUs() {
                         </div>
                         <div className="our-specialities-description">
                             <ReadMoreText useReadMore={true} limit={350} >
-                                After establishing strong pillars of foundation and growing huge support from customers, it compelled us to open more jewellery retail outlets. As we are approaching the new milestone of completing a successful 196 years in the business, our clean approach helped us to extend 18 branches in Maharashtra. We have a rich heritage of serving customers; therefore, we match the pace with the trends. At present, our spacious showrooms provide a great ambience to customers’ shopping experience with the widest range of jewellery products varying from Gold, Silver, Platinum, Forming and Gemstones to Pearls, which adds value to our services. Our main focus has always remained on purity. We offer genuine BIS Hallmark certified gold products with a purity of 18, 22, 23, 23.5, & 24 karats, i.e., 99.5, whereas in India, these ornaments are being sold with a purity of 22 karats. Competing with our creative designs has also played a major role in recognising us as a symbol of purity and boosting our growth in the retail market.
+                                After establishing strong pillars of foundation and growing huge support from customers, it compelled us to open more jewellery retail outlets. As we are approaching the new milestone of completing a successful 197 years in the business, our clean approach helped us to extend 11 branches in Maharashtra. We have a rich heritage of serving customers; therefore, we match the pace with the trends. At present, our spacious showrooms provide a great ambience to customers’ shopping experience with the widest range of jewellery products varying from Gold, Silver, Platinum, Forming and Gemstones to Pearls, which adds value to our services. Our main focus has always remained on purity. We offer genuine BIS Hallmark certified gold products with a purity of 18, 22, 23, 23.5, & 24 karats, i.e., 99.5, whereas in India, these ornaments are being sold with a purity of 22 karats. Competing with our creative designs has also played a major role in recognising us as a symbol of purity and boosting our growth in the retail market.
                             </ReadMoreText>
                         </div>
                     </Grid>

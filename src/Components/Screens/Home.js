@@ -33,7 +33,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const dazzlingFev = [{img: prod1, name: "DIAMOND BANGLES" },{img: prod2, name: "LAYERED BRACELETS" },{img: prod3, name: "DIAMOND NECKLACE" },{img: prod4, name: "KUNDAN NECKLACE" }]
+const dazzlingFev = [{img: prod1, name: "GOLD BANGLES" },{img: prod2, name: "LAYERED BRACELETS" },{img: prod3, name: "DIAMOND NECKLACE" },{img: prod4, name: "KUNDAN NECKLACE" }]
 const offerImages = [CardImageLarge, CardImageLarge, CardImageLarge, CardImageLarge];
 const shineImages = [CardImageNoPadding, CardImageNoPadding, CardImageNoPadding, CardImageNoPadding];
 const catData = [{img: catImg1, name: "BANGLES" },{img: catImg2, name: "NECKLACE" },{img: catImg3, name: "EARRINGS" },{img: catImg4, name: "EARRINGS" },{img: catImg5, name: "NECKLACE" },{img: catImg6, name: "NECKLACE" }];

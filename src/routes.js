@@ -83,13 +83,13 @@ export const frontAppRoutes = [
     exact: true,
     strict: false,
   },
-  {
-    path: '/news-&-blog',
-    name: 'News And Blogs',
-    element: <NewsAndBlogs />,
-    exact: true,
-    strict: false,
-  },
+  // {
+  //   path: '/news-&-blog',
+  //   name: 'News And Blogs',
+  //   element: <NewsAndBlogs />,
+  //   exact: true,
+  //   strict: false,
+  // },
   {
     path: '/bullions',
     name: 'Bullions',

@@ -30,7 +30,7 @@ export default function CRSPolicy() {
             1. PREFACE
             </div>
             <div className="privacy-policy-normal-text">
-            CHANDUKAKA SARAF ANS SONS PVT LTD ("Company") has always
+            CHANDUKAKA SARAF JEWELS PVT LTD ("Company") has always
             placed an extreme value on social responsibility, and as a result, the
             Company frequently promotes ethical initiatives. The Company makes
             a consistent effort to support issues related to society as a good

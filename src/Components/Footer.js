@@ -73,7 +73,7 @@ function Footer() {
                           07969991827
                         </p>
                         <p className="address">
-                          S.No.558, Ground Floor, Indraprastha Plus, Near Appolo Theatre, Rasta Peth, Pune - 411011
+                          S.No.558, Ground Floor, Indraprastha Plus, Near Apollo Theatre, Rasta Peth, Pune - 411011
                         </p>
                       </div>
                     </div>

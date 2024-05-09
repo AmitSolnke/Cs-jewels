@@ -9,6 +9,12 @@ export const NavigationDropdown = ({metalData, setShowDropdown}) => {
     navigate(`/product-catalogues?metal=${metalId}&item_type=${itemId}`)
     setShowDropdown(false)
   }
+
+  useEffect(() => {
+    $(".navigation-dropdown-wrapper .menu-links").click(function (e) {
+      $(".mobile-menu-overlay").css("width", "0");
+    });
+  });
   
   return (
     <Box>
@@ -21,7 +27,7 @@ export const NavigationDropdown = ({metalData, setShowDropdown}) => {
                   <div
                     variant="h5"
                     color="initial"
-                    className="jewellwery-type mb-4"
+                    className="jewellwery-type mb-4 menu-links"
                     onClick={()=>closeModal(data.id, 0)}
                   >
                     {data.metal}
@@ -29,7 +35,7 @@ export const NavigationDropdown = ({metalData, setShowDropdown}) => {
                   <div className="jewelleries">
                     {data.metal_items.map((item, key) => (
                       <div className="" key={key}>
-                        <div className="jewellery-link" onClick={()=>closeModal(data.id, item.id)}>
+                        <div className="jewellery-link menu-links" onClick={()=>closeModal(data.id, item.id)}>
                           {item.item_name}
                         </div>
                       </div>

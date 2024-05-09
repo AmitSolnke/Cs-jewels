@@ -84,6 +84,10 @@ function Header({ openDrawer, handleOpenDrawer }) {
     $(".header-content .close-nav-btn").click(function (e) {
       $(".mobile-menu-overlay").css("width", "0");
     });
+
+    $(".header-content .menu-links").click(function (e) {
+      $(".mobile-menu-overlay").css("width", "0");
+    });
   });
 
   window.onclick = (event) => {
@@ -248,7 +252,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </Link>
                         </li> */}
                         <li className="w-100">
-                          <Link to="/">Home</Link>
+                          <Link className="menu-links" to="/">Home</Link>
                         </li>
                         <li className="w-100">
                           <div
@@ -261,7 +265,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </div>
                         </li>
                         <li className="w-100">
-                          <Link to="/aboutus">About us</Link>
+                          <Link className="menu-links" to="/aboutus">About us</Link>
                         </li>
                       </div>
                     </ul>

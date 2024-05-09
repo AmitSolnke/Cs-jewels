@@ -65,7 +65,7 @@ function Footer() {
                         <p className="mb-2">
                           <span>Email: </span>
                           {' '}
-                          custcare@csjewellers.com
+                          care@csjewels.com
                         </p>
                         <p className="mb-4">
                           <span>Phone: </span>

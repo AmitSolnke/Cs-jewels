@@ -153,7 +153,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <div className="quick-links-wrapper">
                           <ul className="w-100">
                             <div className="quick-link-items">
-                              <li>
+                              {/* <li>
                                 <small>
                                   GOLD - ₹
                                   {rates.gold["24.00"]
@@ -163,7 +163,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               </li>
                               <li>
                                 <small>SILVER - ₹{rates.Silver1}</small>
-                              </li>
+                              </li> */}
                               <li>
                                 <Link to="/find-a-store">FIND A STORE</Link>
                               </li>

@@ -97,3 +97,7 @@ export const getItemGroupById = async (id) => {
 export const getBanner = async () => {
   return await httpService.get(`banner`)
 }
+
+export const getItemById = async (id) => {
+  return await httpService.get(`getitemById/${id}`)
+}

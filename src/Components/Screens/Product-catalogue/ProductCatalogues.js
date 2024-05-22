@@ -16,7 +16,7 @@ import { BullionsFilter } from "../Bullions/BullionsFilter";
 import { FilterMenu } from "../Bullions/FilterMenu";
 import { SortMenu } from "../Bullions/SortMenu";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { getMetals, getProductCategory, getProducts, getMetalTypeById, getItemGroupById } from "../../../services/FrontApp/index.service";
+import { getMetals, getProductCategory, getProducts, getMetalTypeById, getItemById } from "../../../services/FrontApp/index.service";
 import { Paginator } from "../../Common/Paginator";
 
 export const ProductCatalogues = () => {
@@ -312,11 +312,11 @@ export const ProductCatalogues = () => {
         id: metalId,
         name: result.data.data
       })
-      // result = await getItemGroupById(itemTypeId)
-      // setItemType({
-      //   id: itemTypeId,
-      //   name: result.data.data
-      // })
+      result = await getItemById(itemTypeId)
+      setItemType({
+        id: itemTypeId,
+        name: result.data.data
+      })
       handleFilterChange("search_query", result.data.data)
       handleFilterChange("metal_type[0]", metalId);
 

@@ -85,35 +85,28 @@ export const ProductCatalogues = () => {
   const getData = async () => {
     try {
       const requestParams = new FormData();
-      if (filters["type[0]"]) {
-        requestParams.append("type[0]", filters["type[0]"])
+      const metalId = searchParams.get('metal') ? searchParams.get('metal') : '';
+      const itemTypeId = searchParams.get('item_type') ? searchParams.get('item_type') : '';
+      const gender = searchParams.get('gender') ? searchParams.get('gender') : '';
+      const sort_by = searchParams.get('sort_by') ? searchParams.get('sort_by') : '';
+      const type = searchParams.get('type[0]') ? searchParams.get('type[0]') : '';
+      if (type) {
+        requestParams.append("type[0]", type)
       }
-      if (filters["metal_type[0]"]) {
-        requestParams.append("metal_type[0]", filters["metal_type[0]"])
+      if (metalId) {
+        requestParams.append("metal_type[0]", metalId)
       }
-      if (filters["min_weight"]) {
-        requestParams.append("min_weight", filters["min_weight"])
+      if (sort_by) {
+        requestParams.append("sort_by", sort_by)
       }
-      if (filters["max_weight"]) {
-        requestParams.append("max_weight", filters["max_weight"])
-      }
-      if (filters["sort_by"]) {
-        requestParams.append("sort_by", filters["sort_by"])
-      }
-      if (filters["item_master_id"]) {
-        requestParams.append("item_master_id", filters["item_master_id"])
+      if (itemTypeId) {
+        requestParams.append("item_master_id", itemTypeId)
       }
       if (filters["size"]) {
         requestParams.append("size", filters["size"])
       }
-      if (filters["gender"]) {
-        requestParams.append("gender", filters["gender"])
-      }
-      if (filters["min_price"]) {
-        requestParams.append("min_price", filters["min_price"])
-      }
-      if (filters["max_price"]) {
-        requestParams.append("max_price", filters["max_price"])
+      if (gender) {
+        requestParams.append("gender", gender)
       }
       if (filters.page) {
         requestParams.append("page", filters["page"])
@@ -135,11 +128,13 @@ export const ProductCatalogues = () => {
     } catch (error) {
       setProducts([]);
       setTotalPages(0)
+      setProductCount(0)
     }
   };
 
   useEffect(() => {
     setParamsData()
+    setTimeout(getData, 1000);
   }, [location.search]);
 
   const handleFilterChange = (filterName, value) => {
@@ -297,7 +292,6 @@ export const ProductCatalogues = () => {
     } catch (error) {
       console.error(error)
     }
-    getData();
   }
 
   return (

@@ -15,18 +15,18 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { BullionsFilter } from "../Bullions/BullionsFilter";
 import { FilterMenu } from "../Bullions/FilterMenu";
 import { SortMenu } from "../Bullions/SortMenu";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { getMetals, getProductCategory, getProducts, getMetalTypeById, getItemById } from "../../../services/FrontApp/index.service";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { getMetals, getMetalItems, getProductCategory, getProducts, getMetalTypeById, getItemById } from "../../../services/FrontApp/index.service";
 import { Paginator } from "../../Common/Paginator";
 
 export const ProductCatalogues = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
   const [bullionsFilterOpen, setBullionsFilterOpen] = useState(false);
   const [bullionsFilterValue, setBullionsFilterValue] = useState(-1);
   const [openSortMenu, setOpenSortMenu] = useState(false);
+  const [banner, setBanner] = useState('');
   const [searchParams] = useSearchParams();
-  const metalId = searchParams.get('metal') ? searchParams.get('metal') : '';
-  const itemTypeId = searchParams.get('item_type') ? searchParams.get('item_type') : '';
   const [metal, setMetal] = useState({
     id: '',
     name: ''
@@ -41,22 +41,19 @@ export const ProductCatalogues = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [categories, setCategories] = useState([])
   const [metals, setMetals] = useState([])
+  const [items, setItems] = useState([])
 
   const [chipData, setChipData] = useState([]);
 
   const sizes = ["5", "10", "15", "20", "25"];
 
   const [filters, setFilters] = useState({
-    'type[0]': null,
-    'metal_type[0]': null,
-    'min_weight': null,
-    'max_weight': null,
-    'sort_by': null,
-    'search_query': null,
-    'size': null,
-    'gender': null,
-    'min_price': null,
-    'max_price': null,
+    'type[0]': '',
+    'metal_type[0]': '',
+    'item_master_id': '',
+    'sort_by': '',
+    'size': '',
+    'gender': '',
     page: 1,
     limit: 9
   });
@@ -103,8 +100,8 @@ export const ProductCatalogues = () => {
       if (filters["sort_by"]) {
         requestParams.append("sort_by", filters["sort_by"])
       }
-      if (filters["search_query"]) {
-        requestParams.append("search_query", filters["search_query"])
+      if (filters["item_master_id"]) {
+        requestParams.append("item_master_id", filters["item_master_id"])
       }
       if (filters["size"]) {
         requestParams.append("size", filters["size"])
@@ -127,6 +124,9 @@ export const ProductCatalogues = () => {
       const { data } = await getProducts(requestParams);
       if (data.data.data) {
         setProducts(data.data.data);
+        let bannerImg = data.product_list_banner[0].image_path.replace("//", "/");
+        bannerImg = bannerImg.replace("http:/", "http://");
+        setBanner(bannerImg)
       } else {
         setProducts([]);
       }
@@ -139,94 +139,37 @@ export const ProductCatalogues = () => {
   };
 
   useEffect(() => {
-    getData();
-  }, [refreshCount]);
+    setParamsData()
+  }, [location.search]);
 
   const handleFilterChange = (filterName, value) => {
-    let count = 0;
     if (filterName == "type[0]" && value) {
-      if (!chipData.includes('Category')) {
-        count++;
-        setChipData([...chipData, 'Category'])
-      }
+      navigate(`/product-catalogues?type[0]=${value}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`)
     }
     if (filterName == "metal_type[0]" && value) {
-      if (!chipData.includes('Metal Type')) {
-        count++;
-        setChipData([...chipData, 'Metal Type'])
-      }
+      navigate(`/product-catalogues?type[0]=${filters['type[0]']}&metal=${value}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`)
     }
-    if (filterName == "min_weight" && value) {
-      if (!chipData.includes(filterName)) {
-        count++;
-        setChipData([...chipData, filterName])
-      }
-    }
-    if (filterName == "max_weight" && value) {
-      if (!chipData.includes(filterName)) {
-        count++;
-        setChipData([...chipData, filterName])
-
-      }
+    if (filterName == "item_master_id" && value) {
+      navigate(`/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${value}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`)
     }
     if (filterName == "sort_by" && value) {
-      if (!chipData.includes('Sorted By')) {
-        count++;
-        setChipData([...chipData, 'Sorted By'])
-
-      }
-    }
-    if (filterName == "size" && value) {
-      if (!chipData.includes('Size')) {
-        count++;
-        setChipData([...chipData, 'Size'])
-
-      }
+      navigate(`/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${value}`)
     }
     if (filterName == "gender" && value) {
-      if (!chipData.includes('Gender')) {
-        count++;
-        setChipData([...chipData, 'Gender'])
-
-      }
+      navigate(`/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${value}&sort_by=${filters['sort_by']}`)
     }
-    if (filterName == "min_price" && value) {
-      if (!chipData.includes(filterName)) {
-        count++;
-        setChipData([...chipData, filterName])
-
-      }
-    }
-    if (filterName == "max_price" && value) {
-      if (!chipData.includes(filterName)) {
-        count++;
-        setChipData([...chipData, filterName])
-
-      }
-    }
-    if (count >= 9) {
-      setChipData(["ALL"])
-    }
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterName]: value,
-    }));
     setRefreshCount(refreshCount + 1)
   };
 
   const clearAll = () => {
     setChipData([]);
     setFilters({
-      'type[0]': null,
-      'metal_type[0]': null,
-      'min_weight': null,
-      'max_weight': null,
-      'sort_by': null,
-      'search_query': null,
-      'size': null,
-      'gender': null,
-      'min_price': null,
-      'max_price': null,
+      'type[0]': '',
+      'metal_type[0]': '',
+      'item_master_id': '',
+      'sort_by': '',
+      'size': '',
+      'gender': '',
       page: 1,
       limit: 10
     })
@@ -261,80 +204,109 @@ export const ProductCatalogues = () => {
     );
     if (chipToDelete == 'All') {
       setFilters({
-        'type[0]': null,
-        'metal_type[0]': null,
-        'min_weight': null,
-        'max_weight': null,
-        'sort_by': null,
-        'search_query': null,
-        'size': null,
-        'gender': null,
-        'min_price': null,
-        'max_price': null,
+        'type[0]': '',
+        'metal_type[0]': '',
+        'item_master_id': '',
+        'sort_by': '',
+        'size': '',
+        'gender': '',
         page: 1,
         limit: 10
       })
     } else {
-      let filterName = ''
       if (chipToDelete == 'Category') {
-        filterName = 'type[0]'
+        navigate(`/product-catalogues?metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`)
       } else if (chipToDelete == 'Metal Type') {
-        filterName = 'metal_type[0]'
-
-      } else if (chipToDelete == 'min_weight') {
-        filterName = 'min_weight'
-      } else if (chipToDelete == 'max_weight') {
-        filterName = 'max_weight'
+        navigate(`/product-catalogues?type[0]=${filters['type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`)
+      } else if (chipToDelete == 'Item Type') {
+        navigate(`/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`)
       } else if (chipToDelete == 'Sorted By') {
-        filterName = 'sorted_by'
-      } else if (chipToDelete == 'Size') {
-        filterName = 'size'
+        navigate(`/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}`)
       } else if (chipToDelete == 'Gender') {
-        filterName = 'gender'
-      } else if (chipToDelete == 'min_price') {
-        filterName = 'min_price'
-      } else if (chipToDelete == 'max_price') {
-        filterName = 'max_price'
+        navigate(`/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&sort_by=${filters['sort_by']}`)
       }
-      setFilters((prevFilters) => ({
-        ...prevFilters,
-        [filterName]: null,
-      }));
-      setRefreshCount(refreshCount + 1)
     }
+    setRefreshCount(refreshCount + 1)
   };
 
   const setParamsData = async () => {
-    try {
-      console.log(metalId)
-      let result = await getMetalTypeById(metalId)
-      setMetal({
-        id: metalId,
-        name: result.data.data
-      })
-      result = await getItemById(itemTypeId)
-      setItemType({
-        id: itemTypeId,
-        name: result.data.data
-      })
-      handleFilterChange("search_query", result.data.data)
-      handleFilterChange("metal_type[0]", metalId);
+    const metalId = searchParams.get('metal') ? searchParams.get('metal') : '';
+    const itemTypeId = searchParams.get('item_type') ? searchParams.get('item_type') : '';
+    const gender = searchParams.get('gender') ? searchParams.get('gender') : '';
+    const sort_by = searchParams.get('sort_by') ? searchParams.get('sort_by') : '';
+    const type = searchParams.get('type[0]') ? searchParams.get('type[0]') : '';
 
+    let temp_chip = [];
+    let count = 0;
+    if (type) {
+      temp_chip = [...temp_chip, 'Category'];
+      count++;
+    }
+    if (metalId) {
+      temp_chip = [...temp_chip, 'Metal Type'];
+      count++;
+    }
+    if (itemTypeId) {
+      temp_chip = [...temp_chip, 'Item Type'];
+      count++;
+    }
+    if (gender) {
+      temp_chip = [...temp_chip, 'Gender'];
+      count++;
+    }
+    if (sort_by) {
+      temp_chip = [...temp_chip, 'Sorted By'];
+      count++;
+    }
+    if (count == 5) {
+      temp_chip = ["ALL"];
+    }
+    setChipData(temp_chip);
+    setFilters({
+      'type[0]': type,
+      'metal_type[0]': metalId,
+      'item_master_id': itemTypeId,
+      'sort_by': sort_by,
+      'gender': gender,
+      page: 1,
+      limit: 9
+    })
+    try {
+      if (metalId) {
+        let result = await getMetalTypeById(metalId)
+        setMetal({
+          id: metalId,
+          name: result.data.data
+        })
+      
+        result = await getMetalItems(metalId)
+        setItems(result.data.data)
+      }
+      if(itemTypeId) {
+        let result = await getItemById(itemTypeId)
+        setItemType({
+          id: itemTypeId,
+          name: result.data.data
+        })
+      } else {
+        setItemType({
+          id: '',
+          name: ''
+        })
+      }
     } catch (error) {
       console.error(error)
     }
+    getData();
   }
-
-  useEffect(() => {
-    setParamsData()
-  }, [metalId, itemTypeId])
 
   return (
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
+        <img src={banner} alt="Banner image" />
         <div className="catalogue-header-wrapper">
           <h4>{metal.name} {itemType.name}</h4>
-          <p>{productCount}+ Rings options available</p>
+          <p>{productCount}+ {metal.name} {itemType.name} options available</p>
         </div>
       </div>
       <Paper
@@ -383,8 +355,8 @@ export const ProductCatalogues = () => {
               value={filters.category}
               onChange={(e) => handleFilterChange("type[0]", e.target.value)}
             >
-              {categories.map((item) => (
-                <MenuItem value={item.id}>{item.category_name}</MenuItem>
+              {categories.map((item, key) => (
+                <MenuItem key={key} value={item.id}>{item.category_name}</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -425,8 +397,23 @@ export const ProductCatalogues = () => {
               value={filters["metal_type[0]"]}
               onChange={(e) => handleFilterChange("metal_type[0]", e.target.value)}
             >
-              {metals.map((data) => (
-                <MenuItem key={data.id} value={data.id}>{data.metal_type}</MenuItem>
+              {metals.map((data, key) => (
+                <MenuItem key={key} value={data.id}>{data.metal_type}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
+            <InputLabel shrink={Boolean(filters.item_master_id)} id="category-metal-type"> METAL ITEM </InputLabel>
+            <Select
+              labelId="category-metal-type"
+              label="METAL ITEM"
+              id="category-metal-item-standard"
+              value={filters.item_master_id}
+              onChange={(e) => handleFilterChange("item_master_id", e.target.value)}
+            >
+              {items.map((data, key) => (
+                <MenuItem key={key} value={data.id}>{data.item_name}</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -482,11 +469,11 @@ export const ProductCatalogues = () => {
 
       <Box>
         <Grid container spacing={1} className="p-3 product-item-wrapper">
-          {products.map((product) => {
+          {products.map((product, key) => {
             return (
               <Grid
                 item
-                key={product.product_id}
+                key={key}
                 md={4}
                 style={{ cursor: 'pointer' }}
                 className="product-item-card"

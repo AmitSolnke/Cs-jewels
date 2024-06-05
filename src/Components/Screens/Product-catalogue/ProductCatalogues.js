@@ -189,16 +189,7 @@ export const ProductCatalogues = () => {
       chips.filter((chip) => chip !== chipToDelete)
     );
     if (chipToDelete == 'All') {
-      setFilters({
-        'type[0]': '',
-        'metal_type[0]': '',
-        'item_master_id': '',
-        'sort_by': '',
-        'size': '',
-        'gender': '',
-        page: 1,
-        limit: 10
-      })
+      navigate(`/product-catalogues`);
     } else {
       if (chipToDelete == 'Category') {
         navigate(`/product-catalogues?metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`)
@@ -267,6 +258,12 @@ export const ProductCatalogues = () => {
 
         result = await getMetalItems(metalId)
         setItems(result.data.data)
+      } else {
+        setMetal({
+          id: '',
+          name: ''
+        })
+        setItems([])
       }
       if (itemTypeId) {
         let result = await getItemById(itemTypeId)

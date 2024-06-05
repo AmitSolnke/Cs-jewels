@@ -52,7 +52,7 @@ export default function Testimonial() {
         {windoDimensions[0] > 768 ?
           <div className="image-slider-header text-only-grid-header">
             <img src={imageSliderHeaderIconLeft} alt="React Logo" />
-            Treasured Stories
+            {' '} Treasured Stories {' '}
             <img src={imageSliderHeaderIconRight} alt="React Logo" />
           </div>
           : <div className="image-slider-header text-only-grid-header image-slider-header-explore">

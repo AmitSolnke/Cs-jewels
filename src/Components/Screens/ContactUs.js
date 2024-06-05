@@ -40,6 +40,13 @@ export default function ContactUs() {
         setSuccessMsg('')
         try {
             const result = await contactUs(data);
+            setData({
+                first_name: '',
+                last_name: '',
+                email: '',
+                mobile: '',
+                description: '',
+            })
             setSuccessMsg(result.data.message)
         } catch (error) {
             setErrors(error.response.data.message)

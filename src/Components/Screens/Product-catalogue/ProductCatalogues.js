@@ -158,16 +158,7 @@ export const ProductCatalogues = () => {
 
   const clearAll = () => {
     setChipData([]);
-    setFilters({
-      'type[0]': '',
-      'metal_type[0]': '',
-      'item_master_id': '',
-      'sort_by': '',
-      'size': '',
-      'gender': '',
-      page: 1,
-      limit: 10
-    })
+    navigate(`/product-catalogues`);
     setRefreshCount(refreshCount + 1)
   }
   const handleOpenBullionsFilter = () => {
@@ -273,11 +264,11 @@ export const ProductCatalogues = () => {
           id: metalId,
           name: result.data.data
         })
-      
+
         result = await getMetalItems(metalId)
         setItems(result.data.data)
       }
-      if(itemTypeId) {
+      if (itemTypeId) {
         let result = await getItemById(itemTypeId)
         setItemType({
           id: itemTypeId,
@@ -299,7 +290,9 @@ export const ProductCatalogues = () => {
       <div className="product-catalogue-banner">
         <img src={banner} alt="Banner image" />
         <div className="catalogue-header-wrapper">
-          <h4>{metal.name} {itemType.name}</h4>
+          {metal.name !== '' ? (
+            <h4>{metal.name} {itemType.name}</h4>
+          ) : ''}
           <p>{productCount}+ {metal.name} {itemType.name} options available</p>
         </div>
       </div>
@@ -346,7 +339,7 @@ export const ProductCatalogues = () => {
               labelId="category-dropdown"
               id="demo-simple-select-standard"
               label="CATEGORY"
-              value={filters.category}
+              value={filters['type[0]']}
               onChange={(e) => handleFilterChange("type[0]", e.target.value)}
             >
               {categories.map((item, key) => (
@@ -421,7 +414,7 @@ export const ProductCatalogues = () => {
               labelId="category-sort-by"
               id="demo-simple-select-standard"
               label="SORT BY"
-              value={filters.sortBy}
+              value={filters.sort_by}
               onChange={(e) => handleFilterChange("sort_by", e.target.value)}
             >
               <MenuItem value="low_to_high">Price - low to high</MenuItem>

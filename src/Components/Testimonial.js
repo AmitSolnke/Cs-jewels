@@ -14,7 +14,7 @@ const TestimonialComponent = ({ data }) => {
     <div className="testimonial-wrapper">
       <img src={data.image_path} alt="img" className="client-img" />
       <div className="feedback-wrapper">
-        <p dangerouslySetInnerHTML={{ __html: data.description}} />
+        <p dangerouslySetInnerHTML={{ __html: data.description }} />
         <ReviewStars review={data.rating} width={20} height={20} />
         <div className="name-wrapper">
           <hr />
@@ -30,7 +30,7 @@ export default function Testimonial() {
     scrollRef, next, prev, pages, activePageIndex, goTo
   } = useSnapCarousel();
   const windoDimensions = useWindowWidthAndHeight();
-  
+
   const [data, setData] = useState([])
 
   const getData = async () => {
@@ -51,20 +51,20 @@ export default function Testimonial() {
       <Grid className="large-image-slider-test-area text-area-explore" item xs={9} md={6}>
         {windoDimensions[0] > 768 ?
           <div className="image-slider-header text-only-grid-header">
-            <img src={imageSliderHeaderIconLeft} alt="React Logo" />
+            <img src={imageSliderHeaderIconLeft} alt="React Logo" className="left-logo" />
             {' '} Treasured Stories {' '}
-            <img src={imageSliderHeaderIconRight} alt="React Logo" />
+            <img src={imageSliderHeaderIconRight} alt="React Logo" className="right-logo" />
           </div>
           : <div className="image-slider-header text-only-grid-header image-slider-header-explore">
             <div>
               Explore Our Store
             </div>
             <div>
-              <img src={imageSliderHeaderIconLeft} alt="React Logo" />
+              <img src={imageSliderHeaderIconLeft} alt="React Logo"  className="left-logo" />
               {'  '}
               Locations
               {' '}
-              <img src={imageSliderHeaderIconRight} alt="React Logo" />
+              <img src={imageSliderHeaderIconRight} alt="React Logo"  className="right-logo"/>
             </div>
           </div>
         }
@@ -72,31 +72,36 @@ export default function Testimonial() {
           In their own words, our customers share their personal experiences
         </div>
       </Grid>
+      {data.length > 0 ? (
+        <ul
+          className={`testimonial-slider-component`}
+          ref={scrollRef}
+        >
+          {data.map((item) => (
+            <div className="testimonial-block" key={item.id.toString()}>
+              <TestimonialComponent data={item} />
+            </div>
+          ))}
+        </ul>
+      ) : ''}
+
       {windoDimensions[0] >= 768 && (
         <div className='navigation-icon'>
-          <button className="arrow-icon-generic round-border" type="button" onClick={() => prev()}>
-              <WestIcon />
-            </button>
-            <button className="arrow-icon-generic round-border" type="button" onClick={() => next()}>
-              <EastIcon />
-            </button>
+          <button disabled={activePageIndex == 0} className="arrow-icon-generic round-border" type="button" onClick={prev}>
+            <WestIcon />
+          </button>
+          <button disabled={activePageIndex == pages.length - 1} className="arrow-icon-generic round-border" type="button" onClick={next}>
+            <EastIcon />
+          </button>
         </div>
-      ) }
-      <ul
-        className={`testimonial-slider-component`}
-        ref={scrollRef}
-      >
-        {data.map((item) => (
-          <TestimonialComponent key={item.id.toString()} data={item} />
-        ))}
-      </ul>
-      {windoDimensions[0] <768  && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0", marginTop: 24, marginBottom: 0 }}>
+      )}
+      {windoDimensions[0] < 768 && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0", marginTop: 24, marginBottom: 0 }}>
         {pages.map((_, i) => (
-            <button key={i} className='image-scroll-navigation'
-              style={i === activePageIndex ? { opacity: 0.5 } : {}}
-              onClick={() => goTo(i)}
-            >
-            </button>
+          <button key={i} className='image-scroll-navigation'
+            style={i === activePageIndex ? { opacity: 0.5 } : {}}
+            onClick={() => goTo(i)}
+          >
+          </button>
         ))}
       </ol>}
     </div>

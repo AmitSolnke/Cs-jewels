@@ -35,7 +35,7 @@ const OrderLayout = () => {
         <Grid item xs={12} md={6} className="form-section p-5">
           <div className="form-section-wrapper">
             <div className="checkout-header">
-              <img src={siteLogo} alt="" />
+              <img className="site-logo" src={siteLogo} alt="" />
             </div>
 
             <ExpansionCartView />

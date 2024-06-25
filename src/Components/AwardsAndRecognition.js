@@ -31,11 +31,11 @@ export default function AwardsAndRecognition({ Item }) {
             </Grid>
             <Grid item xs={10} md={8} className="about-us-awards-header-container" >
                 <div className="about-us-awards-header">
-                    <img src={imageSliderHeaderIconLeft} alt="React Logo" />
+                    <img src={imageSliderHeaderIconLeft} alt="React Logo" className="left-logo" />
                     {'  '}
                     Awards & Recognition
                     {' '}
-                    <img src={imageSliderHeaderIconRight} alt="React Logo" />
+                    <img src={imageSliderHeaderIconRight} alt="React Logo" className="right-logo" />
                 </div>
                 <div className="about-us-awards-description">
                     We take immense pride in our journey as a leading jeweller in Maharashtra and western India. Our commitment to quality and innovation has been acknowledged through numerous awards and recognitions in the jewellery industry. These accolades inspire us to continually push the boundaries of craftsmanship and design, and we are grateful for the trust and support of our valued customers, who have made our success possible.

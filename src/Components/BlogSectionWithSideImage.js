@@ -22,7 +22,7 @@ export default function BlogSectionWithSideImage({headerText,descriptionText, It
                 <div className="our-specialities-header">
                     {headerText}
                     {' '}
-                    <img src={imageSliderHeaderIconRight} alt="React Logo" />
+                    <img src={imageSliderHeaderIconRight} alt="React Logo"  className="right-logo" />
                 </div>
                 <div className="our-specialities-description">
                     <ReadMoreText useReadMore={windoDimensions[0] <= 768 ? true : false} limit={350} >

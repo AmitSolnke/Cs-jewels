@@ -116,7 +116,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     />
                     <div className="logo">
                       <Link to="/">
-                        <img src={logo} alt="Logo" className="image" />
+                        <img src={logo} alt="Logo" className="site-logo image" />
                       </Link>
                     </div>
                     <div className="header-icon-list">
@@ -150,7 +150,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     <div className="row position-relative">
                       <div className="logo">
                         <Link to="/">
-                          <img src={logo} alt="Logo" className="image" />
+                          <img src={logo} alt="Logo" className="site-logo image" />
                         </Link>
                       </div>
                       <div className="col-8 p-0 position-absolute end-0 h-100">

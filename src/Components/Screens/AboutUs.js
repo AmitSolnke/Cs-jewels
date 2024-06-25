@@ -86,7 +86,7 @@ export default function AboutUs() {
                         <div className="our-specialities-header">
                             Changing Phase & Offering
                             {' '}
-                            <img src={imageSliderHeaderIconRight} alt="React Logo" />
+                            <img src={imageSliderHeaderIconRight} alt="React Logo"  className="right-logo" />
                         </div>
                         <div className="our-specialities-description">
                             <ReadMoreText useReadMore={true} limit={350} >

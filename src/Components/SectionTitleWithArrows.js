@@ -6,16 +6,16 @@ export default function SectionTitleWithArrows({arrowSides, textMessage}) {
     return (<>
         { arrowSides == "Both"? 
             <div className="image-slider-header">
-                <img src={imageSliderHeaderIconLeft} alt="React Logo" />
+                <img src={imageSliderHeaderIconLeft} alt="React Logo"  className="left-logo" />
                 {'  '}
                 {textMessage}
                 {' '}
-                <img src={imageSliderHeaderIconRight} alt="React Logo" />
+                <img src={imageSliderHeaderIconRight} alt="React Logo"  className="right-logo" />
             </div>: 
             <div className="image-slider-header">
                 {textMessage}
                 {' '}
-                <img src={imageSliderHeaderIconRight} alt="React Logo" />
+                <img src={imageSliderHeaderIconRight} alt="React Logo"  className="right-logo" />
             </div>
         }</>)
     

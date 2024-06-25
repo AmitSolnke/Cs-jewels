@@ -16,10 +16,10 @@ function ImageSliderHome({ height, width, data, padding, CardImageType, classNam
       {windoDimensions[0] >= 768 && <div className={(padding == 0 ? ('image-slider-navigation-icon image-slider-navigation-icon-no-width') : 'image-slider-navigation-icon')}>
         {isSlideArrowEnabled && (
           <>
-            <button className="arrow-icon-generic round-border" type="button" onClick={() => prev()}>
+            <button className="arrow-icon-generic round-border" type="button" onClick={prev}>
               <WestIcon />
             </button>
-            <button className="arrow-icon-generic round-border" type="button" onClick={() => next()}>
+            <button className="arrow-icon-generic round-border" type="button" onClick={next}>
               <EastIcon />
             </button>
           </>

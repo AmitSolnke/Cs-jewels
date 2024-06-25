@@ -41,6 +41,11 @@ hr {
     padding: 0
 }
 
+.arrow-icon-generic:disabled {
+  cursor: not-allowed;
+  background-color: #B7B7B7;
+}
+
 .image-slider-navigation-icon {
     position: relative;
     width: 100%;
@@ -175,4 +180,18 @@ hr {
   }
   .pagination {
     padding: 30px 0;
+  }
+  .site-logo {
+    width: 69px;
+    height: 39px;
+  }
+
+  .site-logo-footer {
+    width: 98px;
+    height: 55px;
+  }
+
+  .left-logo, .right-logo {
+    width: 26px;
+    height: 22px;
   }

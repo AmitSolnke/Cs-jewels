@@ -52,7 +52,7 @@ function Footer() {
         <div className="footer-container">
           <div className="logo">
             <a href="/">
-              <img src={logo} alt="Logo" className="image" />
+              <img src={logo} alt="Logo" className="image site-logo-footer" />
             </a>
           </div>
           <div className="col-12 col-md-12 col-lg-12 footer-containt">

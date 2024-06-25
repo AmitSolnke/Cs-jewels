@@ -54,7 +54,7 @@ function Home() {
             <div className="image-slider-header">
               Dazzling Favorites
               {' '}
-              <img className="img-right" src={imageSliderHeaderIconRight} alt="React Logo" />
+              <img className="img-right right-logo" src={imageSliderHeaderIconRight} alt="React Logo" />
             </div>
           </Grid>
           <Grid item xs={1} md={1}>
@@ -129,7 +129,7 @@ function Home() {
             <div className="image-slider-header">
               Discover Your Shine
               {' '}
-              <img  className="img-right" src={imageSliderHeaderIconRight} alt="React Logo" />
+              <img  className="img-right right-logo" src={imageSliderHeaderIconRight} alt="React Logo" />
             </div>
             <div className="big-image-slider-description image-slider-description">
               From timeless classics to modern marvels, find your style in our curated categories.

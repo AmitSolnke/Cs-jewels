@@ -13,6 +13,7 @@ import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
 import { NavigationDropdown } from "./Common/NavigationDropdown";
 import { SearchDropdown } from "./Common/SearchDropdown";
+import { ShoppingBag } from "./Screens/ShoppingBag";
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const $ = window.jQuery;
@@ -122,19 +123,19 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     <div className="header-icon-list">
                       <ul>
                         <li>
-                          {/* <Link onClick={handleOpenDrawer}>
+                          <Link onClick={handleOpenDrawer}>
                             <img
                               src={shoppingBagLogo}
                               alt="Logo"
                               className="image"
                             />
-                          </Link> */}
-                          {/* <ShoppingBag
+                          </Link>
+                          <ShoppingBag
                               open={openDrawer}
                               handleOpenDrawer={handleOpenDrawer}
-                            /> */}
+                            />
                         </li>
-                        {/* <li>
+                        <li>
                           <Link to="/wishlist">
                             <img
                               alt="Logo"
@@ -142,7 +143,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               className="image heart"
                             />
                           </Link>
-                        </li> */}
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -157,7 +158,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <div className="quick-links-wrapper">
                           <ul className="w-100">
                             <div className="quick-link-items">
-                              {/* <li>
+                              <li>
                                 <small>
                                   GOLD - ₹
                                   {rates.gold["24.00"]
@@ -167,7 +168,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               </li>
                               <li>
                                 <small>SILVER - ₹{rates.Silver1}</small>
-                              </li> */}
+                              </li>
                               <li>
                                 <Link to="/find-a-store">FIND A STORE</Link>
                               </li>
@@ -194,7 +195,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                   <nav className="navbar">
                     <ul className="w-100">
                       <div className="header-searchbar-wrapper w-100">
-                        {/* <div className="col-10 search-wrapper">
+                        <div className="col-10 search-wrapper">
                           <input
                             type="text"
                             className="search-input col-9 col-md-9"
@@ -205,9 +206,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             alt="Logo"
                             className="search-logo"
                           />
-                        </div> */}
+                        </div>
                         <div className="col-2">
-                          {/* <Link
+                          <Link
                             to="#"
                             className="shopping-logo"
                             onClick={handleOpenDrawer}
@@ -217,16 +218,16 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               alt="Logo"
                               className="image"
                             />
-                          </Link> */}
-                          {/* <ShoppingBag
+                          </Link>
+                          <ShoppingBag
                               open={openDrawer}
                               handleDrawer={handleOpenDrawer}
-                            /> */}
+                            />
                         </div>
                       </div>
-                      {/* <h3 className="drawer-header">POPULAR SEARCHES</h3> */}
+                      <h3 className="drawer-header">POPULAR SEARCHES</h3>
                       <div className="d-lg-none">
-                        {/* <li className="w-100">
+                        <li className="w-100">
                           <Link to="/" className="menu-link">
                             Fancy Earrings
                           </Link>
@@ -250,7 +251,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <Link to="/" className="menu-link">
                             Office wear earrings
                           </Link>
-                        </li> */}
+                        </li>
                         <li className="w-100">
                           <Link className="menu-links" to="/">Home</Link>
                         </li>
@@ -297,22 +298,22 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <li>
                           <Link to="/aboutus">About us</Link>
                         </li>
-                        {/* <li>
+                        <li>
                           <Link to="/bullions">Bullion</Link>
-                        </li> */}
-                        {/* <li>
+                        </li>
+                        <li>
                             <Link to="e-gold">E-gold</Link>
-                          </li> */}
-                        {/* <li>
+                          </li>
+                        <li>
                             <Link to="gifting">Gifting</Link>
-                        </li> */}
+                        </li>
                       </div>
                     </ul>
                   </nav>
                 </div>
                 <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
                   <div className="header-icon-list">
-                    {/* <ul className="w-100">
+                     <ul className="w-100">
                       <li>
                         <Link onClick={() => setSearchDropdown(true)}>
                           <img
@@ -330,9 +331,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             alt="Logo"
                             className="image"
                           />
-                        </Link> */}
-                        {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
-                     {/*  </li>
+                        </Link> 
+                        <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} />
+                      </li>
                       <li>
                         <Link to="/wishlist">
                           <img
@@ -368,7 +369,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           />
                         </li>
                       )}
-                    </ul> */}
+                    </ul>
                   </div>
                 </div>
               </div>

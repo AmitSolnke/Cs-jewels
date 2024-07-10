@@ -1,0 +1,144 @@
+.sidebar {
+  background-color: #fff;
+  height: 100%;
+}
+
+.mobile-drawer{
+  z-index: 1 !important;
+}
+
+.MuiDrawer-paper {
+  background-color: #fff;
+  width: 100% !important;
+  margin-top: 61px;
+}
+
+.menu-wrapper {
+  list-style: none;
+  padding-left: 26%;
+
+  li {
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .profile-wrapper {
+    padding-bottom: 40px;
+
+    .profile-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+    }
+
+    .profile-info {
+      display: grid;
+      margin-left: 13px;
+
+      .name {
+        text-align: left;
+        font: normal normal 600 21px/36px Lato;
+        letter-spacing: 1.57px;
+        color: #333333;
+        opacity: 1;
+      }
+
+      small {
+        text-align: left;
+        font: normal normal medium 14px/17px Lato;
+        letter-spacing: 1.05px;
+        color: #666666;
+        opacity: 1;
+      }
+    }
+  }
+
+  .sidebar-menu li {
+    line-height: 64.55px;
+  }
+
+  .sidebar-menu li:hover {
+    border-right: 2px solid #333333;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .menu-link {
+    text-decoration: none;
+    color: #333333;
+    font: normal normal 600 16px/36px Lato;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    opacity: 1;
+
+        img {
+            width: 25px;
+            height: 25px;
+            margin-right: 18px;
+        }
+
+        .new-tab-icon {
+            color: #CCCCCC;
+            margin-left: auto;
+        }
+    }
+
+    .link-with-open-new {
+        display: flex;
+        line-height: 64.55px;
+        align-items: center;
+
+        svg {
+            margin-left: auto;
+            margin-right: .3rem;
+        }
+    }
+
+  .sign-out {
+    margin-top: 72px;
+    line-height: 64.55px;
+  }
+
+  .sign-out:hover {
+    border-right: 2px solid #333333;
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .menu-wrapper .menu-link {
+    text-decoration: none;
+    color: #333333;
+    font: normal normal 600 10px/39px Lato;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+  }
+  .menu-wrapper .menu-link img {
+    width: 20px;
+    height: 20px;
+    margin-right: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    width: 0;
+  }
+
+  .menu-wrapper {
+    padding-left: 22px;
+
+    .profile-wrapper {
+      padding-bottom: 0;
+      height: 100px;
+
+      .profile-section {
+        align-items: center;
+      }
+    }
+  }
+}

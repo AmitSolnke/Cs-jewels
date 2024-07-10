@@ -1,0 +1,26 @@
+.product-review-card {
+    border: 1px solid #E0E0E0;
+    padding: 29px 20px;
+    position: relative;
+
+    .date {
+        position: absolute;
+        right: 20px;
+        top: 29px;
+    }
+
+    .customer-name {
+        font: italic normal bold 18px/30px Playfair Display;
+        color: #333333;
+        margin-top: 23px;
+    }
+    .review-content {
+        font: normal normal normal 14px/24px Lato;
+        color: #666666;
+    }
+}
+@media (max-width: 767px) {
+    .product-review-card {
+        min-width: 250px;
+    }
+}

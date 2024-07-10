@@ -1,0 +1,29 @@
+.radio-group {
+  display: grid !important;
+  width: 100%;
+  grid-template-columns: auto auto !important;
+  justify-items: stretch;
+  align-items: center;
+  grid-template-columns: 0.5rem;
+  
+  label {
+    margin-left: 0.2rem;
+    margin-right: 0;
+  }
+  .radio-label {
+    background-color: #f5f5f5;
+  }
+}
+
+.bg-black {
+  color: #fff !important;
+  border-radius: 0 !important;
+  white-space: nowrap;
+  letter-spacing: 1.8px !important;
+}
+
+.outlined-black {
+  border-color: #000 !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+}

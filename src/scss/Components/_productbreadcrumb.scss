@@ -1,0 +1,16 @@
+.breadcrumb-element {
+    text-align: left;
+    font: normal normal normal 10px/12px Lato;
+    letter-spacing: 1.5px;
+    color: #FFFFFF !important;
+    text-transform: uppercase;
+    opacity: 1;
+}
+.MuiBreadcrumbs-separator{
+    color: #FFFFFF !important;
+}
+@media (max-width: 768px) {
+    .MuiBreadcrumbs-ol{
+        justify-content: center !important;
+    }
+}

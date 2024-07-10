@@ -1,0 +1,49 @@
+.enquiry-modal {
+  .side-product-image {
+    position: relative;
+    width: 100%;
+    left: -32px;
+    top: -32px;
+    bottom: 65px !important;
+    height: calc(100% + 64px);
+  }
+
+  .form-title {
+    font: normal normal 600 34px/42px Playfair Display;
+    letter-spacing: 0.51px;
+    color: #333333;
+  }
+
+  .form-subtitle {
+    font: normal normal normal 16px/24px Lato;
+    color: #666666;
+  }
+
+  .input-field {
+    margin-bottom: 12px;
+  }
+
+  @media screen and (max-width: 750px) {
+    .box-container {
+      width: 25em !important;
+    }
+
+    .dialog-main {
+      transform: translateY(-40px) !important;
+    }
+    .side-product-image-wrapper {
+      flex-direction: column !important;
+
+      .side-product-image {
+        width: calc(100% + 64px);
+        height: 370px !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 376px) {
+    .box-container {
+      width: 22em !important;
+    }
+  }
+}

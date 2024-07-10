@@ -1,0 +1,339 @@
+.product-details-container {
+    width: 100%;
+    background: #fff;
+    padding: 0 40px;
+
+    .product-details-main {
+        display: flex;
+        justify-content: center;
+        width: 100% !important;
+
+        .product-images-container {
+            max-height: 580px;
+            width: 50%;
+            overflow: auto;
+
+            .product-image {
+                width: 100%;
+                background-color: #f9f8f2;
+                margin-bottom: 5px;
+            }
+        }
+
+        .product-info-container {
+            padding: 45px;
+            width: 50%;
+
+            .product-name-wrapper {
+                width: 100%;
+                position: relative;
+
+                .product-name {
+                    color: #333333;
+                    font: normal normal 600 32px/43px Playfair Display;
+                    text-align: left;
+                    height: 43px;
+                }
+
+                .logo {
+                    position: absolute;
+                    right: 0;
+                    top: 10px;
+                }
+            }
+
+            .review-section {
+                margin-top: 14px;
+                display: flex;
+                vertical-align: middle;
+                align-items: center;
+
+                .review-count {
+                    align-items: center;
+                    display: flex;
+                    padding-left: 12px;
+                    font: normal normal normal 14px/26px Lato;
+                    color: #333333;
+                }
+
+                .review-btn {
+                    padding: 0;
+                    border: none;
+                    height: 10px;
+                    font: normal normal bold 10px/12px Lato;
+                    color: #916F25;
+                    text-transform: uppercase;
+                    padding-left: 20px;
+                }
+                .review-btn:hover {
+                    color: #916F25 !important;
+                    background-color: transparent !important;
+                    border: none;
+                }
+            }
+
+            .weight {
+                margin-top: 38px;
+                text-align: left;
+                font: normal normal medium 16px/19px Lato;
+                color: #672A2F;
+                text-transform: uppercase;
+            }
+
+            .price {
+                font: normal normal 900 26px/32px Lato;
+                text-transform: uppercase;
+                margin-top: 15px;
+            }
+
+            .description {
+                font: normal normal normal 16px/22px Lato;
+                color: #666666;
+                padding-top: 25px;
+            }
+
+            .devider {
+                margin-top: 30px;
+            }
+
+            .availability-wrapper {
+                display: flex;
+                margin-top: 40px;
+
+                label {
+                    font: normal normal 600 14px/17px Lato;
+                    color: #333333;
+                    margin-bottom: 11px;
+                }
+
+                .check-wrapper {
+                    position: relative;
+
+                    .check-btn {
+                        position: absolute;
+                        right: 0;
+
+                        .icon {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+
+                    .check-btn:hover {
+                        background-color: #916F25 !important;
+                        color: #FFFFFF;
+                        border: 1px solid #916F25;
+                    }
+
+                    .check-input {
+                        padding-inline-end: 145px;
+                    }
+                }
+
+                .quantity-handler {
+                    border: 1px solid #999999;
+                    position: relative;
+                    height: 45px;
+
+                    .decrease {
+                        position: absolute;
+                        left: 0;
+                    }
+
+                    .quantity {
+                        justify-content: center;
+                        display: flex;
+                        width: 100%;
+                    }
+
+                    .increase {
+                        position: absolute;
+                        right: 0;
+                    }
+                }
+            }
+
+            .shopping-btn-wrapper {
+                margin-top: 40px;
+                display: flex;
+                gap: 18px;
+
+                .buy-now-btn:hover,
+                .add-to-cart-btn:hover {
+                    background-color: #916F25 !important;
+                    color: #FFFFFF;
+                    border: 1px solid #916F25;
+                }
+
+                .icon {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                .buy-now-btn {
+                    background: #000000 0% 0% no-repeat padding-box;
+                    color: #FFFFFF;
+                }
+            }
+
+            .tab-lable {
+                font: normal normal medium 12px/15px Lato;
+                color: #666666;
+            }
+
+            .tab-panel {
+                font: normal normal normal 12px/30px Lato;
+                color: #666666;
+            }
+        }
+    }
+
+    .customers-review-section {
+        padding: 100px 140px;
+
+        .avg-review-section {
+            width: 100%;
+            display: flex;
+            gap: 16px;
+            position: relative;
+
+            .avg-review {
+                font: normal normal 900 26px/36px Lato;
+                color: #333333;
+            }
+        }
+
+        .write-a-btn {
+            position: absolute;
+            right: 0;
+            top: -5px;
+        }
+    }
+
+    .devider {
+        margin: 30px 0;
+    }
+
+    .product-review-wrapper {
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
+
+    
+    .you-may-like-section {
+        padding: 0 140px 100px 140px;
+
+        p {
+            font: normal normal normal 16px/22px Lato;
+            color: #666666;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .product-review-wrapper {
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+        .you-may-like-section {
+            padding: 0 80px 50px 80px;
+        }
+        .customers-review-section {
+            padding: 50px 80px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        padding: 0 10px;
+
+        .product-details-main {
+            display: contents;
+
+            .product-images-container {
+                width: 100% !important;
+
+                .image-container {
+                    display: flex;
+                }
+            }
+
+            .product-info-container {
+                width: 100% !important;
+
+                .product-name {
+                    font-size: 20px;
+                }
+
+                .logo svg {
+                    height: 15px;
+                }
+
+                .review-section {
+                    margin-top: 12px;
+
+                    .review-count {
+                        font-size: 12px;
+                    }
+
+                    .review-btn {
+                        font-size: 9px;
+                    }
+                }
+
+                .weight {
+                    margin-top: 23px;
+                    font-size: 12px;
+                }
+
+                .price {
+                    font-size: 21px;
+                }
+
+                .description {
+                    font-size: 14px;
+                }
+
+                .availability-wrapper {
+                    display: grid;
+                }
+            }
+        }
+
+        .avg-review-section {
+            display: block !important;
+
+            .avg-review-wrapper {
+                .avg-review {
+                    font-size: 18px;
+                }
+
+                svg {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+
+            .write-a-btn {
+                position: relative;
+                margin-top: 30px;
+            }
+        }
+
+        .customers-review-section {
+            padding: 100px 20px;
+        }
+
+        .product-review-wrapper {
+            display: flex;
+            overflow: auto;
+        }
+
+        .you-may-like-section {
+            padding: 0 20px 100px 20px;
+        }
+
+    }
+}

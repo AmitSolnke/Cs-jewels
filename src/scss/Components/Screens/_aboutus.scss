@@ -1,0 +1,188 @@
+.head-text-about-us {
+    position: relative;
+    text-align: center;
+    padding-top: 25px;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 22%;
+    padding-right: 22%;
+}
+
+.head-text-about-us p {
+    text-align: center;
+    font: normal normal 600 42px/56px Playfair Display;
+    letter-spacing: 0.63px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.box-about-us {
+    padding-top: 50px !important;
+}
+
+.about-us-description-read-more {
+    text-align: left;
+    font: normal normal normal 16px/26px Lato;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+}
+
+.about-us-button-read-more button {
+    text-decoration: underline;
+    font: normal normal bold 14px/17px Lato;
+    letter-spacing: 2.1px;
+    color: #916F25;
+    text-transform: uppercase;
+    opacity: 1;
+    border: none;
+    background: transparent;
+    padding-left: 0;
+}
+
+.our-specialities-header {
+    text-align: left;
+    font: normal normal 600 36px/48px Playfair Display;
+    letter-spacing: 0.54px;
+    color: #672A2F;
+    opacity: 1;
+}
+
+.our-specialities-description {
+    text-align: left;
+    font: normal normal normal 16px/26px Lato;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+}
+
+.about-us-description-read-more img {
+    width: 100%;
+}
+
+.our-specialities-container:nth-child(3) {
+    padding-bottom: 40px !important;
+    padding-top: 60px !important;
+    padding-left: 40px !important;
+}
+
+.our-specialities-container:nth-child(2) {
+    padding-bottom: 40px !important;
+    padding-top: 60px !important;
+    padding-right: 40px !important;
+}
+
+.our-specialities-image-container {
+
+    // height: 100%;
+    .our-specialities-image {
+        height: 100%;
+    }
+
+    .our-specialities-image img {
+        height: 100%;
+    }
+}
+
+.bottom-full-image-about-us-container {
+    padding-top: 100px;
+    width: 100%;
+}
+
+.bottom-full-image-about-us-container img {
+    width: 100%;
+}
+
+.about-us-full-screen-description {
+    padding-top: 30px !important;
+}
+
+.about-us-awards-header-container {
+    text-align: -webkit-center;
+}
+
+.about-us-awards-header {
+    text-align: center;
+    font: normal normal 600 36px/48px Playfair Display;
+    letter-spacing: 0.54px;
+    color: #672A2F;
+    opacity: 1;
+}
+
+.about-us-awards-description {
+    text-align: center;
+    font: normal normal normal 16px/26px Lato;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+}
+
+.about-us-awards-header-container-for-titles {
+    text-align: -webkit-center;
+    height: 40%;
+}
+
+.about-us-awards-header-image {
+    height: 138px;
+}
+
+.about-us-awards-header {
+    text-align: center;
+    font: normal normal 600 36px/48px Playfair Display;
+    letter-spacing: 0.54px;
+    color: #672A2F;
+    opacity: 1;
+    padding-bottom: 24px;
+}
+
+.about-us-awards-description {
+    text-align: center;
+    font: normal normal normal 16px/26px Lato;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+    padding-bottom: 50px;
+}
+.about-us-last-element{
+    padding-bottom: 100px;
+}
+
+@media (max-width: 767px) {
+    .our-specialities-container {
+        padding-left: 16px !important;
+    }
+
+    .bottom-full-image-about-us-container {
+        padding-top: 0;
+    }
+
+    .about-us-full-screen-description {
+        padding-top: 20px !important;
+    }
+
+    .about-us-awards-header {
+        text-align: center;
+        font: normal normal 600 24px/32px Playfair Display;
+        letter-spacing: 0.36px;
+        color: #672A2F;
+        opacity: 1;
+        padding-bottom: 12px;
+    }
+
+    .about-us-awards-description {
+        text-align: center;
+        font: normal normal normal 14px/22px Lato;
+        letter-spacing: 0px;
+        color: #666666;
+        opacity: 1;
+        padding-bottom: 30px;
+    }
+    .about-us-awards-header-container-for-titles{
+        padding-bottom: 45px;
+    }
+    .bottom-full-image-about-us-container{
+        padding-top: 50px;
+    }
+}

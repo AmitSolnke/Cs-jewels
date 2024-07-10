@@ -1,0 +1,71 @@
+.image-slider-card-text {
+    z-index: 1;
+    position: absolute;
+    height: 17px;
+    text-align: left;
+    font: normal normal bold 14px/17px Lato;
+    letter-spacing: 2.1px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+    border-top-style: outset;
+    bottom: 36px;
+    display: flex;
+    width: 84%;
+    margin: 0 8%;
+    padding-top: 10px;
+}
+
+.image-slide-card-container:hover {
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+.image-slide-card-container {
+    position: relative;
+}
+ul.image-slider-component::-webkit-scrollbar {
+    display: none;
+}
+
+.image-slider-component {
+    padding: 0;
+    margin-bottom: 0;
+    -ms-overflow-style: none;
+}
+
+.no-border {
+    border: none;
+    align-self: center;
+}
+
+@media (max-width: 768px) {
+    .image-slide-card-container {
+        height: 100%;
+        width: 100%;
+
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .image-slider-card-text {
+        bottom: 26px;
+        text-align: left;
+        font: normal normal bold 10px/12px Lato;
+        letter-spacing: 1.5px;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        opacity: 1;
+        width: 84%;
+        margin: 0 8%;
+    }
+    .Offers-item-section {
+        min-width: 80% !important;
+    }
+    .Discover-item-section{
+        min-width: 75% !important;
+    }
+}

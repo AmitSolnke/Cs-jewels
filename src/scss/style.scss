@@ -1,0 +1,61 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+//pages
+@import 'common';
+@import 'header';
+@import 'footer';
+
+//component
+@import "./Components/Screens/home";
+@import "./Components/carouselhome";
+@import "./Components/imagesliderhome";
+@import "./Components//imageslidercardhome";
+@import "./Components//Screens/contactus";
+@import "./Components//faqs.scss";
+@import "./Components/Screens/_aboutus";
+@import "./Components/Screens/productdashboard";
+@import "./Components/productbreadcrumb";
+@import "./Components/productreviewcard";
+
+@import "./Components/faqs.scss";
+@import "./Components/Screens/privacypolicy";
+@import "./Components/Screens/aboutus";
+@import "./Components/Screens/productdetails";
+@import "./Components/Screens/findastore";
+@import "./Components/Screens/myorder";
+@import "./Components/Screens/personaldetails";
+@import "./Components/Screens/authModal";
+@import "./Components/Screens/addressBook";
+@import "./Components/Screens/addressForm";
+@import "./Components/Screens/confirmationDialog";
+@import "./Components/Screens/shoppingBag";
+@import "./Components/Screens/orderLayout";
+@import "./Components/Screens/checkOut";
+@import "./Components/Screens/yourDetails";
+@import "./Components/Screens/delivery";
+@import "./Components/Screens/payment";
+@import "./Components/Screens/productDetailsLatest";
+@import "./Components/Screens/enquiryModal";
+@import "./Components/Screens/bullions";
+@import "./Components/Screens/filterMenu";
+@import "./Components/Screens/bullionsFilter";
+@import "./Components/Screens/sortMenu";
+
+@import "./Components/Screens/wishlist";
+@import "./Components/Screens/product-catalogues";
+//common component
+
+@import "./Components/common/sidebar";
+@import "./Components/common/navigationDropDown";
+@import "./Components/common/searchDropdown";
+@import "./Components/productcard";
+@import "./Components/testimonial";
+
+.main-container{
+    background-color: #F8F6F0 ;
+    height: 100vh;
+}
+.outlet-container {
+    max-height: calc(100vh - 10px);
+    overflow: auto;
+}

@@ -1,0 +1,45 @@
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root.Mui-expanded {
+    margin: 0 !important;
+}
+
+.MuiPaper-elevation1 {
+    border-bottom: 0.2px solid #CCCCCC;
+    border-top: 0.2px solid #CCCCCC;
+    box-shadow: none !important;
+}
+
+.faqs-container:nth-child(1) {
+    border-top: 0.2px solid #CCCCCC !important;
+}
+
+.faqs-container:nth-child(n) {
+    border-bottom: 0.2px solid #CCCCCC !important;
+}
+
+.working-hours-container {
+    display: flex;
+}
+
+.workingHours-text-field {
+    margin-bottom: 0 !important;
+}
+
+.find-store-description {
+    text-align: left;
+    font: normal normal normal 14px/21px Lato;
+    letter-spacing: 0px;
+    color: #666666;
+    opacity: 1;
+    display: flex;
+}
+
+.toll-free-no {
+    text-align: left;
+    text-decoration: underline;
+    font: normal normal bold 14px/21px Lato;
+    letter-spacing: 0px;
+    color: #916F25;
+}
+.find-store-description-text{
+    margin-bottom: 20px !important;
+}

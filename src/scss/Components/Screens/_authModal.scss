@@ -1,0 +1,28 @@
+.otpContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    grid-gap: 1rem;
+
+    input {
+        width: 50px;
+        height: 60px;
+        text-align: center;
+        font-size: 30px;
+        font-style: bold;
+        color: #333333;
+    }
+}
+
+.MuiBox-root.css-1wnsr1i {
+    padding: 20px;
+}
+
+.dialog-title {
+    font-size: 24px;
+    letter-spacing: 3.6px;
+}
+
+.small-text {
+    font-size: 14px;
+}

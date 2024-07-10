@@ -1,0 +1,186 @@
+.product-dash-board-header-image-container {
+    height: 250px !important;
+}
+
+.product-dash-board-image-header-text-container {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.product-dash-board-header {
+    text-align: center;
+    font: normal normal 600 36px/48px Playfair Display;
+    letter-spacing: 0.54px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.product-dash-board-description {
+    text-align: center;
+    font: normal normal normal 16px/22px Lato;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.breadcrumb-container-productpage {
+    padding-left: 40px !important;
+}
+
+.product-page-sort-by-container {
+    text-align: right;
+}
+
+.product-page-chip {
+    background-color: #333333 !important;
+    opacity: 1;
+    border-radius: 0 !important;
+    margin-right: 10px !important;
+
+    span {
+        text-align: left;
+        font: normal normal medium 12px/15px Lato !important;
+        letter-spacing: 1.8px;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        opacity: 1;
+    }
+}
+
+.product-page-clear-all-button {
+    text-align: left;
+    height: 33px;
+    border-bottom: 1px solid #333333 !important;
+    border-radius: 0 !important;
+    font: normal normal medium 12px/15px Lato;
+    letter-spacing: 1.8px !important;
+    color: #333333 !important;
+    text-transform: uppercase !important;
+    opacity: 1;
+}
+
+.product-page-clear-all-button:hover {
+    border: none !important;
+    background-color: transparent !important;
+    color: #333333 !important;
+}
+
+.product-page-divider {
+    border: 1px solid #D6D6D6 !important;
+    opacity: 1;
+    margin: 0 !important;
+}
+
+.product-grid-container {
+    padding-bottom: 20px;
+}
+
+.product-list-grid-section {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+@media (max-width: 1024px) {
+    .product-list-grid-section {
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+}
+
+.product-grid-container {
+    justify-content: center !important;
+}
+
+.product-list-page-pagination-container .MuiPagination-ul {
+    place-content: center;
+}
+
+.product-list-page-pagination-container .MuiPagination-ul button:hover {
+    background: transparent !important;
+    border: none;
+    text-align: left;
+    font: normal normal bold 14px/17px Lato;
+    letter-spacing: 2.1px;
+    color: #333333;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.product-list-page-pagination-container .MuiPagination-ul button {
+    background: transparent !important;
+    text-align: left;
+    font-weight: normal;
+    font: normal normal 14px/17px Lato;
+    letter-spacing: 2.1px;
+    color: #333333;
+    text-transform: uppercase;
+    margin: 0 !important;
+}
+
+.MuiPagination-root {
+    .MuiPagination-ul {
+        flex-wrap: nowrap;
+
+        li {
+            &:first-child {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                text-align: left;
+                text-decoration: underline;
+                font: normal normal bold 14px/17px Lato;
+                letter-spacing: 2.1px;
+                color: #999999;
+                text-transform: uppercase;
+                opacity: 1;
+                >button svg {
+                    visibility: hidden;
+                }
+                >button::after {
+                    margin-left: 10px;
+                    content: 'PREV';
+                }
+            }
+
+            &:last-child {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                text-align: left;
+                text-decoration: underline;
+                font: normal normal bold 14px/17px Lato;
+                letter-spacing: 2.1px;
+                color: #333333;
+                text-transform: uppercase;
+                opacity: 1;
+                >button svg {
+                    visibility: hidden;
+                }
+                >button::before {
+                    margin-right: 10px;
+                    content: 'NEXT';
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .product-list-grid-section {
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+
+    .product-grid-container {
+        padding: 10px !important;
+    }
+}

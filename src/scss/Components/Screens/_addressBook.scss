@@ -1,0 +1,14 @@
+.outlined-black {
+  border-color: #000 !important;
+  color: #000 !important;
+}
+
+.cards-container {
+  max-height: 50vh;
+  overflow: auto;
+}
+
+.saved-address-cards-container,
+.address-book-container {
+  padding-bottom: 0 !important;
+}

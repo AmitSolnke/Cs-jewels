@@ -1,52 +1,54 @@
-import React, { useState } from 'react';
-import logo from '../images/icons/logo.svg';
-import rightArrowIcon from '../images/icons/right-arrow.svg';
-import facebookIcon from '../images/icons/social-media/facebook.svg';
-import instagramIcon from '../images/icons/social-media/instagram.svg';
-import twitterIcon from '../images/icons/social-media/twitter.svg';
-import { useNavigate } from "react-router-dom";
-import { subscribeEmail } from '../services/FrontApp/index.service';
+import React, { useState } from "react";
+import logo from "../images/icons/logo.svg";
+import rightArrowIcon from "../images/icons/right-arrow.svg";
+import facebookIcon from "../images/icons/social-media/facebook.svg";
+import instagramIcon from "../images/icons/social-media/instagram.svg";
+import twitterIcon from "../images/icons/social-media/twitter.svg";
+import { Link, useNavigate } from "react-router-dom";
+import { subscribeEmail } from "../services/FrontApp/index.service";
 import ErrorList from "./Common/ErrorList";
 import SuccessMsg from "./Common/SuccessMsg";
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 function Footer() {
-  const [errors, setErrors] = useState([])
-  const [successMsg, setSuccesMsg] = useState('')
+  const [errors, setErrors] = useState([]);
+  const [successMsg, setSuccesMsg] = useState("");
   const [data, setData] = useState({
-    email: '',
-  })
+    email: "",
+  });
 
   const handleChange = ({ target }) => {
-    data[target.name] = target.value
-    const temp = Object.assign({}, data)
-    setData(temp)
-  }
+    data[target.name] = target.value;
+    const temp = Object.assign({}, data);
+    setData(temp);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setErrors([])
-    setSuccesMsg('')
+    setErrors([]);
+    setSuccesMsg("");
     try {
       const result = await subscribeEmail(data);
-      setSuccesMsg(result.data.message)
+      setSuccesMsg(result.data.message);
     } catch (error) {
-      setErrors(error.response.data.message)
+      setErrors(error.response.data.message);
     }
-
   };
 
   let navigate = useNavigate();
   const navigateToFindStore = () => {
     let path = `/find-a-store`;
     navigate(path);
-  }
+  };
   return (
     <>
-    <div className="whatsapp-button">
-      <a target="_blank" href="https://api.whatsapp.com/send?phone=+917719991827&text=hlo" >
-        <WhatsAppIcon /> <span> WhatsApp Us! </span>
-      </a>
+      <div className="whatsapp-button">
+        <a
+          target="_blank"
+          href="https://api.whatsapp.com/send?phone=+917719991827&text=hlo"
+        >
+          <WhatsAppIcon /> <span> WhatsApp Us! </span>
+        </a>
       </div>
       <footer>
         <div className="footer-container">
@@ -63,17 +65,14 @@ function Footer() {
                     <div className="row">
                       <div className="col-lg-12">
                         <p className="mb-2">
-                          <span>Email: </span>
-                          {' '}
-                          care@csjewels.com
+                          <span>Email: </span> care@csjewels.com
                         </p>
                         <p className="mb-4">
-                          <span>Phone: </span>
-                          {' '}
-                          07969991827
+                          <span>Phone: </span> 07969991827
                         </p>
                         <p className="address">
-                          S.No.558, Ground Floor, Indraprastha Plus, Near Apollo Theatre, Rasta Peth, Pune - 411011
+                          S.No.558, Ground Floor, Indraprastha Plus, Near Apollo
+                          Theatre, Rasta Peth, Pune - 411011
                         </p>
                       </div>
                     </div>
@@ -98,7 +97,10 @@ function Footer() {
                         <a href="/privacy-policy" className="btn btn-link">
                           Privacy Policy
                         </a>
-                        <a href="/terms-and-conditions" className="btn btn-link">
+                        <a
+                          href="/terms-and-conditions"
+                          className="btn btn-link"
+                        >
                           Terms & Condition
                         </a>
                         {/* <a href="/" className="btn btn-link">
@@ -107,11 +109,18 @@ function Footer() {
                         <a href="/CSR-Policy" className="btn btn-link">
                           CSR Policy
                         </a>
+                        <a href="/refund-policy" className="btn btn-link">
+                          Return/Refund & Cancelation Policy
+                        </a>
                       </div>
                     </div>
                   </div>
                   <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-7 ">
-                    <button onClick={navigateToFindStore} type="button" className="mt-3">
+                    <button
+                      onClick={navigateToFindStore}
+                      type="button"
+                      className="mt-3"
+                    >
                       Find A Store
                     </button>
                   </div>
@@ -136,10 +145,12 @@ function Footer() {
                     value={data.email}
                     onChange={handleChange}
                   />
-                  <button type="button" className="subscribe-btn" onClick={handleSubmit}>
-                    Subscribe
-                    {' '}
-                    <img src={rightArrowIcon} alt="rightArrowIcon" />
+                  <button
+                    type="button"
+                    className="subscribe-btn"
+                    onClick={handleSubmit}
+                  >
+                    Subscribe <img src={rightArrowIcon} alt="rightArrowIcon" />
                   </button>
                 </div>
                 <div className="social-media-wrapper">

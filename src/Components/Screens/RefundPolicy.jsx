@@ -47,7 +47,7 @@ function RefundPolicy() {
               CANCELLATION POLICY
             </div>
             <div className="privacy-policy-normal-text">
-              <ol>
+              <ol className="ps-3">
                 <li>Orders can be canceled only before they are shipped.</li>
                 <li>Bullion orders cannot be canceled.</li>
                 <li>Cancellation charges apply once an order is placed.</li>
@@ -56,7 +56,7 @@ function RefundPolicy() {
                   confirm within 5 days.
                 </li>
                 <li>
-                  To cancel an order, please email care@csjewels.com within 2
+                  To cancel an order, please email at care@csjewels.com within 2
                   days of order confirmation, including the order ID in the
                   subject line.
                 </li>

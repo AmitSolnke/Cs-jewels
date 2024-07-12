@@ -6,33 +6,42 @@ import { getBanner } from "../services/FrontApp/index.service";
 import bannerPlaceholder from "../images/img-placeholder.jpg";
 
 function CarouselHome() {
-  const [desktopBanner, setDesktopBanner] = useState([]);
-  const [mobileBanner, setMobileBanner] = useState([]);
+  const [banners, setBanners] = useState({ desktop: [], mobile: [] });
   const [loadingBanner, setLoadingBanner] = useState(true);
 
-  const getData = async () => {
-    setLoadingBanner(true);
-    try {
-      const result = await getBanner();
-      const desktop = result.data.data.filter((banner) => {
-        return banner.image_for == "DESKTOP";
-      });
-      const mobile = result.data.data.filter((banner) => {
-        return banner.image_for == "MOBILE";
-      });
-      setDesktopBanner(desktop);
-      setMobileBanner(mobile);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoadingBanner(false);
-    }
-  };
-
   useEffect(() => {
-    getData();
+    (async () => {
+      setLoadingBanner(true);
+      try {
+        const result = await getBanner();
+        const desktop = result.data.data.filter(
+          (banner) => banner.image_for === "DESKTOP"
+        );
+        const mobile = result.data.data.filter(
+          (banner) => banner.image_for === "MOBILE"
+        );
+
+        const preloadImage = (url) => {
+          const link = document.createElement("link");
+          link.rel = "preload";
+          link.as = "image";
+          link.href = url;
+          document.head.appendChild(link);
+        };
+
+        desktop.forEach((banner) => preloadImage(banner.image_path));
+        mobile.forEach((banner) => preloadImage(banner.image_path));
+
+        setBanners({ desktop, mobile });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoadingBanner(false);
+      }
+    })();
   }, []);
-  var settings = {
+
+  const settings = {
     dots: true,
     infinite: false,
     speed: 500,
@@ -55,11 +64,11 @@ function CarouselHome() {
       ) : (
         <div className="service-slider">
           <Slider {...settings} className="d-md-none">
-            {mobileBanner.map((item, key) => (
+            {banners.mobile.map((item, key) => (
               <div key={key} className="carouselPaper">
                 <img
                   className="carousel-img"
-                  src={`${item.image_path}`}
+                  src={item.image_path}
                   alt="banner carousel img"
                 />
                 <div className="service-slide-text-wrapper">
@@ -75,11 +84,11 @@ function CarouselHome() {
             ))}
           </Slider>
           <Slider {...settings} className="d-none d-md-block">
-            {desktopBanner.map((item, key) => (
+            {banners.desktop.map((item, key) => (
               <div key={key} className="carouselPaper">
                 <img
                   className="carousel-img"
-                  src={`${item.image_path}`}
+                  src={item.image_path}
                   alt="banner carousel img"
                 />
                 <div className="service-slide-text-wrapper">

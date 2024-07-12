@@ -7,7 +7,11 @@ import searchLogo from "../images/icons/search.svg";
 import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
-import { getLiveRateForCSP, getMetals, getMetalItems } from "../services/FrontApp/index.service";
+import {
+  getLiveRateForCSP,
+  getMetals,
+  getMetalItems,
+} from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
@@ -42,24 +46,24 @@ function Header({ openDrawer, handleOpenDrawer }) {
   const getMetalData = async () => {
     try {
       const metals = await getMetals();
-      const temp = []
+      const temp = [];
       for (let index = 0; index < metals.data.data.length; index++) {
         const data = metals.data.data[index];
         let itemData = [];
         try {
           var bodyFormData = new FormData();
-          bodyFormData.append('metal_type_master_id[0]', data.id);
+          bodyFormData.append("metal_type_master_id[0]", data.id);
           const items = await getMetalItems(bodyFormData);
           itemData = items.data.data;
-        } catch (error) { }
+        } catch (error) {}
         temp.push({
           id: data.id,
           metal: data.metal_type,
-          metal_items: itemData
-        })
+          metal_items: itemData,
+        });
       }
-      setMetalTypesData(temp)
-    } catch (error) { }
+      setMetalTypesData(temp);
+    } catch (error) {}
   };
 
   const getData = async () => {
@@ -92,10 +96,16 @@ function Header({ openDrawer, handleOpenDrawer }) {
   });
 
   window.onclick = (event) => {
-    if (!$(event.target).closest('#navigation-dropdown-wrapper').length && event.target.id != "jewellery-link") {
+    if (
+      !$(event.target).closest("#navigation-dropdown-wrapper").length &&
+      event.target.id != "jewellery-link"
+    ) {
       setShowDropdown(false);
     }
-    if (!$(event.target).closest('#search-dropdown-wrapper').length && event.target.id != "search-logo") {
+    if (
+      !$(event.target).closest("#search-dropdown-wrapper").length &&
+      event.target.id != "search-logo"
+    ) {
       setSearchDropdown(false);
     }
   };
@@ -117,7 +127,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     />
                     <div className="logo">
                       <Link to="/">
-                        <img src={logo} alt="Logo" className="site-logo image" />
+                        <img
+                          src={logo}
+                          alt="Logo"
+                          className="site-logo image"
+                        />
                       </Link>
                     </div>
                     <div className="header-icon-list">
@@ -151,7 +165,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     <div className="row position-relative">
                       <div className="logo">
                         <Link to="/">
-                          <img src={logo} alt="Logo" className="site-logo image" />
+                          <img
+                            src={logo}
+                            alt="Logo"
+                            className="site-logo image"
+                          />
                         </Link>
                       </div>
                       <div className="col-8 p-0 position-absolute end-0 h-100">
@@ -253,20 +271,21 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </Link>
                         </li> */}
                         <li className="w-100">
-                          <Link className="menu-links" to="/">Home</Link>
+                          <Link className="menu-links" to="/">
+                            Home
+                          </Link>
                         </li>
                         <li className="w-100">
-                          <div
-                            id="jewellery-link"
-                            onClick={() => {
-                              setShowDropdown(true);
-                            }}
-                          >
-                            Jewellery
-                          </div>
+                          id="jewellery-link" onClick=
+                          {() => {
+                            setShowDropdown((prev) => !prev);
+                          }}
+                          Jewellery
                         </li>
                         <li className="w-100">
-                          <Link className="menu-links" to="/aboutus">About us</Link>
+                          <Link className="menu-links" to="/aboutus">
+                            About us
+                          </Link>
                         </li>
                       </div>
                     </ul>
@@ -285,15 +304,13 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <li>
                           <Link to="/">Home</Link>
                         </li>
-                        <li>
-                          <div
-                            id="jewellery-link"
-                            onClick={() => {
-                              setShowDropdown(true);
-                            }}
-                          >
-                            Jewellery
-                          </div>
+                        <li
+                          id="jewellery-link"
+                          onClick={() => {
+                            setShowDropdown((prev) => !prev);
+                          }}
+                        >
+                          Jewellery
                         </li>
                         <li>
                           <Link to="/aboutus">About us</Link>
@@ -313,7 +330,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                 </div>
                 <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
                   <div className="header-icon-list">
-                     {/* <ul className="w-100">
+                    {/* <ul className="w-100">
                       <li>
                         <Link onClick={() => setSearchDropdown(true)}>
                           <img
@@ -378,18 +395,18 @@ function Header({ openDrawer, handleOpenDrawer }) {
         </div>
       </header>
       {showDropdown && (
-        <div
-          id="navigation-dropdown-wrapper"
-          className="dropdown-wrapper"
-        >
-          <NavigationDropdown metalData={metalTypesData} setShowDropdown={setShowDropdown} />
+        <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
+          <NavigationDropdown
+            metalData={metalTypesData}
+            setShowDropdown={setShowDropdown}
+          />
         </div>
       )}
       {searchDropdown && (
         <div
           id="search-dropdown-wrapper"
           className="dropdown-wrapper position-sticky"
-          style={{position: 'sticky', top: '120px', zIndex:'2'}}
+          style={{ position: "sticky", top: "120px", zIndex: "2" }}
         >
           <SearchDropdown setSearchDropdown={setSearchDropdown} />
         </div>

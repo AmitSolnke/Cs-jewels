@@ -1,15 +1,25 @@
 import React from "react";
-import { Box, Grid, Divider,styled,Paper,Card,CardContent,CardMedia,Button,Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Divider,
+  styled,
+  Paper,
+  Card,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+} from "@mui/material";
 import { Pagination } from "@mui/material";
-import {  } from "@mui/material/styles";
+import {} from "@mui/material/styles";
 import facebookIcon from "../../images/icons/social-media/facebook.svg";
 import instagramIcon from "../../images/icons/social-media/instagram.svg";
 import twitterIcon from "../../images/icons/social-media/twitter.svg";
-import aboutUsTitleImage from "../../images/aboutUsTitleImage.png";
+import aboutUsTitleImage from "../../images/aboutUsTitleImage.jpeg";
 import useWindowWidthAndHeight from "../../utilities/CustomHooks";
 import TreasuredStoriesBackground from "../../images/TreasuredStoriesBackground.png";
 import newimages from "../../images/SocietyContribution.png";
-
 
 const data = [
   {
@@ -59,7 +69,7 @@ const NewsAndBlogs = () => {
   const handleChange1 = (event, value) => {
     setPage1(value);
   };
-  
+
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className="col-12 about-us">
@@ -67,10 +77,16 @@ const NewsAndBlogs = () => {
         className="head-text-about-us"
         style={{ backgroundImage: `url(${aboutUsTitleImage})` }}
       >
-        <span   >
+        <span>
           {" "}
-         <small ><b style={{ color:"white"}}> DIAMOND RING BUYING GUIDE:TOP FIVE THINGS TO CONSIDER </b></small><br></br>
-          <span style={{ color:"white"}}>READ ON</span>
+          <small>
+            <b style={{ color: "white" }}>
+              {" "}
+              DIAMOND RING BUYING GUIDE:TOP FIVE THINGS TO CONSIDER{" "}
+            </b>
+          </small>
+          <br></br>
+          <span style={{ color: "white" }}>READ ON</span>
         </span>
       </div>
 
@@ -82,7 +98,7 @@ const NewsAndBlogs = () => {
             <div className="image-container-news">
               <img src={newimages} alt="Snow" className="gallery-image-news" />
               <div className="image-text-news ">
-               <span> HOW TO TAKE CARE OF OXIDIZED JEWELLERY </span>
+                <span> HOW TO TAKE CARE OF OXIDIZED JEWELLERY </span>
                 <p className="text-center">READ ON</p>
               </div>
             </div>
@@ -220,12 +236,13 @@ const NewsAndBlogs = () => {
       </div>
 
       {/*   pagination code  */}
-      <div className="p-4">      
-      <Box sx={{ margin: "auto", width: "fit-content", justifyContent: "left" }}>
-        <Pagination count={10} page={page1} onChange={handleChange1} />
-      </Box>
-    </div>
-
+      <div className="p-4">
+        <Box
+          sx={{ margin: "auto", width: "fit-content", justifyContent: "left" }}
+        >
+          <Pagination count={10} page={page1} onChange={handleChange1} />
+        </Box>
+      </div>
     </div>
   );
 };

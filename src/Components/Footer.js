@@ -80,23 +80,23 @@ function Footer() {
                   <div className="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-6">
                     <div className="row">
                       <div className="col-lg-6">
-                        <a href="/aboutus" className="btn btn-link">
+                        <Link to="/aboutus" className="btn btn-link">
                           About us
-                        </a>
+                        </Link>
                         {/* <a href="/news-&-blog" className="btn btn-link">
                           News & Blogs
                         </a> */}
-                        <a href="/contact-us" className="btn btn-link">
+                        <Link to="/contact-us" className="btn btn-link">
                           Contact us
-                        </a>
-                        <a href="/contact-us" className="btn btn-link">
+                        </Link>
+                        <Link to="/contact-us" className="btn btn-link">
                           Help & Support
-                        </a>
+                        </Link>
                       </div>
                       <div className="col-lg-6">
-                        <a href="/privacy-policy" className="btn btn-link">
+                        <Link to="/privacy-policy" className="btn btn-link">
                           Privacy Policy
-                        </a>
+                        </Link>
                         <a
                           href="/terms-and-conditions"
                           className="btn btn-link"
@@ -106,12 +106,12 @@ function Footer() {
                         {/* <a href="/" className="btn btn-link">
                         Shipping Policy
                       </a> */}
-                        <a href="/CSR-Policy" className="btn btn-link">
+                        <Link to="/CSR-Policy" className="btn btn-link">
                           CSR Policy
-                        </a>
-                        <a href="/refund-policy" className="btn btn-link">
+                        </Link>
+                        <Link to="/refund-policy" className="btn btn-link">
                           Return/Refund & Cancelation Policy
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

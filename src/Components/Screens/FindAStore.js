@@ -105,7 +105,6 @@ export default function FindAStore() {
   };
 
   const handleOnLoad = (map) => {
-    console.log("map instance", map);
     setMap(map);
     const bounds = new window.google.maps.LatLngBounds();
     markers.forEach(({ position }) => bounds.extend(position));

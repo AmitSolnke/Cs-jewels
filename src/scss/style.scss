@@ -1,9 +1,9 @@
-@import '../../node_modules/bootstrap/scss/bootstrap';
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
 //pages
-@import 'common';
-@import 'header';
-@import 'footer';
+@import "common";
+@import "header";
+@import "footer";
 
 //component
 @import "./Components/Screens/home";
@@ -51,11 +51,11 @@
 @import "./Components/productcard";
 @import "./Components/testimonial";
 
-.main-container{
-    background-color: #F8F6F0 ;
-    height: 100vh;
+.main-container {
+  background-color: #f8f6f0;
+  height: 100vh;
 }
 .outlet-container {
-    max-height: calc(100vh - 10px);
-    overflow: auto;
+  max-height: calc(100vh - 10px);
+  overflow: auto;
 }

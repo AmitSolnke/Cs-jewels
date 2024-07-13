@@ -13,7 +13,7 @@ module.exports = {
     filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "build"),
     clean: true,
-    publicPath: "/", // Adjust as per your deployment setup
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -36,8 +36,8 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "images/[name].[hash].[ext]",
-              publicPath: "../",
+              name: "images/[name].[hash].[ext]", // Output path for images
+              publicPath: "/",
               esModule: false,
             },
           },
@@ -47,6 +47,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      images: path.resolve(__dirname, "src/images"), // Alias for images folder
+    },
   },
   optimization: {
     splitChunks: {

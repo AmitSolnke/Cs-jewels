@@ -8,11 +8,9 @@ import {
   TextField,
   IconButton,
   DialogActions,
-  Grid,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import EastIcon from "@mui/icons-material/East";
-import { useNavigate } from "react-router-dom";
 import successCheckIcon from "../../../images/icons/successful-checkbox.svg";
 import productImage from "../../../images/MaskGroup18.png";
 import { enquireProduct } from "../../../services/FrontApp/index.service";
@@ -31,37 +29,70 @@ const Boxstyle = {
 };
 
 const EnquiryModal = ({ open, handleClose, productId }) => {
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState({});
   const [data, setData] = useState({
-    name: '',
-    mobile_no: '',
+    name: "",
+    mobile_no: "",
     product_id: productId,
-  })
-
-  const handleChange = ({ target }) => {
-    data[target.name] = target.value
-    const temp = Object.assign({}, data)
-    setData(temp)
-  }
-
+  });
   const [showEnquiryScreen, setShowEnquiryScreen] = useState(true);
   const [showThankYouScreen, setShowThankYouScreen] = useState(false);
+
+  const validate = (field, value) => {
+    const newErrors = { ...errors };
+    if (field === "name" && !value) {
+      newErrors.name = "Name is required";
+    } else if (field === "name") {
+      delete newErrors.name;
+    }
+    if (field === "mobile_no") {
+      if (!value) {
+        newErrors.mobile_no = "Phone Number is required";
+      } else if (!/^\d{10}$/.test(value)) {
+        newErrors.mobile_no = "Phone Number must be 10 digits";
+      } else {
+        delete newErrors.mobile_no;
+      }
+    }
+    return newErrors;
+  };
+
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    const temp = { ...data, [name]: value };
+    setData(temp);
+    const validationErrors = validate(name, value);
+    setErrors(validationErrors);
+  };
 
   const handleCloseButton = () => {
     setShowThankYouScreen(false);
     setShowEnquiryScreen(true);
+    setErrors({});
+    setData({
+      name: "",
+      mobile_no: "",
+      product_id: productId,
+    });
     handleClose();
   };
 
   const handleGetUpdates = async (event) => {
     event.preventDefault();
-    setErrors([])
+    const validationErrors = validate("name", data.name);
+    const mobileErrors = validate("mobile_no", data.mobile_no);
+    const allErrors = { ...validationErrors, ...mobileErrors };
+    if (Object.keys(allErrors).length > 0) {
+      setErrors(allErrors);
+      return;
+    }
+    setErrors({});
     try {
       await enquireProduct(data);
       setShowEnquiryScreen(false);
       setShowThankYouScreen(true);
     } catch (error) {
-      setErrors(error.response.data.message)
+      setErrors({ form: error.response.data.message });
     }
   };
 
@@ -77,17 +108,16 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
       >
         <Fade in={open}>
           <Box
-          className="box-container"
+            className="box-container"
             sx={Boxstyle}
             style={{ border: "12px solid #ede5e5", width: "50em" }}
           >
-            <div className="side-product-image-wrapper" style={{ display: "flex", flexDirection: "row" }}>
+            <div
+              className="side-product-image-wrapper"
+              style={{ display: "flex", flexDirection: "row" }}
+            >
               <div style={{ flex: "1" }}>
-                <img
-                  src={productImage}
-                  className="side-product-image"
-                  alt=""
-                />
+                <img src={productImage} className="side-product-image" alt="" />
               </div>
               <div className="dialog-main" style={{ flex: "1" }}>
                 <DialogActions>
@@ -104,7 +134,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                     >
                       Thank you for inquiring with us.
                     </Typography>
-                    <ErrorList errors={errors} />
+                    {errors.form && <ErrorList errors={[errors.form]} />}
                     <Typography
                       variant="subtitle1"
                       className="form-subtitle"
@@ -120,6 +150,8 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                       name="name"
                       value={data.name}
                       onChange={handleChange}
+                      error={!!errors.name}
+                      helperText={errors.name}
                     />
                     <TextField
                       label="Phone Number"
@@ -129,6 +161,8 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                       name="mobile_no"
                       value={data.mobile_no}
                       onChange={handleChange}
+                      error={!!errors.mobile_no}
+                      helperText={errors.mobile_no}
                     />
                     <Button
                       className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"

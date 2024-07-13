@@ -6,8 +6,8 @@
   flex-direction: row;
   justify-content: space-between;
   z-index: 2;
-  border-top: 0.5px solid #D6D6D6;
-  
+  border-top: 0.5px solid #d6d6d6;
+
   a {
     color: #000;
     text-decoration: none;
@@ -17,7 +17,7 @@
   }
 
   .jewellery-links {
-    justify-content: space-between;
+    column-gap: 200px;
     width: 100% !important;
 
     .catergory-section {

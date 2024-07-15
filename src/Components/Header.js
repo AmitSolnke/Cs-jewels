@@ -275,11 +275,13 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             Home
                           </Link>
                         </li>
-                        <li className="w-100">
-                          id="jewellery-link" onClick=
-                          {() => {
+                        <li
+                          className="w-100"
+                          id="jewellery-link"
+                          onClick={() => {
                             setShowDropdown((prev) => !prev);
                           }}
+                        >
                           Jewellery
                         </li>
                         <li className="w-100">

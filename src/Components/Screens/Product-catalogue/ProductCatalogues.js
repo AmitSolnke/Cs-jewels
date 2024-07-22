@@ -62,7 +62,7 @@ export const ProductCatalogues = () => {
     size: "",
     gender: "",
     page: 1,
-    limit: 9,
+    limit: 12,
   });
 
   const handleChangePage = (event, newPage) => {
@@ -292,7 +292,7 @@ export const ProductCatalogues = () => {
       sort_by: sort_by,
       gender: gender,
       page: page,
-      limit: 9,
+      limit: 12,
     });
     try {
       if (metalId) {

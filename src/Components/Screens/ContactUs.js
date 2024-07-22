@@ -204,7 +204,7 @@ export default function ContactUs() {
                   className="text-field text-field-email-contact-us"
                   required
                   id="outlined-basic"
-                  label="What would you like us to assist you with?*"
+                  label="What would you like us to assist you with?"
                   variant="outlined"
                   name="description"
                   value={data.description}

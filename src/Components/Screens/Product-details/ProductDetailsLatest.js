@@ -24,8 +24,8 @@ export const ProductDetailsLatest = () => {
   });
 
   const getProductData = async () => {
-    const result = await getProductDetails({ product_id: id })
-    setProductDetails(result.data.data)
+    const result = await getProductDetails({ product_id: id });
+    setProductDetails(result.data.data);
 
     // Todo: remove while integrating api calls refer above.
     // setProductDetails({
@@ -111,15 +111,20 @@ export const ProductDetailsLatest = () => {
           </div>
         </Grid>
 
-        <Grid item md={6} style={{ paddingLeft: "1rem" }} className="product-details-wrapper">
+        <Grid
+          item
+          md={6}
+          style={{ paddingLeft: "1rem" }}
+          className="product-details-wrapper"
+        >
           <div className="">
-            <span className="new-arrival-badge">NEW ARRIVAL</span>
+            {/* <span className="new-arrival-badge">NEW ARRIVAL</span>
 
             <h2 className="product-title">{productDetails.product_name}</h2>
 
             <div className="metal-description my-2">
               {productDetails.metal_description}
-            </div>
+            </div> */}
 
             {/* commented temporary
             <div className="product-price"> &#8377; {productDetails.sales_price}</div> */}
@@ -137,7 +142,9 @@ export const ProductDetailsLatest = () => {
               <div>Net weight: {productDetails.net_wt}g</div>
               <div>Purity: {productDetails.purity}</div>
               {productDetails.stones_details.map((stone, index) => (
-                <div>Stone {index + 1} weight: {stone.net_wt}g</div>
+                <div>
+                  Stone {index + 1} weight: {stone.net_wt}g
+                </div>
               ))}
             </div>
           </div>
@@ -185,7 +192,11 @@ export const ProductDetailsLatest = () => {
             <EastIcon />
           </Button>
 
-          <EnquiryModal open={open} handleClose={handleCloseEnquiryModal} productId={id} />
+          <EnquiryModal
+            open={open}
+            handleClose={handleCloseEnquiryModal}
+            productId={id}
+          />
         </Grid>
       </Grid>
     </Box>

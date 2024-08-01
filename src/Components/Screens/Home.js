@@ -24,6 +24,9 @@ import catImg3 from "../../images/categories/earrings.jpg";
 import catImg4 from "../../images/categories/earrings_2.jpg";
 import catImg5 from "../../images/categories/neckless_1.jpg";
 import catImg6 from "../../images/categories/neckless_2.jpg";
+import CsPromises from "./CsPromises";
+
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -112,6 +115,9 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
+     
+      <CsPromises />
+   
       {/* <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1} className="w-100">
           <Grid item xs={1} md={1}>
@@ -188,6 +194,8 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
+   
+
       {/* <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
           <Grid item xs={1} md={3}>

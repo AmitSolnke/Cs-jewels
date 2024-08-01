@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/icons/logo.svg";
+
 import heartLogo from "../images/icons/heart.svg";
 import userLogo from "../images/icons/user.svg";
 import searchLogo from "../images/icons/search.svg";
@@ -134,6 +135,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         />
                       </Link>
                     </div>
+
                     <div className="header-icon-list">
                       <ul>
                         <li>
@@ -161,17 +163,31 @@ function Header({ openDrawer, handleOpenDrawer }) {
                       </ul>
                     </div>
                   </div>
+
                   <div className="col-12 col-lg-12  d-none d-md-block">
-                    <div className="row position-relative">
-                      <div className="logo">
-                        <Link to="/">
-                          <img
-                            src={logo}
-                            alt="Logo"
-                            className="site-logo image"
-                          />
-                        </Link>
+                    <div className="row position-relative align-items-center">
+                      <div className="logo-container d-flex">
+                        <div className="logo">
+                          <Link to="/">
+                            <img
+                              src={logo}
+                              alt="Logo"
+                              className="site-logo image"
+                            />
+                          </Link>
+                        </div>
+                        <div className="logo mx-5">
+                          {/* <h6>chandukaka saraf</h6> */}
+                          {/* <Link to="/">
+                            <img
+                              src={logo}
+                              alt="chandukaka Image"
+                              className="chandukaka-image"
+                            />
+                          </Link> */}
+                        </div>
                       </div>
+
                       <div className="col-8 p-0 position-absolute end-0 h-100">
                         <div className="quick-links-wrapper">
                           <ul className="w-100">

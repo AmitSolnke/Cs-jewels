@@ -26,6 +26,8 @@ import {
 } from "../../../services/FrontApp/index.service";
 import { Paginator } from "../../Common/Paginator";
 
+
+
 export const ProductCatalogues = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -406,154 +408,12 @@ export const ProductCatalogues = () => {
       </Paper>
       <div className="d-none d-md-block">
         <div className="filter-dropdowns d-flex container">
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
-            <InputLabel id="category-dropdown">CATEGORY</InputLabel>
-            <Select
-              labelId="category-dropdown"
-              id="demo-simple-select-standard"
-              label="CATEGORY"
-              value={filters["type[0]"]}
-              onChange={(e) => handleFilterChange("type[0]", e.target.value)}
-            >
-              {categories?.map((item, key) => (
-                <MenuItem key={key} value={item.id}>
-                  {item.category_name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="category-gender">GENDER</InputLabel>
-            <Select
-              labelId="category-gender"
-              id="demo-simple-select-standard"
-              label="GENDER"
-              value={filters.gender}
-              onChange={(e) => handleFilterChange("gender", e.target.value)}
-            >
-              <MenuItem value="0">Male</MenuItem>
-              <MenuItem value="1">Female</MenuItem>
-            </Select>
-          </FormControl>
-
-          {/* <FormControl variant="standard" sx={{ m: 1, minWidth: 160 }}>
-            <InputLabel id="category-price-range">PRICE RANGE</InputLabel>
-            <Select
-              labelId="category-price-range"
-              id="demo-simple-select-standard"
-              label="PRICE RANGE"
-              value={filters.priceRange}
-              onChange={(e) => handleFilterChange("priceRange", e.target.value)}
-            >
-              <MenuItem value="priceRange1">1000 - 20000</MenuItem>
-            </Select>
-          </FormControl> */}
-
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
-            <InputLabel
-              shrink={Boolean(filters["metal_type[0]"])}
-              id="category-metal-type"
-            >
-              {" "}
-              METAL TYPE{" "}
-            </InputLabel>
-            <Select
-              labelId="category-metal-type"
-              label="METAL TYPE"
-              id="category-metal-type-standard"
-              value={filters["metal_type[0]"]}
-              onChange={(e) =>
-                handleFilterChange("metal_type[0]", e.target.value)
-              }
-            >
-              {metals?.map((data, key) => (
-                <MenuItem key={key} value={data.id}>
-                  {data.metal_type}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
-            <InputLabel
-              shrink={Boolean(filters.item_master_id)}
-              id="category-metal-type"
-            >
-              {" "}
-              METAL ITEM{" "}
-            </InputLabel>
-            <Select
-              labelId="category-metal-type"
-              label="METAL ITEM"
-              id="category-metal-item-standard"
-              value={filters.item_master_id}
-              onChange={(e) =>
-                handleFilterChange("item_master_id", e.target.value)
-              }
-            >
-              {items?.map((data, key) => (
-                <MenuItem key={key} value={data.id}>
-                  {data.item_name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <FormControl
-            variant="standard"
-            sx={{ m: 1, minWidth: 120, marginLeft: "auto" }}
-          >
-            <InputLabel id="category-sort-by"> SORT BY </InputLabel>
-            <Select
-              labelId="category-sort-by"
-              id="demo-simple-select-standard"
-              label="SORT BY"
-              value={filters.sort_by}
-              onChange={(e) => handleFilterChange("sort_by", e.target.value)}
-            >
-              <MenuItem value="low_to_high">Price - low to high</MenuItem>
-              <MenuItem value="high_to_low">Price - high to low</MenuItem>
-              <MenuItem value="is_popular">Popularity</MenuItem>
-              <MenuItem value="newly_added">Newly added</MenuItem>
-              <MenuItem value="bestseller">Bestsellers</MenuItem>
-            </Select>
-          </FormControl>
+     
+     
         </div>
         <hr />
 
-        <div className="container">
-          <div className="filter-chips p-3">
-            <Stack direction="row" spacing={1}>
-              {chipData?.map((chip, index) => (
-                <Chip
-                  key={index}
-                  label={chip}
-                  onDelete={handleChipDelete(chip)}
-                  className="filter-chip"
-                  sx={{
-                    borderRadius: "0px",
-                    border: "1px solid #333",
-                    borderColor: "#333",
-                    color: "#fff",
-                    backgroundColor: "#333",
-                  }}
-                  clickable
-                />
-              ))}
-              {chipData?.length > 0 ? (
-                <Button
-                  className="product-page-clear-all-button"
-                  onClick={clearAll}
-                >
-                  CLEAR ALL
-                </Button>
-              ) : (
-                ""
-              )}
-            </Stack>
-          </div>
-        </div>
+
       </div>
 
       <Box>

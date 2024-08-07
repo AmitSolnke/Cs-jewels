@@ -103,9 +103,8 @@ function Footer() {
                         >
                           Terms & Condition
                         </a>
-                        {/* <a href="/" className="btn btn-link">
-                        Shipping Policy
-                      </a> */}
+                        
+                        
                         <Link to="/CSR-Policy" className="btn btn-link">
                           CSR Policy
                         </Link>
@@ -127,7 +126,8 @@ function Footer() {
                 </div>
               </div>
             </div>
-            {/* <div className="col-12 col-md-8 col-lg-4"> */}
+       
+       
             <ErrorList errors={errors} />
             <SuccessMsg message={successMsg} />
 
@@ -171,7 +171,9 @@ function Footer() {
             {/* </div> */}
           </div>
           <div className="copyright">
-            <p>2023 © Chandukaka Saraf & Sons Pvt. Ltd . Powered by Listany</p>
+            <p>
+              2023 © Chandukaka Saraf & Sons Pvt. Ltd . Powered by Techne ai
+            </p>
           </div>
         </div>
         <hr className="footer-hr" />

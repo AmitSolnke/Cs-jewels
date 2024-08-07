@@ -15,7 +15,7 @@ import AstrologyIcon from "../../images/USP/AstrologyIcon";
 const CsPromises = () => {
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 7,
     slidesToScroll: 1,
@@ -95,9 +95,9 @@ const CsPromises = () => {
 
   return (
     <div className="promises-section  text-light">
-      <div className="text-center t mt-4">
-        <h2 className="heading-font">CS Promises</h2>
-        <p>Incredible rationales to shop with us!</p>
+      <div className="text-center mt-3 ">
+        <h2 className="heading-font m-0">CS Promises</h2>
+        <p className="m-0">Incredible rationales to shop with us!</p>
       </div>
       <div className="promises-container">
         <Slider {...settings}>

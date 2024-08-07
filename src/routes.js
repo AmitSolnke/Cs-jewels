@@ -23,7 +23,7 @@ import { Navigate } from "react-router-dom";
 import { ProductCatalogues } from "./Components/Screens/Product-catalogue/ProductCatalogues";
 import { ProductDetailsLatest } from "./Components/Screens/Product-details/ProductDetailsLatest";
 import RefundPolicy from "./Components/Screens/RefundPolicy";
-// import ImageCollage from "./Components/Screens/ImageCollage ";
+import ImageCollage from "./Components/Screens/ImageCollage ";
 
 export const normalRouts = [
   {

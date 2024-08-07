@@ -36,9 +36,8 @@ export default function AboutUs() {
         }}
       >
         <p>
-          {" "}
-          Legacy of indestructible tradition & customer trust for 197 years and
-          counting{" "}
+          Crafting Trust, Adorning Generations: Legacy Carved in Gold, Since
+          1827
         </p>
       </div>
       <Box className="box-about-us" sx={{ flexGrow: 1 }}>
@@ -47,27 +46,44 @@ export default function AboutUs() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid item xs={10} md={8}>
-            <ReadMoreText useReadMore={true} limit={350}>
-              Chandukaka Saraf Jewels Pvt. Ltd. is one of the leading jewellerys
-              in western India, carrying the fervour of crafting jewellery for
-              more than 197 years. As an organization, we have been imparting
-              trust among customers with a legacy of ethical business since
-              1827. Our foundation was laid by Honourable Shri Chandulal Shah in
-              the prestigious city of Baramati in the 19th century, whose
-              unsullied dedication was instrumental in attaining the initial
-              reputation
+            <ReadMoreText
+              // useReadMore={true}
+              // limit={350}
+              headerText={
+                " Crafting Trust, Adorning Generations: 197 Years of Timeless Elegance"
+              }
+            >
+              Welcome to Chandukaka Saraf Jewels - India's Premier Jeweller
+              Since 1827. Step into a world where tradition meets elegance. For
+              almost 200 years, we've been creating stunning jewellery and
+              earning the trust of customers across India. Our journey began in
+              1827 when Shri Chandulal Shah opened our first store in Baramati.
+              His dedication to quality and honest business set the stage for
+              our long-standing success. With nearly two centuries of
+              experience, we've become a household name in Western Indian
+              jewellery. Recognized as the 'Most Trusted Jewellery Brand of
+              Maharashtra' our family-owned business takes pride in its rich
+              heritage, passing down expertise and values through generations.
+              We're not just about beautiful jewellery – we're about trust,
+              ethics, and making our customers happy. At Chandukaka Saraf
+              Jewels, we love blending old-world craftsmanship with fresh,
+              modern designs. Our goal is to create jewellery that adds sparkle
+              to life's special moments. Whether you're celebrating a milestone
+              or treating yourself, our jewellery tells a story – one that's
+              been in the making since 1827. Come explore our collection and be
+              part of our continuing legacy. At Chandukaka Saraf Jewels, you're
+              not just a customer – you're family.
             </ReadMoreText>
           </Grid>
-          <Grid item xs={1} md={2}>
-            <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid>
+         
+         
         </Grid>
       </Box>
       <Box className="box-about-us" sx={{ flexGrow: 1 }}>
         <BlogSectionWithSideImage
-          headerText={"Our Specialities"}
+          headerText={" Celebrating Excellence: Crafting Timeless Treasures"}
           descriptionText={
-            "Chandukaka Saraf Jewels has truly set itself apart with a range of specialities that cater to the discerning tastes of their customers. Renowned for our jewellery designs in pure gold, we exemplify craftsmanship and excellence. We also hold the distinction of being the first jewellerys in India to introduce the use of a carat meter, ensuring utmost transparency and purity in our offerings. Our unique approach blends modern aesthetics seamlessly with traditional gold designs, resulting in an exquisite fusion of styles that appeal to a wide audience. Our distinctive touch can be seen in the incorporation of abstract motifs alongside traditional ones, creating pieces that are both classic and contemporary."
+            "Renowned for our exclusive jewellery collections, we epitomize a tradition of excellence that spans generations. Pioneers in the industry, we were the first jeweller in India to introduce the revolutionary karatmeter, ensuring unparalleled transparency and purity in every creation. Our approach seamlessly blends contemporary aesthetics with timeless craftsmanship, resulting in a fusion of styles that captivates the discerning eye.. This extensive range includes jewellery crafted from gold, silver, platinum, diamonds, gemstones, and pearls.Our jewellery reflects our distinctive touch, combining innovative designs with traditional craftsmanship to create pieces that are both timeless and contemporary."
           }
           Item={Item}
           imageSrc={ourSpecality}
@@ -75,35 +91,14 @@ export default function AboutUs() {
           mobileViewImageFirst={true}
         />
       </Box>
-      <Box className="box-about-us" sx={{ flexGrow: 1 }}>
-        <BlogSectionWithSideImage
-          headerText={"Sprawling Wings on Digital Space"}
-          descriptionText={
-            " We strongly believe in progressing as per customer penchant & preference and always try to breach the walls of limitations, so at this pace, we have spread our wings through eCommerce towards a new sky of the online shopping world to reach out to people with a vision of focusing on resolution of purity, where we have a vast range of jewellery products offering reliable quality through providing free, secure, and insured home delivery in all over India, while the expertise of serving offline has already brought us an award of ‘Most Trusted Jewellery of Maharashtra’."
-          }
-          Item={Item}
-          imageSrc={digitalSpace}
-          isImageFirst={false}
-          mobileViewImageFirst={true}
-        />
-      </Box>
+
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid item xs={10} md={10}>
-            <div className="bottom-full-image-about-us-container">
-              <img
-                src={
-                  windoDimensions[0] <= 768
-                    ? aboutUsFullScreenBottomImageMobileView
-                    : aboutUsFullScreenBottomImage
-                }
-                alt="rightArrowIcon"
-              />
-            </div>
-          </Grid>
+       
+       
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
@@ -116,35 +111,8 @@ export default function AboutUs() {
             xs={10}
             md={10}
           >
-            <div className="our-specialities-header">
-              Changing Phase & Offering{" "}
-              <img
-                src={imageSliderHeaderIconRight}
-                alt="React Logo"
-                className="right-logo"
-              />
-            </div>
-            <div className="our-specialities-description">
-              <ReadMoreText useReadMore={true} limit={350}>
-                After establishing strong pillars of foundation and growing huge
-                support from customers, it compelled us to open more jewellery
-                retail outlets. As we are approaching the new milestone of
-                completing a successful 197 years in the business, our clean
-                approach helped us to extend 11 branches in Maharashtra. We have
-                a rich heritage of serving customers; therefore, we match the
-                pace with the trends. At present, our spacious showrooms provide
-                a great ambience to customers’ shopping experience with the
-                widest range of jewellery products varying from Gold, Silver,
-                Platinum, Forming and Gemstones to Pearls, which adds value to
-                our services. Our main focus has always remained on purity. We
-                offer genuine BIS Hallmark certified gold products with a purity
-                of 18, 22, 23, 23.5, & 24 karats, i.e., 99.5, whereas in India,
-                these ornaments are being sold with a purity of 22 karats.
-                Competing with our creative designs has also played a major role
-                in recognising us as a symbol of purity and boosting our growth
-                in the retail market.
-              </ReadMoreText>
-            </div>
+           
+           
           </Grid>
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
@@ -160,15 +128,40 @@ export default function AboutUs() {
       </Box>
       <Box className="box-about-us about-us-last-element" sx={{ flexGrow: 1 }}>
         <BlogSectionWithSideImage
-          headerText={"Contributing to Society"}
+          headerText={"Making a Difference: Building a Better Future"}
           descriptionText={
-            "We are making remarkable social contributions through our philanthropic arm, the 'Sou. Kusum & Shri. Jindatta Shah Welfare Foundation.' This foundation is dedicated to promoting education, with a special focus on empowering girls with access to quality schooling. Moreover, we actively engage in initiatives that enhance social hygiene and cleanliness, thereby creating a healthier environment for the entire community. Additionally, we generously support various needy organizations as part of our corporate social responsibility (CSR) activities, demonstrating our commitment to the betterment of society and leaving a lasting impact on the lives of many. </br> The leadership at CS Jewels headed by Dir Siddharth Shah always intended to extensively protect the sacred animal communities. Hence in 2020, CS Jewels opened up Dayoday Goshala in Baramati. Today, it has saved and sustained over 100 cows in its society, by providing it with fodder and shelter throughout the year."
+            <>
+              "We are proud to contribute significantly to society through our
+              philanthropic initiative, the Sou. Kusum & Shri. Jindatta Shah
+              Welfare Foundation. This foundation is dedicated to advancing
+              education, particularly by empowering girls with access to quality
+              schooling. We also promote social hygiene and environmental
+              cleanliness, fostering a healthier community environment.As part
+              of our corporate social responsibility (CSR) efforts, we provide
+              generous support to a diverse range of organizations in need. This
+              commitment underscores our dedication to societal improvement and
+              our desire to make a meaningful impact on countless lives. By
+              investing in these areas, we aim to foster positive change and
+              inspire others to join us in building a more equitable world.In
+              addition, CS Jewels has proactively supported sacred animal
+              communities. In 2020, we established the Dayoday Goshala in
+              Baramati, which provides shelter and sustenance to over 250 cows
+              year-round. This initiative highlights our commitment to animal
+              welfare and support. Learn more about this project at,"
+              <a
+                href="https://dayoday.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Dayoday Goshala
+              </a>
+              .
+            </>
           }
           Item={Item}
           imageSrc={SocietyContributionImage}
           isImageFirst={true}
           mobileViewImageFirst={true}
-          useReadMore={true}
         />
       </Box>
     </div>

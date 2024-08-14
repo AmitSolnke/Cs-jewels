@@ -59,9 +59,9 @@ function Footer() {
           </div>
           <div className="col-12 col-md-12 col-lg-12 footer-containt">
             <div className="row">
-              <div className="col-12 col-md-12 col-lg-8 position-relative">
+              <div className="col-12 col-md-12 position-relative">
                 <div className="row">
-                  <div className="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-6">
+                  <div className="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-6">
                     <div className="row">
                       <div className="col-lg-12">
                         <p className="mb-2">
@@ -77,7 +77,7 @@ function Footer() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-6">
+                  <div className="col-xl-7 col-lg-7 col-md-6 col-sm-6 col-6">
                     <div className="row">
                       <div className="col-lg-6">
                         <Link to="/aboutus" className="btn btn-link">
@@ -103,8 +103,7 @@ function Footer() {
                         >
                           Terms & Condition
                         </a>
-                        
-                        
+
                         <Link to="/CSR-Policy" className="btn btn-link">
                           CSR Policy
                         </Link>
@@ -126,8 +125,7 @@ function Footer() {
                 </div>
               </div>
             </div>
-       
-       
+
             <ErrorList errors={errors} />
             <SuccessMsg message={successMsg} />
 
@@ -157,7 +155,7 @@ function Footer() {
                 />
               </a>
               <a
-                href="https://www.linkedin.com/company/chandukaka-saraf-jewels/?viewAsMember=true"
+                href="https://x.com/csjewels1827"
                 target="_blank"
                 rel="noopener noreferrer"
               >

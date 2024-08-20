@@ -9,20 +9,11 @@ export default function ReadMoreText(props) {
     <>
       <div className="our-specialities-header">
         {props.headerText}
-        {console.log(props.imageSliderHeaderIconRight)}
 
-        {/* <img
-          src={props.imageSliderHeaderIconRight}
-          alt="React Logo"
-          className="right-logo"
-        /> */}
+       
+       
       </div>
-      <div className="about-us-description-read-more">
-        {props.useReadMore && isReadMore
-          ? props.children.slice(0, props.limit)
-          : props.children}
-        {isReadMore && ".."}
-      </div>
+      <div className="about-us-description-read-more">{props.children}</div>
       {props.useReadMore && (
         <div className="about-us-button-read-more">
           <button

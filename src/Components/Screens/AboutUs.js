@@ -35,10 +35,10 @@ export default function AboutUs() {
           backgroundSize: "cover",
         }}
       >
-        <p>
+        {/* <p>
           Crafting Trust, Adorning Generations: Legacy Carved in Gold, Since
           1827
-        </p>
+        </p> */}
       </div>
       <Box className="box-about-us" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
@@ -75,8 +75,6 @@ export default function AboutUs() {
               not just a customer – you're family.
             </ReadMoreText>
           </Grid>
-         
-         
         </Grid>
       </Box>
       <Box className="box-about-us" sx={{ flexGrow: 1 }}>
@@ -97,8 +95,7 @@ export default function AboutUs() {
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-       
-       
+
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
@@ -110,10 +107,7 @@ export default function AboutUs() {
             item
             xs={10}
             md={10}
-          >
-           
-           
-          </Grid>
+          ></Grid>
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>

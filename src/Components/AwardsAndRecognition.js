@@ -7,21 +7,42 @@ import LokmatCorporateExcellenceAward2017 from "../images/LokmatCorporateExcelle
 import imageSliderHeaderIconLeft from "../images/icons/Group45.svg";
 import imageSliderHeaderIconRight from "../images/icons/Group40.svg";
 import BestSilverDesignerJewellery2016 from "../images/BestSilverDesignerJewellery2016.png";
-
+import BestBusinessWomenAwards from "../images/BestBusinessWomenAwards.png";
+import GemOfTheYearAward from "../images/Awards.png";
+import YoungAcheversAward from "../images/YoungAcheversAward.png";
+import TrustedJewellers from "../images/TrustedJewellers.png";
 const AwardsAndItsLogo = [
   {
     imageUrl: GJTCIExcellenceAward2014,
     imageSecription: "GJTCI Excellence Award",
   },
   {
-    imageUrl: LokmatCorporateExcellenceAward2017,
-    imageSecription: "Lokmat Corporate Excellence Award",
-  },
-  {
     imageUrl: BestSilverDesignerJewellery2016,
     imageSecription: "Best Silver Designer Jewellery",
   },
+  {
+    imageUrl: LokmatCorporateExcellenceAward2017,
+    imageSecription: "Lokmat Corporate Excellence Award",
+  },
+
+  {
+    imageUrl: BestBusinessWomenAwards,
+    imageSecription: "Best Female Business Woman Award",
+  },
+  {
+    imageUrl: GemOfTheYearAward,
+    imageSecription: "Gem of the Year(West)Award",
+  },
+  {
+    imageUrl: YoungAcheversAward,
+    imageSecription: "Best Silver Designer Jewellery",
+  },
+  {
+    imageUrl: TrustedJewellers,
+    imageSecription: "Best Silver Designer Jewellery",
+  },
 ];
+
 export default function AwardsAndRecognition({ Item }) {
   const windoDimensions = useWindowWidthAndHeight();
   return (
@@ -69,7 +90,11 @@ export default function AwardsAndRecognition({ Item }) {
               className="about-us-awards-header-container-for-titles"
             >
               <div className="about-us-awards-header-image">
-                <img src={element.imageUrl} alt="React Logo" />
+                <img
+                  src={element.imageUrl}
+                  alt="Award Logo"
+                  className="responsive-image"
+                />
               </div>
               <div className="about-us-awards-header-title">
                 {element.imageSecription}
@@ -82,7 +107,7 @@ export default function AwardsAndRecognition({ Item }) {
         ))
       ) : (
         <>
-          <Grid item xs={1} md={3}>
+          <Grid item xs={1} md={2}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           {AwardsAndItsLogo.map((element) => (
@@ -93,7 +118,11 @@ export default function AwardsAndRecognition({ Item }) {
               className="about-us-awards-header-container-for-titles"
             >
               <div className="about-us-awards-header-image">
-                <img src={element.imageUrl} alt="React Logo" />
+                <img
+                  src={element.imageUrl}
+                  alt="Award Logo"
+                  className="responsive-image"
+                />
               </div>
               <div className="about-us-awards-header-title">
                 {element.imageSecription}

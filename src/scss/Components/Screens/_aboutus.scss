@@ -1,13 +1,15 @@
 .head-text-about-us {
-  position: relative;
-  text-align: center;
-  padding-top: 25px;
   height: 700px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 22%;
-  padding-right: 22%;
+  overflow-x: hidden;
+  // position: relative;
+  // text-align: center;
+  // padding-top: 25px;
+  // height: 700px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // padding-left: 22%;
+  // padding-right: 22%;
 }
 
 .head-text-about-us p {
@@ -75,7 +77,7 @@
 }
 
 .our-specialities-image-container {
-  // height: 100%;
+  height: 100%;
   .our-specialities-image {
     height: 100%;
   }
@@ -184,4 +186,15 @@
   .bottom-full-image-about-us-container {
     padding-top: 50px;
   }
+}
+
+.card-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card-image {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
 }

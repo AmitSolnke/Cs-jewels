@@ -28,18 +28,8 @@ export default function AboutUs() {
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className="col-12 about-us">
-      <div
-        className="head-text-about-us"
-        style={{
-          backgroundImage: `url(${aboutUsTitleImage})`,
-          backgroundSize: "cover",
-        }}
-      >
-        {/* <p>
-          Crafting Trust, Adorning Generations: Legacy Carved in Gold, Since
-          1827
-        </p> */}
-      </div>
+      <img src={aboutUsTitleImage} alt="about us" className="img-fluid"></img>
+
       <Box className="box-about-us" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={2}>

@@ -74,7 +74,7 @@ export default function AwardsAndRecognition({ Item }) {
           patronage has been instrumental in our success.
         </div>
       </Grid>
-      <Grid item xs={1} md={2}>
+      {/* <Grid item xs={1} md={2}>
         <Item className="empty-container-section">xs=6 md=4</Item>
       </Grid>
       {windoDimensions[0] <= 768 ? (
@@ -133,7 +133,42 @@ export default function AwardsAndRecognition({ Item }) {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
         </>
-      )}
+      )} */}
+      {/* {AwardsAndItsLogo.map((element, index) => (
+        <div className="card-container">
+          <img src={element.imageUrl} alt="img" className="card" />
+        </div>
+      ))} */}
+      <div className="container">
+        <div className="row  justify-content-center">
+          {AwardsAndItsLogo.slice(0, 5).map((element, index) => (
+            <div key={index} className="col-12 col-lg-2 col-md-4">
+              <div className="card-container">
+                <img
+                  src={element.imageUrl}
+                  alt={element.imageSecription}
+                  className="card-image"
+                />
+                <p>{element.imageSecription}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="row justify-content-center mt-4">
+          {AwardsAndItsLogo.slice(5, 7).map((element, index) => (
+            <div key={index} className="col-12 col-lg-2 col-md-4">
+              <div className="card-container">
+                <img
+                  src={element.imageUrl}
+                  alt={element.imageSecription}
+                  className="card-image"
+                />
+                <p>{element.imageSecription}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </Grid>
   );
 }

@@ -14,24 +14,24 @@ import TrustedJewellers from "../images/TrustedJewellers.png";
 const AwardsAndItsLogo = [
   {
     imageUrl: GJTCIExcellenceAward2014,
-    imageSecription: "GJTCI Excellence Award ",
+    imageSecription: "GJTCI Excellence Award 2024 ",
   },
   {
     imageUrl: BestSilverDesignerJewellery2016,
-    imageSecription: "Best Silver Designer Award",
+    imageSecription: "Best Silver Designer Award 2016",
   },
   {
     imageUrl: LokmatCorporateExcellenceAward2017,
-    imageSecription: "Lokmat Corporate Excellence Award",
+    imageSecription: "Lokmat Corporate Excellence Award 2017",
   },
 
   {
     imageUrl: BestBusinessWomenAwards,
-    imageSecription: "Best Female Business Woman Award",
+    imageSecription: "Best Female Business Woman Award 2024",
   },
   {
     imageUrl: GemOfTheYearAward,
-    imageSecription: "Gem of the Year(West)Award",
+    imageSecription: "Gem of the Year(West)Award 2020",
   },
   {
     imageUrl: YoungAcheversAward,
@@ -74,36 +74,33 @@ export default function AwardsAndRecognition({ Item }) {
           patronage has been instrumental in our success.
         </div>
       </Grid>
-
       <div className="container">
-        <div className="row  justify-content-center">
-          {AwardsAndItsLogo.slice(0, 5).map((element, index) => (
-            <div key={index} className="col-12 col-lg-2 col-md-4">
-              <div className="card-container">
-                <img
-                  src={element.imageUrl}
-                  alt={element.imageSecription}
-                  className="card-image"
-                />
-                <p>{element.imageSecription}</p>
-              </div>
-            </div>
+        <Grid
+          container
+          sx={{
+            justifyContent: "center",
+            gap: 1,
+          }}
+        >
+          {AwardsAndItsLogo.map((element, index) => (
+            <Grid
+              item
+              xs={12}
+              sm={5.5}
+              md={3.5}
+              lg={2.9}
+              xl={2.2}
+              className="text-center"
+            >
+              <img
+                src={element.imageUrl}
+                className="img-fluid award-image"
+                alt={element.imageSecription}
+              />
+              <p cl>{element.imageSecription}</p>
+            </Grid>
           ))}
-        </div>
-        <div className="row justify-content-center mt-4">
-          {AwardsAndItsLogo.slice(5, 7).map((element, index) => (
-            <div key={index} className="col-12 col-lg-2 col-md-4">
-              <div className="card-container">
-                <img
-                  src={element.imageUrl}
-                  alt={element.imageSecription}
-                  className="card-image"
-                />
-                <p>{element.imageSecription}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        </Grid>
       </div>
     </Grid>
   );

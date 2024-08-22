@@ -7,14 +7,9 @@ export default function ReadMoreText(props) {
   };
   return (
     <>
-      <div className="our-specialities-header">
-        {props.headerText}
-
-       
-       
-      </div>
+      <div className="our-specialities-header">{props.headerText}</div>
       <div className="about-us-description-read-more">{props.children}</div>
-      {props.useReadMore && (
+      {/* {props.useReadMore && (
         <div className="about-us-button-read-more">
           <button
             onClick={toggleReadMore}
@@ -24,7 +19,7 @@ export default function ReadMoreText(props) {
             {isReadMore ? "READ MORE" : " READ LESS"}
           </button>
         </div>
-      )}
+      )} */}
     </>
   );
 }

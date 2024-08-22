@@ -14,11 +14,11 @@ import TrustedJewellers from "../images/TrustedJewellers.png";
 const AwardsAndItsLogo = [
   {
     imageUrl: GJTCIExcellenceAward2014,
-    imageSecription: "GJTCI Excellence Award",
+    imageSecription: "GJTCI Excellence Award ",
   },
   {
     imageUrl: BestSilverDesignerJewellery2016,
-    imageSecription: "Best Silver Designer Jewellery",
+    imageSecription: "Best Silver Designer Award",
   },
   {
     imageUrl: LokmatCorporateExcellenceAward2017,
@@ -35,11 +35,11 @@ const AwardsAndItsLogo = [
   },
   {
     imageUrl: YoungAcheversAward,
-    imageSecription: "Best Silver Designer Jewellery",
+    imageSecription: "2020",
   },
   {
     imageUrl: TrustedJewellers,
-    imageSecription: "Best Silver Designer Jewellery",
+    imageSecription: "2015",
   },
 ];
 
@@ -74,71 +74,7 @@ export default function AwardsAndRecognition({ Item }) {
           patronage has been instrumental in our success.
         </div>
       </Grid>
-      {/* <Grid item xs={1} md={2}>
-        <Item className="empty-container-section">xs=6 md=4</Item>
-      </Grid>
-      {windoDimensions[0] <= 768 ? (
-        AwardsAndItsLogo.map((element) => (
-          <>
-            <Grid item xs={3} md={3}>
-              <Item className="empty-container-section">xs=6 md=4</Item>
-            </Grid>
-            <Grid
-              item
-              xs={6}
-              md={2}
-              className="about-us-awards-header-container-for-titles"
-            >
-              <div className="about-us-awards-header-image">
-                <img
-                  src={element.imageUrl}
-                  alt="Award Logo"
-                  className="responsive-image"
-                />
-              </div>
-              <div className="about-us-awards-header-title">
-                {element.imageSecription}
-              </div>
-            </Grid>
-            <Grid item xs={3} md={3}>
-              <Item className="empty-container-section">xs=6 md=4</Item>
-            </Grid>
-          </>
-        ))
-      ) : (
-        <>
-          <Grid item xs={1} md={2}>
-            <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid>
-          {AwardsAndItsLogo.map((element) => (
-            <Grid
-              item
-              xs={12}
-              md={2}
-              className="about-us-awards-header-container-for-titles"
-            >
-              <div className="about-us-awards-header-image">
-                <img
-                  src={element.imageUrl}
-                  alt="Award Logo"
-                  className="responsive-image"
-                />
-              </div>
-              <div className="about-us-awards-header-title">
-                {element.imageSecription}
-              </div>
-            </Grid>
-          ))}
-          <Grid item xs={1} md={3}>
-            <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid>
-        </>
-      )} */}
-      {/* {AwardsAndItsLogo.map((element, index) => (
-        <div className="card-container">
-          <img src={element.imageUrl} alt="img" className="card" />
-        </div>
-      ))} */}
+
       <div className="container">
         <div className="row  justify-content-center">
           {AwardsAndItsLogo.slice(0, 5).map((element, index) => (

@@ -59,9 +59,9 @@ function Footer() {
           </div>
           <div className="col-12 col-md-12 col-lg-12 footer-containt">
             <div className="row">
-              <div className="col-12 col-md-12 col-lg-8 position-relative">
+              <div className="col-12 col-md-12 position-relative">
                 <div className="row">
-                  <div className="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-6">
+                  <div className="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-6">
                     <div className="row">
                       <div className="col-lg-12">
                         <p className="mb-2">
@@ -77,7 +77,7 @@ function Footer() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-6">
+                  <div className="col-xl-7 col-lg-7 col-md-6 col-sm-6 col-6">
                     <div className="row">
                       <div className="col-lg-6">
                         <Link to="/aboutus" className="btn btn-link">
@@ -103,9 +103,7 @@ function Footer() {
                         >
                           Terms & Condition
                         </a>
-                        {/* <a href="/" className="btn btn-link">
-                        Shipping Policy
-                      </a> */}
+
                         <Link to="/CSR-Policy" className="btn btn-link">
                           CSR Policy
                         </Link>
@@ -126,56 +124,54 @@ function Footer() {
                   </div>
                 </div>
               </div>
-              <div className="col-12 col-md-8 col-lg-4">
-                <h5 className="mb-3 footer-heading">
-                  Sign up for our newsletter
-                </h5>
-                <p className="mb-3 footer-text">
-                  Be the first to know about our special offers, news, and
-                  updates.
-                </p>
-                <ErrorList errors={errors} />
-                <SuccessMsg message={successMsg} />
-                <div className="sbscribe-wrapper">
-                  <input
-                    type="text"
-                    className="w-100 subscribe-input"
-                    placeholder="Enter your email ID"
-                    name="email"
-                    value={data.email}
-                    onChange={handleChange}
-                  />
-                  <button
-                    type="button"
-                    className="subscribe-btn"
-                    onClick={handleSubmit}
-                  >
-                    Subscribe <img src={rightArrowIcon} alt="rightArrowIcon" />
-                  </button>
-                </div>
-                <div className="social-media-wrapper">
-                  <h6>Follow us on</h6>
-                  <img
-                    src={facebookIcon}
-                    alt="facebookIcon"
-                    className="social-media-icon"
-                  />
-                  <img
-                    src={instagramIcon}
-                    alt="instagramIcon"
-                    className="social-media-icon"
-                  />
-                  <img
-                    src={twitterIcon}
-                    alt="twitterIcon"
-                    className="social-media-icon"
-                  />
-                </div>
-              </div>
             </div>
+
+            <ErrorList errors={errors} />
+            <SuccessMsg message={successMsg} />
+
+            <div className="social-media-wrapper">
+              <h6>Follow us on</h6>
+              <a
+                href="https://www.facebook.com/CSjewelss/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={facebookIcon}
+                  alt="facebookIcon"
+                  className="social-media-icon"
+                />
+              </a>
+
+              <a
+                href="https://www.instagram.com/csjewelsofficial/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={instagramIcon}
+                  alt="instagramIcon"
+                  className="social-media-icon"
+                />
+              </a>
+              <a
+                href="https://x.com/csjewels1827"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={twitterIcon}
+                  alt="twitterIcon"
+                  className="social-media-icon"
+                />
+              </a>
+            </div>
+            {/* </div> */}
           </div>
           <div className="copyright">
-            <p>2023 © Chandukaka Saraf & Sons Pvt. Ltd . Powered by Listany</p>
+            <p>
+              2023 © Chandukaka Saraf & Sons Pvt. Ltd . Powered by Techne ai
+            </p>
           </div>
         </div>
         <hr className="footer-hr" />

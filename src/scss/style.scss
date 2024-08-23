@@ -19,7 +19,7 @@
 
 @import "./Components/faqs.scss";
 @import "./Components/Screens/privacypolicy";
-@import "./Components/Screens/aboutus";
+// @import "./Components/Screens/aboutus";
 @import "./Components/Screens/productdetails";
 @import "./Components/Screens/findastore";
 @import "./Components/Screens/myorder";
@@ -59,3 +59,7 @@
   max-height: calc(100vh - 10px);
   overflow: auto;
 }
+
+// body {
+//   overflow-x: hidden;
+// }

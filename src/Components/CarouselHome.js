@@ -43,16 +43,16 @@ function CarouselHome() {
 
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
   };
 
   return (
-    <div className="slider-container" style={{ minHeight: "632px" }}>
+    <div className="slider-container">
       {loadingBanner ? (
         <div className="w-100">
           <img

@@ -26,6 +26,8 @@ import {
 } from "../../../services/FrontApp/index.service";
 import { Paginator } from "../../Common/Paginator";
 
+
+
 export const ProductCatalogues = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -405,8 +407,13 @@ export const ProductCatalogues = () => {
         </BullionsFilter>
       </Paper>
       <div className="d-none d-md-block">
-        <div className="filter-dropdowns d-flex container"></div>
+        <div className="filter-dropdowns d-flex container">
+     
+     
+        </div>
         <hr />
+
+
       </div>
 
       <Box>
@@ -420,13 +427,12 @@ export const ProductCatalogues = () => {
                 style={{ cursor: "pointer" }}
                 className="product-item-card"
                 onClick={() =>
-                  navigate("/product-details/" + product?.product_id)
+                  navigate("/product-details/" + product.product_id)
                 }
               >
                 {/* <Card variant="outlined"> */}
-                {console.log("ppp", product)}
                 <img
-                  src={product?.image_path}
+                  src={product.image_path}
                   alt="product image"
                   className="image"
                 />

@@ -71,9 +71,8 @@ function Footer() {
                           <span>Phone: </span> 07969991827
                         </p>
                         <p className="address">
-                          1st Floor, Office No 1A and 1B, Mudliyar Chambers Co
-                          Op Hsg Society, Mudliyar Road, Rasta Peth, Pune, Pune,
-                          Maharashtra 411011
+                          S.No.558, Ground Floor, Indraprastha Plus, Near Apollo
+                          Theatre, Rasta Peth, Pune - 411011
                         </p>
                       </div>
                     </div>

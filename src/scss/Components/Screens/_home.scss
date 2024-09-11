@@ -1,110 +1,110 @@
 .image-slider-header {
-    top: 900px;
-    left: 120px;
-    width: 325px;
-    height: 48px;
-    text-align: left;
-    font: normal normal 600 36px/48px Playfair Display;
-    letter-spacing: 0.54px;
-    color: #672A2F;
-    opacity: 1;
-    display: table-footer-group;
+  top: 900px;
+  left: 120px;
+  width: 325px;
+  height: 48px;
+  text-align: left;
+  font: normal normal 600 36px/48px Playfair Display;
+  letter-spacing: 0.54px;
+  color: #672a2f;
+  opacity: 1;
+  display: table-footer-group;
 }
 
 .big-image-slider-description {
-    width: 75% !important;
-    padding-top: 16px;
+  width: 75% !important;
+  padding-top: 16px;
 }
 .image-slider-description {
-    top: 964px;
-    left: 120px;
-    width: 80% !important;
-    height: 59px;
-    text-align: left;
-    font: normal normal normal 16px/22px Lato;
-    letter-spacing: 0px;
-    color: #666666;
-    opacity: 1;
+  top: 964px;
+  left: 120px;
+  width: 80% !important;
+  height: 37px;
+  text-align: left;
+  font: normal normal normal 16px/22px Lato;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
 }
 .large-image-slider-container {
-    padding-top: 100px;
+  // padding-top: 100px;
 }
 
 .large-image-slider-test-area {
-    align-self: center;
-    // padding-left: 0 !important;
+  align-self: center;
+  // padding-left: 0 !important;
 }
 
 .text-only-grid {
-    text-align-last: center;
-    width: 60%;
-    text-align: -webkit-center;
-    margin-left: 10%;
-    min-height: 80px;
-    padding-top: 10px;
+  text-align-last: center;
+  width: 60%;
+  text-align: -webkit-center;
+  margin-left: 10%;
+  min-height: 80px;
+  padding-top: 10px;
 }
 
 .text-only-grid-header img {
-    margin-right: 9px;
+  margin-right: 9px;
 }
-.extra-empty-container{
-    display: block;
+.extra-empty-container {
+  display: block;
 }
-.extra-empty-container-exclusive-offers{
-    display: none;
+.extra-empty-container-exclusive-offers {
+  display: none;
 }
-.text-area-explore{
-    text-align: -webkit-center;
+.text-area-explore {
+  text-align: -webkit-center;
 }
-.text-only-grid-explore-description{
-    margin-left: 0;
-    width: 60% !important;
+.text-only-grid-explore-description {
+  margin-left: 0;
+  width: 60% !important;
 }
 @media (max-width: 768px) {
-    .image-slider-description {
-        width: 98% !important;
-        text-align: left;
-        font: normal normal normal 14px/22px Lato;
-        letter-spacing: 0px;
-        color: #666666;
-        opacity: 1;
-        padding-top: 0;
-        height: 65px;
-    }
-    .favourite-image-slider{
-        padding-left: 0;
-    }
-    .image-slider-header {
-        text-align: left;
-        font: normal normal 600 24px/32px Playfair Display;
-        letter-spacing: 0.36px;
-        color: #672A2F;
-        opacity: 1;
-        height: 35px;
-    }
-    .extra-empty-container-exclusive-offers{
-        display: block !important;
-    }
-    .exclusive-offer-test-section{
-        max-width: 87% !important;
-    }
-    .carousel-view-all-btn{
-        padding-top: 9%;
-    }
-    .discover-image-slider-container{
-        padding-top: 50px;
-    }
-    .image-slider-header-explore{
-        text-align: center;
-    }
-    .large-image-slider-container {
-        padding-top: 50px;
-    }
-    .large-image-slider-container .MuiGrid-root {
-        margin: 0 !important;
-        text-align: -webkit-center;
-    }
-    .text-only-grid-explore-description{
-        margin-left: 0;
-    }
+  .image-slider-description {
+    width: 98% !important;
+    text-align: left;
+    font: normal normal normal 14px/22px Lato;
+    letter-spacing: 0px;
+    color: #666666;
+    opacity: 1;
+    padding-top: 0;
+    height: 65px;
+  }
+  .favourite-image-slider {
+    padding-left: 0;
+  }
+  .image-slider-header {
+    text-align: left;
+    font: normal normal 600 24px/32px Playfair Display;
+    letter-spacing: 0.36px;
+    color: #672a2f;
+    opacity: 1;
+    height: 35px;
+  }
+  .extra-empty-container-exclusive-offers {
+    display: block !important;
+  }
+  .exclusive-offer-test-section {
+    max-width: 87% !important;
+  }
+  .carousel-view-all-btn {
+    padding-top: 9%;
+  }
+  .discover-image-slider-container {
+    // padding-top: 50px;
+  }
+  .image-slider-header-explore {
+    text-align: center;
+  }
+  .large-image-slider-container {
+    // padding-top: 50px;
+  }
+  .large-image-slider-container .MuiGrid-root {
+    margin: 0 !important;
+    text-align: -webkit-center;
+  }
+  .text-only-grid-explore-description {
+    margin-left: 0;
+  }
 }

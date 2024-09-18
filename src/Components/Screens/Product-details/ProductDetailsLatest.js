@@ -6,6 +6,7 @@ import { Box, Button, Grid } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import EnquiryModal from "./EnquiryModal";
 import { getProductDetails } from "../../../services/FrontApp/index.service";
+import SliderImage from "react-zoom-slider";
 
 export const ProductDetailsLatest = () => {
   const { id } = useParams();
@@ -68,6 +69,16 @@ export const ProductDetailsLatest = () => {
     thumbnail: image.image_path,
   }));
 
+  const sliderData =
+    imageItems && imageItems.length > 0
+      ? imageItems
+          .filter((item) => item && item.original) // Filter out invalid items
+          .map((item) => ({
+            image: item.original, // Use `original` field for the `image`
+            description: "", // Add descriptions if needed, or leave empty
+          }))
+      : [];
+
   const [open, setOpen] = useState(false);
 
   const handleOpenEnquiryModal = () => {
@@ -90,12 +101,23 @@ export const ProductDetailsLatest = () => {
           <div className="">
             {/* product images gallery */}
             <div className="d-none product-gallery d-md-block">
-              <ImageGallery
+              {/* <ImageGallery
                 items={imageItems}
                 showNav={false}
                 showPlayButton={false}
                 showFullscreenButton={false}
-              />
+              /> */}
+
+              {sliderData && sliderData.length > 0 ? (
+                <SliderImage
+                  data={sliderData}
+                  showDescription={true}
+                  direction="right"
+                  className="react-slider__imgZoom react-slider__btnNext react-slider__btnPrev"
+                />
+              ) : (
+                <p>No images available to display.</p>
+              )}
             </div>
 
             <div className="d-block product-gallery d-md-none">

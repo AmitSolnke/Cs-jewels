@@ -26,8 +26,6 @@ import {
 } from "../../../services/FrontApp/index.service";
 import { Paginator } from "../../Common/Paginator";
 
-
-
 export const ProductCatalogues = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -140,11 +138,13 @@ export const ProductCatalogues = () => {
       const { data } = await getProducts(requestParams);
       // if (data.data.data) {
       setProducts(data?.data?.data);
-      let bannerImg = data?.product_list_banner?.[0]?.image_path?.replace(
-        "//",
-        "/"
-      );
-      bannerImg = bannerImg?.replace("http:/", "http://");
+      // let bannerImg = data?.product_list_banner?.[0]?.image_path?.replace(
+      //   "//",
+      //   "/"
+      // );
+      // bannerImg = bannerImg?.replace("http:/", "http://");
+      let bannerImg = data?.product_list_banner?.[0]?.image_path;
+
       setBanner(bannerImg);
       // } else {
       //   setProducts([]);
@@ -407,13 +407,8 @@ export const ProductCatalogues = () => {
         </BullionsFilter>
       </Paper>
       <div className="d-none d-md-block">
-        <div className="filter-dropdowns d-flex container">
-     
-     
-        </div>
+        <div className="filter-dropdowns d-flex container"></div>
         <hr />
-
-
       </div>
 
       <Box>

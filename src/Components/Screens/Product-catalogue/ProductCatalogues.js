@@ -343,7 +343,8 @@ export const ProductCatalogues = () => {
             ""
           )}
           <p>
-            {productCount}+ {metal.name} {itemType.name} options available
+            {productCount}+ {metal.name.toLowerCase()}{" "}
+            {itemType.name.toLowerCase()} options available
           </p>
         </div>
       </div>

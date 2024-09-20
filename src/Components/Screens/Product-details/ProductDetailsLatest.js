@@ -105,19 +105,27 @@ export const ProductDetailsLatest = () => {
                 items={imageItems}
                 showNav={false}
                 showPlayButton={false}
-                showFullscreenButton={false}
+                showFul
+                lscreenButton={false}
               /> */}
 
-              {sliderData && sliderData.length > 0 ? (
-                <SliderImage
-                  data={sliderData}
-                  showDescription={true}
-                  direction="right"
-                  className="react-slider__imgZoom react-slider__btnNext react-slider__btnPrev"
-                />
-              ) : (
-                <p>No images available to display.</p>
-              )}
+              <div
+                className={`slider-wrapper ${
+                  sliderData?.length === 1 ? "single-slide" : ""
+                }`}
+              >
+                {sliderData && sliderData.length > 0 ? (
+                  <SliderImage
+                    data={sliderData}
+                    showDescription={true}
+                    direction="right"
+                    className="react-slider__imgZoom 
+                   react-slider__areaZoom img react-slider__ul li.active img .react-slider__ul li react-slider__ul li:nth-child react-slider__ul"
+                  />
+                ) : (
+                  <p>No images available to display.</p>
+                )}
+              </div>
             </div>
 
             <div className="d-block product-gallery d-md-none">
@@ -155,7 +163,7 @@ export const ProductDetailsLatest = () => {
               {productDetails.item_description}
             </div> */}
 
-            <div className="product-informations my-2">
+            <div className="product-informations my-3 mx-2">
               <span className="product-details-title-link">
                 PRODUCT DETAILS
               </span>
@@ -205,7 +213,7 @@ export const ProductDetailsLatest = () => {
           </table> */}
 
           <Button
-            className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"
+            className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6 mx-2"
             variant="contained"
             onClick={handleOpenEnquiryModal}
             style={{ display: "flex", justifyContent: "space-between" }}

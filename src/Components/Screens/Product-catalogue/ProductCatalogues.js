@@ -138,11 +138,13 @@ export const ProductCatalogues = () => {
       const { data } = await getProducts(requestParams);
       // if (data.data.data) {
       setProducts(data?.data?.data);
-      let bannerImg = data?.product_list_banner?.[0]?.image_path?.replace(
-        "//",
-        "/"
-      );
-      bannerImg = bannerImg?.replace("http:/", "http://");
+      // let bannerImg = data?.product_list_banner?.[0]?.image_path?.replace(
+      //   "//",
+      //   "/"
+      // );
+      // bannerImg = bannerImg?.replace("http:/", "http://");
+      let bannerImg = data?.product_list_banner?.[0]?.image_path;
+
       setBanner(bannerImg);
       // } else {
       //   setProducts([]);
@@ -341,7 +343,8 @@ export const ProductCatalogues = () => {
             ""
           )}
           <p>
-            {productCount}+ {metal.name} {itemType.name} options available
+            {productCount}+ {metal.name.toLowerCase()}{" "}
+            {itemType.name.toLowerCase()} options available
           </p>
         </div> */}
       </div>
@@ -420,12 +423,12 @@ export const ProductCatalogues = () => {
                 style={{ cursor: "pointer" }}
                 className="product-item-card"
                 onClick={() =>
-                  navigate("/product-details/" + product?.product_id)
+                  navigate("/product-details/" + product.product_id)
                 }
               >
                 {/* <Card variant="outlined"> */}
                 <img
-                  src={product?.image_path}
+                  src={product.image_path}
                   alt="product image"
                   className="image"
                 />

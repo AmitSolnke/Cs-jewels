@@ -332,7 +332,7 @@ export const ProductCatalogues = () => {
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
         <img src={banner} alt="Banner image" />
-        <div className="catalogue-header-wrapper">
+        {/* <div className="catalogue-header-wrapper">
           {metal.name !== "" ? (
             <h4>
               {metal.name} {itemType.name}
@@ -343,7 +343,7 @@ export const ProductCatalogues = () => {
           <p>
             {productCount}+ {metal.name} {itemType.name} options available
           </p>
-        </div>
+        </div> */}
       </div>
       <Paper
         className="mobile-filter-section"
@@ -424,7 +424,6 @@ export const ProductCatalogues = () => {
                 }
               >
                 {/* <Card variant="outlined"> */}
-                {console.log("ppp", product)}
                 <img
                   src={product?.image_path}
                   alt="product image"

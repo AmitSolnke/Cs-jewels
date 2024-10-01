@@ -82,7 +82,7 @@ export default function AwardsAndRecognition({ Item }) {
             gap: 1,
           }}
         >
-          {AwardsAndItsLogo.map((element, index) => (
+          {/* {AwardsAndItsLogo.map((element, index) => (
             <Grid
               item
               xs={12}
@@ -98,6 +98,39 @@ export default function AwardsAndRecognition({ Item }) {
                 alt={element.imageSecription}
               />
               <p cl>{element.imageSecription}</p>
+            </Grid>
+          ))} */}
+
+          {AwardsAndItsLogo?.sort((a, b) => {
+            // Extract all years from the description (e.g., "Award 2018 and 2020" => [2018, 2020])
+            const yearsA =
+              a?.imageSecription.match(/\d{4}/g)?.map(Number) || [];
+            const yearsB =
+              b?.imageSecription.match(/\d{4}/g)?.map(Number) || [];
+
+            // Sort based on the earliest year in the array
+            const earliestYearA = Math?.min(...yearsA);
+            const earliestYearB = Math?.min(...yearsB);
+
+            // If no years are found, default to sorting equally (0 - 0 = 0)
+            return (earliestYearA || 0) - (earliestYearB || 0);
+          })?.map((element, index) => (
+            <Grid
+              key={index} // Always provide a unique key when using map
+              item
+              xs={12}
+              sm={5.5}
+              md={3.5}
+              lg={2.9}
+              xl={2.2}
+              className="text-center"
+            >
+              <img
+                src={element?.imageUrl}
+                className="img-fluid award-image"
+                alt={element?.imageSecription}
+              />
+              <p>{element?.imageSecription}</p>
             </Grid>
           ))}
         </Grid>

@@ -98,15 +98,15 @@ export const ProductDetailsLatest = () => {
           <div className="">
             {/* product images gallery */}
             <div className="d-none product-gallery d-md-block">
-              {/* <ImageGallery
+              <ImageGallery
                 items={imageItems}
                 showNav={false}
                 showPlayButton={false}
                 showFul
                 lscreenButton={false}
-              /> */}
+              />
 
-              {sliderData && sliderData.length > 0 ? (
+              {/* {sliderData && sliderData.length > 0 ? (
                 <SliderImage
                   data={sliderData}
                   showDescription={true}
@@ -114,7 +114,7 @@ export const ProductDetailsLatest = () => {
                 />
               ) : (
                 <p>No images available to display.</p>
-              )}
+              )} */}
             </div>
 
             <div className="d-block product-gallery d-md-none">

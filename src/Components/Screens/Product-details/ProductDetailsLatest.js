@@ -94,8 +94,19 @@ export const ProductDetailsLatest = () => {
                 items={imageItems}
                 showNav={false}
                 showPlayButton={false}
-                showFullscreenButton={false}
+                showFul
+                lscreenButton={false}
               />
+
+              {/* {sliderData && sliderData.length > 0 ? (
+                <SliderImage
+                  data={sliderData}
+                  showDescription={true}
+                  direction="right"
+                />
+              ) : (
+                <p>No images available to display.</p>
+              )} */}
             </div>
 
             <div className="d-block product-gallery d-md-none">

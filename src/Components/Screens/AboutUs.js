@@ -40,7 +40,7 @@ export default function AboutUs() {
               // useReadMore={true}
               // limit={350}
               headerText={
-                " Crafting Trust, Adorning Generations: 197 Years of Timeless Elegance"
+                " Crafting Trust, Adorning Generations: 198 Years of Timeless Elegance"
               }
             >
               Welcome to Chandukaka Saraf Jewels - India's Premier Jeweller

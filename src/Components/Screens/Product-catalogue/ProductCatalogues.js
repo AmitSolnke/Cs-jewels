@@ -334,19 +334,6 @@ export const ProductCatalogues = () => {
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
         <img src={banner} alt="Banner image" />
-        <div className="catalogue-header-wrapper">
-          {metal.name !== "" ? (
-            <h4>
-              {metal.name} {itemType.name}
-            </h4>
-          ) : (
-            ""
-          )}
-          <p>
-            {productCount}+ {metal.name.toLowerCase()}{" "}
-            {itemType.name.toLowerCase()} options available
-          </p>
-        </div>
       </div>
       <Paper
         className="mobile-filter-section"

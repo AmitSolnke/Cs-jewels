@@ -1,21 +1,24 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import useWindowWidthAndHeight from "../utilities/CustomHooks";
+import {
+  BestBusinessWomenAwards,
+  GemOfTheYearAward,
+  GJTCIExcellenceAward2014,
+  LokmatCorporateExcellenceAward2017,
+  imageSliderHeaderIconLeft,
+  imageSliderHeaderIconRight,
+  BestSilverDesignerJewellery2016,
+  YoungAcheversAward,
+  TrustedJewellers,
+} from "../images/AwordImages";
 
-import GJTCIExcellenceAward2014 from "../images/GJTCIExcellenceAward2014.png";
-import LokmatCorporateExcellenceAward2017 from "../images/LokmatCorporateExcellenceAward2017.png";
-import imageSliderHeaderIconLeft from "../images/icons/Group45.svg";
-import imageSliderHeaderIconRight from "../images/icons/Group40.svg";
-import BestSilverDesignerJewellery2016 from "../images/BestSilverDesignerJewellery2016.png";
-import BestBusinessWomenAwards from "../images/BestBusinessWomenAwards.png";
-import GemOfTheYearAward from "../images/Awards.png";
-import YoungAcheversAward from "../images/YoungAcheversAward.png";
-import TrustedJewellers from "../images/TrustedJewellers.png";
 const AwardsAndItsLogo = [
   {
-    imageUrl: GJTCIExcellenceAward2014,
-    imageSecription: "GJTCI Excellence Award 2024 ",
+    imageUrl: TrustedJewellers,
+    imageSecription: "2015",
   },
+
   {
     imageUrl: BestSilverDesignerJewellery2016,
     imageSecription: "Best Silver Designer Award 2016",
@@ -26,10 +29,6 @@ const AwardsAndItsLogo = [
   },
 
   {
-    imageUrl: BestBusinessWomenAwards,
-    imageSecription: "Best Female Business Woman Award 2024",
-  },
-  {
     imageUrl: GemOfTheYearAward,
     imageSecription: "Gem of the Year(West)Award 2020",
   },
@@ -38,8 +37,12 @@ const AwardsAndItsLogo = [
     imageSecription: "2020",
   },
   {
-    imageUrl: TrustedJewellers,
-    imageSecription: "2015",
+    imageUrl: GJTCIExcellenceAward2014,
+    imageSecription: "GJTCI Excellence Award 2024 ",
+  },
+  {
+    imageUrl: BestBusinessWomenAwards,
+    imageSecription: "Best Female Business Woman Award 2024",
   },
 ];
 

@@ -138,11 +138,13 @@ export const ProductCatalogues = () => {
       const { data } = await getProducts(requestParams);
       // if (data.data.data) {
       setProducts(data?.data?.data);
-      let bannerImg = data?.product_list_banner?.[0]?.image_path?.replace(
-        "//",
-        "/"
-      );
-      bannerImg = bannerImg?.replace("http:/", "http://");
+      // let bannerImg = data?.product_list_banner?.[0]?.image_path?.replace(
+      //   "//",
+      //   "/"
+      // );
+      // bannerImg = bannerImg?.replace("http:/", "http://");
+      let bannerImg = data?.product_list_banner?.[0]?.image_path;
+
       setBanner(bannerImg);
       // } else {
       //   setProducts([]);
@@ -332,18 +334,6 @@ export const ProductCatalogues = () => {
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
         <img src={banner} alt="Banner image" />
-        {/* <div className="catalogue-header-wrapper">
-          {metal.name !== "" ? (
-            <h4>
-              {metal.name} {itemType.name}
-            </h4>
-          ) : (
-            ""
-          )}
-          <p>
-            {productCount}+ {metal.name} {itemType.name} options available
-          </p>
-        </div> */}
       </div>
       <Paper
         className="mobile-filter-section"
@@ -420,12 +410,12 @@ export const ProductCatalogues = () => {
                 style={{ cursor: "pointer" }}
                 className="product-item-card"
                 onClick={() =>
-                  navigate("/product-details/" + product?.product_id)
+                  navigate("/product-details/" + product.product_id)
                 }
               >
                 {/* <Card variant="outlined"> */}
                 <img
-                  src={product?.image_path}
+                  src={product.image_path}
                   alt="product image"
                   className="image"
                 />

@@ -6,7 +6,6 @@ import { Box, Button, Grid } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import EnquiryModal from "./EnquiryModal";
 import { getProductDetails } from "../../../services/FrontApp/index.service";
-import SliderImage from "react-zoom-slider";
 
 export const ProductDetailsLatest = () => {
   const { id } = useParams();
@@ -65,16 +64,9 @@ export const ProductDetailsLatest = () => {
 
   // Todo: this is the image array refactor code to use images from the api call
   const imageItems = productDetails.images.map((image) => ({
-    original: image?.image_path,
-    thumbnail: image?.image_path,
+    original: image.image_path,
+    thumbnail: image.image_path,
   }));
-
-  const sliderData = (imageItems || [])
-    .filter((item) => item && item?.original) // Safely handle undefined imageItems
-    .map((item) => ({
-      image: item?.original, // Use `original` field for the `image`
-      description: "", // Add descriptions if needed, or leave empty
-    }));
 
   const [open, setOpen] = useState(false);
 

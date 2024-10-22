@@ -53,6 +53,7 @@ export default function Enash() {
   const [selectedDay, setSelectedDay] = useState(null);
   const [minDate, setMinDate] = useState("");
   const [lastMessage, setLastMessage] = useState("");
+  const [contactNo, setContactNo] = useState("");
   const [errors, setErrors] = useState({
     schemeId: "",
     email: "",
@@ -196,7 +197,7 @@ export default function Enash() {
             error.response?.data?.message ||
             "An error occurred. Please try again later.";
 
-          setErrors({ apiError: errorMessage });
+          // setErrors({ apiError: errorMessage });
           toast.error(errorMessage, {
             position: "top-right",
             autoClose: 3000,
@@ -255,7 +256,7 @@ export default function Enash() {
         const result = await getSchemeId(id);
         setShowModal(true);
         setTimer(120);
-        setIsButtonDisabled(false);
+        // setIsButtonDisabled(false);
         if (result?.data?.status === true) {
           toast.success(result?.data?.message, {
             position: "top-right",
@@ -315,7 +316,11 @@ export default function Enash() {
     try {
       const result = await getSchemeId(id);
       setTimer(120);
-      setIsButtonDisabled(false);
+      if (otp.join("").length <= 0) {
+        setIsButtonDisabled(true);
+      } else {
+        setIsButtonDisabled(false);
+      }
 
       if (result?.data?.status === true) {
         toast.success(result?.data?.message, {
@@ -333,6 +338,7 @@ export default function Enash() {
           },
         });
         setShowModal(true);
+        setContactNo(res.data.data.customer_mobile);
       } else {
         toast.error(result?.data?.message, {
           position: "top-right",
@@ -348,6 +354,7 @@ export default function Enash() {
             fontSize: "16px",
           },
         });
+        setIsButtonDisabled(true);
       }
     } catch (error) {}
   };
@@ -398,14 +405,50 @@ export default function Enash() {
         setShowModal(true);
       }
     } catch (error) {
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
+      console.log("error", error);
+
+      if (error.response) {
+        // Check for 401 error status
+        if (error.response.status === 401) {
+          toast.error(error.response.data.message, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            style: {
+              backgroundColor: "#df4759",
+              color: "#fff",
+              fontSize: "16px",
+            },
+          });
+          // setErrors({ apiError: "Unauthorized access. Please log in again." });
+          setShowModal(true); // Show modal if 401 error occurs
+        } else if (error.response.data && error.response.data.message) {
+          // setErrors({ apiError: error.response.data.message });
+          toast.error(error.response.data.message, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            style: {
+              backgroundColor: "#df4759",
+              color: "#fff",
+              fontSize: "16px",
+            },
+          });
+          setShowModal(true);
+        }
       } else {
-        setErrors({ apiError: "An error occurred. Please try again later." });
+        // setErrors({ apiError: "An error occurred. Please try again later." });
+        setShowModal(true);
       }
+      console.log("Error:", error);
     }
   };
 
@@ -529,12 +572,12 @@ export default function Enash() {
         setTimer((prevTime) => prevTime - 1);
       }, 1000);
     } else if (timer === 0) {
+      console.log("timeer", timer);
       setIsButtonDisabled(true);
     }
 
     return () => clearInterval(interval);
   }, [timer]);
-
   return (
     <div className="header-content ">
       <SuccessMsg message={successMsg} />
@@ -609,12 +652,13 @@ export default function Enash() {
                     shrink: !!data?.scheme_name,
                   }}
                   fullWidth
+                  className="text-field text-field-name-contact-us"
                   value={data?.scheme_name}
                   disabled
                   InputProps={{
                     style: {
                       borderRadius: 0,
-                      border: "1px  #000",
+                      // border: "1px  #000",
                     },
                   }}
                 />
@@ -684,6 +728,10 @@ export default function Enash() {
                   fullWidth
                   required
                   disabled
+                  value={data?.amount}
+                  InputLabelProps={{
+                    shrink: !!data?.amount,
+                  }}
                   InputProps={{
                     style: {
                       borderRadius: 0,
@@ -700,9 +748,9 @@ export default function Enash() {
                   fullWidth
                   required
                   disabled
-                  value={data?.start_date}
+                  value={data?.scheme_start_date}
                   InputLabelProps={{
-                    shrink: !!data?.start_date,
+                    shrink: !!data?.scheme_start_date,
                   }}
                   InputProps={{
                     style: {
@@ -720,9 +768,9 @@ export default function Enash() {
                   fullWidth
                   disabled
                   required
-                  value={data?.end_date}
+                  value={data?.scheme_end_date}
                   InputLabelProps={{
-                    shrink: !!data?.end_date,
+                    shrink: !!data?.scheme_end_date,
                   }}
                   InputProps={{
                     style: {
@@ -787,7 +835,10 @@ export default function Enash() {
                   error={Boolean(errors?.employeeId)}
                   onChange={handleEmployeeIdChange}
                   helperText={errors?.employeeId}
-                  defaultValue={data?.employee_id}
+                  value={data?.employee_id}
+                  InputLabelProps={{
+                    shrink: !!data?.employee_id,
+                  }}
                   InputProps={{
                     style: {
                       borderRadius: 0,
@@ -803,6 +854,9 @@ export default function Enash() {
                   variant="outlined"
                   fullWidth
                   value={data?.employee_name}
+                  InputLabelProps={{
+                    shrink: !!data?.employee_name,
+                  }}
                   InputProps={{
                     style: {
                       borderRadius: 0,
@@ -870,7 +924,7 @@ export default function Enash() {
           <Typography className="mt-3">
             We have sent an OTP to the given number
           </Typography>
-          <Typography>89894839483984</Typography>
+          <Typography>{contactNo}</Typography>
 
           <div className="otp-inputs mt-5" style={{ display: "flex", gap: 20 }}>
             {otp.map((digit, index) => (
@@ -939,6 +993,9 @@ export default function Enash() {
                   CANCEL
                 </Button>
               </Grid>
+              {console.log("oto", otp.join("").length)}
+              {console.log("oto", isButtonDisabled)}
+
               <Grid item xs={6} md={6}>
                 {" "}
                 <Button
@@ -950,7 +1007,9 @@ export default function Enash() {
                   }}
                   color="primary"
                   sx={{ bgcolor: "black", borderRadius: 1 }}
-                  disabled={isButtonDisabled}
+                  // disabled={
+                  //   isButtonDisabled === true || otp?.join("")?.length <= 0
+                  // }
                 >
                   VERIFY OTP
                 </Button>

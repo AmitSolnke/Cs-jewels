@@ -54,13 +54,16 @@ function CarouselHome() {
   return (
     <div className="slider-container">
       {loadingBanner ? (
-        <div className="w-100">
-          <img
-            src={bannerPlaceholder}
-            alt="placeholder img"
-            className="w-100 h-100"
-          />
-        </div>
+        // <div className="w-100" >
+        //   <img
+        //     src={bannerPlaceholder}
+        //     alt="placeholder img"
+        //     className="w-100 h-100"
+        //   />
+        // </div>
+        <div
+          style={{ backgroundColor: "white", height: "65vh", width: "100%" }}
+        ></div>
       ) : (
         <div className="service-slider">
           <Slider {...settings} className="d-md-none">

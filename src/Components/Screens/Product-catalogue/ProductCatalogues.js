@@ -332,7 +332,7 @@ export const ProductCatalogues = () => {
 
   return (
     <div className="product-catalogues">
-      <div className="product-catalogue-banner " style={{ height: "65vh" }}>
+      <div className="product-catalogue-banner  ">
         <img src={banner} alt="Banner image" />
       </div>
       <Paper

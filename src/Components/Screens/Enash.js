@@ -197,7 +197,6 @@ export default function Enash() {
             error.response?.data?.message ||
             "An error occurred. Please try again later.";
 
-          // setErrors({ apiError: errorMessage });
           toast.error(errorMessage, {
             position: "top-right",
             autoClose: 3000,
@@ -256,7 +255,6 @@ export default function Enash() {
         const result = await getSchemeId(id);
         setShowModal(true);
         setTimer(120);
-        // setIsButtonDisabled(false);
         if (result?.data?.status === true) {
           toast.success(result?.data?.message, {
             position: "top-right",
@@ -338,7 +336,7 @@ export default function Enash() {
           },
         });
         setShowModal(true);
-        setContactNo(res.data.data.customer_mobile);
+        setContactNo(result.data.data.mobile_number);
       } else {
         toast.error(result?.data?.message, {
           position: "top-right",
@@ -408,7 +406,6 @@ export default function Enash() {
       console.log("error", error);
 
       if (error.response) {
-        // Check for 401 error status
         if (error.response.status === 401) {
           toast.error(error.response.data.message, {
             position: "top-right",
@@ -424,10 +421,8 @@ export default function Enash() {
               fontSize: "16px",
             },
           });
-          // setErrors({ apiError: "Unauthorized access. Please log in again." });
-          setShowModal(true); // Show modal if 401 error occurs
+          setShowModal(true);
         } else if (error.response.data && error.response.data.message) {
-          // setErrors({ apiError: error.response.data.message });
           toast.error(error.response.data.message, {
             position: "top-right",
             autoClose: 3000,
@@ -445,7 +440,6 @@ export default function Enash() {
           setShowModal(true);
         }
       } else {
-        // setErrors({ apiError: "An error occurred. Please try again later." });
         setShowModal(true);
       }
       console.log("Error:", error);
@@ -455,7 +449,6 @@ export default function Enash() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const schemeIdError = validateSchemeId(schemeId);
-    const emailError = validateEmail(customerEmail);
     const upiError = validateUpiId(upiId);
     const employeeIdError = validateEmployeeId(employeeId);
 
@@ -476,7 +469,6 @@ export default function Enash() {
       const result = await PostCreateMandate(form);
       setSuccessMsg(result?.data?.message);
 
-      setErrors({});
       if (result?.data?.status === true) {
         toast.success(result?.data?.message, {
           position: "top-right",
@@ -572,7 +564,6 @@ export default function Enash() {
         setTimer((prevTime) => prevTime - 1);
       }, 1000);
     } else if (timer === 0) {
-      console.log("timeer", timer);
       setIsButtonDisabled(true);
     }
 
@@ -658,7 +649,6 @@ export default function Enash() {
                   InputProps={{
                     style: {
                       borderRadius: 0,
-                      // border: "1px  #000",
                     },
                   }}
                 />
@@ -993,8 +983,6 @@ export default function Enash() {
                   CANCEL
                 </Button>
               </Grid>
-              {console.log("oto", otp.join("").length)}
-              {console.log("oto", isButtonDisabled)}
 
               <Grid item xs={6} md={6}>
                 {" "}

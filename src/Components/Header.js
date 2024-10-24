@@ -305,6 +305,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             About us
                           </Link>
                         </li>
+                        <li className="w-100">
+                          <Link className="menu-links" to="/enash">
+                            Enash
+                          </Link>
+                        </li>
                       </div>
                     </ul>
                   </nav>
@@ -332,6 +337,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         </li>
                         <li>
                           <Link to="/aboutus">About us</Link>
+                        </li>
+                        <li>
+                          <Link to="/enash">Enash</Link>
                         </li>
                         {/* <li>
                           <Link to="/bullions">Bullion</Link>

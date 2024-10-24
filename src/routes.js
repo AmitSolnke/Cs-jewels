@@ -24,6 +24,7 @@ import { ProductCatalogues } from "./Components/Screens/Product-catalogue/Produc
 import { ProductDetailsLatest } from "./Components/Screens/Product-details/ProductDetailsLatest";
 import RefundPolicy from "./Components/Screens/RefundPolicy";
 import ImageCollage from "./Components/Screens/ImageCollage ";
+import Enash from "./Components/Screens/Enash";
 
 export const normalRouts = [
   {
@@ -90,6 +91,13 @@ export const frontAppRoutes = [
     path: "/aboutus",
     name: "About Us",
     element: <AboutUs />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: "/enash",
+    name: "Enash",
+    element: <Enash />,
     exact: true,
     strict: false,
   },

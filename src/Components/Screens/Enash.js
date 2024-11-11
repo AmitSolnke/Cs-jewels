@@ -13,11 +13,13 @@ import {
   DialogActions,
   Typography,
   Grid2,
-  CircularProgress,
+  // CircularProgress,
   IconButton,
 } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import React, { useEffect, useRef, useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+
 import {
   getCheckVPA,
   getSchemeId,
@@ -30,7 +32,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import womanHoldingCandlesDark from "../../images/categories/womanHoldingCandlesDark.png";
 import CloseIcon from "@mui/icons-material/Close";
-
+import DoneIcon from "@mui/icons-material/Done";
 export default function Enash() {
   const [schemeId, setSchemeId] = useState("");
   const [data, setData] = useState();
@@ -44,6 +46,9 @@ export default function Enash() {
   const [showModal, setShowModal] = useState(false);
   const [timer, setTimer] = useState(120);
   const [otp, setOtp] = useState(Array(4).fill(""));
+
+  const [verifiedOtp, setVerifiedOtp] = useState(false);
+
   const [successMsg, setSuccessMsg] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [clickCount, setClickCount] = useState(0);
@@ -54,6 +59,11 @@ export default function Enash() {
   const [minDate, setMinDate] = useState("");
   const [lastMessage, setLastMessage] = useState("");
   const [contactNo, setContactNo] = useState("");
+  const [request, setRequest] = useState(false);
+  const [doneRequest, setDoneRequest] = useState(false);
+
+  const [mandateMsg, setManadateMsg] = useState("");
+
   const [errors, setErrors] = useState({
     schemeId: "",
     email: "",
@@ -137,7 +147,7 @@ export default function Enash() {
 
   const handleUpiIdChange = (e) => {
     e?.persist();
-    const value = e?.target?.value;
+    const value = e?.target?.value?.toLowerCase();
     setUpiId(value);
 
     const error = validateUpiId(value);
@@ -155,7 +165,7 @@ export default function Enash() {
 
         try {
           const result = await getCheckVPA(formData);
-          setLoading(false);
+          setLoading(true);
 
           setLastMessage(result?.data?.message);
 
@@ -175,6 +185,7 @@ export default function Enash() {
               },
             });
             setIsVerified(true);
+            setLoading(false);
           } else {
             toast.error(result?.data?.message, {
               position: "top-right",
@@ -193,6 +204,8 @@ export default function Enash() {
           }
         } catch (error) {
           setLoading(false);
+          setIsVerified(false);
+
           const errorMessage =
             error.response?.data?.message ||
             "An error occurred. Please try again later.";
@@ -256,6 +269,7 @@ export default function Enash() {
         setShowModal(true);
         setTimer(120);
         if (result?.data?.status === true) {
+          setIsButtonDisabled(false);
           toast.success(result?.data?.message, {
             position: "top-right",
             autoClose: 1000,
@@ -305,6 +319,7 @@ export default function Enash() {
   };
 
   const handleSchemeId = async () => {
+    setUpiId("");
     if (!schemeId) {
       setErrors({ schemeId: "Scheme ID cannot be empty." });
       return;
@@ -314,11 +329,7 @@ export default function Enash() {
     try {
       const result = await getSchemeId(id);
       setTimer(120);
-      if (otp.join("").length <= 0) {
-        setIsButtonDisabled(true);
-      } else {
-        setIsButtonDisabled(false);
-      }
+      setIsButtonDisabled(false);
 
       if (result?.data?.status === true) {
         toast.success(result?.data?.message, {
@@ -336,7 +347,8 @@ export default function Enash() {
           },
         });
         setShowModal(true);
-        setContactNo(result.data.data.mobile_number);
+        setVerifiedOtp(true);
+        setContactNo(result?.data?.data?.mobile_number);
       } else {
         toast.error(result?.data?.message, {
           position: "top-right",
@@ -352,7 +364,7 @@ export default function Enash() {
             fontSize: "16px",
           },
         });
-        setIsButtonDisabled(true);
+        setVerifiedOtp(false);
       }
     } catch (error) {}
   };
@@ -403,8 +415,6 @@ export default function Enash() {
         setShowModal(true);
       }
     } catch (error) {
-      console.log("error", error);
-
       if (error.response) {
         if (error.response.status === 401) {
           toast.error(error.response.data.message, {
@@ -442,7 +452,6 @@ export default function Enash() {
       } else {
         setShowModal(true);
       }
-      console.log("Error:", error);
     }
   };
 
@@ -451,10 +460,12 @@ export default function Enash() {
     const schemeIdError = validateSchemeId(schemeId);
     const upiError = validateUpiId(upiId);
     const employeeIdError = validateEmployeeId(employeeId);
+    setIsModalOpen(true);
+    setRequest(true);
 
     setErrors({
       schemeId: schemeIdError,
-      email: emailError,
+      // email: emailError,
       upiId: upiError,
       employeeId: employeeIdError,
     });
@@ -470,38 +481,57 @@ export default function Enash() {
       setSuccessMsg(result?.data?.message);
 
       if (result?.data?.status === true) {
-        toast.success(result?.data?.message, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          style: {
-            backgroundColor: "#4caf50",
-            color: "#fff",
-            fontSize: "16px",
-          },
-        });
+        setRequest(false);
+        setDoneRequest(true);
+        setManadateMsg(result?.data?.message);
+        setSchemeId("");
+        setCustomerEmail("");
+        setSelectedDay(null);
+        setUpiId("");
+        setData();
+
+        // toast.success(result?.data?.message, {
+        //   position: "top-right",
+        //   autoClose: 3000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   style: {
+        //     backgroundColor: "#4caf50",
+        //     color: "#fff",
+        //     fontSize: "16px",
+        //   },
+        // });
         setIsModalOpen(true);
       } else {
-        toast.error(result?.data?.message, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          style: {
-            backgroundColor: "#df4759",
-            color: "#fff",
-            fontSize: "16px",
-          },
-        });
+        setRequest(false);
+        setDoneRequest(false);
+
+        setManadateMsg(result?.data?.message);
+
+        // toast.error(result?.data?.message, {
+        //   position: "top-right",
+        //   autoClose: 3000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   style: {
+        //     backgroundColor: "#df4759",
+        //     color: "#fff",
+        //     fontSize: "16px",
+        //   },
+        // });
       }
-    } catch (error) {}
+    } catch (error) {
+      setRequest(false);
+      setDoneRequest(false);
+
+      setManadateMsg(error?.response?.data?.message);
+    }
   };
 
   const handleClose = () => {
@@ -614,6 +644,7 @@ export default function Enash() {
                   error={Boolean(errors?.schemeId)}
                   onChange={handleSchemeIdChange}
                   helperText={errors?.schemeId}
+                  autoComplete="off"
                   InputProps={{
                     style: {
                       borderRadius: 0,
@@ -629,6 +660,7 @@ export default function Enash() {
                   color="primary"
                   onClick={handleSchemeId}
                   sx={{ bgcolor: "black", borderRadius: 1 }}
+                  disabled={verifiedOtp}
                 >
                   GET OTP
                 </Button>
@@ -645,7 +677,8 @@ export default function Enash() {
                   fullWidth
                   className="text-field text-field-name-contact-us"
                   value={data?.scheme_name}
-                  disabled
+                  // disabled
+                  style={{ pointerEvents: "none" }}
                   InputProps={{
                     style: {
                       borderRadius: 0,
@@ -659,7 +692,8 @@ export default function Enash() {
                   label="Customer Name"
                   variant="outlined"
                   fullWidth
-                  disabled
+                  // disabled
+                  style={{ pointerEvents: "none" }}
                   required
                   value={data?.customer_name}
                   InputLabelProps={{
@@ -680,7 +714,8 @@ export default function Enash() {
                   variant="outlined"
                   fullWidth
                   required
-                  disabled
+                  // disabled
+                  style={{ pointerEvents: "none" }}
                   value={data?.customer_mobile}
                   InputLabelProps={{
                     shrink: !!data?.customer_mobile,
@@ -703,6 +738,7 @@ export default function Enash() {
                   error={Boolean(errors?.email)}
                   onChange={handleEmailChange}
                   helperText={errors?.email}
+                  autoComplete="off"
                   InputProps={{
                     style: {
                       borderRadius: 0,
@@ -717,7 +753,8 @@ export default function Enash() {
                   variant="outlined"
                   fullWidth
                   required
-                  disabled
+                  // disabled
+                  style={{ pointerEvents: "none" }}
                   value={data?.amount}
                   InputLabelProps={{
                     shrink: !!data?.amount,
@@ -737,7 +774,8 @@ export default function Enash() {
                   variant="outlined"
                   fullWidth
                   required
-                  disabled
+                  // disabled
+                  style={{ pointerEvents: "none" }}
                   value={data?.scheme_start_date}
                   InputLabelProps={{
                     shrink: !!data?.scheme_start_date,
@@ -756,7 +794,8 @@ export default function Enash() {
                   label="Scheme Expiry Date"
                   variant="outlined"
                   fullWidth
-                  disabled
+                  // disabled
+                  style={{ pointerEvents: "none" }}
                   required
                   value={data?.scheme_end_date}
                   InputLabelProps={{
@@ -776,7 +815,7 @@ export default function Enash() {
                   type="date"
                   fullWidth
                   onChange={handleDateChange}
-                  label="EMI Debit Day (EMI will be debited on the selected day every
+                  label="EMI Debit Date (EMI will be debited on the selected day every
                     month till the expiry date)*"
                   InputProps={{
                     sx: {
@@ -798,6 +837,7 @@ export default function Enash() {
                   required
                   label="UPI ID"
                   placeholder="Enter UPI ID"
+                  autoComplete="off"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -821,6 +861,7 @@ export default function Enash() {
                 <TextField
                   label="Employee ID"
                   variant="outlined"
+                  autoComplete="off"
                   fullWidth
                   error={Boolean(errors?.employeeId)}
                   onChange={handleEmployeeIdChange}
@@ -841,6 +882,7 @@ export default function Enash() {
               <Grid item xs={12}>
                 <TextField
                   label="Employee Name"
+                  autoComplete="off"
                   variant="outlined"
                   fullWidth
                   value={data?.employee_name}
@@ -863,7 +905,14 @@ export default function Enash() {
                   variant="contained"
                   color="primary"
                   sx={{ bgcolor: "black" }}
-                  disabled={!(isVerified && schemeId && selectedDay)}
+                  disabled={
+                    !(
+                      isVerified &&
+                      schemeId &&
+                      selectedDay &&
+                      loading === false
+                    )
+                  }
                 >
                   Submit
                 </Button>
@@ -908,11 +957,11 @@ export default function Enash() {
             alignItems: "center",
           }}
         >
-          <Typography variant="h5" className="mt-5">
+          <Typography variant="h5" className="mt-5 bold-text">
             ENTER OTP
           </Typography>
           <Typography className="mt-3">
-            We have sent an OTP to the given number
+            We have sent an OTP on below given number
           </Typography>
           <Typography>{contactNo}</Typography>
 
@@ -938,16 +987,22 @@ export default function Enash() {
               />
             ))}
           </div>
-
           <Typography className="mt-5">
             Did not receive an OTP
             <a
               href="#"
               className={` text-decoration-underline ms-1 `}
               style={{
-                color: clickCount >= 4 ? "grey" : "blue",
-                cursor: clickCount >= 4 ? "not-allowed" : "pointer",
+                color:
+                  clickCount >= 4 || isButtonDisabled === false
+                    ? "grey"
+                    : "blue",
+                cursor:
+                  clickCount >= 4 || isButtonDisabled === false
+                    ? "not-allowed"
+                    : "pointer",
               }}
+              disabled={isButtonDisabled === false}
               onClick={(e) => {
                 e?.preventDefault();
                 handleResendClick();
@@ -995,9 +1050,7 @@ export default function Enash() {
                   }}
                   color="primary"
                   sx={{ bgcolor: "black", borderRadius: 1 }}
-                  // disabled={
-                  //   isButtonDisabled === true || otp?.join("")?.length <= 0
-                  // }
+                  disabled={isButtonDisabled === true}
                 >
                   VERIFY OTP
                 </Button>
@@ -1099,12 +1152,15 @@ export default function Enash() {
                 marginTop: "150px",
               }}
             >
-              <CircularProgress size={120} color="#5a3e3e"></CircularProgress>
+              {doneRequest === true && (
+                <DoneIcon style={{ fontSize: "10em", color: "green" }} />
+              )}
+              {request === true && (
+                <CircularProgress size={120} sx={{ color: "#5a3e3e" }} />
+              )}
               <Typography style={{ fontSize: "35px" }}>
-                E-Mandate process
-              </Typography>
-              <Typography style={{ fontSize: "35px" }}>
-                completed successfully!
+                {/* E-Mandate request */}
+                {mandateMsg}
               </Typography>
             </div>
           </div>

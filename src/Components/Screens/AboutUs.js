@@ -131,7 +131,7 @@ export default function AboutUs() {
               communities. In 2020, we established the Dayoday Goshala in
               Baramati, which provides shelter and sustenance to over 250 cows
               year-round. This initiative highlights our commitment to animal
-              welfare and support. Learn more about this project at,"
+              welfare and support. Learn more about this project at,{" "}
               <a
                 href="https://dayoday.org/"
                 target="_blank"

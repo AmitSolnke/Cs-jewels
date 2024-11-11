@@ -3,7 +3,7 @@ import React from "react";
 
 export default function TermsAndCondition() {
   return (
-    <div className="about-us">
+    <div className="terms-and-condition">
       <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={4}>

@@ -133,7 +133,8 @@ function Footer() {
             <div className="social-media-wrapper">
               <h6>Follow us on</h6>
               <a
-                href="https://www.facebook.com/CSjewelss/"
+                // href="https://www.facebook.com/CSjewelss/"
+                href="https://www.facebook.com/csjewel1827"
                 target="_blank"
                 rel="noopener noreferrer"
               >

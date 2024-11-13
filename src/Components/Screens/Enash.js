@@ -13,7 +13,6 @@ import {
   DialogActions,
   Typography,
   Grid2,
-  // CircularProgress,
   IconButton,
 } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -35,7 +34,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import DoneIcon from "@mui/icons-material/Done";
 export default function Enash() {
   const [schemeId, setSchemeId] = useState("");
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [customerEmail, setCustomerEmail] = useState(
     data?.customer_email || ""
   );
@@ -55,7 +54,7 @@ export default function Enash() {
   const [errorMsg, setErrorMsg] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedDay, setSelectedDay] = useState("");
   const [minDate, setMinDate] = useState("");
   const [lastMessage, setLastMessage] = useState("");
   const [contactNo, setContactNo] = useState("");
@@ -320,6 +319,7 @@ export default function Enash() {
 
   const handleSchemeId = async () => {
     setUpiId("");
+    setOtp(new Array(4).fill(""));
     if (!schemeId) {
       setErrors({ schemeId: "Scheme ID cannot be empty." });
       return;
@@ -366,7 +366,39 @@ export default function Enash() {
         });
         setVerifiedOtp(false);
       }
-    } catch (error) {}
+    } catch (error) {
+      if (error.response?.status === 404) {
+        toast.error("Scheme ID not found. Please check and try again.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          style: {
+            backgroundColor: "#df4759",
+            color: "#fff",
+            fontSize: "16px",
+          },
+        });
+      } else {
+        toast.error("An unexpected error occurred. Please try again later.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          style: {
+            backgroundColor: "#df4759",
+            color: "#fff",
+            fontSize: "16px",
+          },
+        });
+      }
+    }
   };
 
   const handleVerifyOtp = async () => {
@@ -397,6 +429,7 @@ export default function Enash() {
           },
         });
         setShowSuccessModal(true);
+        setOtp(new Array(4).fill(""));
       } else {
         toast.error(result?.data?.message, {
           position: "top-right",
@@ -465,7 +498,6 @@ export default function Enash() {
 
     setErrors({
       schemeId: schemeIdError,
-      // email: emailError,
       upiId: upiError,
       employeeId: employeeIdError,
     });
@@ -473,7 +505,7 @@ export default function Enash() {
     const form = {
       scheme_id: schemeId,
       customer_email: customerEmail,
-      emi_debit_date: selectedDay,
+      emi_debit_date: formattedDate,
     };
 
     try {
@@ -484,53 +516,38 @@ export default function Enash() {
         setRequest(false);
         setDoneRequest(true);
         setManadateMsg(result?.data?.message);
+
         setSchemeId("");
         setCustomerEmail("");
-        setSelectedDay(null);
+        setSelectedDay("");
         setUpiId("");
-        setData();
+        setData([]);
+        setVerifiedOtp(false);
 
-        // toast.success(result?.data?.message, {
-        //   position: "top-right",
-        //   autoClose: 3000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   style: {
-        //     backgroundColor: "#4caf50",
-        //     color: "#fff",
-        //     fontSize: "16px",
-        //   },
-        // });
         setIsModalOpen(true);
       } else {
         setRequest(false);
         setDoneRequest(false);
 
         setManadateMsg(result?.data?.message);
-
-        // toast.error(result?.data?.message, {
-        //   position: "top-right",
-        //   autoClose: 3000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   style: {
-        //     backgroundColor: "#df4759",
-        //     color: "#fff",
-        //     fontSize: "16px",
-        //   },
-        // });
       }
     } catch (error) {
       setRequest(false);
       setDoneRequest(false);
 
-      setManadateMsg(error?.response?.data?.message);
+      if (error.response?.status === 403) {
+        setManadateMsg(error?.response?.data?.message);
+        setSchemeId("");
+        setCustomerEmail("");
+        setSelectedDay("");
+        setUpiId("");
+        setData([]);
+        setVerifiedOtp(false);
+      } else {
+        setManadateMsg(
+          error?.response?.data?.message || "An unexpected error occurred."
+        );
+      }
     }
   };
 
@@ -546,13 +563,14 @@ export default function Enash() {
     setMinDate(formattedMinDate);
   }, []);
 
+  const formatDateToDisplay = (date) => {
+    const [year, month, day] = date.split("-");
+    return `${day}-${month}-${year}`;
+  };
+  const formattedDate = formatDateToDisplay(selectedDay);
+
   const handleDateChange = (e) => {
-    const selectedDate = e.target.value;
-
-    const [year, month, day] = selectedDate.split("-");
-    const formattedDate = `${day}-${month}-${year}`;
-
-    setSelectedDay(formattedDate);
+    setSelectedDay(e.target.value);
   };
   const handleChange = (event) => {
     setSelectedDay(event.target.value);
@@ -676,8 +694,7 @@ export default function Enash() {
                   }}
                   fullWidth
                   className="text-field text-field-name-contact-us"
-                  value={data?.scheme_name}
-                  // disabled
+                  value={data?.scheme_name || ""}
                   style={{ pointerEvents: "none" }}
                   InputProps={{
                     style: {
@@ -692,10 +709,9 @@ export default function Enash() {
                   label="Customer Name"
                   variant="outlined"
                   fullWidth
-                  // disabled
                   style={{ pointerEvents: "none" }}
                   required
-                  value={data?.customer_name}
+                  value={data?.customer_name || ""}
                   InputLabelProps={{
                     shrink: !!data?.customer_name,
                   }}
@@ -714,9 +730,8 @@ export default function Enash() {
                   variant="outlined"
                   fullWidth
                   required
-                  // disabled
                   style={{ pointerEvents: "none" }}
-                  value={data?.customer_mobile}
+                  value={data?.customer_mobile || ""}
                   InputLabelProps={{
                     shrink: !!data?.customer_mobile,
                   }}
@@ -753,9 +768,8 @@ export default function Enash() {
                   variant="outlined"
                   fullWidth
                   required
-                  // disabled
                   style={{ pointerEvents: "none" }}
-                  value={data?.amount}
+                  value={data?.amount || ""}
                   InputLabelProps={{
                     shrink: !!data?.amount,
                   }}
@@ -774,9 +788,8 @@ export default function Enash() {
                   variant="outlined"
                   fullWidth
                   required
-                  // disabled
                   style={{ pointerEvents: "none" }}
-                  value={data?.scheme_start_date}
+                  value={data?.scheme_start_date || ""}
                   InputLabelProps={{
                     shrink: !!data?.scheme_start_date,
                   }}
@@ -794,10 +807,9 @@ export default function Enash() {
                   label="Scheme Expiry Date"
                   variant="outlined"
                   fullWidth
-                  // disabled
                   style={{ pointerEvents: "none" }}
                   required
-                  value={data?.scheme_end_date}
+                  value={data?.scheme_end_date || ""}
                   InputLabelProps={{
                     shrink: !!data?.scheme_end_date,
                   }}
@@ -826,6 +838,7 @@ export default function Enash() {
                   inputProps={{
                     min: minDate,
                   }}
+                  value={selectedDay || ""} // selectedDay in YYYY-MM-DD format
                   InputLabelProps={{ shrink: true }}
                 />
               </Grid>
@@ -850,7 +863,7 @@ export default function Enash() {
                     ),
                     style: { borderRadius: 0, border: "1px  #000" },
                   }}
-                  value={upiId}
+                  value={upiId || ""}
                   onChange={handleUpiIdChange}
                   error={Boolean(errors?.upiId)}
                   helperText={errors?.upiId}
@@ -866,7 +879,7 @@ export default function Enash() {
                   error={Boolean(errors?.employeeId)}
                   onChange={handleEmployeeIdChange}
                   helperText={errors?.employeeId}
-                  value={data?.employee_id}
+                  value={data?.employee_id || ""}
                   InputLabelProps={{
                     shrink: !!data?.employee_id,
                   }}
@@ -885,7 +898,7 @@ export default function Enash() {
                   autoComplete="off"
                   variant="outlined"
                   fullWidth
-                  value={data?.employee_name}
+                  value={data?.employee_name || ""}
                   InputLabelProps={{
                     shrink: !!data?.employee_name,
                   }}
@@ -1032,6 +1045,7 @@ export default function Enash() {
                     setOtp(new Array(4).fill(""));
                     setTimer(120);
                     setIsButtonDisabled(false);
+                    setVerifiedOtp(false);
                   }}
                   style={{ borderRadius: "0", width: "100%" }}
                 >

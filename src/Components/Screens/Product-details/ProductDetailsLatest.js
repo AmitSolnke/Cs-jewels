@@ -125,8 +125,8 @@ export const ProductDetailsLatest = () => {
         <Grid
           item
           md={6}
-          // style={{ paddingLeft: "1rem" }}
-          className="responsive-left"
+          style={{ paddingLeft: "1rem" }}
+          className="product-details-wrapper"
         >
           <div className="">
             {/* <span className="new-arrival-badge">NEW ARRIVAL</span>

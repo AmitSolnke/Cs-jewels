@@ -307,7 +307,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         </li>
                         <li className="w-100">
                           <Link className="menu-links" to="/enash">
-                            Enash
+                            E-Mandate
                           </Link>
                         </li>
                       </div>

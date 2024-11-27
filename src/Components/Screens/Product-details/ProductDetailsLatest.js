@@ -218,7 +218,7 @@ export const ProductDetailsLatest = () => {
             onClick={handleOpenEnquiryModal}
             style={{ display: "flex", justifyContent: "space-between" }}
           >
-            <span>ENQUIRY NOW</span>
+            <span>ENQUIRE</span>
             <EastIcon />
           </Button>
 

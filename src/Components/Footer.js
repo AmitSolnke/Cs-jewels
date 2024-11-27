@@ -47,7 +47,7 @@ function Footer() {
           target="_blank"
           href="https://api.whatsapp.com/send?phone=+917719991827&text=hlo"
         >
-          <WhatsAppIcon /> <span> WhatsApp Us! </span>
+          <WhatsAppIcon />
         </a>
       </div>
       <footer>

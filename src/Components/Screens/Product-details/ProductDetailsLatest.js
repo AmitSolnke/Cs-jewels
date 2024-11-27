@@ -126,6 +126,7 @@ export const ProductDetailsLatest = () => {
                   <p>No images available to display.</p>
                 )}
               </div>
+
             </div>
 
             <div className="d-block product-gallery d-md-none">

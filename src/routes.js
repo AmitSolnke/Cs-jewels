@@ -60,7 +60,7 @@ export const frontAppRoutes = [
   // },
   {
     path: "/terms-and-conditions",
-    name: "Terms And Condition",
+    name: "Terms & Condition",
     element: <TermsAndCondition />,
     exact: true,
     strict: false,

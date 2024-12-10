@@ -47,7 +47,7 @@ function Footer() {
           target="_blank"
           href="https://api.whatsapp.com/send?phone=+917719991827&text=hlo"
         >
-          <WhatsAppIcon /> <span> WhatsApp Us! </span>
+          <WhatsAppIcon />
         </a>
       </div>
       <footer>
@@ -71,8 +71,9 @@ function Footer() {
                           <span>Phone: </span> 07969991827
                         </p>
                         <p className="address">
-                          S.No.558, Ground Floor, Indraprastha Plus, Near Apollo
-                          Theatre, Rasta Peth, Pune - 411011
+                          1st Floor, Office No 1A and 1B, Mudliyar Chambers Co
+                          Op Hsg Society, Mudliyar Road, Rasta Peth, Pune, Pune,
+                          Maharashtra 411011
                         </p>
                       </div>
                     </div>
@@ -132,7 +133,8 @@ function Footer() {
             <div className="social-media-wrapper">
               <h6>Follow us on</h6>
               <a
-                href="https://www.facebook.com/CSjewelss/"
+                // href="https://www.facebook.com/CSjewelss/"
+                href="https://www.facebook.com/csjewel1827"
                 target="_blank"
                 rel="noopener noreferrer"
               >

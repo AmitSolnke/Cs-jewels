@@ -49,7 +49,7 @@ export default function Testimonial() {
 
   return (
     <Box
-      className="testimonial-section"
+      className="testimonial-section m-0 p-0"
       sx={{
         backgroundImage: {
           xs: `url(${TESTIMONIAL_BG_MOBILE})`,
@@ -65,34 +65,17 @@ export default function Testimonial() {
       >
         {windoDimensions[0] > 768 ? (
           <div className="image-slider-header text-only-grid-header">
-            <img
-              src={imageSliderHeaderIconLeft}
-              alt="React Logo"
-              className="left-logo"
-            />{" "}
-            Treasured Stories{" "}
-            <img
-              src={imageSliderHeaderIconRight}
-              alt="React Logo"
-              className="right-logo"
-            />
+           
+            Treasured Stories
+          
           </div>
         ) : (
           <div className="image-slider-header text-only-grid-header image-slider-header-explore">
             <div>Explore Our Store</div>
             <div>
-              <img
-                src={imageSliderHeaderIconLeft}
-                alt="React Logo"
-                className="left-logo"
-              />
-              {"  "}
-              Locations{" "}
-              <img
-                src={imageSliderHeaderIconRight}
-                alt="React Logo"
-                className="right-logo"
-              />
+             
+              Locations
+              
             </div>
           </div>
         )}

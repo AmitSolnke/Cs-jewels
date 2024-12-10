@@ -6,8 +6,7 @@ import {
   GemOfTheYearAward,
   GJTCIExcellenceAward2014,
   LokmatCorporateExcellenceAward2017,
-  imageSliderHeaderIconLeft,
-  imageSliderHeaderIconRight,
+  
   BestSilverDesignerJewellery2016,
   YoungAcheversAward,
   TrustedJewellers,
@@ -55,18 +54,10 @@ export default function AwardsAndRecognition({ Item }) {
       </Grid>
       <Grid item xs={10} md={8} className="about-us-awards-header-container">
         <div className="about-us-awards-header">
-          <img
-            src={imageSliderHeaderIconLeft}
-            alt="React Logo"
-            className="left-logo"
-          />
-          {"  "}
-          Award-Winning Craftsmanship: Excellence Recognized{" "}
-          <img
-            src={imageSliderHeaderIconRight}
-            alt="React Logo"
-            className="right-logo"
-          />
+        
+          
+          Award-Winning Craftsmanship: Excellence Recognized
+         
         </div>
         <div className="about-us-awards-description">
           We are honored to be recognized as a premier jeweller in India. Our

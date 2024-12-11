@@ -198,9 +198,7 @@ export default function TermsAndCondition() {
               <strong>Phone: </strong> : 07969991827
             </div>
             <div className="">
-              <strong>Address:</strong> : 1st Floor, Office No 1A and 1B,
-              Mudliyar Chambers Co Op Hsg Society, Mudliyar Road, Rasta Peth,
-              Pune, Pune, Maharashtra 411011
+              <strong>Address:</strong> :Chandukaka Saraf Jewels Pvt. Ltd. S No. 558, Ground Floor, Indraprastha Plus, Near Appolo Theatre, Rasta Peth, Pune - 411011.
             </div>
 
             <Divider className="divider-privacy-policy" />

@@ -91,7 +91,7 @@ export default function AwardsAndRecognition({ Item }) {
                 className="img-fluid award-image"
                 alt={element.imageSecription}
               />
-              <p cl>{element.imageSecription}</p>
+              <p className="about-us-award-details">{element.imageSecription}</p>
             </Grid>
           ))}
         </Grid>

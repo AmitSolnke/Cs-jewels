@@ -182,7 +182,7 @@ export default function FindAStore() {
                           href={`https://maps.google.com/?q=${position.lat},${position.lng}`}
                           target="_blank"
                         >
-                          {address}
+                         <div className="store-address">{address}</div> 
                         </a>
                       </div>
                     </InfoWindow>

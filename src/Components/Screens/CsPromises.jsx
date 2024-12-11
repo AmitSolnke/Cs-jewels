@@ -97,7 +97,7 @@ const CsPromises = () => {
     <div className="promises-section  text-light">
       <div className="text-center mt-4 ">
         <h2 className="heading-font m-0">CS Promises</h2>
-        <p className="m-0">Incredible rationales to shop with us!</p>
+        <p className="m-0 heading-text">Incredible rationales to shop with us!</p>
       </div>
       <div className="promises-container mb-3">
         <Slider {...settings}>

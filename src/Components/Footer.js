@@ -69,16 +69,14 @@ function Footer() {
                           <span>Phone: </span> 07969991827
                         </p>
                         <p className="address">
-                          1st Floor, Office No 1A and 1B, Mudliyar Chambers Co
-                          Op Hsg Society, Mudliyar Road, Rasta Peth, Pune, Pune,
-                          Maharashtra 411011
+                        Chandukaka Saraf Jewels Pvt. Ltd. S No. 558, Ground Floor, Indraprastha Plus, Near Appolo Theatre, Rasta Peth, Pune - 411011.
                         </p>
                       </div>
                     </div>
                   </div>
                   <div className="col-xl-7 col-lg-7 col-md-6 col-sm-6 col-6">
                     <div className="row">
-                      <div className="col-lg-6">
+                      <div className="col-lg-6 footer-menu">
                         <Link onClick={()=>window.scrollTo(0,0)} to="/aboutus" className="btn btn-link">
                           About us
                         </Link>
@@ -92,7 +90,7 @@ function Footer() {
                           Help & Support
                         </Link>
                       </div>
-                      <div className="col-lg-6">
+                      <div className="col-lg-6 footer-menu">
                         <Link onClick={()=>window.scrollTo(0,0)} to="/privacy-policy" className="btn btn-link">
                           Privacy Policy
                         </Link>
@@ -116,7 +114,7 @@ function Footer() {
                     <button
                       onClick={navigateToFindStore}
                       type="button"
-                      className="mt-3"
+                      className="mt-3 btn-find-store"
                     >
                       Find A Store
                     </button>

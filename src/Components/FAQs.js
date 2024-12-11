@@ -39,11 +39,11 @@ export default function FAQs() {
                         id="panel1bh-header"
                     >
                         <Typography sx={{ width: '90%', flexShrink: 0 }}>
-                            {element.question}
+                           <h6 className='faqs-question'>{element.question}</h6> 
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography>
+                        <Typography className='faqs-ans'>
                             <div
                                 dangerouslySetInnerHTML={{ __html: element.answers}}
                             />

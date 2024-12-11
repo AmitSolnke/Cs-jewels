@@ -5,7 +5,6 @@ import Paper from "@mui/material/Paper";
 
 import aboutUsTitleImage from "../../images/aboutUsTitleImage.jpeg";
 import ourSpecality from "../../images/ourSpecality.jpeg";
-import imageSliderHeaderIconRight from "../../images/icons/Group40.svg";
 import aboutUsFullScreenBottomImage from "../../images/aboutUsFullScreenBottomImage.jpeg";
 import aboutUsFullScreenBottomImageMobileView from "../../images/aboutUsFullScreenBottomImageMobileView.jpeg";
 import useWindowWidthAndHeight from "../../utilities/CustomHooks";
@@ -22,6 +21,8 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
+  // fontFamily: "Afacad Flux",
+  // fontSize:"25px"
 }));
 
 export default function AboutUs() {

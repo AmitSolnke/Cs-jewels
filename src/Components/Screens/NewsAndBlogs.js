@@ -13,9 +13,6 @@ import {
 } from "@mui/material";
 import { Pagination } from "@mui/material";
 import {} from "@mui/material/styles";
-import facebookIcon from "../../images/icons/social-media/facebook.svg";
-import instagramIcon from "../../images/icons/social-media/instagram.svg";
-import twitterIcon from "../../images/icons/social-media/twitter.svg";
 import aboutUsTitleImage from "../../images/aboutUsTitleImage.jpeg";
 import useWindowWidthAndHeight from "../../utilities/CustomHooks";
 import TreasuredStoriesBackground from "../../images/TreasuredStoriesBackground.png";

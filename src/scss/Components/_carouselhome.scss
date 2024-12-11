@@ -50,14 +50,14 @@
 
   .service-slide-text {
     transform: translateY(-60%);
-    font: normal normal 600 36px/48px Playfair Display;
+    font: normal normal 600 36px/48px "Vidaloka", serif;
     letter-spacing: 0.54px;
     color: #ffffff;
   }
 
   .service-slide-description {
     transform: translateY(-26%);
-    font: normal normal normal 36px/48px Playfair Display;
+    font: normal normal normal 36px/48px "Vidaloka", serif;
     letter-spacing: 0.54px;
     color: #ffffff;
     margin-bottom: 0;
@@ -97,6 +97,8 @@
 
 .carousel-explore-now-btn {
   background: #ffffff 0% 0% no-repeat padding-box;
+  font-family: "Afacad Flux", serif;
+  
 }
 
 @keyframes slide {
@@ -138,7 +140,7 @@
 
     .service-slide-text {
       text-align: left;
-      font: normal normal 600 26px/35px Playfair Display;
+      font: normal normal 600 26px/35px "Vidaloka", serif;
       letter-spacing: 0.39px;
       color: #ffffff;
       width: 131px;
@@ -147,7 +149,7 @@
 
     .service-slide-description {
       text-align: left;
-      font: normal normal normal 26px/35px Playfair Display;
+      font: normal normal normal 26px/35px "Vidaloka", serif;
       letter-spacing: 0.39px;
       color: #ffffff;
       width: 223px;

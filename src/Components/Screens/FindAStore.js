@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import storeLocaterTitleImage from "../../images/storeLocaterTitleImageCropped.png";
 import { Button, Grid } from "@mui/material";
-import fillWhiteLeftIcon from "../../images/icons/fillWhiteLeftIcon.svg";
-import fillWhiteRightIcon from "../../images/icons/fillWhiteRightIcon.svg";
 import AllStores from "../AllStores";
 import { getStores, searchStores } from "../../services/FrontApp/index.service";
 import {
@@ -119,9 +117,7 @@ export default function FindAStore() {
       >
         <div className="section-contents">
           <div className="header-title">
-            <img src={fillWhiteLeftIcon} alt="React Logo" />
             <h4>Store Locator</h4>
-            <img src={fillWhiteRightIcon} alt="React Logo" />
           </div>
           <div className="section-info">
             Come and say hello. Find your nearest store and check its opening
@@ -186,7 +182,7 @@ export default function FindAStore() {
                           href={`https://maps.google.com/?q=${position.lat},${position.lng}`}
                           target="_blank"
                         >
-                          {address}
+                         <div className="store-address">{address}</div> 
                         </a>
                       </div>
                     </InfoWindow>

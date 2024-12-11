@@ -6,8 +6,6 @@ import Grid from "@mui/material/Grid";
 import rightArrowIconWhite from "../../images/icons/right-arrow-white.svg";
 import CarouselHome from "../CarouselHome";
 import ImageSliderHome from "../ImageSliderHome";
-import imageSliderHeaderIconRight from "../../images/icons/Group40.svg";
-import imageSliderHeaderIconLeft from "../../images/icons/Group45.svg";
 import CardImageNormal from "../../images/MaskGroup8.png";
 import CardImageLarge from "../../images/MaskGroup24.png";
 import CardImageNoPadding from "../../images/MaskGroup18.png";
@@ -75,12 +73,7 @@ function Home() {
           </Grid>
           <Grid item xs={11} md={11}>
             <div className="image-slider-header">
-              Dazzling Favorites{" "}
-              <img
-                className="img-right right-logo"
-                src={imageSliderHeaderIconRight}
-                alt="React Logo"
-              />
+              Dazzling Favorites
             </div>
           </Grid>
           <Grid item xs={1} md={1}>
@@ -159,7 +152,7 @@ function Home() {
         </Grid>
       </Box> */}
       <Box
-        className="large-image-slider-container discover-image-slider-container"
+        className="large-image-slider-container discover-image-slider-container p-0"
         sx={{ flexGrow: 1 }}
       >
         <Grid container spacing={1} className="w-100">
@@ -168,12 +161,8 @@ function Home() {
           </Grid>
           <Grid className="large-image-slider-test-area" item xs={11} md={11}>
             <div className="image-slider-header">
-              Discover Your Shine{" "}
-              <img
-                className="img-right right-logo"
-                src={imageSliderHeaderIconRight}
-                alt="React Logo"
-              />
+              Discover Your Shine
+             
             </div>
             <div className="big-image-slider-description image-slider-description">
               From timeless classics to modern marvels, find your style in our

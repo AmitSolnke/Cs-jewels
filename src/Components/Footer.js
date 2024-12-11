@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import logo from "../images/icons/logo.svg";
-import rightArrowIcon from "../images/icons/right-arrow.svg";
-import facebookIcon from "../images/icons/social-media/facebook.svg";
-import instagramIcon from "../images/icons/social-media/instagram.svg";
-import twitterIcon from "../images/icons/social-media/twitter.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { subscribeEmail } from "../services/FrontApp/index.service";
 import ErrorList from "./Common/ErrorList";
 import SuccessMsg from "./Common/SuccessMsg";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
 function Footer() {
   const [errors, setErrors] = useState([]);
   const [successMsg, setSuccesMsg] = useState("");
@@ -71,44 +69,42 @@ function Footer() {
                           <span>Phone: </span> 07969991827
                         </p>
                         <p className="address">
-                          1st Floor, Office No 1A and 1B, Mudliyar Chambers Co
-                          Op Hsg Society, Mudliyar Road, Rasta Peth, Pune, Pune,
-                          Maharashtra 411011
+                        Chandukaka Saraf Jewels Pvt. Ltd. S No. 558, Ground Floor, Indraprastha Plus, Near Appolo Theatre, Rasta Peth, Pune - 411011.
                         </p>
                       </div>
                     </div>
                   </div>
                   <div className="col-xl-7 col-lg-7 col-md-6 col-sm-6 col-6">
                     <div className="row">
-                      <div className="col-lg-6">
-                        <Link to="/aboutus" className="btn btn-link">
+                      <div className="col-lg-6 footer-menu">
+                        <Link onClick={()=>window.scrollTo(0,0)} to="/aboutus" className="btn btn-link">
                           About us
                         </Link>
                         {/* <a href="/news-&-blog" className="btn btn-link">
                           News & Blogs
                         </a> */}
-                        <Link to="/contact-us" className="btn btn-link">
+                        <Link onClick={()=>window.scrollTo(0,0)} to="/contact-us" className="btn btn-link">
                           Contact us
                         </Link>
-                        <Link to="/contact-us" className="btn btn-link">
+                        <Link onClick={()=>window.scrollTo(0,0)} to="/contact-us" className="btn btn-link">
                           Help & Support
                         </Link>
                       </div>
-                      <div className="col-lg-6">
-                        <Link to="/privacy-policy" className="btn btn-link">
+                      <div className="col-lg-6 footer-menu">
+                        <Link onClick={()=>window.scrollTo(0,0)} to="/privacy-policy" className="btn btn-link">
                           Privacy Policy
                         </Link>
-                        <a
+                        <a onClick={()=>window.scrollTo(0,0)}
                           href="/terms-and-conditions"
                           className="btn btn-link"
                         >
                           Terms & Condition
                         </a>
 
-                        <Link to="/CSR-Policy" className="btn btn-link">
+                        <Link onClick={()=>window.scrollTo(0,0)} to="/CSR-Policy" className="btn btn-link">
                           CSR Policy
                         </Link>
-                        <Link to="/refund-policy" className="btn btn-link">
+                        <Link onClick={()=>window.scrollTo(0,0)} to="/refund-policy" className="btn btn-link">
                           Return/Refund & Cancelation Policy
                         </Link>
                       </div>
@@ -118,7 +114,7 @@ function Footer() {
                     <button
                       onClick={navigateToFindStore}
                       type="button"
-                      className="mt-3"
+                      className="mt-3 btn-find-store"
                     >
                       Find A Store
                     </button>
@@ -130,7 +126,7 @@ function Footer() {
             <ErrorList errors={errors} />
             <SuccessMsg message={successMsg} />
 
-            <div className="social-media-wrapper">
+            <div className="social-media-wrapper d-block w-100 text-center text-md-start">
               <h6>Follow us on</h6>
               <a
                 // href="https://www.facebook.com/CSjewelss/"
@@ -138,39 +134,30 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src={facebookIcon}
-                  alt="facebookIcon"
-                  className="social-media-icon"
-                />
+                <FacebookIcon className="text-dark" fontSize="large"/>
+               
               </a>
 
-              <a
+              <a className="mx-4"
                 href="https://www.instagram.com/csjewelsofficial/?hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src={instagramIcon}
-                  alt="instagramIcon"
-                  className="social-media-icon"
-                />
+                <InstagramIcon className="text-dark" fontSize="large"/>
+               
               </a>
               <a
-                href="https://x.com/csjewels1827"
+                // href="https://x.com/csjewels1827"
+                href="https://www.youtube.com/@csjewels1827"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src={twitterIcon}
-                  alt="twitterIcon"
-                  className="social-media-icon"
-                />
+                <YouTubeIcon className="text-dark" fontSize="large"/>
+               
               </a>
             </div>
-            {/* </div> */}
           </div>
-          <div className="copyright">
+          <div className="copyright text-center text-md-start">
             <p>
               2023 © Chandukaka Saraf & Sons Pvt. Ltd . Powered by Techne ai
             </p>

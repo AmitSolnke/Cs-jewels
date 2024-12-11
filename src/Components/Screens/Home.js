@@ -79,16 +79,16 @@ function Home() {
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid item xs={10} md={10}>
+          <Grid  item xs={10} md={10}>
             <div className="image-slider-description">
               Adorn yourself with the latest trends – Explore our curated
               selection of trending jewelry styles that capture the essence of
               modern allure.
             </div>
           </Grid>
-          <Grid item xs={1} md={1}>
+         <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid>
+          </Grid> 
           <Grid className="extra-empty-container" item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>

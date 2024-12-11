@@ -1,40 +1,41 @@
 .product-details-latest {
-  .new-arrival-badge {
-    font: normal normal medium 15px/18px "Afacad Flux", serif;
-    letter-spacing: 3.6px;
-    color: #999999;
-    text-transform: uppercase;
-  }
+  // .new-arrival-badge {
+  //   font: normal normal medium 15px/18px "Afacad Flux", serif;
+  //   letter-spacing: 3.6px;
+  //   color: #999999;
+  //   text-transform: uppercase;
+  // }
 
-  .product-title {
-    font: normal normal 600 32px/43px "Vidaloka", serif;
-    letter-spacing: 0.48px;
-    color: #333333;
-  }
+  // .product-title {
+  //   font: normal normal 600 32px/43px "Vidaloka", serif;
+  //   letter-spacing: 0.48px;
+  //   color: #333333;
+  // }
 
-  .metal-description {
-    font: normal normal medium 16px/19px "Afacad Flux", serif;
-    letter-spacing: 1.6px;
-    color: #672a2f;
-  }
+  // .metal-description {
+  //   font: normal normal medium 16px/19px "Afacad Flux", serif;
+  //   letter-spacing: 1.6px;
+  //   color: #672a2f;
+  // }
 
-  .product-price {
-    font: normal normal 900 26px/32px "Afacad Flux", serif;
-    letter-spacing: 0px;
-    color: #333333;
-    text-transform: uppercase;
-  }
+  // .product-price {
+  //   font: normal normal 900 26px/32px "Afacad Flux", serif;
+  //   letter-spacing: 0px;
+  //   color: #333333;
+  //   text-transform: uppercase;
+  // }
 
-  .product-description {
-    font: normal normal normal 16px/22px "Afacad Flux", serif;
-    letter-spacing: 0px;
-    color: #666666;
-  }
+  // .product-description {
+  //   font: normal normal normal 16px/22px "Afacad Flux", serif;
+  //   letter-spacing: 0px;
+  //   color: #666666;
+  // }
 
-  .product-informations {
+  .product-details {
     .product-details-title-link {
       text-decoration: underline;
       font: normal normal medium 24px/28px "Afacad Flux", serif;
+      font-size: 25px;
       letter-spacing: 1.8px;
       color: #333333;
       text-transform: uppercase;
@@ -44,6 +45,7 @@
       padding-top: 0.2rem;
       font: normal normal normal 16px/30px "Afacad Flux", serif;
       color: #666666;
+      font-size: 18px;
     }
   }
 

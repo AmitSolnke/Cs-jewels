@@ -16,9 +16,10 @@
     padding-top: 16px;
 }
 .image-slider-description {
+    
     top: 964px;
     left: 120px;
-    width: 80% !important;
+    width: 100% !important;
     height: 59px;
     text-align: left;
     font: normal normal normal 20px/28px "Afacad Flux", serif;
@@ -70,7 +71,10 @@
         opacity: 1;
         padding-top: 0;
         height: 65px;
+        margin-bottom: 10px;
+
     }
+
     .favourite-image-slider{
         padding-left: 0;
     }
@@ -107,4 +111,19 @@
     .text-only-grid-explore-description{
         margin-left: 0;
     }
+}
+@media (max-width: 450px) {
+    .image-slider-description {
+        width: 98% !important;
+        text-align: left;
+        font: normal normal normal 20px/28px "Afacad Flux", serif;
+        letter-spacing: 0px;
+        color: #666666;
+        opacity: 1;
+        padding-top: 0;
+        height: 90px;
+        margin-bottom: 10px;
+
+    }
+
 }

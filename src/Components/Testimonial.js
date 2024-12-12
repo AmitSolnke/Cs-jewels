@@ -10,13 +10,15 @@ import { getTestimonial } from "../services/FrontApp/index.service";
 import ReviewStars from "./Common/ReviewStars";
 import TESTIMONIAL_BG_WEB from "../images/testimonial.png";
 import TESTIMONIAL_BG_MOBILE from "../images/testimonial1.png";
+import { parseHtmlContent } from '../utilities/CustomFunction';
 
 const TestimonialComponent = ({ data }) => {
   return (
     <div className="testimonial-wrapper">
       <img src={data.image_path} alt="img" className="client-img" />
       <div className="feedback-wrapper">
-        <p dangerouslySetInnerHTML={{ __html: data.description }} />
+        {/* <p dangerouslySetInnerHTML={{ __html: data.description }} /> */}
+        <p>{parseHtmlContent(data.description)}</p>
         <ReviewStars review={data.rating} width={20} height={20} />
         <div className="name-wrapper">
           <hr />
@@ -80,7 +82,9 @@ export default function Testimonial() {
           </div>
         )}
         <div className="image-slider-description text-only-grid text-only-grid-explore-description">
-          In their own words, our customers share their personal experiences
+        Our customers share their personal experiences with CS Jewels, showcasing how our jewellery goes beyond beauty to
+create unforgettable memories that last a lifetime.
+
         </div>
       </Grid>
       {data.length > 0 ? (

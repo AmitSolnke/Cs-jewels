@@ -148,7 +148,6 @@ export const ProductDetailsLatest = () => {
           style={{ paddingLeft: "1rem" }}
           className="product-details-wrapper"
         >
-          <div className="">
             {/* <span className="new-arrival-badge">NEW ARRIVAL</span>
 
             <h2 className="product-title">{productDetails.product_name}</h2>
@@ -164,11 +163,10 @@ export const ProductDetailsLatest = () => {
               {productDetails.item_description}
             </div> */}
 
-            <div className="product-informations my-3 mx-2">
-              <span className="product-details-title-link">
+            <div className=" m-2 product-details">
+              <div className="product-details-title-link">
                 PRODUCT DETAILS
-              </span>
-
+              </div>
               <div>Gross weight: {productDetails.gross_wt}g</div>
               <div>Net weight: {productDetails.net_wt}g</div>
               <div>Purity: {productDetails.purity}</div>
@@ -178,7 +176,6 @@ export const ProductDetailsLatest = () => {
                 </div>
               ))}
             </div>
-          </div>
 
           {/* commented temporary
           <table className="product-information-table my-2">

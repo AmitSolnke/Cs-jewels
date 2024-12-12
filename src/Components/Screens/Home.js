@@ -72,23 +72,22 @@ function Home() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid item xs={11} md={11}>
-            <div className="image-slider-header">
+            <div className="image-slider-header text-center">
               Dazzling Favorites
             </div>
           </Grid>
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid item xs={10} md={10}>
+          <Grid  item xs={10} md={10}>
             <div className="image-slider-description">
-              Adorn yourself with the latest trends – Explore our curated
-              selection of trending jewelry styles that capture the essence of
-              modern allure.
+            Enhance your style with the latest jewellery trends — explore our thoughtfully curated collection that captures the
+            essence of modern elegance.
             </div>
           </Grid>
-          <Grid item xs={1} md={1}>
+         <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid>
+          </Grid> 
           <Grid className="extra-empty-container" item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
@@ -165,8 +164,7 @@ function Home() {
              
             </div>
             <div className="big-image-slider-description image-slider-description">
-              From timeless classics to modern marvels, find your style in our
-              curated categories.
+            Uncover your unique brilliance with jewellery that perfectly blends sophistication and modern charm.
             </div>
           </Grid>
           <Grid item xs={12} md={12} className="p-0">

@@ -1,115 +1,117 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../images/icons/logo.svg";
+/** @format */
 
-import heartLogo from "../images/icons/heart.svg";
-import userLogo from "../images/icons/user.svg";
-import searchLogo from "../images/icons/search.svg";
-import shoppingBagLogo from "../images/icons/shopping-bag.svg";
-import menuOpen from "../images/icons/open-menu.svg";
-import closeMenu from "../images/icons/close.svg";
+import React, {useEffect, useState} from "react"
+import {Link} from "react-router-dom"
+import logo from "../images/icons/logo.svg"
+
+import heartLogo from "../images/icons/heart.svg"
+import userLogo from "../images/icons/user.svg"
+import searchLogo from "../images/icons/search.svg"
+import shoppingBagLogo from "../images/icons/shopping-bag.svg"
+import menuOpen from "../images/icons/open-menu.svg"
+import closeMenu from "../images/icons/close.svg"
 import {
   getLiveRateForCSP,
   getMetals,
   getMetalItems,
-} from "../services/FrontApp/index.service";
-import AuthModal from "./Screens/AuthModal";
-import { isLoggedIn } from "../services/auth.service";
-import LoginIcon from "@mui/icons-material/Login";
-import { NavigationDropdown } from "./Common/NavigationDropdown";
-import { SearchDropdown } from "./Common/SearchDropdown";
-import { ShoppingBag } from "./Screens/ShoppingBag";
+} from "../services/FrontApp/index.service"
+import AuthModal from "./Screens/AuthModal"
+import {isLoggedIn} from "../services/auth.service"
+import LoginIcon from "@mui/icons-material/Login"
+import {NavigationDropdown} from "./Common/NavigationDropdown"
+import {SearchDropdown} from "./Common/SearchDropdown"
+import {ShoppingBag} from "./Screens/ShoppingBag"
 
-function Header({ openDrawer, handleOpenDrawer }) {
-  const $ = window.jQuery;
+function Header({openDrawer, handleOpenDrawer}) {
+  const $ = window.jQuery
   const [rates, setRates] = useState({
     Platinum: 0,
     Silver1: 0,
     Silver2: 0,
     gold: [],
-  });
+  })
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   // const [openDrawer, setOpenDrawer] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [searchDropdown, setSearchDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false)
+  const [searchDropdown, setSearchDropdown] = useState(false)
 
   const handleOpenDialog = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleCloseDialog = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
-  const [metalTypesData, setMetalTypesData] = useState([]);
+  const [metalTypesData, setMetalTypesData] = useState([])
 
   const getMetalData = async () => {
     try {
-      const metals = await getMetals();
-      const temp = [];
+      const metals = await getMetals()
+      const temp = []
       for (let index = 0; index < metals.data.data.length; index++) {
-        const data = metals.data.data[index];
-        let itemData = [];
+        const data = metals.data.data[index]
+        let itemData = []
         try {
-          var bodyFormData = new FormData();
-          bodyFormData.append("metal_type_master_id[0]", data.id);
-          const items = await getMetalItems(bodyFormData);
-          itemData = items.data.data;
+          var bodyFormData = new FormData()
+          bodyFormData.append("metal_type_master_id[0]", data.id)
+          const items = await getMetalItems(bodyFormData)
+          itemData = items.data.data
         } catch (error) {}
         temp.push({
           id: data.id,
           metal: data.metal_type,
           metal_items: itemData,
-        });
+        })
       }
-      setMetalTypesData(temp);
+      setMetalTypesData(temp)
     } catch (error) {}
-  };
+  }
 
   const getData = async () => {
     try {
-      const result = await getLiveRateForCSP();
-      const { Platinum, Silver1, Silver2, ...gold } = result.data.data;
-      setRates({ Platinum, Silver1, Silver2, gold });
+      const result = await getLiveRateForCSP()
+      const {Platinum, Silver1, Silver2, ...gold} = result.data.data
+      setRates({Platinum, Silver1, Silver2, gold})
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   useEffect(() => {
-    getData();
-    getMetalData();
-  }, []);
+    getData()
+    getMetalData()
+  }, [])
 
   useEffect(() => {
     $(".header-content .open-nav-btn").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "100%");
-    });
+      $(".mobile-menu-overlay").css("width", "100%")
+    })
     //close menu
     $(".header-content .close-nav-btn").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "0");
-    });
+      $(".mobile-menu-overlay").css("width", "0")
+    })
 
     $(".header-content .menu-links").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "0");
-    });
-  });
+      $(".mobile-menu-overlay").css("width", "0")
+    })
+  })
 
   window.onclick = (event) => {
     if (
       !$(event.target).closest("#navigation-dropdown-wrapper").length &&
       event.target.id != "jewellery-link"
     ) {
-      setShowDropdown(false);
+      setShowDropdown(false)
     }
     if (
       !$(event.target).closest("#search-dropdown-wrapper").length &&
       event.target.id != "search-logo"
     ) {
-      setSearchDropdown(false);
+      setSearchDropdown(false)
     }
-  };
+  }
 
   return (
     <>
@@ -295,7 +297,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           className="w-100"
                           id="jewellery-link"
                           onClick={() => {
-                            setShowDropdown((prev) => !prev);
+                            setShowDropdown((prev) => !prev)
                           }}
                         >
                           Jewellery
@@ -325,7 +327,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <li
                           id="jewellery-link"
                           onClick={() => {
-                            setShowDropdown((prev) => !prev);
+                           
+                            setShowDropdown((prev) => !prev)
                           }}
                         >
                           Jewellery
@@ -424,13 +427,13 @@ function Header({ openDrawer, handleOpenDrawer }) {
         <div
           id="search-dropdown-wrapper"
           className="dropdown-wrapper position-sticky"
-          style={{ position: "sticky", top: "120px", zIndex: "2" }}
+          style={{position: "sticky", top: "120px", zIndex: "2"}}
         >
           <SearchDropdown setSearchDropdown={setSearchDropdown} />
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default Header;
+export default Header

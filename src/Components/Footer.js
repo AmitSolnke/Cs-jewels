@@ -159,7 +159,7 @@ function Footer() {
           </div>
           <div className="copyright text-center text-md-start">
             <p>
-              2023 © Chandukaka Saraf & Sons Pvt. Ltd . Powered by Techne ai
+              2024 © Chandukaka Saraf & Sons Pvt. Ltd . Powered by Techne ai
             </p>
           </div>
         </div>

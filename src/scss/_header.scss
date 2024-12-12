@@ -88,9 +88,10 @@
 
       li {
         display: inline-block;
-        font-family: "Vidaloka", serif;
         font-size: 16px;
-        letter-spacing: 1px;
+        text-transform: uppercase;
+        font: normal normal 900 17px/19px "Afacad Flux", serif;
+        letter-spacing: 2px;
         color: #525252;
 
         a {
@@ -213,7 +214,7 @@
     }
 
     ul div.menu-link-label {
-      font-size: 14px;
+      font-size: 17px;
       color: #a4d0fb;
       text-transform: uppercase;
       margin-bottom: 20px;
@@ -231,7 +232,7 @@
 
     li a {
       color: #333333;
-      font-size: 14px;
+      font-size: 17px;
       letter-spacing: 2.1px;
       font-family: "Afacad Flux", serif;
     }

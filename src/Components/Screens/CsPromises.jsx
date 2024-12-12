@@ -96,7 +96,7 @@ const CsPromises = () => {
   return (
     <div className="promises-section  text-light">
       <div className="text-center mt-4 ">
-        <h2 className="heading-font m-0">CS Promises</h2>
+        <h2 className="heading-font m-0">CSJ Promises</h2>
         <p className="m-0 heading-text">We promise exceptional craftsmanship, timeless designs, and a commitment to making every moment special.</p>
       </div>
       <div className="promises-container mb-3">

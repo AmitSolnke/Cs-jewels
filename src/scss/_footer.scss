@@ -30,7 +30,7 @@
 
 footer {
   position: relative;
-  height: 508px;
+  height: 620px;
   color: #333333;
   font-family: "Afacad Flux", serif;
   font-size: 20px;
@@ -162,7 +162,7 @@ footer {
     }
   }
   footer {
-    height: 508px;
+    height: 650px;
 
     .footer-container {
       padding: 46.18px 20px 0 20px;
@@ -194,4 +194,8 @@ footer {
     }
 
   }
+}
+@media (max-width: 420px) {
+  footer {
+    height:800px;}
 }

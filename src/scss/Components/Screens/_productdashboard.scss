@@ -168,12 +168,12 @@
                     visibility: hidden;
                 }
                 >button::before {
-                font: normal normal bold 14px/17px "Afacad Flux", serif;
-font-size: 18px;
+                    font: normal normal bold 14px/17px "Afacad Flux", serif;
+                    font-size: 18px;
                     margin-right: 10px;
                     content: 'NEXT';
                 }
-            }
+            } 
         }
     }
 }

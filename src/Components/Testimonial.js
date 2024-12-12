@@ -82,7 +82,9 @@ export default function Testimonial() {
           </div>
         )}
         <div className="image-slider-description text-only-grid text-only-grid-explore-description">
-          In their own words, our customers share their personal experiences
+        Our customers share their personal experiences with CS Jewels, showcasing how our jewellery goes beyond beauty to
+create unforgettable memories that last a lifetime.
+
         </div>
       </Grid>
       {data.length > 0 ? (

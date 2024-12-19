@@ -9,6 +9,7 @@
     color: #672A2F;
     opacity: 1;
     display: table-footer-group;
+    margin-bottom: 8%;
 }
 .big-image-slider-description {
     width: 75% !important;
@@ -18,29 +19,31 @@
     top: 964px;
     left: 120px;
     width: 100% !important;
-    height: 59px;
-    text-align: justify;
+    height: auto;
+    text-align: left;
     font: normal normal normal 20px/28px "Afacad Flux", serif;
     letter-spacing: 0px;
     color: #666666;
     opacity: 1;
+    // margin-bottom: 3%;
 }
 .large-image-slider-container {
     padding-top: 100px;
 }
 
 .large-image-slider-test-area {
-    align-self: center;
+    // align-self: left;
     // padding-left: 0 !important;
+    text-align: left;
 }
 
 .text-only-grid {
-    text-align-last: center;
-    width: 60%;
-    text-align: -webkit-center;
-    margin-left: 10%;
-    min-height: 100px;
-    padding-top: 10px;
+    // text-align-last: left;
+    // width: 60%;
+    // text-align: -webkit-center;
+    // margin-left: 10%;
+    // min-height: 100px;
+    // padding-top: 10px;
 }
 
 .text-only-grid-header img {
@@ -52,24 +55,23 @@
 .extra-empty-container-exclusive-offers{
     display: none;
 }
-.text-area-explore{
-    text-align: -webkit-center;
-}
+// .text-area-explore{
+//     text-align: -webkit-center;
+// }
 .text-only-grid-explore-description{
     margin-left: 0;
-    width: 60% !important;
 }
 @media (max-width: 768px) {
     .image-slider-description {
         width: 98% !important;
-        text-align: justify;
+        text-align: left;
         font: normal normal normal 20px/28px "Afacad Flux", serif;
         letter-spacing: 0px;
         color: #666666;
         opacity: 1;
         padding-top: 0;
-        height: 65px;
-        margin-bottom: 10px;
+        height:auto;
+        // margin-bottom: 10px;
 
     }
 
@@ -82,7 +84,8 @@
         letter-spacing: 0.36px;
         color: #672A2F;
         opacity: 1;
-        height: 35px;
+        // height: 35px;
+        margin-bottom: 20%;
     }
     .extra-empty-container-exclusive-offers{
         display: block !important;
@@ -96,9 +99,9 @@
     .discover-image-slider-container{
         padding-top: 50px;
     }
-    .image-slider-header-explore{
-        text-align: center;
-    }
+    // .image-slider-header-explore{
+    //     text-align: center;
+    // }
     .large-image-slider-container {
         padding-top: 50px;
     }
@@ -106,22 +109,20 @@
         margin: 0 !important;
         text-align: -webkit-center;
     }
-    .text-only-grid-explore-description{
-        margin-left: 0;
-    }
+    // .text-only-grid-explore-description{
+    //     margin-left: 0;
+    // }
 }
 @media (max-width: 450px) {
     .image-slider-description {
         width: 98% !important;
-        text-align: justify;
+        text-align: left;
         font: normal normal normal 20px/28px "Afacad Flux", serif;
         letter-spacing: 0px;
         color: #666666;
         opacity: 1;
         padding-top: 0;
-        height: 90px;
-        margin-bottom: 20px;
-
+        height: auto;
     }
 
 }

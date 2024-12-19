@@ -72,14 +72,15 @@ function Home() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid item xs={11} md={11}>
-            <div className="image-slider-header text-center">
+            <div className="image-slider-header">
               Dazzling Favorites
             </div>
           </Grid>
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid  item xs={10} md={10}>
+          <Grid  item xs={10} md={10} sx={{
+        mb: {md:5}}} >
             <div className="image-slider-description">
             Enhance your style with the latest jewellery trends — explore our thoughtfully curated collection that captures the
             essence of modern elegance.
@@ -150,7 +151,46 @@ function Home() {
           </Grid>}
         </Grid>
       </Box> */}
-      <Box
+       <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={1}>
+          <Grid item xs={1} md={1}>
+            <Item className="empty-container-section">xs=6 md=4</Item>
+          </Grid>
+          <Grid item xs={11} md={11}>
+            <div className="image-slider-header">
+            Discover Your Shine
+            </div>
+          </Grid>
+          <Grid item xs={1} md={1}>
+            <Item className="empty-container-section">xs=6 md=4</Item>
+          </Grid>
+          <Grid  item xs={10} md={10}   sx={{
+        mb: {xs:5, sm: 3}}} >
+            <div className="image-slider-description ">
+            Uncover your unique brilliance with jewellery that perfectly blends sophistication and modern charm.
+            </div>
+          </Grid>
+         <Grid item xs={1} md={1}>
+            <Item className="empty-container-section">xs=6 md=4</Item>
+          </Grid> 
+          <Grid className="extra-empty-container" item xs={1} md={1}>
+            <Item className="empty-container-section">xs=6 md=4</Item>
+          </Grid>
+          <Grid item xs={12} md={12} className="p-0">
+            <ImageSliderHome
+              width={400}
+              height={460}
+              CardImage={CardImageNoPadding}
+              padding={0}
+              CardImageType={"Discover"}
+              data={catData}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+
+
+      {/* <Box
         className="large-image-slider-container discover-image-slider-container p-0"
         sx={{ flexGrow: 1 }}
       >
@@ -178,7 +218,7 @@ function Home() {
             />
           </Grid>
         </Grid>
-      </Box>
+      </Box> */}
 
       {/* <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>

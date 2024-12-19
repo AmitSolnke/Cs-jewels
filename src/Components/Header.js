@@ -21,8 +21,11 @@ import LoginIcon from "@mui/icons-material/Login"
 import {NavigationDropdown} from "./Common/NavigationDropdown"
 import {SearchDropdown} from "./Common/SearchDropdown"
 import {ShoppingBag} from "./Screens/ShoppingBag"
-
+import {Button, IconButton, Tooltip, useMediaQuery} from "@mui/material"
+import StorefrontIcon from "@mui/icons-material/Storefront"
 function Header({openDrawer, handleOpenDrawer}) {
+  const isMobile = useMediaQuery("(max-width:768px)")
+  // console.log(isMobile, ">>>>>>mo")
   const $ = window.jQuery
   const [rates, setRates] = useState({
     Platinum: 0,
@@ -122,7 +125,7 @@ function Header({openDrawer, handleOpenDrawer}) {
             <div className="row">
               <div className="col-12 col-md-12 col-lg-12">
                 <div className="brand-wrapper">
-                  <div className="d-md-none d-lg-none mobile-header-bar">
+                  <div className="d-md-none d-lg-none mobile-header-bar d-flex justify-content-between align-items-center">
                     <img
                       src={menuOpen}
                       alt="menu-open"
@@ -133,7 +136,7 @@ function Header({openDrawer, handleOpenDrawer}) {
                         <img
                           src={logo}
                           alt="Logo"
-                          className="site-logo image"
+                          className="site-logo image text-center"
                         />
                       </Link>
                     </div>
@@ -141,6 +144,12 @@ function Header({openDrawer, handleOpenDrawer}) {
                     <div className="header-icon-list">
                       <ul>
                         <li>
+                          <Link to="/find-a-store">
+                            
+                            <Tooltip arrow title="Stores" placement="left">
+                              <IconButton  className="text-dark">{isMobile && <StorefrontIcon />}</IconButton>
+                            </Tooltip>
+                          </Link>
                           {/* <Link onClick={handleOpenDrawer}>
                             <img
                               src={shoppingBagLogo}
@@ -327,7 +336,6 @@ function Header({openDrawer, handleOpenDrawer}) {
                         <li
                           id="jewellery-link"
                           onClick={() => {
-                           
                             setShowDropdown((prev) => !prev)
                           }}
                         >

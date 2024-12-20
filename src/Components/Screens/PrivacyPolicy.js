@@ -1,10 +1,12 @@
-import React from "react";
-import { Box, Divider, Grid } from "@mui/material";
+/** @format */
 
+import React from "react"
+import {Box, Divider, Grid} from "@mui/material"
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 export default function PrivacyPolicy() {
   return (
     <div className="terms-and-condition">
-      <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
+      <Box className="privacy-policy-container" sx={{flexGrow: 1}}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={4}>
             <div className="empty-container-section">xs=6 md=4</div>
@@ -14,11 +16,12 @@ export default function PrivacyPolicy() {
               Privacy Policy
             </div>
             <div className="privacy-policy-normal-text">
-              We respect your privacy. Our privacy policy below is meant to help
-              you understand what information we collect about you and how we
-              use it.
+              At Chandukaka Saraf Jewels (CSJ), we value your trust and are
+              committed to protecting your privacy. This Privacy Policy outlines
+              how we collect, use, disclose, and safeguard your information on
+              our website. By using our website, you consent to the practices
+              described in this policy.
             </div>
-            {/* <Divider className='divider-privacy-policy' /> */}
             <hr />
           </Grid>
           <Grid item xs={1} md={4}>
@@ -26,30 +29,33 @@ export default function PrivacyPolicy() {
           </Grid>
         </Grid>
       </Box>
-      <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
+      <Box sx={{flexGrow: 1}}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={4}>
             <div className="empty-container-section">xs=6 md=4</div>
           </Grid>
           <Grid item xs={10} md={4}>
             <div className="privacy-policy-header-text">
-              INFORMATION COLLECTED
+              1. Information We Collect
             </div>
             <div className="privacy-policy-normal-text">
-              At times, you may decide to provide us with your personal
-              information. We receive and store all the information provided by
-              the customer. Personal information includes name, surname, billing
-              address or email address. In addition to your contact information,
-              we may collect information about your purchases, shipping address,
-              gender, occupation, birthday, marital status, anniversary,
-              interests, phone number or other contact information, and credit
-              card information. We may combine the information you provide to us
-              over time and we may combine such information with information
-              that is publicly available, collected through data collection
-              devices, and information that we receive from our partners,
-              affiliates and other third parties.
+              We may collect the following types of information:
+              <div className="mt-3 d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>{" "}
+                Personal Information:Such as name, email address, phone number,
+                and shipping/billing address when you place an order or sign up
+                for our services.
+              </div>
+              <div className=" d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>
+                Non-Personal Information:Such as browser type, IP address, and
+                website usage data to improve your online experience.
+              </div>
             </div>
-            {/* <Divider className='divider-privacy-policy' /> */}
             <hr />
           </Grid>
           <Grid item xs={1} md={4}>
@@ -57,34 +63,42 @@ export default function PrivacyPolicy() {
           </Grid>
         </Grid>
       </Box>
-      <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
+      <Box sx={{flexGrow: 1}}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={4}>
             <div className="empty-container-section">xs=6 md=4</div>
           </Grid>
           <Grid item xs={10} md={4}>
             <div className="privacy-policy-header-text">
-              USES OF YOUR INFORMATION
+              2. How We Use Your Information
             </div>
             <div className="privacy-policy-normal-text">
-              When you place an order on the website and enter your name and
-              details, you will become a recognised user, and we will send a
-              cookie to your computer. A cookie is a small file that may be
-              placed on your computer's hard disk for record-keeping purposes.
-              Cookies do not contain any information that can personally
-              identify you. They help us to recognise you when you visit the
-              website and make use of the service so that the service can be
-              tailored to your needs. By using cookies, we can make your online
-              experience more efficient. For example, cookies allow you to store
-              your chosen items in your shopping basket, without losing them
-              between visits.This makes your checkout process faster and
-              smoother. We will also use cookies for the compilation of certain
-              statistics (which do not identify you personally) related to our
-              customers’ use of the website. Such information may include the
-              number of visits, average time spent, and other statistics
-              relating to the website.
+              We use the information collected to:
+              <div className=" mt-3 d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>{" "}
+                Process orders and deliver products/services.
+              </div>
+              <div className=" d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>
+                Provide customer support.
+              </div>
+              <div className=" d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>
+                Improve website functionality and user experience.
+              </div>
+              <div className=" d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>
+                Send promotional communications (if you have opted in).
+              </div>
             </div>
-            {/* <Divider className='divider-privacy-policy' /> */}
             <hr />
           </Grid>
           <Grid item xs={1} md={4}>
@@ -92,24 +106,38 @@ export default function PrivacyPolicy() {
           </Grid>
         </Grid>
       </Box>
-      <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
+      <Box sx={{flexGrow: 1}}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={4}>
             <div className="empty-container-section">xs=6 md=4</div>
           </Grid>
           <Grid item xs={10} md={4}>
             <div className="privacy-policy-header-text">
-              DISCLOSURE: CONFIDENTIALITY OF YOUR INFORMATION
+              3. Disclosure of Information
             </div>
             <div className="privacy-policy-normal-text">
-              We will never release your personal details to any outside company
-              for mailing or marketing purposes. Payments on the website are
-              processed by a third party, which adheres to the privacy policy
-              that is set out here. We have a non-disclosure agreement with this
-              third party, and they are certified by all the major card issuers
-              to hold details securely.
+              We do not sell or rent your personal information to third parties.
+              However, we may share information with trusted partners for
+              operational purposes, including:
+              <div className=" mt-3 d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>{" "}
+                Delivery services for order fulfillment.
+              </div>
+              <div className=" d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>
+                Payment gateways for secure transactions.
+              </div>
+              <div className=" d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>
+                Legal authorities, if required by law.
+              </div>
             </div>
-            {/* <Divider className='divider-privacy-policy' /> */}
             <hr />
           </Grid>
           <Grid item xs={1} md={4}>
@@ -117,6 +145,182 @@ export default function PrivacyPolicy() {
           </Grid>
         </Grid>
       </Box>
+      <Box sx={{flexGrow: 1}}>
+        <Grid container spacing={1}>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+          <Grid item xs={10} md={4}>
+            <div className="privacy-policy-header-text">4. About NSJ</div>
+            <div className="privacy-policy-normal-text">
+              NSJ (Niyam Sagar Ji) is an integral part of the Chandukaka Saraf
+              Jewels family, committed to offering the same quality and trust
+              that CSJ is known for. Operating independently under a franchise
+              agreement, NSJ ensures adherence to our privacy and service
+              standards while running its jewellery store in Nanded.
+            </div>
+            <hr />
+          </Grid>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{flexGrow: 1}}>
+        <Grid container spacing={1}>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+          <Grid item xs={10} md={4}>
+            <div className="privacy-policy-header-text">
+              5. Our Relationship with NSJ
+            </div>
+            <div className="privacy-policy-normal-text">
+              NSJ is a Limited Liability Partnership firm and a franchise of
+              Chandukaka Saraf Jewels. NSJ currently operates a jewellery store
+              in Nanded. As part of our franchise network, NSJ follows the same
+              standards and commitments to customer privacy as CSJ. When you
+              engage with NSJ, your information may be shared with NSJ for
+              service delivery purposes.
+            </div>
+            <hr />
+          </Grid>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{flexGrow: 1}}>
+        <Grid container spacing={1}>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+          <Grid item xs={10} md={4}>
+            <div className="privacy-policy-header-text">6. Data Security</div>
+            <div className="privacy-policy-normal-text">
+              We implement robust measures to protect your data against
+              unauthorized access, alteration, or disclosure. However, no system
+              is entirely secure, and we cannot guarantee the complete safety of
+              your data.
+            </div>
+            <hr />
+          </Grid>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{flexGrow: 1}}>
+        <Grid container spacing={1}>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+          <Grid item xs={10} md={4}>
+            <div className="privacy-policy-header-text">7. Your Rights</div>
+            <div className="privacy-policy-normal-text">
+              You have the right to:
+              <div className=" mt-3 d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>
+                Access your personal data.
+              </div>
+              <div className=" d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>
+                Request correction or deletion of your data.
+              </div>
+              <div className=" d-flex">
+                <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div>
+                Opt-out of marketing communications.
+              </div>
+            </div>
+            <hr />
+          </Grid>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{flexGrow: 1}}>
+        <Grid container spacing={1}>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+          <Grid item xs={10} md={4}>
+            <div className="privacy-policy-header-text">
+              8. Changes to This Privacy Policy
+            </div>
+            <div className="privacy-policy-normal-text">
+              CSJ reserves the right to update this Privacy Policy at any time.
+              Changes will be posted on this page, and your continued use of our
+              website constitutes your acceptance of the updated terms.
+            </div>
+            <hr />
+          </Grid>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{flexGrow: 1}}>
+        <Grid container spacing={1}>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+          <Grid item xs={10} md={4}>
+            <div className="privacy-policy-header-text">9. Contact Us</div>
+            <div className="privacy-policy-normal-text">
+              For questions or concerns regarding this Privacy Policy, please
+              contact us at:
+              
+              <div className=" d-flex">
+                {/* <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div> */}
+               Chandukaka Saraf Jewels
+              </div> 
+              <div className=" d-flex">
+                {/* <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div> */}
+                Email: care@csjewels.com
+              </div> 
+              <div className=" d-flex">
+                {/* <div>
+                  <ArrowRightIcon fontSize="medium" />
+                </div> */}
+                Phone: 7969991827
+
+              </div> 
+            </div>
+            <hr />
+          </Grid>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{flexGrow: 1}}>
+        <Grid container spacing={1}>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+          <Grid item xs={10} md={4}>
+            <div className="privacy-policy-normal-text">
+            We value your trust and are committed to maintaining the confidentiality of your information.
+            </div>
+            <hr />
+          </Grid>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+        </Grid>
+      </Box>
+    
     </div>
-  );
+  )
 }

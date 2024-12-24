@@ -1,0 +1,32 @@
+import React from "react";
+import prod1 from "../../images/products/1.jpg";
+import prod2 from "../../images/products/2.jpg";
+import prod3 from "../../images/products/3.jpg";
+import prod4 from "../../images/products/4.jpg";
+
+function DazzlingFev() {
+  const dazzlingFev = [
+    { img: prod1, name: "GOLD BANGLES" },
+    { img: prod2, name: "LAYERED BRACELETS" },
+    { img: prod3, name: "DIAMOND NECKLACE" },
+    { img: prod4, name: "KUNDAN NECKLACE" },
+  ];
+
+  return (
+    <div className="d-flex flex-wrap justify-content-center m-auto" style={{width:'85%'}}>
+  {dazzlingFev.map((item, index) => (
+    <div key={index} className="col-6 col-sm-6 col-lg-3 p-2">
+      <div className="card rounded-0">
+        <img src={item.img} className="card-img rounded-0" alt={item.name} />
+        <div className="card-img-overlay">
+          <h5 className="card-title text-center text-white">{item.name}</h5>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+  );
+}
+
+export default DazzlingFev;

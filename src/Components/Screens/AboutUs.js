@@ -48,7 +48,7 @@ export default function AboutUs() {
               Since 1827. Step into a world where tradition meets elegance. For
               almost 200 years, we've been creating stunning jewellery and
               earning the trust of customers across India. Our journey began in
-              1827 when Shri Chandulal Shah opened our first store in Baramati.
+              1827 when Shri Chandulal Shah opened our first store near Pune.
               His dedication to quality and honest business set the stage for
               our long-standing success. With nearly two centuries of
               experience, we've become a household name in Western Indian

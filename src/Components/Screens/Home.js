@@ -1,112 +1,113 @@
-import React from "react";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import rightArrowIconWhite from "../../images/icons/right-arrow-white.svg";
-import CarouselHome from "../CarouselHome";
-import ImageSliderHome from "../ImageSliderHome";
-import CardImageNormal from "../../images/MaskGroup8.png";
-import CardImageLarge from "../../images/MaskGroup24.png";
-import CardImageNoPadding from "../../images/MaskGroup18.png";
-import useWindowWidthAndHeight from "../../utilities/CustomHooks";
-import rightArrowIcon from "../../images/icons/right-arrow.svg";
-import Testimonial from "../Testimonial";
-import prod1 from "../../images/products/1.jpg";
-import prod2 from "../../images/products/2.jpg";
-import prod3 from "../../images/products/3.jpg";
-import prod4 from "../../images/products/4.jpg";
-import catImg1 from "../../images/categories/bangles.jpg";
-import catImg2 from "../../images/categories/dimoand_neckless.jpg";
-import catImg3 from "../../images/categories/earrings.jpg";
-import catImg4 from "../../images/categories/earrings_2.jpg";
-import catImg5 from "../../images/categories/neckless_1.jpg";
-import catImg6 from "../../images/categories/neckless_2.jpg";
-import CsPromises from "./CsPromises";
+/** @format */
 
-const Item = styled(Paper)(({ theme }) => ({
+import React from "react"
+import {styled} from "@mui/material/styles"
+import Box from "@mui/material/Box"
+import Paper from "@mui/material/Paper"
+import Grid from "@mui/material/Grid"
+import rightArrowIconWhite from "../../images/icons/right-arrow-white.svg"
+import CarouselHome from "../CarouselHome"
+import ImageSliderHome from "../ImageSliderHome"
+import CardImageNormal from "../../images/MaskGroup8.png"
+import CardImageLarge from "../../images/MaskGroup24.png"
+import CardImageNoPadding from "../../images/MaskGroup18.png"
+import useWindowWidthAndHeight from "../../utilities/CustomHooks"
+import rightArrowIcon from "../../images/icons/right-arrow.svg"
+import Testimonial from "../Testimonial"
+
+import catImg1 from "../../images/categories/bangles.jpg"
+import catImg2 from "../../images/categories/dimoand_neckless.jpg"
+import catImg3 from "../../images/categories/earrings.jpg"
+import catImg4 from "../../images/categories/earrings_2.jpg"
+import catImg5 from "../../images/categories/neckless_1.jpg"
+import catImg6 from "../../images/categories/neckless_2.jpg"
+import CsPromises from "./CsPromises"
+import {Card} from "@mui/material"
+import DazzlingFev from "./DazzlingFev"
+
+const Item = styled(Paper)(({theme}) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
-}));
+}))
 
-const dazzlingFev = [
-  { img: prod1, name: "GOLD BANGLES" },
-  { img: prod2, name: "LAYERED BRACELETS" },
-  { img: prod3, name: "DIAMOND NECKLACE" },
-  { img: prod4, name: "KUNDAN NECKLACE" },
-];
+
 const offerImages = [
   CardImageLarge,
   CardImageLarge,
   CardImageLarge,
   CardImageLarge,
-];
+]
 const shineImages = [
   CardImageNoPadding,
   CardImageNoPadding,
   CardImageNoPadding,
   CardImageNoPadding,
-];
+]
 const catData = [
-  { img: catImg1, name: "BANGLES" },
-  { img: catImg2, name: "NECKLACE" },
-  { img: catImg3, name: "EARRINGS" },
-  { img: catImg4, name: "EARRINGS" },
-  { img: catImg5, name: "NECKLACE" },
-  { img: catImg6, name: "NECKLACE" },
-];
+  {img: catImg1, name: "BANGLES"},
+  {img: catImg2, name: "NECKLACE"},
+  {img: catImg3, name: "EARRINGS"},
+  {img: catImg4, name: "EARRINGS"},
+  {img: catImg5, name: "NECKLACE"},
+  {img: catImg6, name: "NECKLACE"},
+]
 
 function Home() {
-  const windoDimensions = useWindowWidthAndHeight();
+  const windoDimensions = useWindowWidthAndHeight()
   return (
     <div className="d-flex flex-column gap-5">
       <div>
         <CarouselHome />
       </div>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{flexGrow: 1}}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid item xs={11} md={11}>
-            <div className="image-slider-header">
-              Dazzling Favorites
+            <div className="image-slider-header">Dazzling Favorites</div>
+          </Grid>
+          <Grid item xs={1} md={1}>
+            <Item className="empty-container-section">xs=6 md=4</Item>
+          </Grid>
+          <Grid
+            item
+            xs={10}
+            md={10}
+          >
+            <div className="image-slider-description">
+              Enhance your style with the latest jewellery trends — explore our
+              thoughtfully curated collection that captures the essence of
+              modern elegance.
             </div>
           </Grid>
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid  item xs={10} md={10} sx={{
-        mb: {md:5}}} >
-            <div className="image-slider-description">
-            Enhance your style with the latest jewellery trends — explore our thoughtfully curated collection that captures the
-            essence of modern elegance.
-            </div>
-          </Grid>
-         <Grid item xs={1} md={1}>
-            <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid> 
           <Grid className="extra-empty-container" item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid className="favourite-image-slider" item xs={10} md={11}>
-            <ImageSliderHome
-              width={295}
-              height={355}
-              CardImage={CardImageNormal}
-              padding={30}
-              CardImageType={"Favourites"}
-              className="favorite-slider"
-              data={dazzlingFev}
-              isSlideArrowEnabled={false}
-            />
-          </Grid>
+          {/* <Grid className="favourite-image-slider" item xs={10} md={11}>
+            <div className="slider-container">
+              <ImageSliderHome
+                width={295}
+                height={355}
+                CardImage={CardImageNormal}
+                padding={30}
+                CardImageType={"Favourites"}
+                className="favorite-slider"
+                data={dazzlingFev}
+                isSlideArrowEnabled={false}
+              />
+            </div>
+            </Grid> */}
         </Grid>
       </Box>
 
+      <DazzlingFev/>
       <CsPromises />
 
       {/* <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
@@ -151,28 +152,33 @@ function Home() {
           </Grid>}
         </Grid>
       </Box> */}
-       <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{flexGrow: 1}}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid item xs={11} md={11}>
-            <div className="image-slider-header">
-            Discover Your Shine
+            <div className="image-slider-header">Discover Your Shine</div>
+          </Grid>
+          <Grid item xs={1} md={1}>
+            <Item className="empty-container-section">xs=6 md=4</Item>
+          </Grid>
+          <Grid
+            item
+            xs={10}
+            md={10}
+            sx={{
+              mb: {xs: 5, sm: 3},
+            }}
+          >
+            <div className="image-slider-description ">
+              Uncover your unique brilliance with jewellery that perfectly
+              blends sophistication and modern charm.
             </div>
           </Grid>
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid  item xs={10} md={10}   sx={{
-        mb: {xs:5, sm: 3}}} >
-            <div className="image-slider-description ">
-            Uncover your unique brilliance with jewellery that perfectly blends sophistication and modern charm.
-            </div>
-          </Grid>
-         <Grid item xs={1} md={1}>
-            <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid> 
           <Grid className="extra-empty-container" item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
@@ -188,7 +194,6 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
-
 
       {/* <Box
         className="large-image-slider-container discover-image-slider-container p-0"
@@ -265,7 +270,7 @@ function Home() {
       </Box> */}
       <Testimonial />
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

@@ -1,3 +1,43 @@
+.card {
+    position: relative;
+
+}
+
+.card-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0; /* Initially hidden */
+    transition: 0.4s ease;
+    background-color: #4f5050;
+}
+
+.card-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font: bold normal normal 20px/28px "Afacad Flux", serif;
+
+}
+
+.card:hover .card-img-overlay {
+    opacity: 0.7; /* Show overlay on hover */
+    border-radius: 0%;
+}
+
+
 .image-slider-header {
     top: 900px;
     left: 120px;

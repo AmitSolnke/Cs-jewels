@@ -1,6 +1,6 @@
 .card {
     position: relative;
-
+    border: 0;
 }
 
 .card-img {
@@ -19,7 +19,7 @@
     width: 100%;
     opacity: 0; /* Initially hidden */
     transition: 0.4s ease;
-    background-color: #4f5050;
+    background-color: #363737;
 }
 
 .card-title {
@@ -28,7 +28,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgb(255, 255, 255);
-    font: bold normal normal 20px/28px "Afacad Flux", serif;
+    font: bold normal normal 22px/28px "Afacad Flux", serif;
+    letter-spacing: 2px;
 
 }
 

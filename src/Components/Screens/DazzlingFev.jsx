@@ -15,7 +15,7 @@ function DazzlingFev() {
   return (
     <div className="d-flex flex-wrap justify-content-center m-auto" style={{width:'85%'}}>
   {dazzlingFev.map((item, index) => (
-    <div key={index} className="col-6 col-sm-6 col-lg-3 p-2">
+    <div key={index} className="col-6 col-sm-6 col-lg-3 p-2 py-lg-0 px-lg-3">
       <div className="card rounded-0">
         <img src={item.img} className="card-img rounded-0" alt={item.name} />
         <div className="card-img-overlay">

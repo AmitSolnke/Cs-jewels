@@ -132,7 +132,8 @@ function Header({openDrawer, handleOpenDrawer}) {
                       className="menu-open open-nav-btn"
                     />
                     <div className="logo">
-                      <Link to="/">
+                      <Link to="/" 
+                          >
                         <img
                           src={logo}
                           alt="Logo"
@@ -182,6 +183,7 @@ function Header({openDrawer, handleOpenDrawer}) {
                           <Link to="/">
                             <img
                               src={logo}
+                              onClick={() => window.scrollTo(0, 0)}
                               alt="Logo"
                               className="site-logo image"
                             />

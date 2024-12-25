@@ -83,16 +83,10 @@ export default function Testimonial() {
           xs={10}
           md={10}
         >
-          {windoDimensions[0] > 768 ? (
             <div className="image-slider-header">
               Treasured Stories
             </div>
-          ) : (
-            <div className="image-slider-header">
-              <div>Explore Our Store Locations</div>
-              {/* <div></div> */}
-            </div>
-          )}
+           
         </Grid>
         <Grid item xs={1} md={1}>
           <Item className="empty-container-section">xs=6 md=4</Item>

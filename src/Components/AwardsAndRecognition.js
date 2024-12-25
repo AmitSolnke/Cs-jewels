@@ -20,16 +20,16 @@ const AwardsAndItsLogo = [
 
   {
     imageUrl: BestSilverDesignerJewellery2016,
-    imageSecription: "Best Silver Designer Award 2016",
+    imageSecription: "2016",
   },
   {
     imageUrl: LokmatCorporateExcellenceAward2017,
-    imageSecription: "Lokmat Corporate Excellence Award 2017",
+    imageSecription: "2017",
   },
 
   {
     imageUrl: GemOfTheYearAward,
-    imageSecription: "Gem of the Year(West)Award 2020",
+    imageSecription: "2020",
   },
   {
     imageUrl: YoungAcheversAward,
@@ -37,11 +37,11 @@ const AwardsAndItsLogo = [
   },
   {
     imageUrl: GJTCIExcellenceAward2014,
-    imageSecription: "GJTCI Excellence Award 2024 ",
+    imageSecription: "2014 ",
   },
   {
     imageUrl: BestBusinessWomenAwards,
-    imageSecription: "Best Female Business Woman Award 2024",
+    imageSecription: "2024",
   },
 ];
 

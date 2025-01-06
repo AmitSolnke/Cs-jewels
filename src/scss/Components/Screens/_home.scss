@@ -1,16 +1,57 @@
+.card {
+    position: relative;
+    border: 0;
+}
+
+.card-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0; /* Initially hidden */
+    transition: 0.4s ease;
+    background-color: #363737;
+}
+
+.card-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font: bold normal normal 22px/28px "Afacad Flux", serif;
+    letter-spacing: 2px;
+
+}
+
+.card:hover .card-img-overlay {
+    opacity: 0.7; /* Show overlay on hover */
+    border-radius: 0%;
+}
+
+
 .image-slider-header {
     top: 900px;
     left: 120px;
     width: 325px;
     height: 48px;
     text-align: left;
-    font: normal normal 600 36px/48px Playfair Display;
+    font: normal normal 600 36px/48px "Vidaloka", serif;
     letter-spacing: 0.54px;
     color: #672A2F;
     opacity: 1;
     display: table-footer-group;
+    margin-bottom: 8%;
 }
-
 .big-image-slider-description {
     width: 75% !important;
     padding-top: 16px;
@@ -18,30 +59,32 @@
 .image-slider-description {
     top: 964px;
     left: 120px;
-    width: 80% !important;
-    height: 59px;
+    width: 100% !important;
+    height: auto;
     text-align: left;
-    font: normal normal normal 16px/22px Lato;
+    font: normal normal normal 20px/28px "Afacad Flux", serif;
     letter-spacing: 0px;
     color: #666666;
     opacity: 1;
+    // margin-bottom: 3%;
 }
 .large-image-slider-container {
     padding-top: 100px;
 }
 
 .large-image-slider-test-area {
-    align-self: center;
+    // align-self: left;
     // padding-left: 0 !important;
+    text-align: left;
 }
 
 .text-only-grid {
-    text-align-last: center;
-    width: 60%;
-    text-align: -webkit-center;
-    margin-left: 10%;
-    min-height: 80px;
-    padding-top: 10px;
+    // text-align-last: left;
+    // width: 60%;
+    // text-align: -webkit-center;
+    // margin-left: 10%;
+    // min-height: 100px;
+    // padding-top: 10px;
 }
 
 .text-only-grid-header img {
@@ -53,34 +96,37 @@
 .extra-empty-container-exclusive-offers{
     display: none;
 }
-.text-area-explore{
-    text-align: -webkit-center;
-}
+// .text-area-explore{
+//     text-align: -webkit-center;
+// }
 .text-only-grid-explore-description{
     margin-left: 0;
-    width: 60% !important;
 }
 @media (max-width: 768px) {
     .image-slider-description {
         width: 98% !important;
         text-align: left;
-        font: normal normal normal 14px/22px Lato;
+        font: normal normal normal 20px/28px "Afacad Flux", serif;
         letter-spacing: 0px;
         color: #666666;
         opacity: 1;
         padding-top: 0;
-        height: 65px;
+        height:auto;
+        // margin-bottom: 10px;
+
     }
+
     .favourite-image-slider{
         padding-left: 0;
     }
     .image-slider-header {
         text-align: left;
-        font: normal normal 600 24px/32px Playfair Display;
+        font: normal normal 600 24px/32px "Vidaloka", serif;
         letter-spacing: 0.36px;
         color: #672A2F;
         opacity: 1;
-        height: 35px;
+        // height: 35px;
+        margin-bottom: 20%;
     }
     .extra-empty-container-exclusive-offers{
         display: block !important;
@@ -94,9 +140,9 @@
     .discover-image-slider-container{
         padding-top: 50px;
     }
-    .image-slider-header-explore{
-        text-align: center;
-    }
+    // .image-slider-header-explore{
+    //     text-align: center;
+    // }
     .large-image-slider-container {
         padding-top: 50px;
     }
@@ -104,7 +150,20 @@
         margin: 0 !important;
         text-align: -webkit-center;
     }
-    .text-only-grid-explore-description{
-        margin-left: 0;
+    // .text-only-grid-explore-description{
+    //     margin-left: 0;
+    // }
+}
+@media (max-width: 450px) {
+    .image-slider-description {
+        width: 98% !important;
+        text-align: left;
+        font: normal normal normal 20px/28px "Afacad Flux", serif;
+        letter-spacing: 0px;
+        color: #666666;
+        opacity: 1;
+        padding-top: 0;
+        height: auto;
     }
+
 }

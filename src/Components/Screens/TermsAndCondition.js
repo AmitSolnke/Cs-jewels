@@ -192,15 +192,15 @@ export default function TermsAndCondition() {
           </Grid>
           <Grid item xs={10} md={4}>
             <div className="">
-              <strong>Email</strong> : care@csjewels.com
+              <strong>Email :</strong> care@csjewels.com
             </div>
             <div className="">
-              <strong>Phone: </strong> : 07969991827
+              <strong>Phone : </strong>  07969991827
             </div>
             <div className="">
-              <strong>Address:</strong> : 1st Floor, Office No 1A and 1B,
-              Mudliyar Chambers Co Op Hsg Society, Mudliyar Road, Rasta Peth,
-              Pune, Pune, Maharashtra 411011
+              <strong>Address :</strong> Chandukaka Saraf Jewels Pvt. Ltd.
+Office no. 17 & 18, Indraprastha Plus Complex, Moodliar Road, 
+Somwar Peth, Pune, Maharashtra - 411011.
             </div>
 
             <Divider className="divider-privacy-policy" />

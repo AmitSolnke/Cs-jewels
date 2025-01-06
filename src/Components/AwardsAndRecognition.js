@@ -6,8 +6,7 @@ import {
   GemOfTheYearAward,
   GJTCIExcellenceAward2014,
   LokmatCorporateExcellenceAward2017,
-  imageSliderHeaderIconLeft,
-  imageSliderHeaderIconRight,
+  
   BestSilverDesignerJewellery2016,
   YoungAcheversAward,
   TrustedJewellers,
@@ -21,16 +20,16 @@ const AwardsAndItsLogo = [
 
   {
     imageUrl: BestSilverDesignerJewellery2016,
-    imageSecription: "Best Silver Designer Award 2016",
+    imageSecription: "2016",
   },
   {
     imageUrl: LokmatCorporateExcellenceAward2017,
-    imageSecription: "Lokmat Corporate Excellence Award 2017",
+    imageSecription: "2017",
   },
 
   {
     imageUrl: GemOfTheYearAward,
-    imageSecription: "Gem of the Year(West)Award 2020",
+    imageSecription: "2020",
   },
   {
     imageUrl: YoungAcheversAward,
@@ -38,11 +37,11 @@ const AwardsAndItsLogo = [
   },
   {
     imageUrl: GJTCIExcellenceAward2014,
-    imageSecription: "GJTCI Excellence Award 2024 ",
+    imageSecription: "2014 ",
   },
   {
     imageUrl: BestBusinessWomenAwards,
-    imageSecription: "Best Female Business Woman Award 2024",
+    imageSecription: "2024",
   },
 ];
 
@@ -55,18 +54,10 @@ export default function AwardsAndRecognition({ Item }) {
       </Grid>
       <Grid item xs={10} md={8} className="about-us-awards-header-container">
         <div className="about-us-awards-header">
-          <img
-            src={imageSliderHeaderIconLeft}
-            alt="React Logo"
-            className="left-logo"
-          />
-          {"  "}
-          Award-Winning Craftsmanship: Excellence Recognized{" "}
-          <img
-            src={imageSliderHeaderIconRight}
-            alt="React Logo"
-            className="right-logo"
-          />
+        
+          
+          Award-Winning Craftsmanship: Excellence Recognized
+         
         </div>
         <div className="about-us-awards-description">
           We are honored to be recognized as a premier jeweller in India. Our
@@ -100,7 +91,7 @@ export default function AwardsAndRecognition({ Item }) {
                 className="img-fluid award-image"
                 alt={element.imageSecription}
               />
-              <p cl>{element.imageSecription}</p>
+              <p className="about-us-award-details">{element.imageSecription}</p>
             </Grid>
           ))}
         </Grid>

@@ -5,7 +5,6 @@ import Paper from "@mui/material/Paper";
 
 import aboutUsTitleImage from "../../images/aboutUsTitleImage.jpeg";
 import ourSpecality from "../../images/ourSpecality.jpeg";
-import imageSliderHeaderIconRight from "../../images/icons/Group40.svg";
 import aboutUsFullScreenBottomImage from "../../images/aboutUsFullScreenBottomImage.jpeg";
 import aboutUsFullScreenBottomImageMobileView from "../../images/aboutUsFullScreenBottomImageMobileView.jpeg";
 import useWindowWidthAndHeight from "../../utilities/CustomHooks";
@@ -22,6 +21,8 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
+  // fontFamily: "Afacad Flux",
+  // fontSize:"25px"
 }));
 
 export default function AboutUs() {
@@ -47,7 +48,7 @@ export default function AboutUs() {
               Since 1827. Step into a world where tradition meets elegance. For
               almost 200 years, we've been creating stunning jewellery and
               earning the trust of customers across India. Our journey began in
-              1827 when Shri Chandulal Shah opened our first store in Baramati.
+              1827 when Shri Chandulal Shah opened our first store near Pune.
               His dedication to quality and honest business set the stage for
               our long-standing success. With nearly two centuries of
               experience, we've become a household name in Western Indian

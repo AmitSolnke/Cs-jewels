@@ -204,7 +204,7 @@ function Footer() {
           <hr className="footer-hr" />
           <div className="copyright text-center">
             <p className=" mb-0">
-              2024 © Chandukaka Saraf Jewels Pvt. Ltd. Powered by{" "}
+              2025 © Chandukaka Saraf Jewels Pvt. Ltd. Powered by{" "}
               <a
                 className="text-secondary text-decoration-none"
                 href="https://www.techneai.com/"

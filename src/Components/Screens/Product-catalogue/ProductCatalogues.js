@@ -66,13 +66,20 @@ export const ProductCatalogues = () => {
   });
 
   const handleChangePage = (event, newPage) => {
-    filters["page"] = newPage;
-    const temp = Object.assign({}, filters);
-    setFilters(temp);
-    setRefreshCount(refreshCount + 1);
-    navigate(
-      `/product-catalogues?page=${newPage}&type[0]=${filters["type[0]"]}&metal=${filters["metal_type[0]"]}&item_type=${filters["item_master_id"]}&gender=${filters["gender"]}&sort_by=${filters["sort_by"]}`
-    );
+  
+    const pageNumber = Number(newPage);
+
+    setFilters((prevFilters) => {
+      const updatedFilters = {
+        ...prevFilters,
+        page: pageNumber,
+      };
+      navigate(
+        `/product-catalogues?page=${pageNumber}&type[0]=${updatedFilters["type[0]"]}&metal=${updatedFilters["metal_type[0]"]}&item_type=${updatedFilters["item_master_id"]}&gender=${updatedFilters["gender"]}&sort_by=${updatedFilters["sort_by"]}`
+      );
+
+      return updatedFilters;
+    });
   };
 
   const getFiltersData = async () => {
@@ -293,7 +300,7 @@ export const ProductCatalogues = () => {
       item_master_id: itemTypeId,
       sort_by: sort_by,
       gender: gender,
-      page: page,
+      page: Number(page),
       limit: 12,
     });
     try {

@@ -22,7 +22,9 @@ import {NavigationDropdown} from "./Common/NavigationDropdown"
 import {SearchDropdown} from "./Common/SearchDropdown"
 import {ShoppingBag} from "./Screens/ShoppingBag"
 import {Button, IconButton, Tooltip, useMediaQuery} from "@mui/material"
-import StorefrontIcon from "@mui/icons-material/Storefront"
+import StoresIcon from "../images/icons/StoresIcon-1.png"
+import StoresIconBrown from "../images/icons/StoresIcon.png"
+
 function Header({openDrawer, handleOpenDrawer}) {
   const isMobile = useMediaQuery("(max-width:768px)")
   // console.log(isMobile, ">>>>>>mo")
@@ -132,8 +134,7 @@ function Header({openDrawer, handleOpenDrawer}) {
                       className="menu-open open-nav-btn"
                     />
                     <div className="logo">
-                      <Link to="/" 
-                          >
+                      <Link to="/">
                         <img
                           src={logo}
                           alt="Logo"
@@ -146,9 +147,26 @@ function Header({openDrawer, handleOpenDrawer}) {
                       <ul>
                         <li>
                           <Link to="/find-a-store">
-                            
                             <Tooltip arrow title="Stores" placement="left">
-                              <IconButton  className="text-dark">{isMobile && <StorefrontIcon />}</IconButton>
+                              {/* <IconButton
+                          
+                                size="large"
+                                className="rounded"
+                              > */}
+                                {isMobile && (
+                                  <img 
+                                    className="w-100 img-fluid"
+                                    src={StoresIcon}
+                                    alt="storesIcon"
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.src = StoresIconBrown;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.src = StoresIcon;
+                                    }}
+                                  />
+                                )}
+                              {/* </IconButton> */}
                             </Tooltip>
                           </Link>
                           {/* <Link onClick={handleOpenDrawer}>
@@ -177,45 +195,22 @@ function Header({openDrawer, handleOpenDrawer}) {
                   </div>
 
                   <div className="col-12 col-lg-12  d-none d-md-block">
-                    <div className="row position-relative align-items-center">
-                      <div className="logo-container d-flex">
-                        <div className="logo">
-                          <Link to="/">
-                            <img
-                              src={logo}
-                              onClick={() => window.scrollTo(0, 0)}
-                              alt="Logo"
-                              className="site-logo image"
-                            />
-                          </Link>
-                        </div>
-                        <div className="logo mx-5">
-                          {/* <h6>chandukaka saraf</h6> */}
-                          {/* <Link to="/">
-                            <img
-                              src={logo}
-                              alt="chandukaka Image"
-                              className="chandukaka-image"
-                            />
-                          </Link> */}
-                        </div>
+                    <div className="logo-container relative d-flex justify-content-center align-items-center">
+                      <div className="logo">
+                        <Link to="/">
+                          <img
+                            src={logo}
+                            onClick={() => window.scrollTo(0, 0)}
+                            alt="Logo"
+                            className="site-logo image"
+                          />
+                        </Link>
                       </div>
 
-                      <div className="col-8 p-0 position-absolute end-0 h-100">
+                      <div className="col-12 position-absolute">
                         <div className="quick-links-wrapper">
                           <ul className="w-100">
                             <div className="quick-link-items">
-                              {/* <li>
-                                <small>
-                                  GOLD - ₹
-                                  {rates.gold["24.00"]
-                                    ? rates.gold["24.00"]
-                                    : 0}
-                                </small>
-                              </li>
-                              <li>
-                                <small>SILVER - ₹{rates.Silver1}</small>
-                              </li> */}
                               <li>
                                 <Link to="/find-a-store">FIND A STORE</Link>
                               </li>

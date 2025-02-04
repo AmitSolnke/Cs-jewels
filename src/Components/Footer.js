@@ -10,6 +10,8 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp"
 import YouTubeIcon from "@mui/icons-material/YouTube"
 import InstagramIcon from "@mui/icons-material/Instagram"
 import FacebookIcon from "@mui/icons-material/Facebook"
+import LinkedInIcon from "@mui/icons-material/LinkedIn"
+import PinterestIcon from "@mui/icons-material/Pinterest"
 function Footer() {
   const [errors, setErrors] = useState([])
   const [successMsg, setSuccesMsg] = useState("")
@@ -68,7 +70,7 @@ function Footer() {
                           <span>Email: </span> care@csjewels.com
                         </p>
                         <p className="mb-4">
-                          <span>Phone: </span> 07969991827
+                          <span>Phone: </span> 0796-999-1827
                         </p>
                         <p className="address">
                           Chandukaka Saraf Jewels Pvt. Ltd. Office no. 17 & 18,
@@ -119,7 +121,7 @@ function Footer() {
                           href="/terms-and-conditions"
                           className="btn btn-link"
                         >
-                          Terms & Condition
+                          Terms & Conditions
                         </a>
 
                         <Link
@@ -157,6 +159,7 @@ function Footer() {
 
             <div className="social-media-wrapper d-block w-100 text-center text-md-start">
               <h6>Follow us on</h6>
+              <div className="d-flex gap-3 justify-content-center justify-content-md-start">
               <a
                 // href="https://www.facebook.com/CSjewelss/"
                 href="https://www.facebook.com/csjewel1827"
@@ -167,7 +170,6 @@ function Footer() {
               </a>
 
               <a
-                className="mx-4"
                 href="https://www.instagram.com/csjewelsofficial/?hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -175,17 +177,32 @@ function Footer() {
                 <InstagramIcon className="text-dark" fontSize="large" />
               </a>
               <a
-                // href="https://x.com/csjewels1827"
                 href="https://www.youtube.com/@csjewels1827"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <YouTubeIcon className="text-dark" fontSize="large" />
               </a>
+              <a
+                href="https://www.linkedin.com/company/chandukaka-saraf-jewels/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon className="text-dark" fontSize="large" />
+              </a>
+              <a
+                href="https://pin.it/5AOLorOQj"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PinterestIcon className="text-dark" fontSize="large" />
+              </a>
+              </div>
+             
             </div>
           </div>
           <hr className="footer-hr" />
-          <div className="copyright text-center text-md-start">
+          <div className="copyright text-center">
             <p className=" mb-0">
               2024 © Chandukaka Saraf Jewels Pvt. Ltd. Powered by{" "}
               <a

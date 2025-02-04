@@ -9,8 +9,9 @@ import DiamondsIcon from "../../images/USP/DiamondsIcon";
 import PurityIcon from "../../images/USP/PurityIcon";
 import DebitCardIcon from "../../images/USP/DebitCardIcon";
 import MeltingIcon from "../../images/USP/MeltingIcon";
-import RateIcon from "../../images/USP/RateIcon";
 import AstrologyIcon from "../../images/USP/AstrologyIcon";
+import BIShallmark from "../../images/BISHallmark.webp";
+import GoldKeratometer from "../../images/gold&silver-keratometer.webp";
 
 const CsPromises = () => {
   const settings = {
@@ -52,59 +53,59 @@ const CsPromises = () => {
 
   const promises = [
     {
-      imgSrc: <DeductionIcon />,
-
+      imgComponent: <DeductionIcon />,
       text: "NO-DEDUCTION<br/> EXCHANGE",
     },
     {
-      imgSrc: <HallMarkIcon />,
-
+      imgSrc: BIShallmark,
       text: "BIS HALLMARKED<br/> JEWELLERY",
     },
     {
-      imgSrc: <DiamondsIcon />,
-
+      imgComponent: <DiamondsIcon />,
       text: "CERTIFIED DIAMONDS &<br/>GEMSTONE",
     },
     {
-      imgSrc: <PurityIcon />,
-
+      imgComponent: <PurityIcon />,
       text: "SILVER RATE AS <br/>PER PURITY",
     },
     {
-      imgSrc: <DebitCardIcon />,
-
+      imgComponent: <DebitCardIcon />,
       text: "NO CARD FEES",
     },
     {
-      imgSrc: <MeltingIcon />,
-
+      imgComponent: <MeltingIcon />,
       text: "DIRECT DEPOSIT AFTER MELTING",
     },
     {
-      imgSrc: <RateIcon />,
-
+      imgSrc: GoldKeratometer,
       text: "GOLD AND SILVER KARATOMETER",
     },
     {
-      imgSrc: <AstrologyIcon />,
-
+      imgComponent: <AstrologyIcon />,
       text: "FREE ASTROLOGY CONSULTATION",
     },
   ];
 
   return (
-    <div className="promises-section  text-light">
-      <div className="text-center mt-4 ">
+    <div className="promises-section text-light">
+      <div className="text-center mt-4">
         <h2 className="heading-font m-0">CSJ Promises</h2>
-        <p className="m-0 heading-text">We promise exceptional craftsmanship, timeless designs, and a commitment to making every moment special.</p>
+        <p className="m-0 heading-text">
+          We promise exceptional craftsmanship, timeless designs, and a
+          commitment to making every moment special.
+        </p>
       </div>
       <div className="promises-container mb-3">
         <Slider {...settings}>
           {promises.map((promise, index) => (
-            <div className="promise-slide text-center " key={index}>
-              <div className="promises-img ">{promise.imgSrc}</div>
-
+            <div className="promise-slide text-center" key={index}>
+              <div className="promises-img">
+                {promise.imgComponent ? (
+                  promise.imgComponent
+                ) : (
+                  <img className="w-100" src={promise.imgSrc} alt="" />
+                )}
+                </div>
               <p
                 className="content-text"
                 dangerouslySetInnerHTML={{ __html: promise.text }}
@@ -118,4 +119,3 @@ const CsPromises = () => {
 };
 
 export default CsPromises;
-

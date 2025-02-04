@@ -67,10 +67,10 @@ function Footer() {
                     <div className="row">
                       <div className="col-lg-12">
                         <p className="mb-2">
-                          <span>Email: </span> care@csjewels.com
+                          <span  className="d-block d-sm-inline">Email: </span> care@csjewels.com
                         </p>
                         <p className="mb-4">
-                          <span>Phone: </span> 0796-999-1827
+                          <span className="d-block d-sm-inline">Phone: </span> 0796-999-1827
                         </p>
                         <p className="address">
                           Chandukaka Saraf Jewels Pvt. Ltd. Office no. 17 & 18,

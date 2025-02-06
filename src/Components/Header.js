@@ -121,7 +121,6 @@ function Header({openDrawer, handleOpenDrawer}) {
   return (
     <>
       <header className="page-header">
-        <hr className="header-hr d-none d-md-block " />
         <div className="header-content">
           <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
             <div className="row">

@@ -9,6 +9,8 @@ import {
   Select,
   Stack,
   Button,
+  Skeleton,
+  Typography,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
@@ -64,6 +66,7 @@ export const ProductCatalogues = () => {
     page: 1,
     limit: 12,
   });
+  const [loading, setLoading] = useState(true);
 
   const handleChangePage = (event, newPage) => {
   
@@ -100,6 +103,7 @@ export const ProductCatalogues = () => {
   }, []);
 
   const getData = async () => {
+    setLoading(true);
     try {
       const requestParams = new FormData();
       const metalId = searchParams.get("metal")
@@ -143,8 +147,9 @@ export const ProductCatalogues = () => {
       }
 
       const { data } = await getProducts(requestParams);
+      setLoading(true);
       // if (data.data.data) {
-      setProducts(data?.data?.data);
+        setProducts(data?.data?.data);
       // let bannerImg = data?.product_list_banner?.[0]?.image_path?.replace(
       //   "//",
       //   "/"
@@ -159,9 +164,13 @@ export const ProductCatalogues = () => {
       setTotalPages(data.data.last_page);
       setProductCount(data.data.total);
     } catch (error) {
+      setLoading(false);
       setProducts([]);
       setTotalPages(0);
       setProductCount(0);
+    }
+    finally{
+      setLoading(false)
     }
   };
   useEffect(() => {
@@ -406,40 +415,44 @@ export const ProductCatalogues = () => {
         <hr />
       </div>
 
-      <Box>
-        <Grid container spacing={1} className="p-3 product-item-wrapper">
-          {products?.map((product, key) => {
-            return (
-              <Grid
-                item
-                key={key}
-                md={4}
-                style={{ cursor: "pointer" }}
-                className="product-item-card"
-                onClick={() =>
-                  navigate("/product-details/" + product.product_id)
-                }
-              >
-                {/* <Card variant="outlined"> */}
-                <img
-                  src={product.image_path}
-                  alt="product image"
-                  className="image"
-                />
-                <div className="text"></div>
-                {/* </Card> */}
-              </Grid>
-            );
-          })}
-        </Grid>
-        <div>
+       <Box>
+      <Grid sx={{display:"flex", justifyContent:'center'}} container spacing={1} className="p-3 product-item-wrapper">
+        {loading ? (
+          Array.from({ length:8 }).map((_, index) => (
+            <Grid  className="product-item-card" item md={4} key={index}>
+              <Skeleton className="image rounded shadow-md" variant="rectangular" width="100%" height={200} />
+            </Grid>
+          ))
+        ) : products.length > 0 ? (
+          products.map((product, key) => (
+          
+            <Grid
+              item
+              key={key}
+              md={4}
+              style={{ cursor: "pointer" }}
+              className="product-item-card"
+              onClick={() => navigate("/product-details/" + product.product_id)}
+            >
+              <img
+                src={product.image_path}
+                alt="product image"
+                className="image"
+              />
+              <div className="text">{product.name}</div>
+            </Grid>
+          ))
+        ) : (
+          <div>
           {products?.length <= 0 ? (
-            <div className="no-data"> Products not found</div>
+            <div className="no-data text-center"> Products not found</div>
           ) : (
             ""
           )}
         </div>
-      </Box>
+        )}
+      </Grid>
+    </Box>
       {products?.length > 0 ? (
         <Paginator
           currentPage={filters.page}

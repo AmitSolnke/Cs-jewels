@@ -29,11 +29,13 @@ export default function FindAStore() {
   });
 
   const [data, setData] = useState([]);
+  const [initialData, setInitialData] = useState([]); 
 
   const getData = async () => {
     try {
       const result = await getStores();
       setData(result.data.data);
+      setInitialData(result.data.data)
       let markerData = [];
       for (let i = 0; i < result.data.data.length; i++) {
         markerData[i] = {
@@ -63,9 +65,16 @@ export default function FindAStore() {
   }, []);
 
   const handleChange = ({ target }) => {
-    searchData[target.name] = target.value;
-    const temp = Object.assign({}, searchData);
-    setSearchData(temp);
+    const query = target.value.toLowerCase();
+    setSearchData({ [target.name]: query });
+    const filteredData = query
+      ? initialData.filter(item =>
+          item.store_name?.toLowerCase().includes(query)
+        )
+      : initialData;
+
+    setData(filteredData);
+    // setInitialData(data)
   };
 
   const handleSubmit = async (event) => {
@@ -75,6 +84,7 @@ export default function FindAStore() {
     try {
       const result = await searchStores(searchData);
       setData(result.data.data);
+      setInitialData(result.data.data)
       let markerData = [];
       for (let i = 0; i < result.data.data.length; i++) {
         markerData[i] = {
@@ -131,6 +141,11 @@ export default function FindAStore() {
               name="search"
               value={searchData.search}
               onChange={handleChange}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSubmit(e);
+                }
+              }}
             />
             <Button onClick={handleSubmit} className="location-change-button">
               FIND STORES

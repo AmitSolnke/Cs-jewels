@@ -64,7 +64,7 @@ export default function Testimonial() {
 
   return (
     <Box
-      className="testimonial-section m-0 p-0"
+      className="testimonial-section m-0 py-2"
       sx={{
         backgroundImage: {
           xs: `url(${TESTIMONIAL_BG_MOBILE})`,

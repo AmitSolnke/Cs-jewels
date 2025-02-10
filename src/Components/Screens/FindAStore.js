@@ -56,7 +56,7 @@ export default function FindAStore() {
     setSelectedLocation(position);
     if (map) {
       map.panTo(position);
-      map.setZoom(15);
+      map.setZoom(20);
     }
   };
 
@@ -182,7 +182,7 @@ export default function FindAStore() {
               //   center={center}
               //   zoom={10}
               center={selectedLocation || center}
-              zoom={selectedLocation ? 15 : 10}
+              zoom={selectedLocation ? 20 : 10}
             >
               {markers.map(({ id, address, position }) => (
                 <Marker

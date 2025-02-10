@@ -154,7 +154,6 @@ function Header({openDrawer, handleOpenDrawer}) {
                               > */}
                                 {isMobile && (
                                   <img 
-                                    className="w-100 img-fluid"
                                     src={StoresIcon}
                                     alt="storesIcon"
                                     onMouseEnter={(e) => {

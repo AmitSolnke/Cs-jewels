@@ -6,6 +6,7 @@ import { Box, Button, Grid } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import EnquiryModal from "./EnquiryModal";
 import { getProductDetails } from "../../../services/FrontApp/index.service";
+import SliderImage from "react-zoom-slider";
 
 export const ProductDetailsLatest = () => {
   const { id } = useParams();
@@ -68,6 +69,16 @@ export const ProductDetailsLatest = () => {
     thumbnail: image.image_path,
   }));
 
+  const sliderData =
+    imageItems && imageItems.length > 0
+      ? imageItems
+          .filter((item) => item && item.original) // Filter out invalid items
+          .map((item) => ({
+            image: item.original, // Use `original` field for the `image`
+            description: "", // Add descriptions if needed, or leave empty
+          }))
+      : [];
+
   const [open, setOpen] = useState(false);
 
   const handleOpenEnquiryModal = () => {
@@ -90,23 +101,32 @@ export const ProductDetailsLatest = () => {
           <div className="">
             {/* product images gallery */}
             <div className="d-none product-gallery d-md-block">
-              <ImageGallery
+              {/* <ImageGallery
                 items={imageItems}
                 showNav={false}
                 showPlayButton={false}
                 showFul
                 lscreenButton={false}
-              />
+              /> */}
 
-              {/* {sliderData && sliderData.length > 0 ? (
-                <SliderImage
-                  data={sliderData}
-                  showDescription={true}
-                  direction="right"
-                />
-              ) : (
-                <p>No images available to display.</p>
-              )} */}
+              <div
+                className={`slider-wrapper ${
+                  sliderData?.length === 1 ? "single-slide" : ""
+                }`}
+              >
+                {sliderData && sliderData.length > 0 ? (
+                  <SliderImage
+                    data={sliderData}
+                    showDescription={true}
+                    direction="right"
+                    className="react-slider__imgZoom 
+                   react-slider__areaZoom img react-slider__ul li.active img .react-slider__ul li react-slider__ul li:nth-child react-slider__ul"
+                  />
+                ) : (
+                  <p>No images available to display.</p>
+                )}
+              </div>
+
             </div>
 
             <div className="d-block product-gallery d-md-none">
@@ -128,7 +148,6 @@ export const ProductDetailsLatest = () => {
           style={{ paddingLeft: "1rem" }}
           className="product-details-wrapper"
         >
-          <div className="">
             {/* <span className="new-arrival-badge">NEW ARRIVAL</span>
 
             <h2 className="product-title">{productDetails.product_name}</h2>
@@ -144,11 +163,10 @@ export const ProductDetailsLatest = () => {
               {productDetails.item_description}
             </div> */}
 
-            <div className="product-informations my-2">
-              <span className="product-details-title-link">
+            <div className=" m-2 product-details">
+              <div className="product-details-title-link">
                 PRODUCT DETAILS
-              </span>
-
+              </div>
               <div>Gross weight: {productDetails.gross_wt}g</div>
               <div>Net weight: {productDetails.net_wt}g</div>
               <div>Purity: {productDetails.purity}</div>
@@ -158,7 +176,6 @@ export const ProductDetailsLatest = () => {
                 </div>
               ))}
             </div>
-          </div>
 
           {/* commented temporary
           <table className="product-information-table my-2">
@@ -194,12 +211,12 @@ export const ProductDetailsLatest = () => {
           </table> */}
 
           <Button
-            className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"
+            className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6 mx-2"
             variant="contained"
             onClick={handleOpenEnquiryModal}
             style={{ display: "flex", justifyContent: "space-between" }}
           >
-            <span>ENQUIRY NOW</span>
+            <span className="button-enquire">ENQUIRE</span>
             <EastIcon />
           </Button>
 

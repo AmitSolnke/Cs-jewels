@@ -7,7 +7,16 @@
     border-top: 0.2px solid #CCCCCC;
     box-shadow: none !important;
 }
+.faqs-question{
+    font: normal normal normal 20px/26px "Afacad Flux", serif;
+    font-weight: 600;
 
+}
+
+.faqs-ans{
+    font: normal normal normal 20px/26px "Afacad Flux", serif !important;
+    
+}
 .faqs-container:nth-child(1) {
     border-top: 0.2px solid #CCCCCC !important;
 }
@@ -26,7 +35,7 @@
 
 .find-store-description {
     text-align: left;
-    font: normal normal normal 14px/21px Lato;
+    font: normal normal normal 20px/26px "Afacad Flux", serif !important;
     letter-spacing: 0px;
     color: #666666;
     opacity: 1;
@@ -36,7 +45,7 @@
 .toll-free-no {
     text-align: left;
     text-decoration: underline;
-    font: normal normal bold 14px/21px Lato;
+    font: normal normal bold 14px/21px "Afacad Flux", serif;
     letter-spacing: 0px;
     color: #916F25;
 }

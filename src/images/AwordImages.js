@@ -4,9 +4,9 @@ import imageSliderHeaderIconLeft from "../images/icons/Group45.svg";
 import imageSliderHeaderIconRight from "../images/icons/Group40.svg";
 import BestSilverDesignerJewellery2016 from "../images/BestSilverDesignerJewellery2016.png";
 import BestBusinessWomenAwards from "../images/BestBusinessWomenAwards.png";
-import GemOfTheYearAward from "../images/Awards.png";
-import YoungAcheversAward from "../images/YoungAcheversAward.png";
-import TrustedJewellers from "../images/TrustedJewellers.png";
+import GemOfTheYearAward from "../images/Awards.webp";
+import YoungAcheversAward from "../images/YoungAcheversAward.webp";
+import TrustedJewellers from "../images/TrustedJewellers.webp";
 
 export {
   GJTCIExcellenceAward2014,

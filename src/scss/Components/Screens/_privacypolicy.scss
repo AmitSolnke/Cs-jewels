@@ -6,11 +6,13 @@
 
 .privacy-policy-container {
   padding-top: 20px;
+  font: normal normal normal 20px/28px "Afacad Flux", serif;
+  letter-spacing: 0px;
 }
 
 .privacy-policy-normal-text {
   text-align: justify;
-  font: normal normal normal 16px/26px Lato;
+  font: normal normal normal 20px/28px "Afacad Flux", serif;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
@@ -19,7 +21,7 @@
 
 .privacy-policy-main-header-text {
   text-align: center;
-  font: normal normal 900 26px/36px Lato;
+  font: normal normal 900 26px/36px "Afacad Flux", serif;
   letter-spacing: 3.9px;
   color: #333333;
   text-transform: uppercase;
@@ -28,7 +30,7 @@
 
 .privacy-policy-header-text {
   text-align: left;
-  font: normal normal 900 18px/32px Lato;
+  font: normal normal 900 20px/32px "Afacad Flux", serif;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
@@ -46,7 +48,7 @@
 @media (max-width: 767px) {
   .privacy-policy-main-header-text {
     text-align: center;
-    font: normal normal 900 18px/24px Lato;
+    font: normal normal 900 20px/24px "Afacad Flux", serif;
     letter-spacing: 2.7px;
     color: #333333;
     text-transform: uppercase;
@@ -55,7 +57,7 @@
 
   .privacy-policy-header-text {
     text-align: left;
-    font: normal normal 900 18px/24px Lato;
+    font: normal normal 900 20px/24px "Afacad Flux", serif;
     letter-spacing: 0px;
     color: #333333;
     opacity: 1;
@@ -63,7 +65,7 @@
 
   .privacy-policy-normal-text {
     text-align: justify;
-    font: normal normal normal 16px/26px Lato;
+    font: normal normal normal 20px/28px "Afacad Flux", serif;
     letter-spacing: 0px;
     color: #333333;
     opacity: 1;

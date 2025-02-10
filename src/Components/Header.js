@@ -1,126 +1,132 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../images/icons/logo.svg";
+/** @format */
 
-import heartLogo from "../images/icons/heart.svg";
-import userLogo from "../images/icons/user.svg";
-import searchLogo from "../images/icons/search.svg";
-import shoppingBagLogo from "../images/icons/shopping-bag.svg";
-import menuOpen from "../images/icons/open-menu.svg";
-import closeMenu from "../images/icons/close.svg";
+import React, {useEffect, useState} from "react"
+import {Link} from "react-router-dom"
+import logo from "../images/icons/logo.svg"
+
+import heartLogo from "../images/icons/heart.svg"
+import userLogo from "../images/icons/user.svg"
+import searchLogo from "../images/icons/search.svg"
+import shoppingBagLogo from "../images/icons/shopping-bag.svg"
+import menuOpen from "../images/icons/open-menu.svg"
+import closeMenu from "../images/icons/close.svg"
 import {
   getLiveRateForCSP,
   getMetals,
   getMetalItems,
-} from "../services/FrontApp/index.service";
-import AuthModal from "./Screens/AuthModal";
-import { isLoggedIn } from "../services/auth.service";
-import LoginIcon from "@mui/icons-material/Login";
-import { NavigationDropdown } from "./Common/NavigationDropdown";
-import { SearchDropdown } from "./Common/SearchDropdown";
-import { ShoppingBag } from "./Screens/ShoppingBag";
+} from "../services/FrontApp/index.service"
+import AuthModal from "./Screens/AuthModal"
+import {isLoggedIn} from "../services/auth.service"
+import LoginIcon from "@mui/icons-material/Login"
+import {NavigationDropdown} from "./Common/NavigationDropdown"
+import {SearchDropdown} from "./Common/SearchDropdown"
+import {ShoppingBag} from "./Screens/ShoppingBag"
+import {Button, IconButton, Tooltip, useMediaQuery} from "@mui/material"
+import StoresIcon from "../images/icons/StoresIcon-1.png"
+import StoresIconBrown from "../images/icons/StoresIcon.png"
 
-function Header({ openDrawer, handleOpenDrawer }) {
-  const $ = window.jQuery;
+function Header({openDrawer, handleOpenDrawer}) {
+  const isMobile = useMediaQuery("(max-width:768px)")
+  // console.log(isMobile, ">>>>>>mo")
+  const $ = window.jQuery
   const [rates, setRates] = useState({
     Platinum: 0,
     Silver1: 0,
     Silver2: 0,
     gold: [],
-  });
+  })
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   // const [openDrawer, setOpenDrawer] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [searchDropdown, setSearchDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false)
+  const [searchDropdown, setSearchDropdown] = useState(false)
 
   const handleOpenDialog = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleCloseDialog = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
-  const [metalTypesData, setMetalTypesData] = useState([]);
+  const [metalTypesData, setMetalTypesData] = useState([])
 
   const getMetalData = async () => {
     try {
-      const metals = await getMetals();
-      const temp = [];
+      const metals = await getMetals()
+      const temp = []
       for (let index = 0; index < metals.data.data.length; index++) {
-        const data = metals.data.data[index];
-        let itemData = [];
+        const data = metals.data.data[index]
+        let itemData = []
         try {
-          var bodyFormData = new FormData();
-          bodyFormData.append("metal_type_master_id[0]", data.id);
-          const items = await getMetalItems(bodyFormData);
-          itemData = items.data.data;
+          var bodyFormData = new FormData()
+          bodyFormData.append("metal_type_master_id[0]", data.id)
+          const items = await getMetalItems(bodyFormData)
+          itemData = items.data.data
         } catch (error) {}
         temp.push({
           id: data.id,
           metal: data.metal_type,
           metal_items: itemData,
-        });
+        })
       }
-      setMetalTypesData(temp);
+      setMetalTypesData(temp)
     } catch (error) {}
-  };
+  }
 
   const getData = async () => {
     try {
-      const result = await getLiveRateForCSP();
-      const { Platinum, Silver1, Silver2, ...gold } = result.data.data;
-      setRates({ Platinum, Silver1, Silver2, gold });
+      const result = await getLiveRateForCSP()
+      const {Platinum, Silver1, Silver2, ...gold} = result.data.data
+      setRates({Platinum, Silver1, Silver2, gold})
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   useEffect(() => {
-    getData();
-    getMetalData();
-  }, []);
+    getData()
+    getMetalData()
+  }, [])
 
   useEffect(() => {
     $(".header-content .open-nav-btn").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "100%");
-    });
+      $(".mobile-menu-overlay").css("width", "100%")
+    })
     //close menu
     $(".header-content .close-nav-btn").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "0");
-    });
+      $(".mobile-menu-overlay").css("width", "0")
+    })
 
     $(".header-content .menu-links").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "0");
-    });
-  });
+      $(".mobile-menu-overlay").css("width", "0")
+    })
+  })
 
   window.onclick = (event) => {
     if (
       !$(event.target).closest("#navigation-dropdown-wrapper").length &&
       event.target.id != "jewellery-link"
     ) {
-      setShowDropdown(false);
+      setShowDropdown(false)
     }
     if (
       !$(event.target).closest("#search-dropdown-wrapper").length &&
       event.target.id != "search-logo"
     ) {
-      setSearchDropdown(false);
+      setSearchDropdown(false)
     }
-  };
+  }
 
   return (
     <>
       <header className="page-header">
-        <hr className="header-hr d-none d-md-block " />
         <div className="header-content">
           <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
             <div className="row">
               <div className="col-12 col-md-12 col-lg-12">
                 <div className="brand-wrapper">
-                  <div className="d-md-none d-lg-none mobile-header-bar">
+                  <div className="d-md-none d-lg-none mobile-header-bar d-flex justify-content-between align-items-center">
                     <img
                       src={menuOpen}
                       alt="menu-open"
@@ -131,7 +137,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <img
                           src={logo}
                           alt="Logo"
-                          className="site-logo image"
+                          className="site-logo image text-center"
                         />
                       </Link>
                     </div>
@@ -139,6 +145,28 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     <div className="header-icon-list">
                       <ul>
                         <li>
+                          <Link to="/find-a-store">
+                            <Tooltip arrow title="Stores" placement="left">
+                              {/* <IconButton
+                          
+                                size="large"
+                                className="rounded"
+                              > */}
+                                {isMobile && (
+                                  <img 
+                                    src={StoresIcon}
+                                    alt="storesIcon"
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.src = StoresIconBrown;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.src = StoresIcon;
+                                    }}
+                                  />
+                                )}
+                              {/* </IconButton> */}
+                            </Tooltip>
+                          </Link>
                           {/* <Link onClick={handleOpenDrawer}>
                             <img
                               src={shoppingBagLogo}
@@ -165,44 +193,22 @@ function Header({ openDrawer, handleOpenDrawer }) {
                   </div>
 
                   <div className="col-12 col-lg-12  d-none d-md-block">
-                    <div className="row position-relative align-items-center">
-                      <div className="logo-container d-flex">
-                        <div className="logo">
-                          <Link to="/">
-                            <img
-                              src={logo}
-                              alt="Logo"
-                              className="site-logo image"
-                            />
-                          </Link>
-                        </div>
-                        <div className="logo mx-5">
-                          {/* <h6>chandukaka saraf</h6> */}
-                          {/* <Link to="/">
-                            <img
-                              src={logo}
-                              alt="chandukaka Image"
-                              className="chandukaka-image"
-                            />
-                          </Link> */}
-                        </div>
+                    <div className="logo-container relative d-flex justify-content-center align-items-center">
+                      <div className="logo">
+                        <Link to="/">
+                          <img
+                            src={logo}
+                            onClick={() => window.scrollTo(0, 0)}
+                            alt="Logo"
+                            className="site-logo image"
+                          />
+                        </Link>
                       </div>
 
-                      <div className="col-8 p-0 position-absolute end-0 h-100">
+                      <div className="col-12 position-absolute">
                         <div className="quick-links-wrapper">
                           <ul className="w-100">
                             <div className="quick-link-items">
-                              {/* <li>
-                                <small>
-                                  GOLD - ₹
-                                  {rates.gold["24.00"]
-                                    ? rates.gold["24.00"]
-                                    : 0}
-                                </small>
-                              </li>
-                              <li>
-                                <small>SILVER - ₹{rates.Silver1}</small>
-                              </li> */}
                               <li>
                                 <Link to="/find-a-store">FIND A STORE</Link>
                               </li>
@@ -295,7 +301,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           className="w-100"
                           id="jewellery-link"
                           onClick={() => {
-                            setShowDropdown((prev) => !prev);
+                            setShowDropdown((prev) => !prev)
                           }}
                         >
                           Jewellery
@@ -307,7 +313,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         </li>
                         <li className="w-100">
                           <Link className="menu-links" to="/enash">
-                            Enash
+                            E-Mandate
                           </Link>
                         </li>
                       </div>
@@ -330,7 +336,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <li
                           id="jewellery-link"
                           onClick={() => {
-                            setShowDropdown((prev) => !prev);
+                            setShowDropdown((prev) => !prev)
                           }}
                         >
                           Jewellery
@@ -339,7 +345,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <Link to="/aboutus">About us</Link>
                         </li>
                         <li>
-                          <Link to="/enash">Enash</Link>
+                          <Link to="/enash">E-Mandate</Link>
                         </li>
                         {/* <li>
                           <Link to="/bullions">Bullion</Link>
@@ -432,13 +438,13 @@ function Header({ openDrawer, handleOpenDrawer }) {
         <div
           id="search-dropdown-wrapper"
           className="dropdown-wrapper position-sticky"
-          style={{ position: "sticky", top: "120px", zIndex: "2" }}
+          style={{position: "sticky", top: "120px", zIndex: "2"}}
         >
           <SearchDropdown setSearchDropdown={setSearchDropdown} />
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default Header;
+export default Header

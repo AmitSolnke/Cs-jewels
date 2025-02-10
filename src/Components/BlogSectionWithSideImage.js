@@ -1,7 +1,6 @@
 import React from "react";
 import useWindowWidthAndHeight from "../utilities/CustomHooks";
 import { Grid } from "@mui/material";
-import imageSliderHeaderIconRight from "../images/icons/Group40.svg";
 import ReadMoreText from "./ReadMoreText";
 
 export default function BlogSectionWithSideImage({
@@ -28,12 +27,8 @@ export default function BlogSectionWithSideImage({
       ) : (
         <Grid className="our-specialities-container" item xs={10} md={5}>
           <div className="our-specialities-header">
-            {headerText}{" "}
-            {/* <img
-              src={imageSliderHeaderIconRight}
-              alt="React Logo"
-              className="right-logo"
-            /> */}
+            {headerText}
+           
           </div>
           <div className="our-specialities-description">
             <ReadMoreText
@@ -59,8 +54,7 @@ export default function BlogSectionWithSideImage({
       {(windoDimensions[0] <= 768 ? mobileViewImageFirst : isImageFirst) ? (
         <Grid className="our-specialities-container" item xs={10} md={5}>
           <div className="our-specialities-header">
-            {headerText}{" "}
-            <img src={imageSliderHeaderIconRight} alt="React Logo" />
+            {headerText}
           </div>
           <div className="our-specialities-description">
             <ReadMoreText

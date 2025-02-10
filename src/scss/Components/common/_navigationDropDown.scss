@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  z-index: 2;
+  z-index: 999;
   border-top: 0.5px solid #d6d6d6;
 
   a {
@@ -23,7 +23,7 @@
     .catergory-section {
       margin-bottom: 10px;
       .jewellwery-type {
-        font: normal normal 900 13px/16px Lato;
+        font: normal normal 900 17px/19px "Afacad Flux", serif;
         letter-spacing: 1.95px;
         color: #333333;
         text-transform: uppercase;
@@ -34,8 +34,8 @@
         grid-column-gap: 1.2rem;
         grid-row-gap: 0.5rem;
         grid-template-columns: auto auto;
-        font-family: Lato;
-        font-size: 13px;
+        font-family: "Afacad Flux", serif;
+        font-size: 16px;
         letter-spacing: 1.3px;
         color: #333333;
 

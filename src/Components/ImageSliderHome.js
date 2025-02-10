@@ -57,10 +57,10 @@ function ImageSliderHome({
           )}
         </div>
       )}
-      <ul className={`image-slider-component ${className}`} ref={scrollRef}>
+      <ul   className={`image-slider-component ${className}`} ref={scrollRef}>
         {CardImageType === "Favourites" && windoDimensions[0] <= 768
           ? _.chunk(data, 4).map((item, key) => (
-              <div className="item-section" key={key}>
+              <div className="item-section mt-5" key={key}>
                 {item.map((inneritem, index) => (
                   <ImageSliderCardHome
                     CardImageType={CardImageType}

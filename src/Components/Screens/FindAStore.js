@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import storeLocaterTitleImage from "../../images/storeLocaterTitleImageCropped.png";
 import { Button, Grid } from "@mui/material";
-import fillWhiteLeftIcon from "../../images/icons/fillWhiteLeftIcon.svg";
-import fillWhiteRightIcon from "../../images/icons/fillWhiteRightIcon.svg";
 import AllStores from "../AllStores";
 import { getStores, searchStores } from "../../services/FrontApp/index.service";
 import {
@@ -31,11 +29,13 @@ export default function FindAStore() {
   });
 
   const [data, setData] = useState([]);
+  const [initialData, setInitialData] = useState([]); 
 
   const getData = async () => {
     try {
       const result = await getStores();
       setData(result.data.data);
+      setInitialData(result.data.data)
       let markerData = [];
       for (let i = 0; i < result.data.data.length; i++) {
         markerData[i] = {
@@ -56,7 +56,7 @@ export default function FindAStore() {
     setSelectedLocation(position);
     if (map) {
       map.panTo(position);
-      map.setZoom(15);
+      map.setZoom(20);
     }
   };
 
@@ -65,9 +65,16 @@ export default function FindAStore() {
   }, []);
 
   const handleChange = ({ target }) => {
-    searchData[target.name] = target.value;
-    const temp = Object.assign({}, searchData);
-    setSearchData(temp);
+    const query = target.value.toLowerCase();
+    setSearchData({ [target.name]: query });
+    const filteredData = query
+      ? initialData.filter(item =>
+          item.store_name?.toLowerCase().includes(query)
+        )
+      : initialData;
+
+    setData(filteredData);
+    // setInitialData(data)
   };
 
   const handleSubmit = async (event) => {
@@ -77,6 +84,7 @@ export default function FindAStore() {
     try {
       const result = await searchStores(searchData);
       setData(result.data.data);
+      setInitialData(result.data.data)
       let markerData = [];
       for (let i = 0; i < result.data.data.length; i++) {
         markerData[i] = {
@@ -119,9 +127,7 @@ export default function FindAStore() {
       >
         <div className="section-contents">
           <div className="header-title">
-            <img src={fillWhiteLeftIcon} alt="React Logo" />
             <h4>Store Locator</h4>
-            <img src={fillWhiteRightIcon} alt="React Logo" />
           </div>
           <div className="section-info">
             Come and say hello. Find your nearest store and check its opening
@@ -135,6 +141,11 @@ export default function FindAStore() {
               name="search"
               value={searchData.search}
               onChange={handleChange}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSubmit(e);
+                }
+              }}
             />
             <Button onClick={handleSubmit} className="location-change-button">
               FIND STORES
@@ -171,7 +182,7 @@ export default function FindAStore() {
               //   center={center}
               //   zoom={10}
               center={selectedLocation || center}
-              zoom={selectedLocation ? 15 : 10}
+              zoom={selectedLocation ? 20 : 10}
             >
               {markers.map(({ id, address, position }) => (
                 <Marker
@@ -186,7 +197,7 @@ export default function FindAStore() {
                           href={`https://maps.google.com/?q=${position.lat},${position.lng}`}
                           target="_blank"
                         >
-                          {address}
+                         <div className="store-address">{address}</div> 
                         </a>
                       </div>
                     </InfoWindow>

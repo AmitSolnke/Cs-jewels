@@ -1,3 +1,4 @@
+
 .empty-container-section {
   display: none;
 }
@@ -12,6 +13,7 @@
   display: flex;
   overflow: auto;
   scroll-snap-type: x mandatory;
+  // margin-top: -30px;
 }
 
 .favorite-slider {
@@ -26,11 +28,25 @@
   width: 45px !important;
   height: 45px !important;
 }
+@media (min-width:1024px) {
+  .image-slider-component {
+   
+    margin-top: -30px;
+  }
+  .image-slider-navigation-icon {
+    position: relative;
+    top: -60px;
+    z-index: 1;
+  }
+  
+}
 
 @media (max-width: 769px) {
   .image-slider-component {
     // flex-direction: row;
     // flex-wrap: wrap;
+  // overflow:unset;
+
   }
 
   .image-scroll-navigation {

@@ -68,7 +68,6 @@ export const ProductCatalogues = () => {
     limit: 12,
   })
   const [loading, setLoading] = useState(false)
-  const isDesktop = useMediaQuery("(min-width: 1200px)")
   const handleChangePage = (event, newPage) => {
     const pageNumber = Number(newPage)
 
@@ -174,7 +173,7 @@ export const ProductCatalogues = () => {
       // setLoading(false)
       window.scrollTo({
         left: 0,
-        top: isDesktop ? 500 : 0,
+        top: 0,
         behavior: "smooth",
       })
     }

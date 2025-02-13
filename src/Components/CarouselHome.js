@@ -4,8 +4,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { getBanner } from "../services/FrontApp/index.service";
 import bannerPlaceholder from "../images/img-placeholder.jpg";
-
+import { Link, useNavigate } from "react-router-dom";
 function CarouselHome() {
+  const navigate = useNavigate();
   const [banners, setBanners] = useState({ desktop: [], mobile: [] });
   const [loadingBanner, setLoadingBanner] = useState(true);
 
@@ -55,7 +56,6 @@ function CarouselHome() {
   return (
     <div className="slider-container">
       {loadingBanner ? (
-   
         <div
           style={{ backgroundColor: "white", height: "65vh", width: "100%" }}
         ></div>
@@ -71,9 +71,9 @@ function CarouselHome() {
                   alt="banner carousel img"
                 />
                 {/* <div className="service-slide-text-wrapper"> */}
-                  {/* <h2 className="service-slide-text">{item.name}</h2>
+                {/* <h2 className="service-slide-text">{item.name}</h2>
                   <p className="service-slide-description">{item.description}</p> */}
-                  {/* <button type="button" className="carousel-explore-now-btn">
+                {/* <button type="button" className="carousel-explore-now-btn">
                   EXPORE NOW
                   {' '}
                   <img src={rightArrowIcon} alt="rightArrowIcon" />
@@ -81,18 +81,22 @@ function CarouselHome() {
                 {/* </div> */}
               </div>
             ))}
-            </div>
+          </div>
           {/* </Slider> */}
           <Slider {...settings} className="d-none d-md-block">
             {banners.desktop.map((item, key) => (
-              // 
-              <div key={key} className="carouselPaper">
-                <img
-                  className="carousel-img"
-                  src={item.image_path}
-                  alt="banner carousel img"
-                />
-                {/* <div className="service-slide-text-wrapper">
+              <Link to={item?.hyperlink}>
+                <div
+                  key={key}
+                  className="carouselPaper"
+                  // onClick={() => navigate(item.hyperlink)}
+                >
+                  <img
+                    className="carousel-img"
+                    src={item.image_path}
+                    alt="banner carousel img"
+                  />
+                  {/* <div className="service-slide-text-wrapper">
                   <h2 className="service-slide-text">{item.name}</h2>
                   <p className="service-slide-description">{item.description}</p>
                   <button type="button" className="carousel-explore-now-btn">
@@ -101,7 +105,8 @@ function CarouselHome() {
                   <img src={rightArrowIcon} alt="rightArrowIcon" />
                 </button>
                 </div> */}
-              </div>
+                </div>
+              </Link>
             ))}
           </Slider>
         </div>

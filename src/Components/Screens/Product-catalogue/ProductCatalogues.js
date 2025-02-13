@@ -155,15 +155,13 @@ export const ProductCatalogues = () => {
       //   "/"
       // );
       // bannerImg = bannerImg?.replace("http:/", "http://");
-      let bannerImg = data?.product_list_banner?.[0]?.image_path
-
-      setBanner(bannerImg)
+      // let bannerImg = data?.product_list_banner?.[0]?.image_path
+      setBanner(data?.product_list_banner[0]?.image_path)
       // } else {
       //   setProducts([]);
       // }
       setTotalPages(data.data.last_page)
       setProductCount(data.data.total)
-      console.log("loading below", loading)
       // setLoading(false)
     } catch (error) {
       // setLoading(false)

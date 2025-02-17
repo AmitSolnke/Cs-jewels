@@ -64,22 +64,24 @@ function CarouselHome() {
           {/* <Slider {...settings} className="d-block d-md-none"> */}
           <div className="d-block d-md-none">
             {banners.mobile.map((item, key) => (
-              <div key={key} className="carouselPaper">
-                <img
-                  className="carousel-img"
-                  src={item.image_path}
-                  alt="banner carousel img"
-                />
-                {/* <div className="service-slide-text-wrapper"> */}
-                {/* <h2 className="service-slide-text">{item.name}</h2>
+              <Link to={item?.hyperlink}>
+                <div key={key} className="carouselPaper">
+                  <img
+                    className="carousel-img"
+                    src={item.image_path}
+                    alt="banner carousel img"
+                  />
+                  {/* <div className="service-slide-text-wrapper"> */}
+                  {/* <h2 className="service-slide-text">{item.name}</h2>
                   <p className="service-slide-description">{item.description}</p> */}
-                {/* <button type="button" className="carousel-explore-now-btn">
+                  {/* <button type="button" className="carousel-explore-now-btn">
                   EXPORE NOW
                   {' '}
                   <img src={rightArrowIcon} alt="rightArrowIcon" />
                 </button> */}
-                {/* </div> */}
-              </div>
+                  {/* </div> */}
+                </div>
+              </Link>
             ))}
           </div>
           {/* </Slider> */}

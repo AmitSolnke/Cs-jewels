@@ -35,6 +35,7 @@ export default function AllStores({ data, handleAccordionClick }) {
               handleAccordionClick({
                 lat: parseFloat(element.latitude),
                 lng: parseFloat(element.longitude),
+                element
               })
             }
           >

@@ -85,3 +85,68 @@ font-family: "Vidaloka", serif;
   height: 100%;
   // width: 100%;
 }
+
+.slick-dots{
+  bottom: -14px;
+}
+
+/* Change arrow colors */
+.slick-prev:before,
+.slick-next:before {
+  color: gray !important;  /* Change arrow color */
+  font-size: 24px !important; /* Adjust size if needed */
+  opacity: 1 !important;
+  // background-color: white !important;
+}
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  color: #2e8555 !important; /* Keep color the same */
+}
+
+.slick-next{
+  z-index: 1;
+ right: 32px;
+ width: 0px !important;         
+ height: 0px !important;
+}
+.slick-prev{
+  z-index: 1;
+ left: 3px;
+ width: 0px !important;         /* Adjust width */
+ height: 0px !important;  
+}
+
+.slick-dots li {
+  height: 45px;
+  width: 60px;
+  margin: 0 5px;
+
+}
+.slick-dots.slick-thumb li.slick-active a img {
+  border: 2px solid gray
+
+}
+.slick-dots.slick-thumb {
+  bottom: -10px; /* Adjust spacing */
+}
+
+// .slick-list {
+//   overflow: visible ;
+// }
+
+// .slick-list {
+//   clip-path: inset(0 0 0 0);
+//   overflow: hidden !important;
+// }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,10 @@ import EastIcon from "@mui/icons-material/East";
 import EnquiryModal from "./EnquiryModal";
 import { getProductDetails } from "../../../services/FrontApp/index.service";
 import SliderImage from "react-zoom-slider";
+import { SideBySideMagnifier } from "react-image-magnifiers";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export const ProductDetailsLatest = () => {
   const { id } = useParams();
@@ -68,6 +72,7 @@ export const ProductDetailsLatest = () => {
     original: image.image_path,
     thumbnail: image.image_path,
   }));
+  console.log("imageItems", imageItems);
 
   const sliderData =
     imageItems && imageItems.length > 0
@@ -87,6 +92,46 @@ export const ProductDetailsLatest = () => {
 
   const handleCloseEnquiryModal = () => {
     setOpen(false);
+  };
+
+  const sliderSettings = {
+    customPaging: function (i) {
+      return (
+        <a>
+          <img
+            src={imageItems[i]?.original}
+            alt={`Thumbnail ${i + 1}`}
+            style={{
+              width: "60px",
+              height: "45px",
+              // objectFit: "cover",
+              borderRadius: "5px",
+            }}
+          />
+        </a>
+      );
+    },
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    dotsClass: "slick-dots slick-thumb",
+    autoplay: false,
+    waitForAnimate: false,
+    fade: true,
+    adaptiveHeight: true,
+    infinite: true,
+    // responsive: [
+    //   {
+    //     breakpoint: 768,
+    //     settings: {
+    //       dots: true,
+    //       arrows: false,
+    //     },
+    //   },
+    // ],
   };
 
   return (
@@ -109,24 +154,24 @@ export const ProductDetailsLatest = () => {
                 lscreenButton={false}
               /> */}
 
-              <div
-                className={`slider-wrapper ${
-                  sliderData?.length === 1 ? "single-slide" : ""
-                }`}
-              >
-                {sliderData && sliderData.length > 0 ? (
-                  <SliderImage
-                    data={sliderData}
-                    showDescription={true}
-                    direction="right"
-                    className="react-slider__imgZoom 
-                   react-slider__areaZoom img react-slider__ul li.active img .react-slider__ul li react-slider__ul li:nth-child react-slider__ul"
-                  />
-                ) : (
-                  <p>No images available to display.</p>
-                )}
-              </div>
-
+              {imageItems?.length > 0 && (
+                <Slider {...sliderSettings}>
+                  {imageItems.map((image, index) => (
+                    <div key={index}>
+                      <SideBySideMagnifier
+                        imageSrc={image.original}
+                        imageAlt={`Product Image ${index + 1}`}
+                        alwaysInPlace={false}
+                        zoomContainerBorder="1px solid #ccc"
+                        // className="custom-magnifier"
+                        fillAvailableSpace={false}
+                        // transitionSpeed={0.2}
+                        // overlayBackgroundColor="rgba(0,0,0,0.6)"
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              )}
             </div>
 
             <div className="d-block product-gallery d-md-none">
@@ -148,7 +193,7 @@ export const ProductDetailsLatest = () => {
           style={{ paddingLeft: "1rem" }}
           className="product-details-wrapper"
         >
-            {/* <span className="new-arrival-badge">NEW ARRIVAL</span>
+          {/* <span className="new-arrival-badge">NEW ARRIVAL</span>
 
             <h2 className="product-title">{productDetails.product_name}</h2>
 
@@ -156,26 +201,24 @@ export const ProductDetailsLatest = () => {
               {productDetails.metal_description}
             </div> */}
 
-            {/* commented temporary
+          {/* commented temporary
             <div className="product-price"> &#8377; {productDetails.sales_price}</div> */}
 
-            {/* <div className="product-description">
+          {/* <div className="product-description">
               {productDetails.item_description}
             </div> */}
 
-            <div className=" m-2 product-details">
-              <div className="product-details-title-link">
-                PRODUCT DETAILS
+          <div className=" m-2 product-details">
+            <div className="product-details-title-link">PRODUCT DETAILS</div>
+            <div>Gross weight: {productDetails.gross_wt}g</div>
+            <div>Net weight: {productDetails.net_wt}g</div>
+            <div>Purity: {productDetails.purity}</div>
+            {productDetails.stones_details.map((stone, index) => (
+              <div>
+                Stone {index + 1} weight: {stone.net_wt}g
               </div>
-              <div>Gross weight: {productDetails.gross_wt}g</div>
-              <div>Net weight: {productDetails.net_wt}g</div>
-              <div>Purity: {productDetails.purity}</div>
-              {productDetails.stones_details.map((stone, index) => (
-                <div>
-                  Stone {index + 1} weight: {stone.net_wt}g
-                </div>
-              ))}
-            </div>
+            ))}
+          </div>
 
           {/* commented temporary
           <table className="product-information-table my-2">

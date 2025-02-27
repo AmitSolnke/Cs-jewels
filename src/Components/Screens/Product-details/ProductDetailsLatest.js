@@ -72,7 +72,7 @@ export const ProductDetailsLatest = () => {
     original: image.image_path,
     thumbnail: image.image_path,
   }));
-  console.log("imageItems", imageItems);
+  
 
   const sliderData =
     imageItems && imageItems.length > 0
@@ -161,7 +161,7 @@ export const ProductDetailsLatest = () => {
                       <SideBySideMagnifier
                         imageSrc={image.original}
                         imageAlt={`Product Image ${index + 1}`}
-                        alwaysInPlace={false}
+                        alwaysInPlace={true}
                         zoomContainerBorder="1px solid #ccc"
                         // className="custom-magnifier"
                         fillAvailableSpace={false}

@@ -1,10 +1,11 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 
 import aboutUsTitleImage from "../../images/aboutUsTitleImage.jpeg";
-import ourSpecalityDesktop from "../../images/ourSpecialityDesktop.webp";
+import ourSpecialityDesktop from "../../images/ourSpecialityDesktop.webp";
+import ourSpecialityMobile from "../../images/ourSpecialityMobile.webp";
 import aboutUsFullScreenBottomImage from "../../images/aboutUsFullScreenBottomImage.jpeg";
 import aboutUsFullScreenBottomImageMobileView from "../../images/aboutUsFullScreenBottomImageMobileView.jpeg";
 import useWindowWidthAndHeight from "../../utilities/CustomHooks";
@@ -27,6 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function AboutUs() {
   const windoDimensions = useWindowWidthAndHeight();
+  const mobileView=useMediaQuery('(max-width:600px)');
   return (
     <div className="col-12 about-us">
       <img src={aboutUsTitleImage} alt="about us" className="img-fluid"></img>
@@ -75,7 +77,7 @@ export default function AboutUs() {
             "Renowned for our exclusive jewellery collections, we epitomize a tradition of excellence that spans generations. Pioneers in the industry, we were the first jeweller in India to introduce the revolutionary karatmeter, ensuring unparalleled transparency and purity in every creation. Our approach seamlessly blends contemporary aesthetics with timeless craftsmanship, resulting in a fusion of styles that captivates the discerning eye.. This extensive range includes jewellery crafted from gold, silver, platinum, diamonds, gemstones, and pearls.Our jewellery reflects our distinctive touch, combining innovative designs with traditional craftsmanship to create pieces that are both timeless and contemporary."
           }
           Item={Item}
-          imageSrc={ourSpecalityDesktop}
+          imageSrc={mobileView ? ourSpecialityMobile : ourSpecialityDesktop}
           isImageFirst={true}
           mobileViewImageFirst={true}
         />

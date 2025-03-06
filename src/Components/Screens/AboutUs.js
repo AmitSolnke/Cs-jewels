@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 
 import aboutUsTitleImage from "../../images/aboutUsTitleImage.jpeg";
-import ourSpecality from "../../images/ourSpecality.jpeg";
+import ourSpecalityDesktop from "../../images/ourSpecialityDesktop.webp";
 import aboutUsFullScreenBottomImage from "../../images/aboutUsFullScreenBottomImage.jpeg";
 import aboutUsFullScreenBottomImageMobileView from "../../images/aboutUsFullScreenBottomImageMobileView.jpeg";
 import useWindowWidthAndHeight from "../../utilities/CustomHooks";
@@ -75,7 +75,7 @@ export default function AboutUs() {
             "Renowned for our exclusive jewellery collections, we epitomize a tradition of excellence that spans generations. Pioneers in the industry, we were the first jeweller in India to introduce the revolutionary karatmeter, ensuring unparalleled transparency and purity in every creation. Our approach seamlessly blends contemporary aesthetics with timeless craftsmanship, resulting in a fusion of styles that captivates the discerning eye.. This extensive range includes jewellery crafted from gold, silver, platinum, diamonds, gemstones, and pearls.Our jewellery reflects our distinctive touch, combining innovative designs with traditional craftsmanship to create pieces that are both timeless and contemporary."
           }
           Item={Item}
-          imageSrc={ourSpecality}
+          imageSrc={ourSpecalityDesktop}
           isImageFirst={true}
           mobileViewImageFirst={true}
         />

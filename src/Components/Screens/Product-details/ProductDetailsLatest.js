@@ -72,7 +72,6 @@ export const ProductDetailsLatest = () => {
     original: image.image_path,
     thumbnail: image.image_path,
   }));
-  
 
   const sliderData =
     imageItems && imageItems.length > 0
@@ -163,6 +162,8 @@ export const ProductDetailsLatest = () => {
                         imageAlt={`Product Image ${index + 1}`}
                         alwaysInPlace={true}
                         zoomContainerBorder="1px solid #ccc"
+                        className="custom-magnifier"
+                        // overlayBackgroundColor="rgba(0,0,0,0.3)"
                         // className="custom-magnifier"
                         fillAvailableSpace={false}
                         // transitionSpeed={0.2}

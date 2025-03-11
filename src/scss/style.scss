@@ -59,3 +59,10 @@
   max-height: calc(100vh - 10px);
   overflow: auto;
 }
+
+.custom-magnifier img {
+  max-width: 1000px;  
+  max-height: 1000px;
+  overflow: hidden;
+
+}

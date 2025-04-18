@@ -21,13 +21,12 @@ import { isLoggedIn } from "../services/auth.service";
 import { NavigationDropdown } from "./Common/NavigationDropdown";
 import { SearchDropdown } from "./Common/SearchDropdown";
 import { ShoppingBag } from "./Screens/ShoppingBag";
-import { Button, IconButton, Tooltip, useMediaQuery } from "@mui/material";
+import { Box, Button, IconButton, Tooltip, useMediaQuery } from "@mui/material";
 import StoresIcon from "../images/icons/StoresIcon-1.png";
 import StoresIconBrown from "../images/icons/StoresIcon.png";
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const isMobile = useMediaQuery("(max-width:768px)");
-  // console.log(isMobile, ">>>>>>mo")
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
@@ -426,6 +425,16 @@ function Header({ openDrawer, handleOpenDrawer }) {
           </div>
         </div>
       </header>
+      <Box
+        sx={{
+          opacity: showDropdown ? 1 : 0,
+          transition: 'opacity .4s ease, transform 0.4s ease',
+          transition: "all 0.9s",
+          position: "relative",
+          zIndex: 999,
+        }}
+      >
+
       {showDropdown && (
         <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
           <NavigationDropdown
@@ -434,6 +443,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
           />
         </div>
       )}
+      </Box>
       {searchDropdown && (
         <div
           id="search-dropdown-wrapper"

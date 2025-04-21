@@ -24,7 +24,8 @@ export const StyledRateTableWrapper = styled('div')(({ theme }) => ({
 
   '& table td': {
     backgroundColor: '#672B30 !important',
-    color: 'white !important'
+    color: 'white !important',
+    textTransform:'none !important',
   },
   [theme.breakpoints.down(768)]: {
     left: '-270px',
@@ -86,7 +87,6 @@ export const StyledTable = styled(Box)(({ theme }) => ({
   overflowY: 'auto',
 
   borderRadius: '6.85px',
-  overflow: 'hidden',
   border: '1px solid #fff',
 
   scrollbarWidth: 'thin',

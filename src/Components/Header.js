@@ -154,30 +154,25 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 className="rounded"
                               > */}
                               {isMobile && (
-                                <div className="d-flex gap-2">
-                                  <img
-                                    src={StoresIcon}
-                                    alt="storesIcon"
-                                    onMouseEnter={(e) => {
-                                      e.currentTarget.src = StoresIconBrown;
-                                    }}
-                                    onMouseLeave={(e) => {
-                                      e.currentTarget.src = StoresIcon;
-                                    }}
-                                  />
-                                  <RateCard />
-                                </div>
+                                <img
+                                  src={StoresIcon}
+                                  alt="storesIcon"
+                                  onMouseEnter={(e) => {
+                                    e.currentTarget.src = StoresIconBrown;
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    e.currentTarget.src = StoresIcon;
+                                  }}
+                                />
                               )}
                               {/* </IconButton> */}
                             </Tooltip>
                           </Link>
-                          {/* <Link onClick={handleOpenDrawer}>
-                            <img
-                              src={shoppingBagLogo}
-                              alt="Logo"
-                              className="image"
-                            />
-                          </Link> */}
+                          <li>
+                            <Tooltip arrow title="Stores" placement="left">
+                              <RateCard />
+                            </Tooltip>
+                          </li>
                           {/* <ShoppingBag
                               open={openDrawer}
                               handleOpenDrawer={handleOpenDrawer}

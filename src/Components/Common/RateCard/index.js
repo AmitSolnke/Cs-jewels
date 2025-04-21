@@ -6,7 +6,7 @@ import { useMediaQuery } from '@mui/material';
 
 const RateCard = () => {
   const [showRateCard, setShowRateCard] = React.useState(false);
-  const isMobile = useMediaQuery('(max-width:768px)');
+  const isMobile = useMediaQuery('(max-width:767px)');
   const handleMouseEnter = () => setShowRateCard(true);
   const handleMouseLeave = () => setShowRateCard(false);
 

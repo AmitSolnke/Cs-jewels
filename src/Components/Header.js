@@ -1,39 +1,40 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../images/icons/logo.svg";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../images/icons/logo.svg';
 
-import heartLogo from "../images/icons/heart.svg";
-import userLogo from "../images/icons/user.svg";
-import searchLogo from "../images/icons/search.svg";
-import shoppingBagLogo from "../images/icons/shopping-bag.svg";
-import menuOpen from "../images/icons/open-menu.svg";
-import closeMenu from "../images/icons/close.svg";
+import heartLogo from '../images/icons/heart.svg';
+import userLogo from '../images/icons/user.svg';
+import searchLogo from '../images/icons/search.svg';
+import shoppingBagLogo from '../images/icons/shopping-bag.svg';
+import menuOpen from '../images/icons/open-menu.svg';
+import closeMenu from '../images/icons/close.svg';
 import {
   getLiveRateForCSP,
   getMetals,
-  getMetalItems,
-} from "../services/FrontApp/index.service";
-import AuthModal from "./Screens/AuthModal";
-import { isLoggedIn } from "../services/auth.service";
+  getMetalItems
+} from '../services/FrontApp/index.service';
+import AuthModal from './Screens/AuthModal';
+import { isLoggedIn } from '../services/auth.service';
 // import LoginIcon from "@mui/icons-material/Login"
-import { NavigationDropdown } from "./Common/NavigationDropdown";
-import { SearchDropdown } from "./Common/SearchDropdown";
-import { ShoppingBag } from "./Screens/ShoppingBag";
-import { Button, IconButton, Tooltip, useMediaQuery } from "@mui/material";
-import StoresIcon from "../images/icons/StoresIcon-1.png";
-import StoresIconBrown from "../images/icons/StoresIcon.png";
+import { NavigationDropdown } from './Common/NavigationDropdown';
+import { SearchDropdown } from './Common/SearchDropdown';
+import { ShoppingBag } from './Screens/ShoppingBag';
+import { Button, IconButton, Tooltip, useMediaQuery } from '@mui/material';
+import StoresIcon from '../images/icons/StoresIcon-1.png';
+import StoresIconBrown from '../images/icons/StoresIcon.png';
+import RateCard from './Common/RateCard';
 
 function Header({ openDrawer, handleOpenDrawer }) {
-  const isMobile = useMediaQuery("(max-width:768px)");
+  const isMobile = useMediaQuery('(max-width:768px)');
   // console.log(isMobile, ">>>>>>mo")
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
     Silver1: 0,
     Silver2: 0,
-    gold: [],
+    gold: []
   });
 
   const [open, setOpen] = useState(false);
@@ -60,14 +61,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
         let itemData = [];
         try {
           var bodyFormData = new FormData();
-          bodyFormData.append("metal_type_master_id[0]", data.id);
+          bodyFormData.append('metal_type_master_id[0]', data.id);
           const items = await getMetalItems(bodyFormData);
           itemData = items.data.data;
         } catch (error) {}
         temp.push({
           id: data.id,
           metal: data.metal_type,
-          metal_items: itemData,
+          metal_items: itemData
         });
       }
       setMetalTypesData(temp);
@@ -90,29 +91,29 @@ function Header({ openDrawer, handleOpenDrawer }) {
   }, []);
 
   useEffect(() => {
-    $(".header-content .open-nav-btn").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "100%");
+    $('.header-content .open-nav-btn').click(function (e) {
+      $('.mobile-menu-overlay').css('width', '100%');
     });
     //close menu
-    $(".header-content .close-nav-btn").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "0");
+    $('.header-content .close-nav-btn').click(function (e) {
+      $('.mobile-menu-overlay').css('width', '0');
     });
 
-    $(".header-content .menu-links").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "0");
+    $('.header-content .menu-links').click(function (e) {
+      $('.mobile-menu-overlay').css('width', '0');
     });
   });
 
   window.onclick = (event) => {
     if (
-      !$(event.target).closest("#navigation-dropdown-wrapper").length &&
-      event.target.id != "jewellery-link"
+      !$(event.target).closest('#navigation-dropdown-wrapper').length &&
+      event.target.id != 'jewellery-link'
     ) {
       setShowDropdown(false);
     }
     if (
-      !$(event.target).closest("#search-dropdown-wrapper").length &&
-      event.target.id != "search-logo"
+      !$(event.target).closest('#search-dropdown-wrapper').length &&
+      event.target.id != 'search-logo'
     ) {
       setSearchDropdown(false);
     }
@@ -148,21 +149,24 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <Link to="/find-a-store">
                             <Tooltip arrow title="Stores" placement="left">
                               {/* <IconButton
-                          
+
                                 size="large"
                                 className="rounded"
                               > */}
                               {isMobile && (
-                                <img
-                                  src={StoresIcon}
-                                  alt="storesIcon"
-                                  onMouseEnter={(e) => {
-                                    e.currentTarget.src = StoresIconBrown;
-                                  }}
-                                  onMouseLeave={(e) => {
-                                    e.currentTarget.src = StoresIcon;
-                                  }}
-                                />
+                                <div className="d-flex gap-2">
+                                  <img
+                                    src={StoresIcon}
+                                    alt="storesIcon"
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.src = StoresIconBrown;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.src = StoresIcon;
+                                    }}
+                                  />
+                                  <RateCard />
+                                </div>
                               )}
                               {/* </IconButton> */}
                             </Tooltip>
@@ -209,6 +213,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <div className="quick-links-wrapper">
                           <ul className="w-100">
                             <div className="quick-link-items">
+                              <li>
+                                <RateCard />
+                              </li>
                               <li>
                                 <Link to="/find-a-store">FIND A STORE</Link>
                               </li>
@@ -380,7 +387,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             alt="Logo"
                             className="image"
                           />
-                        </Link> 
+                        </Link>
                         <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} />
                       </li>
                       <li>
@@ -438,7 +445,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
         <div
           id="search-dropdown-wrapper"
           className="dropdown-wrapper position-sticky"
-          style={{ position: "sticky", top: "120px", zIndex: "2" }}
+          style={{ position: 'sticky', top: '120px', zIndex: '2' }}
         >
           <SearchDropdown setSearchDropdown={setSearchDropdown} />
         </div>

@@ -169,7 +169,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             </Tooltip>
                           </Link>
                           <li>
-                            <Tooltip arrow title="Stores" placement="left">
+                            <Tooltip arrow title="Rates" placement="left">
                               <RateCard />
                             </Tooltip>
                           </li>

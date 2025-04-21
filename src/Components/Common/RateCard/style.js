@@ -42,7 +42,7 @@ export const StyledRateBox = styled(Box)(() => ({
   cursor: 'pointer',
   position: 'relative',
   width: '100%',
-  zIndex: 999
+  zIndex: 3
 }));
 
 export const StyledBorderBox = styled(Box)(() => ({

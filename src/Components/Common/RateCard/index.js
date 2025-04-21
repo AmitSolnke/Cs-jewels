@@ -7,11 +7,18 @@ import { useMediaQuery } from '@mui/material';
 const RateCard = () => {
   const [showRateCard, setShowRateCard] = React.useState(false);
   const isMobile = useMediaQuery('(max-width:767px)');
-  const handleMouseEnter = () => setShowRateCard(true);
-  const handleMouseLeave = () => setShowRateCard(false);
+  const handleMouseEnter = () => {
+    if (!isMobile) setShowRateCard(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowRateCard(false);
+  };
 
   const toggleRateCard = () => {
-    setShowRateCard((prev) => !prev);
+    if (isMobile) {
+      setShowRateCard((prev) => !prev);
+    }
   };
   return (
     <StyledRateBox

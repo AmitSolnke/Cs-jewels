@@ -2,7 +2,7 @@ import { Box, Stack, styled } from '@mui/material';
 
 export const StyledRateTableWrapper = styled('div')(({ theme }) => ({
   position: 'absolute',
-  top: '100%',
+  top: '-0.5rem',
   left: '-100px',
   zIndex: 3,
   backgroundColor: '#672B30 !important',
@@ -25,16 +25,18 @@ export const StyledRateTableWrapper = styled('div')(({ theme }) => ({
   '& table td': {
     backgroundColor: '#672B30 !important',
     color: 'white !important',
-    textTransform:'none !important',
+    textTransform: 'none !important'
   },
   [theme.breakpoints.down(768)]: {
+    top: '0.7rem',
     left: '-270px',
-    width: '20rem',
+    width: '19rem',
     padding: '0.6rem'
   },
   [theme.breakpoints.down(400)]: {
-    left: '-270px',
-    padding: '0.6rem'
+    left: '-200px',
+    padding: '0.6rem',
+    width: '15rem'
   }
 }));
 

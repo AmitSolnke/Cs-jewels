@@ -1,7 +1,7 @@
 /** @format */
 
 import React, {useState} from "react"
-import logo from "../images/icons/logo.svg"
+import logo from "../images/icons/CSJ_Logo_Brand_color_Eng_final.webp"
 import {Link, useNavigate} from "react-router-dom"
 import {subscribeEmail} from "../services/FrontApp/index.service"
 import ErrorList from "./Common/ErrorList"

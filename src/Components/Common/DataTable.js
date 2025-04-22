@@ -43,9 +43,7 @@ const DataTable = ({ haveHeader = false, data = [], isLoading = false }) => {
                     {headers.map((key, colIndex) => (
                       <StyledDataTableColumn
                         key={colIndex}
-                        className={`${
-                          colIndex === 0 ? 'text-start' : 'text-center'
-                        } text-truncate`}
+                        className='text-truncate text-start'
                         data-bs-toggle="tooltip"
                         data-bs-placement="top"
                         title={row?.[key] || '--'}

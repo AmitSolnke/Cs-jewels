@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/icons/logo.svg";
+import logo from "../images/icons/CSJ_Logo_Brand_color_Eng_final.webp";
 
 import heartLogo from "../images/icons/heart.svg";
 import userLogo from "../images/icons/user.svg";
@@ -194,7 +194,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
                   <div className="col-12 col-lg-12  d-none d-md-block">
                     <div className="logo-container relative d-flex justify-content-center align-items-center">
-                      <div className="logo">
+                      <div className="logo d-flex justify-content-center">
                         <Link to="/">
                           <img
                             src={logo}
@@ -329,7 +329,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                 <div className="col-12 col-sm-10 col-md-10 col-lg-10">
                   <nav className="navbar">
                     <ul className="w-100">
-                      <div className="menu-link-items">
+                      <div className="menu-link-items " style={{marginTop:'1.3rem'}}>
                         <li>
                           <Link to="/">Home</Link>
                         </li>

@@ -1,8 +1,8 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../images/icons/logo.svg';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../images/icons/CSJ_Logo_Brand_color_Eng_final.webp";
 
 import heartLogo from '../images/icons/heart.svg';
 import userLogo from '../images/icons/user.svg';
@@ -21,14 +21,13 @@ import { isLoggedIn } from '../services/auth.service';
 import { NavigationDropdown } from './Common/NavigationDropdown';
 import { SearchDropdown } from './Common/SearchDropdown';
 import { ShoppingBag } from './Screens/ShoppingBag';
-import { Button, IconButton, Tooltip, useMediaQuery } from '@mui/material';
+import { Box,Tooltip, useMediaQuery } from '@mui/material';
 import StoresIcon from '../images/icons/StoresIcon-1.png';
 import StoresIconBrown from '../images/icons/StoresIcon.png';
 import RateCard from './Common/RateCard';
 
 function Header({ openDrawer, handleOpenDrawer }) {
-  const isMobile = useMediaQuery('(max-width:768px)');
-  // console.log(isMobile, ">>>>>>mo")
+  const isMobile = useMediaQuery("(max-width:768px)");
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
@@ -144,8 +143,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     </div>
 
                     <div className="header-icon-list">
-                      <ul>
-                        <li>
+                      <ul className="d-flex gap-2">
+                        <li className="p-0">
                           <Link to="/find-a-store">
                             <Tooltip arrow title="Stores" placement="left">
                               {/* <IconButton
@@ -168,7 +167,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               {/* </IconButton> */}
                             </Tooltip>
                           </Link>
-                          <li>
+                           </li>
+                          <li className="p-0">
                             <Tooltip arrow title="Rates" placement="left">
                               <RateCard />
                             </Tooltip>
@@ -177,7 +177,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               open={openDrawer}
                               handleOpenDrawer={handleOpenDrawer}
                             /> */}
-                        </li>
+
                         {/* <li>
                           <Link to="/wishlist">
                             <img
@@ -193,7 +193,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
                   <div className="col-12 col-lg-12  d-none d-md-block">
                     <div className="logo-container relative d-flex justify-content-center align-items-center">
-                      <div className="logo">
+                      <div className="logo d-flex justify-content-center">
                         <Link to="/">
                           <img
                             src={logo}
@@ -331,7 +331,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                 <div className="col-12 col-sm-10 col-md-10 col-lg-10">
                   <nav className="navbar">
                     <ul className="w-100">
-                      <div className="menu-link-items">
+                      <div className="menu-link-items " style={{marginTop:'1.3rem'}}>
                         <li>
                           <Link to="/">Home</Link>
                         </li>
@@ -428,6 +428,16 @@ function Header({ openDrawer, handleOpenDrawer }) {
           </div>
         </div>
       </header>
+      <Box
+        sx={{
+          opacity: showDropdown ? 1 : 0,
+          transition: 'opacity .4s ease, transform 0.4s ease',
+          transition: "all 0.9s",
+          position: "relative",
+          zIndex: 999,
+        }}
+      >
+
       {showDropdown && (
         <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
           <NavigationDropdown
@@ -436,6 +446,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
           />
         </div>
       )}
+      </Box>
       {searchDropdown && (
         <div
           id="search-dropdown-wrapper"

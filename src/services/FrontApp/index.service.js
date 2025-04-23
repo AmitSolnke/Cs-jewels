@@ -119,3 +119,7 @@ export const getCheckVPA = async (data) => {
 export const PostCreateMandate = async (data) => {
   return await httpService.post(`createMandate`, data);
 };
+
+export const getRateDetails = async () => {
+  return  await httpService.get(`getUpdatedRate`);
+};

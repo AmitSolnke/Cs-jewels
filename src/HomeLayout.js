@@ -3,6 +3,7 @@ import Footer from './Components/Footer';
 import { Outlet } from 'react-router-dom';
 import { ShoppingBag } from './Components/Screens/ShoppingBag';
 import { useState } from 'react';
+import FestiveAd from './FestiveAd';
 
 const HomeLayout = () => {
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -12,6 +13,7 @@ const HomeLayout = () => {
     };
     return (
         <div>
+            <FestiveAd/>
             <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} style={{display: 'none'}} />
             <Header openDrawer={openDrawer} handleOpenDrawer={handleOpenDrawer} />
             <Outlet className="outlet-container" />

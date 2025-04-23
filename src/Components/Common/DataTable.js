@@ -10,7 +10,7 @@ const DataTable = ({ haveHeader = false, data = [], isLoading = false }) => {
 
   return (
     <StyledTable className="table-responsive">
-      <table className="table table-bordered border-primary table-hover w-100 mb-0">
+      <table className="table table-bordered  table-hover w-100 mb-0">
         {haveHeader && isValidData  && (
           <thead>
             <StyledDataTableRow>

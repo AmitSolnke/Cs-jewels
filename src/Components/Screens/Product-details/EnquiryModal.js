@@ -33,6 +33,8 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
   const [data, setData] = useState({
     name: "",
     mobile_no: "",
+    city: '',
+    pincode: '',
     product_id: productId,
   });
   const [showEnquiryScreen, setShowEnquiryScreen] = useState(true);
@@ -54,6 +56,20 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
         delete newErrors.mobile_no;
       }
     }
+    if (field === "city" && !value) {
+      if (!value) {
+        newErrors.city = "City is required"
+      } else if (field === 'city') {
+        delete newErrors.city
+      }
+    }
+    if (field === 'pincode' && !value) {
+      if (!value) {
+        newErrors.pincode = "Pincode is required"
+      } else if (field === 'pincode') {
+        delete newErrors.pincode
+      }
+    }
     return newErrors;
   };
 
@@ -72,6 +88,8 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
     setData({
       name: "",
       mobile_no: "",
+      city: '',
+      pincode: '',
       product_id: productId,
     });
     handleClose();
@@ -81,7 +99,9 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
     event.preventDefault();
     const validationErrors = validate("name", data.name);
     const mobileErrors = validate("mobile_no", data.mobile_no);
-    const allErrors = { ...validationErrors, ...mobileErrors };
+    const cityErrors = validate('city', data.city);
+    const pincodeErrors = validate('pincode', data.pincode)
+    const allErrors = { ...validationErrors, ...mobileErrors, ...cityErrors, ...pincodeErrors };
     if (Object.keys(allErrors).length > 0) {
       setErrors(allErrors);
       return;
@@ -144,7 +164,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                     </Typography>
                     <TextField
                       label="Name"
-                      className="mb-2"
+                      className="mb-4"
                       fullWidth
                       required
                       name="name"
@@ -163,6 +183,28 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                       onChange={handleChange}
                       error={!!errors.mobile_no}
                       helperText={errors.mobile_no}
+                    />
+                    <TextField
+                      label="City"
+                      className="mb-4"
+                      fullWidth
+                      required
+                      name="city"
+                      value={data.city}
+                      onChange={handleChange}
+                      error={!!errors.city}
+                      helperText={errors.city}
+                    />
+                    <TextField
+                      label="Pin Code"
+                      className="mb-4"
+                      fullWidth
+                      required
+                      name="pincode"
+                      value={data.pincode}
+                      onChange={handleChange}
+                      error={!!errors.pincode}
+                      helperText={errors.pincode}
                     />
                     <Button
                       className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"

@@ -5,6 +5,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import plusIcon from "../images/icons/plusicon.svg";
 import minusIcon from "../images/icons/minusicon.svg";
+import { Link, useMediaQuery } from "@mui/material";
 
 export default function AllStores({ data, handleAccordionClick }) {
   const [expanded, setExpanded] = React.useState(false);
@@ -12,6 +13,7 @@ export default function AllStores({ data, handleAccordionClick }) {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+  const mobileView = useMediaQuery('(max-width:600px)');
 
   return (
     <div className="faqs-container">
@@ -40,12 +42,18 @@ export default function AllStores({ data, handleAccordionClick }) {
             }
           >
             <Typography sx={{ width: "90%", flexShrink: 0 }}>
-             <h6  className="store-heading">{element.store_name}</h6> 
+              <h6 className="store-heading">{element.store_name}</h6>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography className="find-store-description find-store-description-text">
-              {element.address}
+            <Typography className="find-store-description d-inline find-store-description-text">
+              {element.address}<Link onClick={() => {
+                if (mobileView) {
+                  window.scrollTo({ top: 1500, behavior: 'smooth' });
+                } else {
+                  window.scrollTo({ top: 450, behavior: 'smooth' })
+                }
+              }} sx={{ cursor: "pointer", paddingX: '10px' }}>View Map</Link>
             </Typography>
             <Typography className="find-store-description">
               Toll Free No: <p className="toll-free-no">{element.mobile}</p>

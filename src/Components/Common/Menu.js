@@ -1,0 +1,146 @@
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
+
+export default function BasicMenu({
+  menuTitle,
+  children = [],
+  isLoading = false,
+}) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const open =
+    Boolean(anchorEl) && (isLoading || (children && children.length > 0));
+
+  const handleHover = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <Box
+        role="button"
+        id="basic-button"
+        onMouseEnter={handleHover}
+        sx={{ cursor: "pointer" }}
+      >
+        {menuTitle}
+      </Box>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        disableScrollLock
+        sx={{
+          marginTop: "0.6rem",
+          marginLeft: "-0.6rem",
+          boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.1)",
+          cursor: "pointer",
+        }}
+        slotProps={{
+          paper: {
+            sx: {
+              textDecoration: "none",
+              color: "inherit",
+              width: { md: "15%", sm: "25%", xs: "50%" },
+              maxHeight: "13.4rem",
+              overflowY: "auto",
+              borderRadius: 0,
+              border: "1px solid rgba(112, 112, 112, 0.25)",
+              scrollbarWidth: "thin",
+              scrollbarColor: "#672B30 #f1f1f1",
+              boxShadow: "0px -1px 20px rgba(0, 0, 0, 0.3)",
+              "&::-webkit-scrollbar": {
+                width: "8px",
+                height: "8px",
+              },
+              "&::-webkit-scrollbar-track": {
+                background: "#f5f5f5",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "#c4c4c4",
+                borderRadius: "4px",
+                border: "2px solid #f5f5f5", 
+              },
+            },
+          },
+        }}
+        MenuListProps={{
+          autoFocusItem: false,
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        {isLoading ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "1rem",
+              width: "100%",
+              gap: "0.3rem",
+            }}
+          >
+            <span style={{ fontWeight: "600", fontSize: "1rem" }}>
+              Loading...
+            </span>
+            <CircularProgress size={24} color="primary" />
+          </Box>
+        ) : children && children.length > 0 ? (
+          children.map((item, index) => (
+            <MenuItem
+              onClick={handleClose}
+              key={index}
+              sx={{
+                borderRadius: 0,
+                "&:hover, &.Mui-focusVisible": {
+                  backgroundColor: "rgba(103, 43, 48, 0.12)",
+                },
+                "& a:focus-visible": {
+                  outline: "none",
+                },
+              }}
+            >
+              <Link
+                to={item.url}
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  width: "100%",
+                  display: "block",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "100%",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="right"
+                  title={item?.collectionName}
+                >
+                  {item?.collectionName}
+                </Box>
+              </Link>
+            </MenuItem>
+          ))
+        ) : (
+          <MenuItem disabled sx={{ borderRadius: 0 }}>
+            No collections found
+          </MenuItem>
+        )}
+      </Menu>
+    </div>
+  );
+}

@@ -14,6 +14,8 @@ import {
   getLiveRateForCSP,
   getMetals,
   getMetalItems,
+  getCollectionData,
+  getCollectionDetails,
 } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
@@ -24,6 +26,7 @@ import { ShoppingBag } from "./Screens/ShoppingBag";
 import { Box, Button, IconButton, Tooltip, useMediaQuery } from "@mui/material";
 import StoresIcon from "../images/icons/StoresIcon-1.png";
 import StoresIconBrown from "../images/icons/StoresIcon.png";
+import BasicMenu from "./Common/Menu";
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const isMobile = useMediaQuery("(max-width:768px)");
@@ -39,6 +42,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
   // const [openDrawer, setOpenDrawer] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchDropdown, setSearchDropdown] = useState(false);
+  const [collections, setCollections] = useState([]);
+  const [isCollectionLoading, setIsCollectionLoading] = useState(false);
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -82,9 +87,31 @@ function Header({ openDrawer, handleOpenDrawer }) {
       console.log(error);
     }
   };
+  const getCollectionData = async () => {
+    try {
+      setIsCollectionLoading(true);
+      const { data: collectionDetails } = await getCollectionDetails();
+      setCollections(
+        collectionDetails?.data?.map((item) => {
+          return {
+            id: item.id,
+            collectionName: item.collection_name,
+            ...(item?.id
+              ? { url: `/collection?collectionId=${item.id}` }
+              : null),
+          };
+        })
+      );
+    } catch (error) {
+      setCollections([]);
+    } finally {
+      setIsCollectionLoading(false);
+    }
+  };
 
   useEffect(() => {
     getData();
+    getCollectionData();
     getMetalData();
   }, []);
 
@@ -264,7 +291,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             /> */}
                         </div>
                       </div>
-                      {/* <h3 className="drawer-header">POPULAR SEARCHES</h3> */}
+                      {/* <h3 className="drawer-header>POPULAR SEARCHES</h3> */}
                       <div className="d-lg-none">
                         {/* <li className="w-100">
                           <Link to="/" className="menu-link">
@@ -296,6 +323,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             Home
                           </Link>
                         </li>
+
                         <li
                           className="w-100"
                           id="jewellery-link"
@@ -309,6 +337,30 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <Link className="menu-links" to="/aboutus">
                             About us
                           </Link>
+                        </li>
+                        <li
+                          className="remove-underline"
+                        >
+                          <Tooltip
+                            title={
+                              !collections || collections.length === 0
+                                ? "No collections"
+                                : ""
+                            }
+                            disableHoverListener={
+                              collections && collections.length > 0
+                            }
+                            arrow
+                            placement="bottom"
+                          >
+                            <Box>
+                              <BasicMenu
+                                isLoading={isCollectionLoading}
+                                menuTitle="Collection"
+                                children={collections}
+                              />
+                            </Box>
+                          </Tooltip>
                         </li>
                         <li className="w-100">
                           <Link className="menu-links" to="/enash">
@@ -325,10 +377,13 @@ function Header({ openDrawer, handleOpenDrawer }) {
           <div className="col-12 col-md-12 col-lg-12 order-1 order-md-1 d-none d-md-block ps-0">
             <div className="col-12 col-md-12 col-lg-12">
               <div className="row">
-                <div className="col-12 col-sm-10 col-md-10 col-lg-10">
+                <div className="col-12 col-sm-12 col-md-12 col-lg-10">
                   <nav className="navbar">
                     <ul className="w-100">
-                      <div className="menu-link-items " style={{marginTop:'1.3rem'}}>
+                      <div
+                        className="menu-link-items "
+                        style={{ marginTop: "0.7rem" }}
+                      >
                         <li>
                           <Link to="/">Home</Link>
                         </li>
@@ -342,6 +397,30 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         </li>
                         <li>
                           <Link to="/aboutus">About us</Link>
+                        </li>
+                        <li
+                          className="remove-underline"
+                        >
+                          <Tooltip
+                            title={
+                              !collections || collections.length === 0
+                                ? "No collections"
+                                : ""
+                            }
+                            disableHoverListener={
+                              collections && collections.length > 0
+                            }
+                            arrow
+                            placement="bottom"
+                          >
+                            <Box>
+                              <BasicMenu
+                                isLoading={isCollectionLoading}
+                                menuTitle="Collection"
+                                children={collections}
+                              />
+                            </Box>
+                          </Tooltip>
                         </li>
                         <li>
                           <Link to="/enash">E-Mandate</Link>
@@ -359,67 +438,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     </ul>
                   </nav>
                 </div>
-                <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
-                  <div className="header-icon-list">
-                    {/* <ul className="w-100">
-                      <li>
-                        <Link onClick={() => setSearchDropdown(true)}>
-                          <img
-                            src={searchLogo}
-                            alt="Logo"
-                            className="image"
-                            id="search-logo"
-                          />
-                        </Link>
-                      </li>
-                      <li>
-                        <Link onClick={handleOpenDrawer}>
-                          <img
-                            src={shoppingBagLogo}
-                            alt="Logo"
-                            className="image"
-                          />
-                        </Link> 
-                        <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} />
-                      </li>
-                      <li>
-                        <Link to="/wishlist">
-                          <img
-                            src={heartLogo}
-                            alt="Logo"
-                            className="image heart"
-                          />
-                        </Link>
-                      </li>
-
-                      {isLoggedIn() ? (
-                        <li>
-                          <Link to="/dashboard/myorder">
-                            <img
-                              src={userLogo}
-                              alt="Logo"
-                              className="image"
-                            />
-                          </Link>
-                        </li>
-                      ) : (
-                        <li className="/login-icon">
-                          <Link
-                            onClick={handleOpenDialog}
-                            className="image"
-                            style={{ color: "#A3A3A3" }}
-                          >
-                            <LoginIcon />
-                          </Link>
-                          <AuthModal
-                            open={open}
-                            handleClose={handleCloseDialog}
-                          />
-                        </li>
-                      )}
-                    </ul> */}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -428,21 +446,20 @@ function Header({ openDrawer, handleOpenDrawer }) {
       <Box
         sx={{
           opacity: showDropdown ? 1 : 0,
-          transition: 'opacity .4s ease, transform 0.4s ease',
+          transition: "opacity .4s ease, transform 0.4s ease",
           transition: "all 0.9s",
           position: "relative",
           zIndex: 999,
         }}
       >
-
-      {showDropdown && (
-        <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
-          <NavigationDropdown
-            metalData={metalTypesData}
-            setShowDropdown={setShowDropdown}
-          />
-        </div>
-      )}
+        {showDropdown && (
+          <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
+            <NavigationDropdown
+              metalData={metalTypesData}
+              setShowDropdown={setShowDropdown}
+            />
+          </div>
+        )}
       </Box>
       {searchDropdown && (
         <div

@@ -68,19 +68,18 @@ export const ProductDetailsLatest = () => {
   }, []);
 
   // Todo: this is the image array refactor code to use images from the api call
-  const imageItems = productDetails.images.map((image) => ({
+  const imageItems = productDetails?.images?.map((image) => ({
     original: image.image_path,
     thumbnail: image.image_path,
   }));
-
   const sliderData =
     imageItems && imageItems.length > 0
       ? imageItems
-          .filter((item) => item && item.original) // Filter out invalid items
-          .map((item) => ({
-            image: item.original, // Use `original` field for the `image`
-            description: "", // Add descriptions if needed, or leave empty
-          }))
+        .filter((item) => item && item.original) // Filter out invalid items
+        .map((item) => ({
+          image: item.original, // Use `original` field for the `image`
+          description: "", // Add descriptions if needed, or leave empty
+        }))
       : [];
 
   const [open, setOpen] = useState(false);
@@ -98,7 +97,7 @@ export const ProductDetailsLatest = () => {
       return (
         <a>
           <img
-            src={imageItems[i]?.original}
+            src={imageItems?.[i]?.original}
             alt={`Thumbnail ${i + 1}`}
             style={{
               width: "60px",
@@ -155,7 +154,7 @@ export const ProductDetailsLatest = () => {
 
               {imageItems?.length > 0 && (
                 <Slider {...sliderSettings}>
-                  {imageItems.map((image, index) => (
+                  {imageItems?.map((image, index) => (
                     <div key={index}>
                       <SideBySideMagnifier
                         imageSrc={image.original}
@@ -166,8 +165,8 @@ export const ProductDetailsLatest = () => {
                         // overlayBackgroundColor="rgba(0,0,0,0.3)"
                         // className="custom-magnifier"
                         fillAvailableSpace={false}
-                        // transitionSpeed={0.2}
-                        // overlayBackgroundColor="rgba(0,0,0,0.6)"
+                      // transitionSpeed={0.2}
+                      // overlayBackgroundColor="rgba(0,0,0,0.6)"
                       />
                     </div>
                   ))}

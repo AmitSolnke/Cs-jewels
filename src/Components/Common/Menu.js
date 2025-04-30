@@ -53,12 +53,12 @@ export default function BasicMenu({
             sx: {
               textDecoration: "none",
               color: "inherit",
-              width: { md: "15%", sm: "25%", xs: "50%" },
+              width: { lg:'18%',md: "17%", sm: "25%", xs: "50%" },
               maxHeight: "13.4rem",
               overflowY: "auto",
               borderRadius: 0,
               border: "1px solid rgba(112, 112, 112, 0.25)",
-              boxShadow: "0px -1px 20px rgba(0, 0, 0, 0.3)",
+              boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.3)",
               scrollbarWidth: "thin",
               scrollbarColor: "#672B30 #f1f1f1",
               "&::-webkit-scrollbar": {
@@ -104,9 +104,10 @@ export default function BasicMenu({
               key={index}
               style={{
                 textDecoration: "none",
-                color: "inherit",
+                color: "rgba(51, 51, 51, 1)",
                 width: "100%",
                 display: "block",
+                textTransform:'uppercase'
               }}
             >
               <MenuItem
@@ -114,7 +115,7 @@ export default function BasicMenu({
                 sx={{
                   borderRadius: 0,
                   "&:hover, &.Mui-focusVisible": {
-                    backgroundColor: "rgba(103, 43, 48, 0.12)",
+                    textDecoration: "underline",
                   },
                   "& a:focus-visible": {
                     outline: "none",

@@ -4,15 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const ProductList = ({ products, isLoading = false }) => {
   const navigate = useNavigate();
-  
+
   const skeletonArray = Array.from({ length: 12 });
 
   return (
-    <Grid
-      container
-      spacing={1}
-      className="p-3 product-item-wrapper"
-    >
+    <Grid container spacing={1} className="p-3 product-item-wrapper">
       {isLoading ? (
         skeletonArray.map((_, index) => (
           <Grid
@@ -48,13 +44,17 @@ const ProductList = ({ products, isLoading = false }) => {
             md={4}
             sm={6}
             xs={12}
-            style={{ cursor: "pointer" }}
+            style={{
+              cursor: "pointer",
+              border: "1px solid #847f7f",
+              borderRadius: "15px",
+            }}
             className="product-item-card"
             onClick={() => navigate("/product-details/" + product.product_id)}
           >
             <img
               src={product.image_path}
-              alt={product.name || 'product Image'}
+              alt={product.name || "product Image"}
               className="image"
               style={{ width: "100%", borderRadius: "8px" }}
             />

@@ -48,6 +48,8 @@ const ProductList = ({ products, isLoading = false }) => {
               cursor: "pointer",
               border: "1px solid #847f7f",
               borderRadius: "15px",
+              padding:0,
+              overflow:'hidden' 
             }}
             className="product-item-card"
             onClick={() => navigate("/product-details/" + product.product_id)}

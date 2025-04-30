@@ -101,6 +101,7 @@ export default function BasicMenu({
           children.map((item, index) => (
             <Link
               to={item.url}
+              key={index}
               style={{
                 textDecoration: "none",
                 color: "inherit",
@@ -110,7 +111,6 @@ export default function BasicMenu({
             >
               <MenuItem
                 onClick={handleClose}
-                key={index}
                 sx={{
                   borderRadius: 0,
                   "&:hover, &.Mui-focusVisible": {

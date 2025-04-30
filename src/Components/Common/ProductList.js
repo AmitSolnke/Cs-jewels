@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const ProductList = ({ products, isLoading = false }) => {
   const navigate = useNavigate();
-
+  
   const skeletonArray = Array.from({ length: 12 });
 
   return (
     <Grid
-      sx={{ display: "flex", justifyContent: "center" }}
       container
       spacing={1}
       className="p-3 product-item-wrapper"
@@ -47,13 +46,15 @@ const ProductList = ({ products, isLoading = false }) => {
             item
             key={key}
             md={4}
+            sm={6}
+            xs={12}
             style={{ cursor: "pointer" }}
             className="product-item-card"
             onClick={() => navigate("/product-details/" + product.product_id)}
           >
             <img
               src={product.image_path}
-              alt="product"
+              alt={product.name || 'product Image'}
               className="image"
               style={{ width: "100%", borderRadius: "8px" }}
             />
@@ -73,6 +74,7 @@ const ProductList = ({ products, isLoading = false }) => {
             color: "#555",
             fontSize: "1.2rem",
             fontWeight: 500,
+            textTransform: "capitalize",
           }}
         >
           No products found

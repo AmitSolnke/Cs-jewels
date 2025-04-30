@@ -17,7 +17,7 @@ const ProductList = ({ products, isLoading = false }) => {
             md={4}
             sm={6}
             xs={12}
-            className="product-item-card"
+            className="product-item-card border-0"
           >
             <Box
               sx={{

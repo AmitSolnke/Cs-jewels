@@ -47,7 +47,7 @@ const Collection = () => {
     getData();
   }, [searchParams?.get("collectionId"), searchParams?.get("page")]);
   return (
-    <Stack gap={2}>
+    <Stack gap={2} className="product-catalogues">
       <Box>
         <ProductList products={products} isLoading={isLoading} />
       </Box>

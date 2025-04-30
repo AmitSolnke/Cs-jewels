@@ -104,7 +104,7 @@ export default function BasicMenu({
               key={index}
               style={{
                 textDecoration: "none",
-                color: "rgba(51, 51, 51, 1)",
+                color: "#672a2f",
                 width: "100%",
                 display: "block",
                 textTransform:'uppercase'

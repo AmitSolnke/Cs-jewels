@@ -65,10 +65,12 @@ export default function AllStores({ data, handleAccordionClick }) {
                   ":hover": {
                     textDecoration: "underline",
                   },
+                  fontSize: "0.9rem",
+                  fontWeight:400
                 }}
               >
                 View Map
-                <ArrowOutwardIcon />
+                <ArrowOutwardIcon sx={{ fontSize: "1.2rem",}}/>
               </Link>
             </Typography>
             <Typography className="find-store-description">

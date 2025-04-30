@@ -68,7 +68,7 @@ export const ProductCatalogues = () => {
     page: 1,
     limit: 12,
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   const handleChangePage = (event, newPage) => {
     const pageNumber = Number(newPage);
@@ -105,9 +105,6 @@ export const ProductCatalogues = () => {
 
   const getData = async () => {
     try {
-      if (loading) return;
-      // setLoading(true)
-      console.log("loading", loading);
       const requestParams = new FormData();
       const metalId = searchParams.get("metal")
         ? searchParams.get("metal")
@@ -172,7 +169,7 @@ export const ProductCatalogues = () => {
       setTotalPages(0);
       setProductCount(0);
     } finally {
-      // setLoading(false)
+      setLoading(false)
       window.scrollTo({
         left: 0,
         top: isDesktop ? 500 : 0,
@@ -425,7 +422,7 @@ export const ProductCatalogues = () => {
       <Box>
         <ProductList products={products} isLoading={loading}/>
       </Box>
-      {products?.length > 0 ? (
+      {products?.length > 0 && !loading ? (
         <Paginator
           currentPage={filters.page}
           totalPage={totalPages}

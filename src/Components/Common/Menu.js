@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function BasicMenu({
@@ -11,12 +11,13 @@ export default function BasicMenu({
   children = [],
   isLoading = false,
 }) {
+  const isMobile = useMediaQuery("(max-width:768px)");
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const open =
     Boolean(anchorEl) && (isLoading || (children && children.length > 0));
 
-  const handleHover = (event) => {
+  const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -29,7 +30,8 @@ export default function BasicMenu({
       <Box
         role="button"
         id="basic-button"
-        onMouseEnter={handleHover}
+        onMouseEnter={isMobile ? undefined : handleOpen}
+        onClick={isMobile ? handleOpen : undefined}
         sx={{ cursor: "pointer" }}
       >
         {menuTitle}
@@ -56,9 +58,9 @@ export default function BasicMenu({
               overflowY: "auto",
               borderRadius: 0,
               border: "1px solid rgba(112, 112, 112, 0.25)",
+              boxShadow: "0px -1px 20px rgba(0, 0, 0, 0.3)",
               scrollbarWidth: "thin",
               scrollbarColor: "#672B30 #f1f1f1",
-              boxShadow: "0px -1px 20px rgba(0, 0, 0, 0.3)",
               "&::-webkit-scrollbar": {
                 width: "8px",
                 height: "8px",
@@ -69,7 +71,7 @@ export default function BasicMenu({
               "&::-webkit-scrollbar-thumb": {
                 backgroundColor: "#c4c4c4",
                 borderRadius: "4px",
-                border: "2px solid #f5f5f5", 
+                border: "2px solid #f5f5f5",
               },
             },
           },
@@ -97,26 +99,26 @@ export default function BasicMenu({
           </Box>
         ) : children && children.length > 0 ? (
           children.map((item, index) => (
-            <MenuItem
-              onClick={handleClose}
-              key={index}
-              sx={{
-                borderRadius: 0,
-                "&:hover, &.Mui-focusVisible": {
-                  backgroundColor: "rgba(103, 43, 48, 0.12)",
-                },
-                "& a:focus-visible": {
-                  outline: "none",
-                },
+            <Link
+              to={item.url}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                width: "100%",
+                display: "block",
               }}
             >
-              <Link
-                to={item.url}
-                style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                  width: "100%",
-                  display: "block",
+              <MenuItem
+                onClick={handleClose}
+                key={index}
+                sx={{
+                  borderRadius: 0,
+                  "&:hover, &.Mui-focusVisible": {
+                    backgroundColor: "rgba(103, 43, 48, 0.12)",
+                  },
+                  "& a:focus-visible": {
+                    outline: "none",
+                  },
                 }}
               >
                 <Box
@@ -132,8 +134,8 @@ export default function BasicMenu({
                 >
                   {item?.collectionName}
                 </Box>
-              </Link>
-            </MenuItem>
+              </MenuItem>
+            </Link>
           ))
         ) : (
           <MenuItem disabled sx={{ borderRadius: 0 }}>

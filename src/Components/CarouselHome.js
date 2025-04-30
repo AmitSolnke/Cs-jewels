@@ -61,8 +61,7 @@ function CarouselHome() {
         ></div>
       ) : (
         <div className="service-slider">
-          {/* <Slider {...settings} className="d-block d-md-none"> */}
-          <div className="d-block d-md-none">
+          <Slider {...settings} className="d-block d-md-none">
             {banners.mobile.map((item, key) => (
               <Link to={item?.hyperlink}>
                 <div key={key} className="carouselPaper">
@@ -83,8 +82,7 @@ function CarouselHome() {
                 </div>
               </Link>
             ))}
-          </div>
-          {/* </Slider> */}
+          </Slider>
           <Slider {...settings} className="d-none d-md-block">
             {banners.desktop.map((item, key) => (
               <Link to={item?.hyperlink}>

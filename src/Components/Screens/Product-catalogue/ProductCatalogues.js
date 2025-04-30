@@ -1,17 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  Box,
-  Chip,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  Button,
-  Skeleton,
-  Typography,
-  useMediaQuery,
+  Box,useMediaQuery,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";

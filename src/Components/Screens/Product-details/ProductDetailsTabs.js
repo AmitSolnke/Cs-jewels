@@ -32,8 +32,7 @@ const ProductDetailsTabs = ({ productDetails }) => {
     if (active === 'product description') {
       return (
         <>
-          {productDetails?.description ||
-            'Lorem Ipsum has been the industry standard dummy text... Lorem Ipsum has been the industry standard dummy text... Lorem Ipsum has been the industry standard dummy text... Lorem Ipsum has been the industry standard dummy text... Lorem Ipsum has been the industry standard dummy text... Lorem Ipsum has been the industry standard dummy text...'}
+          {productDetails?.description || '--'}
         </>
       );
     }

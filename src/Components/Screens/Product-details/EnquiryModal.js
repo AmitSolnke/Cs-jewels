@@ -154,7 +154,6 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                   <div
                     className="container enquiry-form"
                     style={{
-                      height: "25rem",
                       overflowY: "scroll",
                     }}
                   >

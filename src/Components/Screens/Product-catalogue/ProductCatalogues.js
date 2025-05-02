@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  Box,useMediaQuery,
+  Box, Skeleton, useMediaQuery,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
@@ -57,7 +57,7 @@ export const ProductCatalogues = () => {
     page: 1,
     limit: 12,
   });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   const handleChangePage = (event, newPage) => {
     const pageNumber = Number(newPage);
@@ -91,8 +91,9 @@ export const ProductCatalogues = () => {
   useEffect(() => {
     getFiltersData();
   }, []);
-
   const getData = async () => {
+    if (loading) return;
+    setLoading(true)
     try {
       const requestParams = new FormData();
       const metalId = searchParams.get("metal")
@@ -149,6 +150,7 @@ export const ProductCatalogues = () => {
       // } else {
       //   setProducts([]);
       // }
+      setLoading(false)
       setTotalPages(data.data.last_page);
       setProductCount(data.data.total);
       // setLoading(false)
@@ -341,8 +343,11 @@ export const ProductCatalogues = () => {
 
   return (
     <div className="product-catalogues">
-      <div className="product-catalogue-banner  ">
-        <img src={banner} alt="Banner image" />
+      <div className="product-catalogue-banner">
+        {loading ? <Skeleton variant="rectangular"
+          width={'100%'}
+          height={'100vh'} /> : <img src={banner} alt="Banner image" />}
+
       </div>
       <Paper
         className="mobile-filter-section"
@@ -409,7 +414,7 @@ export const ProductCatalogues = () => {
       </div>
 
       <Box>
-        <ProductList products={products} isLoading={loading}/>
+        <ProductList products={products} isLoading={loading} />
       </Box>
       {products?.length > 0 && !loading ? (
         <Paginator

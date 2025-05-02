@@ -27,7 +27,9 @@
     .box-container {
       width: 25em !important;
     }
-
+.enquiry-form{
+  height: 18rem;
+}
     .dialog-main {
       transform: translateY(-40px) !important;
     }
@@ -36,7 +38,7 @@
 
       .side-product-image {
         width: calc(100% + 64px);
-        height: 370px !important;
+        height: 350px !important;
       }
     }
   }

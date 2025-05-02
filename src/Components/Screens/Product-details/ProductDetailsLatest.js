@@ -13,6 +13,12 @@ import 'slick-carousel/slick/slick.css';
 import ForwardIcon from '@mui/icons-material/Forward';
 import 'slick-carousel/slick/slick-theme.css';
 import ProductDetailsTabs from './ProductDetailsTabs';
+import { styled } from '@mui/material/styles';
+
+
+const AnimatedIcon = styled(EastIcon)(({ theme }) => ({
+  transition: 'transform 0.3s ease',
+}));
 
 export const ProductDetailsLatest = () => {
   const { id } = useParams();
@@ -77,11 +83,11 @@ export const ProductDetailsLatest = () => {
   const sliderData =
     imageItems && imageItems.length > 0
       ? imageItems
-          .filter((item) => item && item.original) // Filter out invalid items
-          .map((item) => ({
-            image: item.original, // Use `original` field for the `image`
-            description: '' // Add descriptions if needed, or leave empty
-          }))
+        .filter((item) => item && item.original) // Filter out invalid items
+        .map((item) => ({
+          image: item.original, // Use `original` field for the `image`
+          description: '' // Add descriptions if needed, or leave empty
+        }))
       : [];
 
   const [open, setOpen] = useState(false);
@@ -190,7 +196,7 @@ export const ProductDetailsLatest = () => {
     <Box className="product-details-latest">
       <Grid
         container
-        spacing={1}
+        spacing={3}
         className="p-3 grid-container"
         style={{ background: '#fff' }}
       >
@@ -219,8 +225,8 @@ export const ProductDetailsLatest = () => {
                         // overlayBackgroundColor="rgba(0,0,0,0.3)"
                         // className="custom-magnifier"
                         fillAvailableSpace={false}
-                        // transitionSpeed={0.2}
-                        // overlayBackgroundColor="rgba(0,0,0,0.6)"
+                      // transitionSpeed={0.2}
+                      // overlayBackgroundColor="rgba(0,0,0,0.6)"
                       />
                     </div>
                   ))}
@@ -244,7 +250,7 @@ export const ProductDetailsLatest = () => {
         <Grid
           item
           md={6}
-          style={{ paddingLeft: '1rem' }}
+          sx={{ paddingLeft: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
           className="product-details-wrapper pt-md-0"
           width={'100%'}
         >
@@ -267,7 +273,7 @@ export const ProductDetailsLatest = () => {
             <div
               className="product-details-title-link"
               style={{
-                font:'normal normal 900 17px/19px "Afacad Flux", serif'
+                font: 'normal normal 900 17px/19px "Afacad Flux", serif'
               }}
             >
               PRODUCT DETAILS
@@ -316,19 +322,34 @@ export const ProductDetailsLatest = () => {
               <td>&#8377; {productDetails.sales_price}</td>
             </tr>
           </table> */}
-          <Box width={{ md: 'auto',sm:'50%', xs: '60%' }}>
+          <Box>
             <Button
               className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6 mx-2"
               variant="contained"
               onClick={handleOpenEnquiryModal}
-              style={{
+              sx={{
                 display: 'flex',
-                justifyContent: 'space-between',
-                marginTop: '3rem'
+                justifyContent: {
+                  xs: 'center',
+                  md: 'flex-start'
+                },
+                gap: {
+                  xs: 2,
+                  md: 15
+                },
+                marginTop: '30px',
+                width: {
+                  xs: '95%',
+                  sm: '95%',
+                  md: '38%',
+                },
+                '&:hover .icon': {
+                  transform: 'translateX(28px)'
+                },
               }}
             >
               <span className="button-enquire">ENQUIRE</span>
-              <EastIcon />
+              <AnimatedIcon className="icon" />
             </Button>
 
             <EnquiryModal

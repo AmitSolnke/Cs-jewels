@@ -19,10 +19,10 @@ function DazzlingFev() {
     <div key={index} className="col-6 col-sm-6 col-lg-3 p-2 py-lg-0 px-lg-3">
       <div className="card rounded-0">
          <div className="card-img-container">
-       <Link href={`${item.link}`}><img src={item.img} className="card-img rounded-0" alt={item.name} /></Link> 
+       <Link href={`${item.link}`}><img src={item.img} className="card-img rounded-0" alt={item.name} /></Link>
       </div>
         <div className="card-img">
-          <h5 className="card-title text-center text-white">{item.name}</h5>
+          <h5 className="card-title px-2 text-center">{item.name}</h5>
         </div>
       </div>
     </div>

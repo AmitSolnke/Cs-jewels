@@ -66,7 +66,6 @@ const ProductDetailsTabs = ({ productDetails }) => {
         width="100%"
         sx={{
           border: '1px solid #672A2F !important',
-          borderRadius: '5px',
           p: '0 !important',
           overflow: 'hidden'
         }}
@@ -77,7 +76,7 @@ const ProductDetailsTabs = ({ productDetails }) => {
           sx={{
             p: '0 !important',
             borderRight: '1px solid #672A2F !important',
-            overflow: 'hidden'
+            overflow: 'hidden',
           }}
         >
           {tabs.map((tab) => (
@@ -93,7 +92,12 @@ const ProductDetailsTabs = ({ productDetails }) => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 textTransform: 'capitalize',
-                fontSize: '0.8rem'
+                fontSize: '0.8rem',
+                borderRadius: 'none',
+                borderBottom: '1px solid #672A2F',
+                '&:last-child': {
+                  borderBottom: 'none'
+                },
               }}
             >
               <span>{tab}</span>
@@ -116,7 +120,7 @@ const ProductDetailsTabs = ({ productDetails }) => {
           {content}
         </Stack>
       </Stack>
-    </Stack>
+    </Stack >
   );
 };
 

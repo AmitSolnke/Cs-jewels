@@ -25,6 +25,7 @@ import { ProductDetailsLatest } from "./Components/Screens/Product-details/Produ
 import RefundPolicy from "./Components/Screens/RefundPolicy";
 import ImageCollage from "./Components/Screens/ImageCollage ";
 import Enash from "./Components/Screens/Enash";
+import Collection from "./Components/Screens/Collection";
 
 export const normalRouts = [
   {
@@ -168,6 +169,13 @@ export const frontAppRoutes = [
     path: "/product-catalogues",
     name: "Product Catalogues",
     element: <ProductCatalogues />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: "/collection",
+    name: "Collection",
+    element: <Collection />,
     exact: true,
     strict: false,
   },

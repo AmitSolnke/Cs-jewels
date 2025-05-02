@@ -33,8 +33,8 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
   const [data, setData] = useState({
     name: "",
     mobile_no: "",
-    city: '',
-    pincode: '',
+    city: "",
+    pincode: "",
     product_id: productId,
   });
   const [showEnquiryScreen, setShowEnquiryScreen] = useState(true);
@@ -58,16 +58,16 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
     }
     if (field === "city" && !value) {
       if (!value) {
-        newErrors.city = "City is required"
-      } else if (field === 'city') {
-        delete newErrors.city
+        newErrors.city = "City is required";
+      } else if (field === "city") {
+        delete newErrors.city;
       }
     }
-    if (field === 'pincode' && !value) {
+    if (field === "pincode" && !value) {
       if (!value) {
-        newErrors.pincode = "Pincode is required"
-      } else if (field === 'pincode') {
-        delete newErrors.pincode
+        newErrors.pincode = "Pincode is required";
+      } else if (field === "pincode") {
+        delete newErrors.pincode;
       }
     }
     return newErrors;
@@ -88,8 +88,8 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
     setData({
       name: "",
       mobile_no: "",
-      city: '',
-      pincode: '',
+      city: "",
+      pincode: "",
       product_id: productId,
     });
     handleClose();
@@ -99,9 +99,14 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
     event.preventDefault();
     const validationErrors = validate("name", data.name);
     const mobileErrors = validate("mobile_no", data.mobile_no);
-    const cityErrors = validate('city', data.city);
-    const pincodeErrors = validate('pincode', data.pincode)
-    const allErrors = { ...validationErrors, ...mobileErrors, ...cityErrors, ...pincodeErrors };
+    const cityErrors = validate("city", data.city);
+    const pincodeErrors = validate("pincode", data.pincode);
+    const allErrors = {
+      ...validationErrors,
+      ...mobileErrors,
+      ...cityErrors,
+      ...pincodeErrors,
+    };
     if (Object.keys(allErrors).length > 0) {
       setErrors(allErrors);
       return;
@@ -146,7 +151,13 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                   </IconButton>
                 </DialogActions>
                 {showEnquiryScreen && (
-                  <div className="container enquiry-form">
+                  <div
+                    className="container enquiry-form"
+                    style={{
+                      height: "25rem",
+                      overflowY: "scroll",
+                    }}
+                  >
                     <Typography
                       variant="h3"
                       className="form-title"

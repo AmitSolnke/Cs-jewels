@@ -51,12 +51,12 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      text-align: right; 
+      text-align: right;
       float: right;
       li {
         display: inline-block;
         padding: 0 10px;
-        font-family:"Afacad Flux", serif;
+        font-family: "Afacad Flux", serif;
         font-size: 15px;
         letter-spacing: 0.5px;
         color: #525252;
@@ -89,12 +89,12 @@
         text-transform: uppercase;
         font: normal normal 900 17px/19px "Afacad Flux", serif;
         letter-spacing: 2px;
-        color: #672A2F;
+        color: #672a2f;
 
         a {
           opacity: 1;
           text-decoration: none;
-          color: #672A2F;
+          color: #672a2f;
           width: 100%;
           height: 100%;
         }
@@ -103,7 +103,6 @@
   }
 
   .header-icon-list {
-
     ul {
       list-style: none;
       display: flex;
@@ -227,7 +226,7 @@
     }
 
     li a {
-      color: #672A2F;
+      color: #672a2f;
       font-size: 17px;
       letter-spacing: 2.1px;
       font-family: "Afacad Flux", serif;
@@ -251,57 +250,56 @@
     cursor: pointer;
   }
 }
-  @media (min-width: 767px) {
+@media (min-width: 767px) {
+  .navbar {
+    ul {
+      list-style: none;
+      padding-left: 0px;
 
-    .navbar {
-      ul {
-        list-style: none;
-        padding-left: 0px;
-  
-        .menu-link-items {
-          display: flex;
-          column-gap: 8%;
-          text-align: right;
-        }
-  
-        li {
-          display: inline-block;
-          font-size: 16px;
-          text-transform: uppercase;
-          font: normal normal 900 17px/19px "Afacad Flux", serif;
-          letter-spacing: 2px;
+      .menu-link-items {
+        display: flex;
+        column-gap: 8%;
+        text-align: right;
+      }
+
+      li {
+        display: inline-block;
+        font-size: 16px;
+        text-transform: uppercase;
+        font: normal normal 900 17px/19px "Afacad Flux", serif;
+        letter-spacing: 2px;
+        color: #692526;
+        position: relative;
+        cursor: pointer;
+        padding-bottom: 3px;
+
+        a {
+          opacity: 1;
+          text-decoration: none;
           color: #692526;
-          position: relative;
-          cursor: pointer; 
-          padding-bottom: 3px;
-  
-          a {
-            opacity: 1;
-            text-decoration: none;
-            color:#692526;
-            width: 100%;
-            height: 100%;
-          }
-          &::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background-color: #672A2F;
-            transform-origin: center;
-            transition: all 0.2s ease-in-out;
-          }
-    
-          &:hover::after {
-            left: 0;
-            width: 100%;
-          }
+          width: 100%;
+          height: 100%;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 3px;
+          background-color: #672a2f;
+          transform-origin: center;
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:hover::after {
+          left: 0;
+          width: 100%;
         }
       }
     }
   }
+}
 
 @media (max-width: 767px) {
   .page-header {
@@ -316,8 +314,14 @@
       padding: 0;
       margin: 0;
       margin-top: 0 !important;
-    
     }
   }
 }
 
+.remove-underline {
+  cursor: pointer;
+}
+
+.remove-underline::after {
+  content: none !important;
+}

@@ -119,3 +119,7 @@ export const getCheckVPA = async (data) => {
 export const PostCreateMandate = async (data) => {
   return await httpService.post(`createMandate`, data);
 };
+export const getCollectionDetails = async (tenantMasterId) => {
+  return await httpService.get(`getcollectionData?tenant_master_id=${tenantMasterId || 1}`);
+};
+

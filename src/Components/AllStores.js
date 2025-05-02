@@ -6,10 +6,11 @@ import Typography from "@mui/material/Typography";
 import plusIcon from "../images/icons/plusicon.svg";
 import minusIcon from "../images/icons/minusicon.svg";
 import { Link, useMediaQuery } from "@mui/material";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 export default function AllStores({ data, handleAccordionClick }) {
   const [expanded, setExpanded] = React.useState(false);
-  const mobileView = useMediaQuery('(max-width:600px)');
+  const mobileView = useMediaQuery("(max-width:600px)");
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -37,7 +38,7 @@ export default function AllStores({ data, handleAccordionClick }) {
               handleAccordionClick({
                 lat: parseFloat(element.latitude),
                 lng: parseFloat(element.longitude),
-                element
+                element,
               })
             }
           >
@@ -47,13 +48,30 @@ export default function AllStores({ data, handleAccordionClick }) {
           </AccordionSummary>
           <AccordionDetails>
             <Typography className="find-store-description d-inline find-store-description-text">
-              {element.address}<Link onClick={() => {
-                if (mobileView) {
-                  window.scrollTo({ top: 1500, behavior: 'smooth' });
-                } else {
-                  window.scrollTo({ top: 450, behavior: 'smooth' })
-                }
-              }} sx={{ cursor: "pointer", paddingX: '10px' }}>View Map</Link>
+              {element.address}
+            </Typography>
+            <Typography>
+              <Link
+                onClick={() => {
+                  if (mobileView) {
+                    window.scrollTo({ top: 1500, behavior: "smooth" });
+                  } else {
+                    window.scrollTo({ top: 450, behavior: "smooth" });
+                  }
+                }}
+                sx={{
+                  cursor: "pointer",
+                  textDecoration: "none",
+                  ":hover": {
+                    textDecoration: "underline",
+                  },
+                  fontSize: "0.9rem",
+                  fontWeight:400
+                }}
+              >
+                View Map
+                <ArrowOutwardIcon sx={{ fontSize: "1.2rem",}}/>
+              </Link>
             </Typography>
             <Typography className="find-store-description">
               Toll Free No: <p className="toll-free-no">{element.mobile}</p>

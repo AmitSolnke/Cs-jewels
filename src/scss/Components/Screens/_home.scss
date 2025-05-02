@@ -1,180 +1,180 @@
 .card {
-    position: relative;
-    border: 0;
-    cursor: pointer;
+  position: relative;
+  border: 0;
+  cursor: pointer;
 }
 
 .card-img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: transform 0.6s ease-in-out;
-
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s ease-in-out;
 }
 .card-img-container {
-  width: 100%;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
-.card-img:hover{
-    transform: scale(1.3);
+
+.card-img-container img {
+  transition: transform 0.4s ease;
+}
+
+.card-img-container img:hover {
+  transform: scale(1.3);
 }
 
 .card-img-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0; /* Initially hidden */
-    transition: 0.4s ease;
-    background-color: #363737;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.4s ease;
+  background-color: #363737;
 }
 
 .card-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: rgb(255, 255, 255);
-    font: bold normal normal 22px/28px "Afacad Flux", serif;
-    letter-spacing: 2px;
-
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font: bold normal normal 22px/28px "Afacad Flux", serif;
+  letter-spacing: 2px;
+  z-index: 2;
 }
 
 .card:hover .card-img-overlay {
-    opacity: 0.7; /* Show overlay on hover */
-    border-radius: 0%;
+  opacity: 0.7; /* Show overlay on hover */
+  border-radius: 0%;
 }
-
 
 .image-slider-header {
-    top: 900px;
-    left: 120px;
-    width: 325px;
-    height: 48px;
-    text-align: left;
-    font: normal normal 600 36px/48px "Vidaloka", serif;
-    letter-spacing: 0.54px;
-    color: #672A2F;
-    opacity: 1;
-    display: table-footer-group;
-    margin-bottom: 8%;
+  top: 900px;
+  left: 120px;
+  width: 325px;
+  height: 48px;
+  text-align: left;
+  font: normal normal 600 36px/48px "Vidaloka", serif;
+  letter-spacing: 0.54px;
+  color: #672a2f;
+  opacity: 1;
+  display: table-footer-group;
+  margin-bottom: 8%;
 }
 .big-image-slider-description {
-    width: 75% !important;
-    padding-top: 16px;
+  width: 75% !important;
+  padding-top: 16px;
 }
 .image-slider-description {
-    top: 964px;
-    left: 120px;
-    width: 100% !important;
-    height: auto;
+  top: 964px;
+  left: 120px;
+  width: 100% !important;
+  height: auto;
+  text-align: left;
+  font: normal normal normal 20px/28px "Afacad Flux", serif;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+  // margin-bottom: 3%;
+}
+.large-image-slider-container {
+  padding-top: 100px;
+}
+
+.large-image-slider-test-area {
+  // align-self: left;
+  // padding-left: 0 !important;
+  text-align: left;
+}
+
+.text-only-grid {
+  // text-align-last: left;
+  // width: 60%;
+  // text-align: -webkit-center;
+  // margin-left: 10%;
+  // min-height: 100px;
+  // padding-top: 10px;
+}
+
+.text-only-grid-header img {
+  margin-right: 9px;
+}
+.extra-empty-container {
+  display: block;
+}
+.extra-empty-container-exclusive-offers {
+  display: none;
+}
+// .text-area-explore{
+//     text-align: -webkit-center;
+// }
+.text-only-grid-explore-description {
+  margin-left: 0;
+}
+@media (max-width: 768px) {
+  .image-slider-description {
+    width: 98% !important;
     text-align: left;
     font: normal normal normal 20px/28px "Afacad Flux", serif;
     letter-spacing: 0px;
     color: #666666;
     opacity: 1;
-    // margin-bottom: 3%;
-}
-.large-image-slider-container {
-    padding-top: 100px;
-}
+    padding-top: 0;
+    height: auto;
+    // margin-bottom: 10px;
+  }
 
-.large-image-slider-test-area {
-    // align-self: left;
-    // padding-left: 0 !important;
+  .favourite-image-slider {
+    padding-left: 0;
+  }
+  .image-slider-header {
     text-align: left;
-}
-
-.text-only-grid {
-    // text-align-last: left;
-    // width: 60%;
-    // text-align: -webkit-center;
-    // margin-left: 10%;
-    // min-height: 100px;
-    // padding-top: 10px;
-}
-
-.text-only-grid-header img {
-    margin-right: 9px;
-}
-.extra-empty-container{
-    display: block;
-}
-.extra-empty-container-exclusive-offers{
-    display: none;
-}
-// .text-area-explore{
-//     text-align: -webkit-center;
-// }
-.text-only-grid-explore-description{
-    margin-left: 0;
-}
-@media (max-width: 768px) {
-    .image-slider-description {
-        width: 98% !important;
-        text-align: left;
-        font: normal normal normal 20px/28px "Afacad Flux", serif;
-        letter-spacing: 0px;
-        color: #666666;
-        opacity: 1;
-        padding-top: 0;
-        height:auto;
-        // margin-bottom: 10px;
-
-    }
-
-    .favourite-image-slider{
-        padding-left: 0;
-    }
-    .image-slider-header {
-        text-align: left;
-        font: normal normal 600 24px/32px "Vidaloka", serif;
-        letter-spacing: 0.36px;
-        color: #672A2F;
-        opacity: 1;
-        // height: 35px;
-        margin-bottom: 20%;
-    }
-    .extra-empty-container-exclusive-offers{
-        display: block !important;
-    }
-    .exclusive-offer-test-section{
-        max-width: 87% !important;
-    }
-    .carousel-view-all-btn{
-        padding-top: 9%;
-    }
-    .discover-image-slider-container{
-        padding-top: 50px;
-    }
-    // .image-slider-header-explore{
-    //     text-align: center;
-    // }
-    .large-image-slider-container {
-        padding-top: 50px;
-    }
-    .large-image-slider-container .MuiGrid-root {
-        margin: 0 !important;
-        text-align: -webkit-center;
-    }
-    // .text-only-grid-explore-description{
-    //     margin-left: 0;
-    // }
+    font: normal normal 600 24px/32px "Vidaloka", serif;
+    letter-spacing: 0.36px;
+    color: #672a2f;
+    opacity: 1;
+    // height: 35px;
+    margin-bottom: 20%;
+  }
+  .extra-empty-container-exclusive-offers {
+    display: block !important;
+  }
+  .exclusive-offer-test-section {
+    max-width: 87% !important;
+  }
+  .carousel-view-all-btn {
+    padding-top: 9%;
+  }
+  .discover-image-slider-container {
+    padding-top: 50px;
+  }
+  // .image-slider-header-explore{
+  //     text-align: center;
+  // }
+  .large-image-slider-container {
+    padding-top: 50px;
+  }
+  .large-image-slider-container .MuiGrid-root {
+    margin: 0 !important;
+    text-align: -webkit-center;
+  }
+  // .text-only-grid-explore-description{
+  //     margin-left: 0;
+  // }
 }
 @media (max-width: 450px) {
-    .image-slider-description {
-        width: 98% !important;
-        text-align: left;
-        font: normal normal normal 20px/28px "Afacad Flux", serif;
-        letter-spacing: 0px;
-        color: #666666;
-        opacity: 1;
-        padding-top: 0;
-        height: auto;
-    }
-
+  .image-slider-description {
+    width: 98% !important;
+    text-align: left;
+    font: normal normal normal 20px/28px "Afacad Flux", serif;
+    letter-spacing: 0px;
+    color: #666666;
+    opacity: 1;
+    padding-top: 0;
+    height: auto;
+  }
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import {
   Box,
   Chip,
@@ -14,11 +14,11 @@ import {
   useMediaQuery,
 } from "@mui/material"
 import Paper from "@mui/material/Paper"
-import {BottomNavigation, BottomNavigationAction} from "@mui/material"
-import {BullionsFilter} from "../Bullions/BullionsFilter"
-import {FilterMenu} from "../Bullions/FilterMenu"
-import {SortMenu} from "../Bullions/SortMenu"
-import {useLocation, useNavigate, useSearchParams} from "react-router-dom"
+import { BottomNavigation, BottomNavigationAction } from "@mui/material"
+import { BullionsFilter } from "../Bullions/BullionsFilter"
+import { FilterMenu } from "../Bullions/FilterMenu"
+import { SortMenu } from "../Bullions/SortMenu"
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
 import {
   getMetals,
   getMetalItems,
@@ -27,7 +27,7 @@ import {
   getMetalTypeById,
   getItemById,
 } from "../../../services/FrontApp/index.service"
-import {Paginator} from "../../Common/Paginator"
+import { Paginator } from "../../Common/Paginator"
 
 export const ProductCatalogues = () => {
   const navigate = useNavigate()
@@ -146,7 +146,7 @@ export const ProductCatalogues = () => {
         requestParams.append("limit", filters["limit"])
       }
 
-      const {data} = await getProducts(requestParams)
+      const { data } = await getProducts(requestParams)
 
       // if (data.data.data) {
       setProducts(data?.data?.data)
@@ -405,7 +405,7 @@ export const ProductCatalogues = () => {
         <BullionsFilter
           isOpen={bullionsFilterOpen}
           onClose={handleCloseBullionsFilter}
-          style={{borderLeft: "2px solid"}}
+          style={{ borderLeft: "2px solid" }}
         >
           {openSortMenu ? (
             <SortMenu onClose={handleCloseBullionsFilter} />
@@ -421,7 +421,7 @@ export const ProductCatalogues = () => {
 
       <Box>
         <Grid
-          sx={{display: "flex", justifyContent: "center"}}
+          sx={{ display: "flex", justifyContent: "center" }}
           container
           spacing={1}
           className="p-3 product-item-wrapper"
@@ -439,14 +439,14 @@ export const ProductCatalogues = () => {
               </Grid>
             ))
           ) :  */}
-         { products.length > 0 ? (
+          {products.length > 0 ? (
             products.map((product, key) => (
               <Grid
                 item
                 key={key}
                 md={4}
-                style={{cursor: "pointer"}}
-                className="product-item-card"
+                style={{ cursor: "pointer" }}
+                className="product-item-card p-0"
                 onClick={() =>
                   navigate("/product-details/" + product.product_id)
                 }

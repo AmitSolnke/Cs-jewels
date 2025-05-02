@@ -1,40 +1,41 @@
 .product-details-latest {
-  .new-arrival-badge {
-    font: normal normal medium 12px/15px Lato;
-    letter-spacing: 3.6px;
-    color: #999999;
-    text-transform: uppercase;
-  }
+  // .new-arrival-badge {
+  //   font: normal normal medium 15px/18px "Afacad Flux", serif;
+  //   letter-spacing: 3.6px;
+  //   color: #999999;
+  //   text-transform: uppercase;
+  // }
 
-  .product-title {
-    font: normal normal 600 32px/43px Playfair Display;
-    letter-spacing: 0.48px;
-    color: #333333;
-  }
+  // .product-title {
+  //   font: normal normal 600 32px/43px "Vidaloka", serif;
+  //   letter-spacing: 0.48px;
+  //   color: #333333;
+  // }
 
-  .metal-description {
-    font: normal normal medium 16px/19px Lato;
-    letter-spacing: 1.6px;
-    color: #672a2f;
-  }
+  // .metal-description {
+  //   font: normal normal medium 16px/19px "Afacad Flux", serif;
+  //   letter-spacing: 1.6px;
+  //   color: #672a2f;
+  // }
 
-  .product-price {
-    font: normal normal 900 26px/32px Lato;
-    letter-spacing: 0px;
-    color: #333333;
-    text-transform: uppercase;
-  }
+  // .product-price {
+  //   font: normal normal 900 26px/32px "Afacad Flux", serif;
+  //   letter-spacing: 0px;
+  //   color: #333333;
+  //   text-transform: uppercase;
+  // }
 
-  .product-description {
-    font: normal normal normal 16px/22px Lato;
-    letter-spacing: 0px;
-    color: #666666;
-  }
+  // .product-description {
+  //   font: normal normal normal 16px/22px "Afacad Flux", serif;
+  //   letter-spacing: 0px;
+  //   color: #666666;
+  // }
 
-  .product-informations {
+  .product-details {
     .product-details-title-link {
       text-decoration: underline;
-      font: normal normal medium 12px/15px Lato;
+      font: normal normal medium 24px/28px "Afacad Flux", serif;
+      font-size: 25px;
       letter-spacing: 1.8px;
       color: #333333;
       text-transform: uppercase;
@@ -42,8 +43,9 @@
 
     div {
       padding-top: 0.2rem;
-      font: normal normal normal 12px/30px Lato;
+      font: normal normal normal 16px/30px "Afacad Flux", serif;
       color: #666666;
+      font-size: 18px;
     }
   }
 
@@ -57,6 +59,10 @@
       padding: 15px;
     }
   }
+}
+.button-enquire{
+font-family: "Vidaloka", serif;
+
 }
 
 @media screen and (max-width: 750px) {
@@ -79,3 +85,69 @@
   height: 100%;
   // width: 100%;
 }
+
+.slick-dots{
+  bottom: -14px;
+}
+
+/* Change arrow colors */
+.slick-prev:before,
+.slick-next:before {
+  color: gray !important;  /* Change arrow color */
+  font-size: 24px !important; /* Adjust size if needed */
+  opacity: 1 !important;
+  // background-color: white !important;
+}
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  color: #672A2F !important;
+  // background: #fff; /* Keep color the same */
+}
+
+.slick-next{
+  z-index: 1;
+ right: 32px;
+ width: 0px !important;         
+ height: 0px !important;
+}
+.slick-prev{
+  z-index: 1;
+ left: 3px;
+ width: 0px !important;         /* Adjust width */
+ height: 0px !important;  
+}
+
+.slick-dots li {
+  height: 45px;
+  width: 60px;
+  margin: 0 5px;
+
+}
+.slick-dots.slick-thumb li.slick-active a img {
+  border: 2px solid gray
+
+}
+.slick-dots.slick-thumb {
+  bottom: -10px; /* Adjust spacing */
+}
+
+// .slick-list {
+//   overflow: visible ;
+// }
+
+// .slick-list {
+//   clip-path: inset(0 0 0 0);
+//   overflow: hidden !important;
+// }
+
+
+
+
+
+
+
+
+
+
+
+

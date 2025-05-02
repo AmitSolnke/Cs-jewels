@@ -8,6 +8,7 @@ export const Paginator = ({ totalPage, currentPage, handleChangePage }) => {
         count={totalPage}
         page={currentPage}
         onChange={handleChangePage}
+        defaultPage={1}
         color="primary"
         sx={{
           width: "100%",

@@ -35,11 +35,12 @@ export default function AllStores({ data, handleAccordionClick }) {
               handleAccordionClick({
                 lat: parseFloat(element.latitude),
                 lng: parseFloat(element.longitude),
+                element
               })
             }
           >
             <Typography sx={{ width: "90%", flexShrink: 0 }}>
-              {element.store_name}
+             <h6  className="store-heading">{element.store_name}</h6> 
             </Typography>
           </AccordionSummary>
           <AccordionDetails>

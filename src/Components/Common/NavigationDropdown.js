@@ -5,9 +5,9 @@ import { useScrollToTop } from "../../hooks";
 
 export const NavigationDropdown = ({ metalData, setShowDropdown }) => {
   const navigate = useNavigate();
-
+const page=1;
   const closeModal = (metalId, itemId) => {
-    navigate(`/product-catalogues?metal=${metalId}&item_type=${itemId}`);
+    navigate(`/product-catalogues?page=${page}&metal=${metalId}&item_type=${itemId}`);
     setShowDropdown(false);
   };
   useScrollToTop();

@@ -14,7 +14,7 @@
 
 .head-text-about-us p {
   text-align: center;
-  font: normal normal 600 42px/56px Playfair Display;
+  font: normal normal 600 42px/56px "Vidaloka", serif;
   letter-spacing: 0.63px;
   color: #ffffff;
   opacity: 1;
@@ -26,7 +26,7 @@
 
 .about-us-description-read-more {
   text-align: left;
-  font: normal normal normal 16px/26px Lato;
+  font: normal normal normal 20px/28px "Afacad Flux", serif;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
@@ -34,7 +34,7 @@
 
 .about-us-button-read-more button {
   text-decoration: underline;
-  font: normal normal bold 14px/17px Lato;
+  font: normal normal bold 20px/28px "Afacad Flux", serif;
   letter-spacing: 2.1px;
   color: #916f25;
   text-transform: uppercase;
@@ -46,7 +46,7 @@
 
 .our-specialities-header {
   text-align: left;
-  font: normal normal 600 36px/48px Playfair Display;
+  font: normal normal 600 36px/48px "Vidaloka", serif;
   letter-spacing: 0.54px;
   color: #672a2f;
   opacity: 1;
@@ -54,7 +54,7 @@
 
 .our-specialities-description {
   text-align: left;
-  font: normal normal normal 16px/26px Lato;
+  font: normal normal normal 20px/28px "Afacad Flux", serif;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
@@ -106,7 +106,7 @@
 
 .about-us-awards-header {
   text-align: center;
-  font: normal normal 600 36px/48px Playfair Display;
+  font: normal normal 600 36px/48px "Vidaloka", serif;
   letter-spacing: 0.54px;
   color: #672a2f;
   opacity: 1;
@@ -114,7 +114,7 @@
 
 .about-us-awards-description {
   text-align: center;
-  font: normal normal normal 16px/26px Lato;
+  font: normal normal normal 20px/28px "Afacad Flux", serif;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
@@ -131,7 +131,7 @@
 
 .about-us-awards-header {
   text-align: center;
-  font: normal normal 600 36px/48px Playfair Display;
+  font: normal normal 600 36px/48px "Vidaloka", serif;
   letter-spacing: 0.54px;
   color: #672a2f;
   opacity: 1;
@@ -140,15 +140,15 @@
 
 .about-us-awards-description {
   text-align: center;
-  font: normal normal normal 16px/26px Lato;
+  font: normal normal normal 20px/28px "Afacad Flux", serif;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
   padding-bottom: 50px;
 }
-.about-us-last-element {
-  padding-bottom: 100px;
-}
+// .about-us-last-element {
+//   padding-bottom: 10px;
+// }
 
 @media (max-width: 767px) {
   .our-specialities-container {
@@ -165,7 +165,7 @@
 
   .about-us-awards-header {
     text-align: center;
-    font: normal normal 600 24px/32px Playfair Display;
+    font: normal normal 600 24px/32px "Vidaloka", serif;
     letter-spacing: 0.36px;
     color: #672a2f;
     opacity: 1;
@@ -174,7 +174,7 @@
 
   .about-us-awards-description {
     text-align: center;
-    font: normal normal normal 14px/22px Lato;
+    font: normal normal normal 20px/28px "Afacad Flux", serif;
     letter-spacing: 0px;
     color: #666666;
     opacity: 1;
@@ -206,4 +206,8 @@
 }
 .terms-and-condition {
   background-color: white !important;
+}
+.about-us-award-details{
+  font: bold normal normal 20px/28px "Afacad Flux", serif;
+
 }

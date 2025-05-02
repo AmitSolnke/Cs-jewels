@@ -1,11 +1,11 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 
 import aboutUsTitleImage from "../../images/aboutUsTitleImage.jpeg";
-import ourSpecality from "../../images/ourSpecality.jpeg";
-import imageSliderHeaderIconRight from "../../images/icons/Group40.svg";
+import ourSpecialityDesktop from "../../images/ourSpecialityDesktop.webp";
+import ourSpecialityMobile from "../../images/ourSpecialityMobile.webp";
 import aboutUsFullScreenBottomImage from "../../images/aboutUsFullScreenBottomImage.jpeg";
 import aboutUsFullScreenBottomImageMobileView from "../../images/aboutUsFullScreenBottomImageMobileView.jpeg";
 import useWindowWidthAndHeight from "../../utilities/CustomHooks";
@@ -22,10 +22,13 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
+  // fontFamily: "Afacad Flux",
+  // fontSize:"25px"
 }));
 
 export default function AboutUs() {
   const windoDimensions = useWindowWidthAndHeight();
+  const mobileView=useMediaQuery('(max-width:600px)');
   return (
     <div className="col-12 about-us">
       <img src={aboutUsTitleImage} alt="about us" className="img-fluid"></img>
@@ -47,7 +50,7 @@ export default function AboutUs() {
               Since 1827. Step into a world where tradition meets elegance. For
               almost 200 years, we've been creating stunning jewellery and
               earning the trust of customers across India. Our journey began in
-              1827 when Shri Chandulal Shah opened our first store in Baramati.
+              1827 when Shri Chandulal Shah opened our first store near Pune.
               His dedication to quality and honest business set the stage for
               our long-standing success. With nearly two centuries of
               experience, we've become a household name in Western Indian
@@ -74,7 +77,7 @@ export default function AboutUs() {
             "Renowned for our exclusive jewellery collections, we epitomize a tradition of excellence that spans generations. Pioneers in the industry, we were the first jeweller in India to introduce the revolutionary karatmeter, ensuring unparalleled transparency and purity in every creation. Our approach seamlessly blends contemporary aesthetics with timeless craftsmanship, resulting in a fusion of styles that captivates the discerning eye.. This extensive range includes jewellery crafted from gold, silver, platinum, diamonds, gemstones, and pearls.Our jewellery reflects our distinctive touch, combining innovative designs with traditional craftsmanship to create pieces that are both timeless and contemporary."
           }
           Item={Item}
-          imageSrc={ourSpecality}
+          imageSrc={mobileView ? ourSpecialityMobile : ourSpecialityDesktop}
           isImageFirst={true}
           mobileViewImageFirst={true}
         />

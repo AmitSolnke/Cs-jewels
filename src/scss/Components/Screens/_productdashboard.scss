@@ -55,7 +55,7 @@
     height: 33px;
     border-bottom: 1px solid #333333 !important;
     border-radius: 0 !important;
-    font: normal normal medium 12px/15px Lato;
+    font: normal normal medium 12px/15px  "Afacad Flux", serif;
     letter-spacing: 1.8px !important;
     color: #333333 !important;
     text-transform: uppercase !important;
@@ -106,7 +106,8 @@
     background: transparent !important;
     border: none;
     text-align: left;
-    font: normal normal bold 14px/17px Lato;
+    font: normal normal bold 14px/17px "Afacad Flux", serif;
+
     letter-spacing: 2.1px;
     color: #333333;
     text-transform: uppercase;
@@ -117,7 +118,7 @@
     background: transparent !important;
     text-align: left;
     font-weight: normal;
-    font: normal normal 14px/17px Lato;
+    font: normal normal 14px/17px  "Afacad Flux", serif;
     letter-spacing: 2.1px;
     color: #333333;
     text-transform: uppercase;
@@ -127,15 +128,14 @@
 .MuiPagination-root {
     .MuiPagination-ul {
         flex-wrap: nowrap;
-
         li {
             &:first-child {
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
                 text-align: left;
-                text-decoration: underline;
-                font: normal normal bold 14px/17px Lato;
+                // text-decoration: underline;
+                font: normal normal bold 14px/17px "Afacad Flux", serif;
                 letter-spacing: 2.1px;
                 color: #999999;
                 text-transform: uppercase;
@@ -144,8 +144,11 @@
                     visibility: hidden;
                 }
                 >button::after {
-                    margin-left: 10px;
+                    padding: 0 7px 0 5px;
                     content: 'PREV';
+                font: normal normal bold 14px/17px "Afacad Flux", serif;
+                font-size: 18px;
+
                 }
             }
 
@@ -154,8 +157,8 @@
                 justify-content: flex-end;
                 align-items: center;
                 text-align: left;
-                text-decoration: underline;
-                font: normal normal bold 14px/17px Lato;
+                // text-decoration: underline;
+                font: normal normal bold 14px/17px "Afacad Flux", serif;
                 letter-spacing: 2.1px;
                 color: #333333;
                 text-transform: uppercase;
@@ -164,10 +167,12 @@
                     visibility: hidden;
                 }
                 >button::before {
-                    margin-right: 10px;
+                    font: normal normal bold 14px/17px "Afacad Flux", serif;
+                    font-size: 18px;
+                    padding: 0 5px 0 7px;
                     content: 'NEXT';
                 }
-            }
+            } 
         }
     }
 }

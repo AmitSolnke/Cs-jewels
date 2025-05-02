@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import plusIcon from "../images/icons/plusicon.svg"
 import minusIcon from "../images/icons/minusicon.svg"
 import { getFaqs } from '../services/FrontApp/index.service';
+import { parseHtmlContent } from '../utilities/CustomFunction';
 
 export default function FAQs() {
     const [expanded, setExpanded] = React.useState(false);
@@ -29,6 +30,7 @@ export default function FAQs() {
     setExpanded(isExpanded ? panel : false);
   };
 
+
     return (
         <div className='faqs-container'>
             {data.map((element, index) => (
@@ -39,14 +41,19 @@ export default function FAQs() {
                         id="panel1bh-header"
                     >
                         <Typography sx={{ width: '90%', flexShrink: 0 }}>
-                            {element.question}
+                           <h6 className='faqs-question'>{element.question}</h6> 
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography>
+                        <Typography >
+                            <div className='faqs-ans'>
                             <div
-                                dangerouslySetInnerHTML={{ __html: element.answers}}
-                            />
+                                // dangerouslySetInnerHTML={{ __html: element.answers}}
+                            >
+                                {parseHtmlContent(element.answers)}
+                            </div>
+
+                            </div>
                         </Typography>
                     </AccordionDetails>
                 </Accordion>))}

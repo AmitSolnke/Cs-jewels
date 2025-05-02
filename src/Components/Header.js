@@ -1,6 +1,8 @@
+/** @format */
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/icons/logo.svg";
+import logo from "../images/icons/CSJ_Logo_Brand_color_Eng_final.webp";
 
 import heartLogo from "../images/icons/heart.svg";
 import userLogo from "../images/icons/user.svg";
@@ -15,12 +17,16 @@ import {
 } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
-import LoginIcon from "@mui/icons-material/Login";
+// import LoginIcon from "@mui/icons-material/Login"
 import { NavigationDropdown } from "./Common/NavigationDropdown";
 import { SearchDropdown } from "./Common/SearchDropdown";
 import { ShoppingBag } from "./Screens/ShoppingBag";
+import { Box, Button, IconButton, Tooltip, useMediaQuery } from "@mui/material";
+import StoresIcon from "../images/icons/StoresIcon-1.png";
+import StoresIconBrown from "../images/icons/StoresIcon.png";
 
 function Header({ openDrawer, handleOpenDrawer }) {
+  const isMobile = useMediaQuery("(max-width:768px)");
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
@@ -114,13 +120,12 @@ function Header({ openDrawer, handleOpenDrawer }) {
   return (
     <>
       <header className="page-header">
-        <hr className="header-hr d-none d-md-block " />
         <div className="header-content">
           <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
             <div className="row">
               <div className="col-12 col-md-12 col-lg-12">
                 <div className="brand-wrapper">
-                  <div className="d-md-none d-lg-none mobile-header-bar">
+                  <div className="d-md-none d-lg-none mobile-header-bar d-flex justify-content-between align-items-center">
                     <img
                       src={menuOpen}
                       alt="menu-open"
@@ -131,7 +136,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <img
                           src={logo}
                           alt="Logo"
-                          className="site-logo image"
+                          className="site-logo image text-center"
                         />
                       </Link>
                     </div>
@@ -139,6 +144,28 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     <div className="header-icon-list">
                       <ul>
                         <li>
+                          <Link to="/find-a-store">
+                            <Tooltip arrow title="Stores" placement="left">
+                              {/* <IconButton
+                          
+                                size="large"
+                                className="rounded"
+                              > */}
+                              {isMobile && (
+                                <img
+                                  src={StoresIcon}
+                                  alt="storesIcon"
+                                  onMouseEnter={(e) => {
+                                    e.currentTarget.src = StoresIconBrown;
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    e.currentTarget.src = StoresIcon;
+                                  }}
+                                />
+                              )}
+                              {/* </IconButton> */}
+                            </Tooltip>
+                          </Link>
                           {/* <Link onClick={handleOpenDrawer}>
                             <img
                               src={shoppingBagLogo}
@@ -165,44 +192,22 @@ function Header({ openDrawer, handleOpenDrawer }) {
                   </div>
 
                   <div className="col-12 col-lg-12  d-none d-md-block">
-                    <div className="row position-relative align-items-center">
-                      <div className="logo-container d-flex">
-                        <div className="logo">
-                          <Link to="/">
-                            <img
-                              src={logo}
-                              alt="Logo"
-                              className="site-logo image"
-                            />
-                          </Link>
-                        </div>
-                        <div className="logo mx-5">
-                          {/* <h6>chandukaka saraf</h6> */}
-                          {/* <Link to="/">
-                            <img
-                              src={logo}
-                              alt="chandukaka Image"
-                              className="chandukaka-image"
-                            />
-                          </Link> */}
-                        </div>
+                    <div className="logo-container relative d-flex justify-content-center align-items-center">
+                      <div className="logo d-flex justify-content-center">
+                        <Link to="/">
+                          <img
+                            src={logo}
+                            onClick={() => window.scrollTo(0, 0)}
+                            alt="Logo"
+                            className="site-logo image"
+                          />
+                        </Link>
                       </div>
 
-                      <div className="col-8 p-0 position-absolute end-0 h-100">
+                      <div className="col-12 position-absolute">
                         <div className="quick-links-wrapper">
                           <ul className="w-100">
                             <div className="quick-link-items">
-                              {/* <li>
-                                <small>
-                                  GOLD - ₹
-                                  {rates.gold["24.00"]
-                                    ? rates.gold["24.00"]
-                                    : 0}
-                                </small>
-                              </li>
-                              <li>
-                                <small>SILVER - ₹{rates.Silver1}</small>
-                              </li> */}
                               <li>
                                 <Link to="/find-a-store">FIND A STORE</Link>
                               </li>
@@ -305,6 +310,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             About us
                           </Link>
                         </li>
+                        <li className="w-100">
+                          <Link className="menu-links" to="/enash">
+                            E-Mandate
+                          </Link>
+                        </li>
                       </div>
                     </ul>
                   </nav>
@@ -318,7 +328,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                 <div className="col-12 col-sm-10 col-md-10 col-lg-10">
                   <nav className="navbar">
                     <ul className="w-100">
-                      <div className="menu-link-items">
+                      <div className="menu-link-items " style={{marginTop:'1.3rem'}}>
                         <li>
                           <Link to="/">Home</Link>
                         </li>
@@ -332,6 +342,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         </li>
                         <li>
                           <Link to="/aboutus">About us</Link>
+                        </li>
+                        <li>
+                          <Link to="/enash">E-Mandate</Link>
                         </li>
                         {/* <li>
                           <Link to="/bullions">Bullion</Link>
@@ -412,6 +425,16 @@ function Header({ openDrawer, handleOpenDrawer }) {
           </div>
         </div>
       </header>
+      <Box
+        sx={{
+          opacity: showDropdown ? 1 : 0,
+          transition: 'opacity .4s ease, transform 0.4s ease',
+          transition: "all 0.9s",
+          position: "relative",
+          zIndex: 999,
+        }}
+      >
+
       {showDropdown && (
         <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
           <NavigationDropdown
@@ -420,6 +443,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
           />
         </div>
       )}
+      </Box>
       {searchDropdown && (
         <div
           id="search-dropdown-wrapper"

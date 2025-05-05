@@ -174,7 +174,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <Link to="/find-a-store">
                             <Tooltip arrow title="Stores" placement="left">
                               {/* <IconButton
-                          
+
                                 size="large"
                                 className="rounded"
                               > */}
@@ -324,7 +324,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </Link>
                         </li>
 
-                        <li
+                       {metalTypesData?.length > 0 && <li
                           className="w-100"
                           id="jewellery-link"
                           onClick={() => {
@@ -332,27 +332,15 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           }}
                         >
                           Jewellery
-                        </li>
+                        </li>}
                         <li className="w-100">
                           <Link className="menu-links" to="/aboutus">
                             About us
                           </Link>
                         </li>
-                        <li
+                       {collections?.length > 0 && <li
                           className="remove-underline"
                         >
-                          <Tooltip
-                            title={
-                              !collections || collections.length === 0
-                                ? "No collections"
-                                : ""
-                            }
-                            disableHoverListener={
-                              collections && collections.length > 0
-                            }
-                            arrow
-                            placement="bottom"
-                          >
                             <Box>
                               <BasicMenu
                                 isLoading={isCollectionLoading}
@@ -360,8 +348,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 children={collections}
                               />
                             </Box>
-                          </Tooltip>
-                        </li>
+                        </li>}
                         <li className="w-100">
                           <Link className="menu-links" to="/enash">
                             E-Mandate
@@ -387,32 +374,20 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <li>
                           <Link to="/">Home</Link>
                         </li>
-                        <li
+                       {metalTypesData?.length > 0 && <li
                           id="jewellery-link"
                           onClick={() => {
                             setShowDropdown((prev) => !prev);
                           }}
                         >
                           Jewellery
-                        </li>
+                        </li>}
                         <li>
                           <Link to="/aboutus">About us</Link>
                         </li>
-                        <li
+                        {collections?.length > 0 && <li
                           className="remove-underline"
                         >
-                          <Tooltip
-                            title={
-                              !collections || collections.length === 0
-                                ? "No collections"
-                                : ""
-                            }
-                            disableHoverListener={
-                              collections && collections.length > 0
-                            }
-                            arrow
-                            placement="bottom"
-                          >
                             <Box>
                               <BasicMenu
                                 isLoading={isCollectionLoading}
@@ -420,8 +395,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 children={collections}
                               />
                             </Box>
-                          </Tooltip>
-                        </li>
+                        </li>}
                         <li>
                           <Link to="/enash">E-Mandate</Link>
                         </li>

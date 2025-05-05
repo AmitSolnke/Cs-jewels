@@ -400,7 +400,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           onMouseLeave={() => setShowDropdown(false)}
                           style={{ position: 'relative' ,marginTop:'-0.2rem'}}
                         >
-                           {true && (
+                           {showDropdown && (
                             <Box
                               sx={{
                                 position: 'absolute',

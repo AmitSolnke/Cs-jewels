@@ -324,7 +324,7 @@ export const ProductDetailsLatest = () => {
           </table> */}
           <Box>
             <Button
-              className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6 mx-2"
+              className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6 mx-2 px-2"
               variant="contained"
               onClick={handleOpenEnquiryModal}
               sx={{

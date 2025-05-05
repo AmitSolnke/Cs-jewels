@@ -134,8 +134,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
         <Fade in={open}>
           <Box
             className="box-container"
-            sx={Boxstyle}
-            style={{ border: "12px solid #ede5e5", width: "50em" }}
+            sx={{...Boxstyle, border: "12px solid #ede5e5", width: "50rem",height:{xs:"100%",sm:'auto'}}}
           >
             <div
               className="side-product-image-wrapper"
@@ -153,9 +152,6 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                 {showEnquiryScreen && (
                   <div
                     className="container enquiry-form"
-                    style={{
-                      overflowY: "scroll",
-                    }}
                   >
                     <Typography
                       variant="h3"
@@ -172,6 +168,11 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                     >
                       Soon we will reach out to you!!
                     </Typography>
+                    <Box    sx={{
+                      overflowY: "scroll",
+                      height: '15rem',
+                      margin:'0.2rem 0'
+                    }}>
                     <TextField
                       label="Name"
                       className="mb-4"
@@ -216,6 +217,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                       error={!!errors.pincode}
                       helperText={errors.pincode}
                     />
+                    </Box>
                     <Button
                       className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"
                       variant="contained"

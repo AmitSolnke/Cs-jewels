@@ -131,14 +131,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   window.onclick = (event) => {
     if (
-      !$(event.target).closest("#navigation-dropdown-wrapper").length &&
-      event.target.id != "jewellery-link"
-    ) {
-      setShowDropdown(false);
-    }
-    if (
-      !$(event.target).closest("#search-dropdown-wrapper").length &&
-      event.target.id != "search-logo"
+      !$(event.target).closest('#search-dropdown-wrapper').length &&
+      event.target.id != 'search-logo'
     ) {
       setSearchDropdown(false);
     }
@@ -259,9 +253,10 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     />
                   </div>
                   <nav className="navbar">
-                     {metalTypesData?.length > 0 &&  <ul className="w-100">
-                      <div className="header-searchbar-wrapper w-100">
-                        {/* <div className="col-10 search-wrapper">
+                    {metalTypesData?.length > 0 && (
+                      <ul className="w-100">
+                        <div className="header-searchbar-wrapper w-100">
+                          {/* <div className="col-10 search-wrapper">
                           <input
                             type="text"
                             className="search-input col-9 col-md-9"
@@ -273,8 +268,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             className="search-logo"
                           />
                         </div> */}
-                        <div className="col-2">
-                          {/* <Link
+                          <div className="col-2">
+                            {/* <Link
                             to="#"
                             className="shopping-logo"
                             onClick={handleOpenDrawer}
@@ -285,15 +280,15 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               className="image"
                             />
                           </Link> */}
-                          {/* <ShoppingBag
+                            {/* <ShoppingBag
                               open={openDrawer}
                               handleDrawer={handleOpenDrawer}
                             /> */}
+                          </div>
                         </div>
-                      </div>
-                      {/* <h3 className="drawer-header>POPULAR SEARCHES</h3> */}
-                      <div className="d-lg-none">
-                        {/* <li className="w-100">
+                        {/* <h3 className="drawer-header>POPULAR SEARCHES</h3> */}
+                        <div className="d-lg-none">
+                          {/* <li className="w-100">
                           <Link to="/" className="menu-link">
                             Fancy Earrings
                           </Link>
@@ -318,11 +313,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             Office wear earrings
                           </Link>
                         </li> */}
-                        <li className="w-100">
-                          <Link className="menu-links" to="/">
-                            Home
-                          </Link>
-                        </li>
+                          <li className="w-100">
+                            <Link className="menu-links" to="/">
+                              Home
+                            </Link>
+                          </li>
 
                        <div
                           onClick={() => setShowDropdown(!showDropdown)}
@@ -376,7 +371,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </Link>
                         </li>
                       </div>
-                    </ul>}
+                    </ul>)}
                   </nav>
                 </div>
               </div>
@@ -387,22 +382,34 @@ function Header({ openDrawer, handleOpenDrawer }) {
               <div className="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-10">
                   <nav className="navbar">
-                     {metalTypesData?.length > 0 && <ul className="w-100">
-                      <div
-                        className="menu-link-items "
-                        style={{ marginTop: '0.7rem' }}
-                      >
-                        <li>
-                          <Link to="/">Home</Link>
-                        </li>
+                    {metalTypesData?.length > 0 && (
+                      <ul className="w-100">
                         <div
-                          onMouseEnter={() => setShowDropdown(true)}
-                          onMouseLeave={() => setShowDropdown(false)}
-                          style={{ position: 'relative' ,marginTop:'-0.2rem'}}
+                          className="menu-link-items "
+                          style={{ marginTop: '0.7rem' }}
                         >
-                           {showDropdown && (
+                          <li>
+                            <Link to="/">Home</Link>
+                          </li>
+                          <div
+                            onMouseEnter={() => setShowDropdown(true)}
+                            onMouseLeave={() => setShowDropdown(false)}
+                            style={{
+                              position: 'relative',
+                              marginTop: '-0.2rem'
+                            }}
+                          >
                             <Box
                               sx={{
+                                opacity: showDropdown ? 1 : 0,
+                                transform: showDropdown
+                                  ? 'translateY(0)'
+                                  : 'translateY(-10px)',
+                                transition: showDropdown
+                                  ? 'opacity 0.4s ease-in, transform 0.4s ease-in'
+                                  : 'none', // disables animation when hiding
+                                pointerEvents: showDropdown ? 'auto' : 'none', // allows interaction only when shown
+                                visibility: showDropdown ? 'visible' : 'hidden', // prevents layout bugs
                                 position: 'absolute',
                                 left: '-190%',
                                 top: '100%',
@@ -417,35 +424,35 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 py: 4
                               }}
                             >
-                              <NavigationDropdown
-                                metalData={metalTypesData}
-                                setShowDropdown={setShowDropdown}
-                              />
+                              {showDropdown && (
+                                <NavigationDropdown
+                                  metalData={metalTypesData}
+                                  setShowDropdown={setShowDropdown}
+                                />
+                              )}
                             </Box>
+
+                            <li>Jewellery</li>
+                          </div>
+
+                          <li>
+                            <Link to="/aboutus">About us</Link>
+                          </li>
+                          {collections?.length > 0 && (
+                            <li className="remove-underline">
+                              <Box>
+                                <BasicMenu
+                                  isLoading={isCollectionLoading}
+                                  menuTitle="Collection"
+                                  children={collections}
+                                />
+                              </Box>
+                            </li>
                           )}
-                          <li>Jewellery</li>
-
-
-                        </div>
-
-                        <li>
-                          <Link to="/aboutus">About us</Link>
-                        </li>
-                        {collections?.length > 0 && <li
-                          className="remove-underline"
-                        >
-                            <Box>
-                              <BasicMenu
-                                isLoading={isCollectionLoading}
-                                menuTitle="Collection"
-                                children={collections}
-                              />
-                            </Box>
-                        </li>}
-                        <li>
-                          <Link to="/enash">E-Mandate</Link>
-                        </li>
-                        {/* <li>
+                          <li>
+                            <Link to="/enash">E-Mandate</Link>
+                          </li>
+                          {/* <li>
                           <Link to="/bullions">Bullion</Link>
                         </li>
                         <li>
@@ -454,8 +461,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <li>
                             <Link to="gifting">Gifting</Link>
                         </li> */}
-                      </div>
-                    </ul>}
+                        </div>
+                      </ul>
+                    )}
                   </nav>
                 </div>
               </div>

@@ -259,7 +259,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     />
                   </div>
                   <nav className="navbar">
-                    <ul className="w-100">
+                     {metalTypesData?.length > 0 &&  <ul className="w-100">
                       <div className="header-searchbar-wrapper w-100">
                         {/* <div className="col-10 search-wrapper">
                           <input
@@ -324,7 +324,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </Link>
                         </li>
 
-                        {metalTypesData?.length > 0 &&  <div
+                       <div
                           onClick={() => setShowDropdown(!showDropdown)}
                           onMouseLeave={() => setShowDropdown(false)}
                           style={{ position: 'relative' }}
@@ -353,7 +353,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <li>Jewellery</li>
 
 
-                        </div>}
+                        </div>
                         <li className="w-100">
                           <Link className="menu-links" to="/aboutus">
                             About us
@@ -376,7 +376,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </Link>
                         </li>
                       </div>
-                    </ul>
+                    </ul>}
                   </nav>
                 </div>
               </div>
@@ -387,7 +387,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
               <div className="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-10">
                   <nav className="navbar">
-                    <ul className="w-100">
+                     {metalTypesData?.length > 0 && <ul className="w-100">
                       <div
                         className="menu-link-items "
                         style={{ marginTop: '0.7rem' }}
@@ -395,7 +395,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <li>
                           <Link to="/">Home</Link>
                         </li>
-                       {metalTypesData?.length > 0 &&  <div
+                        <div
                           onMouseEnter={() => setShowDropdown(true)}
                           onMouseLeave={() => setShowDropdown(false)}
                           style={{ position: 'relative' ,marginTop:'-0.2rem'}}
@@ -426,7 +426,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <li>Jewellery</li>
 
 
-                        </div>}
+                        </div>
 
                         <li>
                           <Link to="/aboutus">About us</Link>
@@ -455,7 +455,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             <Link to="gifting">Gifting</Link>
                         </li> */}
                       </div>
-                    </ul>
+                    </ul>}
                   </nav>
                 </div>
               </div>

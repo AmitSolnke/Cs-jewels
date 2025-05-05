@@ -1,55 +1,55 @@
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 //pages
-@import "common";
-@import "header";
-@import "footer";
+@import 'common';
+@import 'header';
+@import 'footer';
 
 //component
-@import "./Components/Screens/home";
-@import "./Components/carouselhome";
-@import "./Components/imagesliderhome";
-@import "./Components//imageslidercardhome";
-@import "./Components//Screens/contactus";
-@import "./Components//faqs.scss";
-@import "./Components/Screens/_aboutus";
-@import "./Components/Screens/productdashboard";
-@import "./Components/productbreadcrumb";
-@import "./Components/productreviewcard";
+@import './Components/Screens/home';
+@import './Components/carouselhome';
+@import './Components/imagesliderhome';
+@import './Components//imageslidercardhome';
+@import './Components//Screens/contactus';
+@import './Components//faqs.scss';
+@import './Components/Screens/_aboutus';
+@import './Components/Screens/productdashboard';
+@import './Components/productbreadcrumb';
+@import './Components/productreviewcard';
 
-@import "./Components/faqs.scss";
-@import "./Components/Screens/privacypolicy";
+@import './Components/faqs.scss';
+@import './Components/Screens/privacypolicy';
 // @import "./Components/Screens/aboutus";
-@import "./Components/Screens/productdetails";
-@import "./Components/Screens/findastore";
-@import "./Components/Screens/myorder";
-@import "./Components/Screens/personaldetails";
-@import "./Components/Screens/authModal";
-@import "./Components/Screens/addressBook";
-@import "./Components/Screens/addressForm";
-@import "./Components/Screens/confirmationDialog";
-@import "./Components/Screens/shoppingBag";
-@import "./Components/Screens/orderLayout";
-@import "./Components/Screens/checkOut";
-@import "./Components/Screens/yourDetails";
-@import "./Components/Screens/delivery";
-@import "./Components/Screens/payment";
-@import "./Components/Screens/productDetailsLatest";
-@import "./Components/Screens/enquiryModal";
-@import "./Components/Screens/bullions";
-@import "./Components/Screens/filterMenu";
-@import "./Components/Screens/bullionsFilter";
-@import "./Components/Screens/sortMenu";
+@import './Components/Screens/productdetails';
+@import './Components/Screens/findastore';
+@import './Components/Screens/myorder';
+@import './Components/Screens/personaldetails';
+@import './Components/Screens/authModal';
+@import './Components/Screens/addressBook';
+@import './Components/Screens/addressForm';
+@import './Components/Screens/confirmationDialog';
+@import './Components/Screens/shoppingBag';
+@import './Components/Screens/orderLayout';
+@import './Components/Screens/checkOut';
+@import './Components/Screens/yourDetails';
+@import './Components/Screens/delivery';
+@import './Components/Screens/payment';
+@import './Components/Screens/productDetailsLatest';
+@import './Components/Screens/enquiryModal';
+@import './Components/Screens/bullions';
+@import './Components/Screens/filterMenu';
+@import './Components/Screens/bullionsFilter';
+@import './Components/Screens/sortMenu';
 
-@import "./Components/Screens/wishlist";
-@import "./Components/Screens/product-catalogues";
+@import './Components/Screens/wishlist';
+@import './Components/Screens/product-catalogues';
 //common component
 
-@import "./Components/common/sidebar";
-@import "./Components/common/navigationDropDown";
-@import "./Components/common/searchDropdown";
-@import "./Components/productcard";
-@import "./Components/testimonial";
+@import './Components/common/sidebar';
+@import './Components/common/navigationDropDown';
+@import './Components/common/searchDropdown';
+@import './Components/productcard';
+@import './Components/testimonial';
 
 .main-container {
   // background-color: #f8f6f0;
@@ -61,8 +61,26 @@
 }
 
 .custom-magnifier img {
-  max-width: 1000px;  
+  max-width: 1000px;
   max-height: 1000px;
   overflow: hidden;
+}
+/* Apply this to the scrollable element, e.g., .custom-scrollbar */
+.custom-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #c0c0c0 #fafafa; /* lighter thumb and track */
+}
 
+/* Webkit-based browsers (Chrome, Edge, Safari) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0; /* light gray thumb */
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #fafafa; /* off-white track */
 }

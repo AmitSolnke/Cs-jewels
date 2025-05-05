@@ -284,7 +284,7 @@ export const ProductDetailsLatest = () => {
               </span>
               :
               <span style={{ color: '#000', fontWeight: '600' }}>
-                {productDetails.regular_price}/-
+                {productDetails?.regular_price || '--'}/-
               </span>
             </div>
             <ProductDetailsTabs productDetails={productDetails} />

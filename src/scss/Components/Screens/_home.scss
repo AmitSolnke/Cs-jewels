@@ -16,7 +16,7 @@
 }
 
 .card-img-container img {
-  transition: transform 0.4s ease;
+  transition: transform 0.6s ease;
 }
 
 .card-img-container img:hover {
@@ -41,7 +41,7 @@
   top: 100%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font: bold normal normal 22px/28px "Afacad Flux", serif;
+  font: bold normal normal 22px/28px 'Afacad Flux', serif;
   letter-spacing: 2px;
   z-index: 2;
   opacity: 0;
@@ -50,12 +50,11 @@
 
 .card:hover .card-title {
   top: 85%;
-  opacity:0.7;
+  opacity: 0.7;
   color: black;
   background-color: white;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
 
 .card:hover .card-img-overlay {
   opacity: 0.7; /* Show overlay on hover */
@@ -68,7 +67,7 @@
   width: 325px;
   height: 48px;
   text-align: left;
-  font: normal normal 600 36px/48px "Vidaloka", serif;
+  font: normal normal 600 36px/48px 'Vidaloka', serif;
   letter-spacing: 0.54px;
   color: #672a2f;
   opacity: 1;
@@ -85,7 +84,7 @@
   width: 100% !important;
   height: auto;
   text-align: left;
-  font: normal normal normal 20px/28px "Afacad Flux", serif;
+  font: normal normal normal 20px/28px 'Afacad Flux', serif;
   letter-spacing: 0px;
   color: #666666;
   opacity: 1;
@@ -129,7 +128,7 @@
   .image-slider-description {
     width: 98% !important;
     text-align: left;
-    font: normal normal normal 20px/28px "Afacad Flux", serif;
+    font: normal normal normal 20px/28px 'Afacad Flux', serif;
     letter-spacing: 0px;
     color: #666666;
     opacity: 1;
@@ -143,7 +142,7 @@
   }
   .image-slider-header {
     text-align: left;
-    font: normal normal 600 24px/32px "Vidaloka", serif;
+    font: normal normal 600 24px/32px 'Vidaloka', serif;
     letter-spacing: 0.36px;
     color: #672a2f;
     opacity: 1;
@@ -172,8 +171,8 @@
     margin: 0 !important;
     text-align: -webkit-center;
   }
-  .card-title{
-    font: bold normal normal 18px/22px "Afacad Flux", serif;
+  .card-title {
+    font: bold normal normal 18px/22px 'Afacad Flux', serif;
   }
   // .text-only-grid-explore-description{
   //     margin-left: 0;
@@ -183,7 +182,7 @@
   .image-slider-description {
     width: 98% !important;
     text-align: left;
-    font: normal normal normal 20px/28px "Afacad Flux", serif;
+    font: normal normal normal 20px/28px 'Afacad Flux', serif;
     letter-spacing: 0px;
     color: #666666;
     opacity: 1;

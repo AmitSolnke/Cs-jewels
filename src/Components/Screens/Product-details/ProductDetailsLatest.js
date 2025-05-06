@@ -197,7 +197,7 @@ export const ProductDetailsLatest = () => {
         container
         spacing={3}
         className="p-3 grid-container"
-        style={{ background: '#fff' }}
+        style={{ background: '#fff' ,marginInline:'auto'}}
         width={'100%'}
       >
         <Grid item md={6}  width={'100%'}>

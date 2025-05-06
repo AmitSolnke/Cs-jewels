@@ -319,61 +319,57 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             </Link>
                           </li>
 
-                       <div
-                          onClick={() => setShowDropdown(!showDropdown)}
-                          style={{ position: 'relative' }}
-                        >
-                           {showDropdown && (
-                            <Box
-                              sx={{
-                                position: 'absolute',
-                                width: '99vw',
-                                backgroundColor: '#fff',
-                                borderTop: '0.5px solid #d6d6d6',
-                                zIndex: 9999,
-                                display: 'flex',
-                                flexDirection: 'row',
-                                justifyContent: 'center',
-                                px: 6,
-                                py: 4,
+                          <div onClick={() => setShowDropdown(!showDropdown)}>
+                            {showDropdown && (
+                              <Box
+                                sx={{
+                                  position: 'absolute',
+                                  width: '99.8dvw',
+                                  backgroundColor: '#fff',
+                                  borderTop: '0.5px solid #d6d6d6',
+                                  zIndex: 9999,
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  justifyContent: 'center',
+                                  px: 6,
+                                  py: 4,
                                   transform: showDropdown
-                                  ? 'translateY(35px)'
-                                  : 'translateY(-10px)',
-                              }}
-                            >
-                              <NavigationDropdown
-                                metalData={metalTypesData}
-                                setShowDropdown={setShowDropdown}
-                              />
-                            </Box>
+                                    ? 'translateY(35px)'
+                                    : 'translateY(-10px)'
+                                }}
+                              >
+                                <NavigationDropdown
+                                  metalData={metalTypesData}
+                                  setShowDropdown={setShowDropdown}
+                                />
+                              </Box>
+                            )}
+                            <li>Jewellery</li>
+                          </div>
+                          <li className="w-100">
+                            <Link className="menu-links" to="/aboutus">
+                              About us
+                            </Link>
+                          </li>
+                          {collections?.length > 0 && (
+                            <li className="remove-underline">
+                              <Box>
+                                <BasicMenu
+                                  isLoading={isCollectionLoading}
+                                  menuTitle="Collection"
+                                  children={collections}
+                                />
+                              </Box>
+                            </li>
                           )}
-                          <li>Jewellery</li>
-
-
+                          <li className="w-100">
+                            <Link className="menu-links" to="/enash">
+                              E-Mandate
+                            </Link>
+                          </li>
                         </div>
-                        <li className="w-100">
-                          <Link className="menu-links" to="/aboutus">
-                            About us
-                          </Link>
-                        </li>
-                       {collections?.length > 0 && <li
-                          className="remove-underline"
-                        >
-                            <Box>
-                              <BasicMenu
-                                isLoading={isCollectionLoading}
-                                menuTitle="Collection"
-                                children={collections}
-                              />
-                            </Box>
-                        </li>}
-                        <li className="w-100">
-                          <Link className="menu-links" to="/enash">
-                            E-Mandate
-                          </Link>
-                        </li>
-                      </div>
-                    </ul>)}
+                      </ul>
+                    )}
                   </nav>
                 </div>
               </div>
@@ -397,7 +393,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             onMouseEnter={() => setShowDropdown(true)}
                             onMouseLeave={() => setShowDropdown(false)}
                             style={{
-                              position: 'relative',
                               marginTop: '-0.2rem'
                             }}
                           >
@@ -413,9 +408,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 pointerEvents: showDropdown ? 'auto' : 'none',
                                 visibility: showDropdown ? 'visible' : 'hidden',
                                 position: 'absolute',
-                                left: {sm:'-170%'},
-                                top: {sm:'100%'},
-                                width: '99.10dvw',
+                                left: {  lg:'-4.3%',md: '-4.5%',sm: '-6%' },
+                                top: { sm: '78%' },
+                                width: { lg:'98.5dvw',md:'99dvw',xs: '98dvw' },
                                 backgroundColor: '#fff',
                                 borderTop: '0.5px solid #d6d6d6',
                                 zIndex: 999999999999999,

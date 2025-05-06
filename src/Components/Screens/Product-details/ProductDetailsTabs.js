@@ -82,6 +82,7 @@ const ProductDetailsTabs = ({ productDetails }) => {
               role="button"
               onClick={() => handleActiveTab(tab)}
               sx={{
+                position: 'relative',
                 backgroundColor: active === tab ? '#672A2F' : 'transparent',
                 color: active === tab ? '#fff !important' : '#000 !important',
                 p: '0.67rem !important',
@@ -91,14 +92,41 @@ const ProductDetailsTabs = ({ productDetails }) => {
                 textTransform: 'capitalize',
                 fontSize: '0.8rem',
                 borderRadius: 'none',
-                borderBottom: '1px solid #672A2F',
+                border: '1px solid #672A2F',
+                overflow: 'hidden',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s ease',
+
+                '&:hover': {
+                  backgroundColor: '#672A2F',
+                  color: '#fff !important',
+                  border: '1px solid #000'
+                },
+
+                '& span, svg': {
+                  position: 'relative',
+                  zIndex: 1,
+                  transition: 'transform 0.3s ease, opacity 0.3s ease'
+                },
+
+                '& svg': {
+                  opacity: active === tab ? 1 : 0,
+                  transform:
+                    active === tab ? 'translateX(0)' : 'translateX(-4px)'
+                },
+
+                '&:hover svg': {
+                  opacity: 1,
+                  transform: 'translateX(4px)'
+                },
+
                 '&:last-child': {
                   borderBottom: 'none'
                 }
               }}
             >
               <span>{tab}</span>
-              {active === tab && <ForwardIcon />}
+              <ForwardIcon />
             </Box>
           ))}
         </Stack>

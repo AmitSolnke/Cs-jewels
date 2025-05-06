@@ -15,60 +15,39 @@ export const NavigationDropdown = ({ metalData, setShowDropdown }) => {
   useScrollToTop();
 
   return (
-    <Grid container spacing={4} sx={{ width: "100%" ,height:'90dvh',overflowY:'scroll',paddingY:'1rem'}} className="custom-scrollbar">
+    <Grid container spacing={4} className="custom-scrollbar">
       {metalData.map((data, index) => (
         <Grid
           item
           key={index}
           xs={12}
-          sx={{
+          md={3}
+          sm={6}
+           sx={{
             display: "flex",
             flexDirection: "column",
             gap: 2,
           }}
         >
           <Typography
-            sx={{
-              fontWeight: 900,
-              fontSize: "17px",
-              letterSpacing: "1.95px",
-              textTransform: "uppercase",
-              color: "#333",
-              textAlign: "left",
-              fontFamily: `'Afacad Flux', serif`,
-            }}
+            className="jewellwery-type"
           >
             {data.metal}
           </Typography>
 
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, auto)",
-              columnGap: "2rem",
-              rowGap: "0.6rem",
-              fontSize: "16px",
-              fontFamily: `'Afacad Flux', serif`,
-              letterSpacing: "1.3px",
-              color: "#333",
-            }}
+          <div
+           className='jewelleries'
           >
             {data.metal_items.map((item, key) => (
-              <Box
+              <div
                 key={key}
                 onClick={() => closeModal(data.id, item.id)}
-                sx={{
-                  "&:hover": {
-                    textDecoration: "underline",
-                    cursor: "pointer",
-                  },
-                  textAlign:'left'
-                }}
+                className='jewellery-link'
               >
                 {item.item_name}
-              </Box>
+              </div>
             ))}
-          </Box>
+          </div>
         </Grid>
       ))}
     </Grid>

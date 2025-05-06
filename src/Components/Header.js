@@ -321,7 +321,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
                        <div
                           onClick={() => setShowDropdown(!showDropdown)}
-                          onMouseLeave={() => setShowDropdown(false)}
                           style={{ position: 'relative' }}
                         >
                            {showDropdown && (
@@ -336,7 +335,10 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 flexDirection: 'row',
                                 justifyContent: 'center',
                                 px: 6,
-                                py: 4
+                                py: 4,
+                                  transform: showDropdown
+                                  ? 'translateY(35px)'
+                                  : 'translateY(-10px)',
                               }}
                             >
                               <NavigationDropdown
@@ -407,12 +409,12 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                   : 'translateY(-10px)',
                                 transition: showDropdown
                                   ? 'opacity 0.4s ease-in, transform 0.4s ease-in'
-                                  : 'none', // disables animation when hiding
-                                pointerEvents: showDropdown ? 'auto' : 'none', // allows interaction only when shown
-                                visibility: showDropdown ? 'visible' : 'hidden', // prevents layout bugs
+                                  : 'none',
+                                pointerEvents: showDropdown ? 'auto' : 'none',
+                                visibility: showDropdown ? 'visible' : 'hidden',
                                 position: 'absolute',
-                                left: '-190%',
-                                top: '100%',
+                                left: {sm:'-170%'},
+                                top: {sm:'100%'},
                                 width: '99.10dvw',
                                 backgroundColor: '#fff',
                                 borderTop: '0.5px solid #d6d6d6',

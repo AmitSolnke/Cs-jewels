@@ -399,7 +399,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </li>
                           <div
                             onMouseEnter={() => setShowDropdown(true)}
-                            // onMouseLeave={() => setShowDropdown(false)}
+                            onMouseLeave={() => setShowDropdown(false)}
                             style={{
                               marginTop: '-0.2rem'
                             }}

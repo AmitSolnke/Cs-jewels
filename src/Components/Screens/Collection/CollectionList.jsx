@@ -2,7 +2,7 @@ import { Grid, Skeleton, Box, Container } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ProductList = ({ products, isLoading = false }) => {
+const CollectionList = ({ collections, isLoading = false }) => {
   const navigate = useNavigate();
 
   const skeletonArray = Array.from({ length: 12 });
@@ -11,12 +11,12 @@ const ProductList = ({ products, isLoading = false }) => {
     <Container maxWidth="lg">
       <Grid
         container
-        spacing={1}
-        className="p-3 product-item-wrapper"
+        gap={1}
+        className="p-3"
         sx={{
           padding: '0px !important',
           marginInline: 'auto',
-          width: '100%',
+          width: '100%'
         }}
       >
         {isLoading ? (
@@ -46,8 +46,8 @@ const ProductList = ({ products, isLoading = false }) => {
               </Box>
             </Grid>
           ))
-        ) : products?.length > 0 ? (
-          products.map((product, key) => (
+        ) : collections?.length > 0 ? (
+          collections.map((collection, key) => (
             <Grid
               item
               key={key}
@@ -59,18 +59,20 @@ const ProductList = ({ products, isLoading = false }) => {
                 border: '1px solid #847f7f',
                 borderRadius: '15px',
                 overflow: 'hidden',
-                marginInline: 'auto',
+                marginInline: 'auto'
               }}
               className="product-item-card"
-              onClick={() => navigate('/product-details/' + product.product_id)}
+              onClick={() =>
+                navigate('/collection?collectionId=' + collection.id)
+              }
             >
               <img
-                src={product.image_path}
-                alt={product.name || 'product Image'}
+                src={collection.image_path1}
+                alt={collection.collection_name || 'Collection Image'}
                 className="image"
                 style={{ width: '100%', borderRadius: '8px' }}
               />
-              <div className="text">{product.name}</div>
+              <div className="text">{collection.name}</div>
             </Grid>
           ))
         ) : (
@@ -89,7 +91,7 @@ const ProductList = ({ products, isLoading = false }) => {
               textTransform: 'capitalize'
             }}
           >
-            No products found
+            No Collections found
           </Box>
         )}
       </Grid>
@@ -97,4 +99,4 @@ const ProductList = ({ products, isLoading = false }) => {
   );
 };
 
-export default ProductList;
+export default CollectionList;

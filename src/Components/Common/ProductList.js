@@ -17,6 +17,7 @@ const ProductList = ({ products, isLoading = false }) => {
           padding: '0px !important',
           marginInline: 'auto',
           width: '100%',
+          justifyContent:'space-between'
         }}
       >
         {isLoading ? (
@@ -26,8 +27,13 @@ const ProductList = ({ products, isLoading = false }) => {
               key={index}
               md={3.9}
               sm={5.8}
-              xs={12}
+              xs={5.8}
               className="product-item-card border-0"
+              sx={{
+                borderRadius: '8px',
+                paddingTop: 0,
+                paddingLeft: 0
+              }}
             >
               <Box
                 sx={{
@@ -53,13 +59,15 @@ const ProductList = ({ products, isLoading = false }) => {
               key={key}
               md={3.9}
               sm={5.8}
-              xs={12}
+              xs={5.8}
               style={{
                 cursor: 'pointer',
                 border: '1px solid #847f7f',
                 borderRadius: '15px',
                 overflow: 'hidden',
-                marginInline: 'auto',
+                borderRadius: '8px',
+                paddingTop: 0,
+                paddingLeft: 0
               }}
               className="product-item-card"
               onClick={() => navigate('/product-details/' + product.product_id)}

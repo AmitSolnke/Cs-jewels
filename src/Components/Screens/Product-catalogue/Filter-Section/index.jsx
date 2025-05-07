@@ -41,8 +41,16 @@ export default function FilterSection({
       width={'100%'}
       alignItems={'center'}
       flexWrap={'wrap'}
+      marginY={{ md: '1rem', xs: '1.5rem' }}
     >
-      <Box>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'end',
+          gap: { md: '1rem', xs: '0.7rem' },
+          flexWrap: 'wrap'
+        }}
+      >
         <select
           className="form-select"
           aria-label="Default select example"
@@ -51,7 +59,7 @@ export default function FilterSection({
             cursor: 'pointer',
             boxShadow: 'none',
             outline: 'none',
-            minWidth: '13rem',
+            width: '13rem',
             padding: '0.375rem 0.75rem',
             textTransform: 'capitalize',
             minHeight: '2.6rem'
@@ -86,15 +94,7 @@ export default function FilterSection({
             </option>
           ))}
         </select>
-      </Box>
 
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'end',
-          marginY: '1rem'
-        }}
-      >
         <Badge
           badgeContent={filtersApplied}
           color="secondary"
@@ -130,26 +130,25 @@ export default function FilterSection({
             <TuneIcon /> <span>Filter</span>
           </Box>
         </Badge>
-
-        <Drawer
-          open={open}
-          onClose={toggleDrawer(false)}
-          anchor="right"
-          PaperProps={{
-            sx: {
-              width: { sm: '25rem !important', xs: '90% !important' },
-              marginTop: '0px'
-            }
-          }}
-        >
-          <FilterDrawer
-            filterHandler={filterHandler}
-            metals={metals}
-            toggleDrawer={toggleDrawer}
-            filteredPayload={filteredPayload}
-          />
-        </Drawer>
       </Box>
+      <Drawer
+        open={open}
+        onClose={toggleDrawer(false)}
+        anchor="right"
+        PaperProps={{
+          sx: {
+            width: { sm: '25rem !important', xs: '90% !important' },
+            marginTop: '0px'
+          }
+        }}
+      >
+        <FilterDrawer
+          filterHandler={filterHandler}
+          metals={metals}
+          toggleDrawer={toggleDrawer}
+          filteredPayload={filteredPayload}
+        />
+      </Drawer>
     </Stack>
   );
 }

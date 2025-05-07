@@ -1,21 +1,22 @@
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import { Box, styled } from "@mui/material";
 
 export const DropdownWrapper = styled(Box, {
-  shouldForwardProp: (prop) => prop !== 'showDropdown',
+  shouldForwardProp: (prop) => prop !== 'showDropdown'
 })(({ theme, showDropdown }) => ({
   opacity: showDropdown ? 1 : 0,
   transform: showDropdown ? 'translateY(0)' : 'translateY(-10px)',
-  transition: showDropdown
-    ? 'opacity 0.4s ease-in, transform 0.4s ease-in'
-    : 'none',
+  transition: 'opacity 0.4s ease, transform 0.4s ease',
   pointerEvents: showDropdown ? 'auto' : 'none',
   visibility: showDropdown ? 'visible' : 'hidden',
-  position: 'absolute',
-  top: '78%',
+  position: 'fixed',
+  top: '23%',
+  left: 0,
+  width: '100vw',
+  height: 'calc(100vh - 23%)',
+  overflowY: 'auto',
   backgroundColor: theme.palette.background.paper,
   borderTop: `0.5px solid ${theme.palette.divider}`,
-  zIndex: 999999999999999,
+  zIndex: 9999999999,
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
@@ -23,28 +24,9 @@ export const DropdownWrapper = styled(Box, {
   paddingRight: theme.spacing(6),
   paddingTop: theme.spacing(4),
   paddingBottom: theme.spacing(4),
-  width: '100dvw',
 
-  [theme.breakpoints.up('md')]: {
-    width: '100dvw',
-  },
-  [theme.breakpoints.up('lg')]: {
-    width: '99.9dvw',
-  },
-  [theme.breakpoints.up('sm')]: {
-    top: '78%',
-  },
-  [theme.breakpoints.up('sm')]: {
-    left: '-3.3%',
-  },
-  [theme.breakpoints.up('md')]: {
-    left: '-3%',
-  },
-  [theme.breakpoints.up('lg')]: {
-    left: '-4%',
-    width:'99dvw'
-  },
-  [theme.breakpoints.up(1260)]: {
-    left: '-7%',
-  },
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    padding: theme.spacing(2)
+  }
 }));

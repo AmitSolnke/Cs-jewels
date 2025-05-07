@@ -61,6 +61,18 @@ function Header({ openDrawer, handleOpenDrawer }) {
     setOpen(false);
   };
 
+  useEffect(() => {
+    if (showDropdown) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showDropdown]);
+
   const [metalTypesData, setMetalTypesData] = useState([]);
 
   const getMetalData = async () => {

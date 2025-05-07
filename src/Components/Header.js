@@ -159,7 +159,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
   };
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{
+      paddingTop:'0.5rem'
+    }}>
       <header className="page-header">
         <div className="header-content">
           <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
@@ -404,7 +406,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                       <ul className="w-100">
                         <div
                           className="menu-link-items "
-                          style={{ marginTop: '1rem' }}
+                          style={{ marginTop: '1.2rem' }}
                         >
                           <li>
                             <Link to="/">Home</Link>

@@ -9,14 +9,26 @@ import { sortbyList } from '../../../../utilities/filterContants';
 export default function FilterSection({
   filterHandler,
   metals,
-  filteredPayload
+  filteredPayload,
+  metalId = null
 }) {
   const [open, setOpen] = React.useState(false);
   const [sortby, setSortBy] = React.useState(filteredPayload?.sort_by || '');
 
   const handleSortBy = (e) => {
     setSortBy(e.target.value);
-    filterHandler({ ...filteredPayload, sort_by: e.target.value, page: 1 });
+    filterHandler({
+      ...filteredPayload,
+      sort_by: e.target.value,
+      page: 1,
+      ...(metalId
+        ? {
+            metal: Array.from(
+              new Set([...(filteredPayload?.metal || []), metalId])
+            )
+          }
+        : {})
+    });
   };
 
   React.useEffect(() => {

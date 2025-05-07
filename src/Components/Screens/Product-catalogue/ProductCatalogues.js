@@ -444,6 +444,7 @@ export const ProductCatalogues = () => {
           filterHandler={filterHandler}
           metals={metals}
           filteredPayload={filteredPayload}
+          metalId={searchParams.get('metal')}
         />
       </Container>
       <div className="d-none d-md-block">

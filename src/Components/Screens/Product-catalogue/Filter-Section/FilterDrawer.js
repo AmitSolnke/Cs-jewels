@@ -21,7 +21,7 @@ import { isSameArray } from '../../../../utilities/CustomFunction';
 export default function FilterDrawer({
   filterHandler,
   metals,
-  toggleDrawer,
+  setOpen,
   filteredPayload
 }) {
   const [collections, setCollections] = React.useState([]);
@@ -32,6 +32,7 @@ export default function FilterDrawer({
   const [purity, setPurity] = React.useState(
     filteredPayload?.purity?.length === 0 ? [] : filteredPayload?.purity || []
   );
+  const [isDisabled, setIsDisabled] = React.useState(false);
 
   const [minmaxVal, setMinMaxVal] = React.useState(
     filteredPayload?.min_price || filteredPayload?.max_price
@@ -79,6 +80,7 @@ export default function FilterDrawer({
   };
 
   const handleSubmit = () => {
+    setIsDisabled(true);
     filterHandler({
       min_price: minmaxVal.min,
       max_price: minmaxVal.max,
@@ -87,7 +89,7 @@ export default function FilterDrawer({
       purity: purity,
       selectedCollections: selectedCollections
     });
-    toggleDrawer(false);
+    setOpen(false);
   };
 
   const getCollectionData = async () => {
@@ -106,7 +108,6 @@ export default function FilterDrawer({
     setPurity([]);
     setSelectedCollections([]);
     filterHandler();
-    toggleDrawer(false);
   };
 
   React.useEffect(() => {
@@ -117,19 +118,26 @@ export default function FilterDrawer({
     setSelectedCollections(filteredPayload?.selectedCollections);
   }, [filteredPayload?.selectedCollections?.length]);
 
-  const isFilterUnchanged = () => {
-    return (
+  React.useEffect(() => {
+    setIsDisabled(
       gender === (filteredPayload?.gender || '') &&
-      isSameArray(material, filteredPayload?.metal || []) &&
-      isSameArray(purity, filteredPayload?.purity || []) &&
-      isSameArray(
-        selectedCollections,
-        filteredPayload?.selectedCollections || []
-      ) &&
-      minmaxVal.min === (filteredPayload?.min_price || 0) &&
-      minmaxVal.max === (filteredPayload?.max_price || 0)
+        isSameArray(material, filteredPayload?.metal || []) &&
+        isSameArray(purity, filteredPayload?.purity || []) &&
+        isSameArray(
+          selectedCollections || [],
+          filteredPayload?.selectedCollections || []
+        ) &&
+        minmaxVal.min === (filteredPayload?.min_price || 0) &&
+        minmaxVal.max === (filteredPayload?.max_price || 0)
     );
-  };
+  }, [
+    gender,
+    material?.length,
+    purity?.length,
+    selectedCollections?.length,
+    minmaxVal.min,
+    minmaxVal.max
+  ]);
 
   return (
     <Stack
@@ -142,7 +150,7 @@ export default function FilterDrawer({
       role="presentation"
     >
       <CloseIcon
-        onClick={toggleDrawer(false)}
+        onClick={() => setOpen(false)}
         sx={{
           marginLeft: 'auto',
           cursor: 'pointer'
@@ -155,7 +163,36 @@ export default function FilterDrawer({
           onClick={clearFilters}
           role="button"
           sx={{
-            color: '#6D3439'
+            color:
+              !gender &&
+              !material?.length &&
+              !purity?.length &&
+              !selectedCollections?.length &&
+              minmaxVal.min === 0 &&
+              minmaxVal.max === 0
+                ? '#999999' // Disabled color
+                : '#6D3439',
+            cursor:
+              !gender &&
+              !material?.length &&
+              !purity?.length &&
+              !selectedCollections?.length &&
+              minmaxVal.min === 0 &&
+              minmaxVal.max === 0
+                ? 'no-drop'
+                : 'pointer',
+            pointerEvents:
+              !gender &&
+              !material?.length &&
+              !purity?.length &&
+              !selectedCollections?.length &&
+              minmaxVal.min === 0 &&
+              minmaxVal.max === 0
+                ? 'none'
+                : 'all',
+            ':hover': {
+              textDecoration: 'underline'
+            }
           }}
         >
           Clear All
@@ -218,7 +255,6 @@ export default function FilterDrawer({
           >
             {prices?.map((item, ind) => (
               <Box
-                className="px-2 py-1"
                 onClick={() => handleMinMaxPriceChange(item.value)}
                 key={ind}
                 role="button"
@@ -236,7 +272,9 @@ export default function FilterDrawer({
                   '&:hover': {
                     backgroundColor: '#6D3439',
                     color: '#fff'
-                  }
+                  },
+                  borderRadius: '8px',
+                  padding: '0.4rem 0.9rem'
                 }}
               >
                 {item?.label || '--'}
@@ -248,46 +286,32 @@ export default function FilterDrawer({
               width={'100%'}
               gap={'1rem'}
             >
-              <Stack border={'1px solid #999999'} width={'100%'} padding={1}>
-                <span
-                  style={{
-                    color: '#666666'
-                  }}
+              {[
+                { label: 'Min Price', key: 'min', value: minmaxVal?.min },
+                { label: 'Max Price', key: 'max', value: minmaxVal?.max }
+              ]?.map(({ label, key, value }) => (
+                <Stack
+                  key={key}
+                  border={'1px solid #999999'}
+                  width={'100%'}
+                  padding={1}
                 >
-                  Min Price
-                </span>
-                <Stack direction={'row'} width={'100%'} gap={'0.3rem'}>
-                  <span>₹</span>
-                  <span
-                    style={{
-                      color: minmaxVal.min === '0' ? '#999999' : '#000000'
-                    }}
-                  >
-                    {minmaxVal?.min ?? '--'}
-                  </span>
+                  <span style={{ color: '#666666' }}>{label}</span>
+                  <Stack direction={'row'} width={'100%'} gap={'0.3rem'}>
+                    <span>₹</span>
+                    <span
+                      style={{
+                        color:
+                          value === '0' || value === 0 ? '#999999' : '#000000'
+                      }}
+                    >
+                      {value ?? '--'}
+                    </span>
+                  </Stack>
                 </Stack>
-              </Stack>
-              <Stack border={'1px solid #999999'} width={'100%'} padding={1}>
-                <span
-                  style={{
-                    color: '#666666'
-                  }}
-                >
-                  Max Price
-                </span>
-                <Stack direction={'row'} width={'100%'} gap={'0.3rem'}>
-                  <span>₹</span>
-                  <span
-                    style={{
-                      color: minmaxVal.max === '0' ? '#999999' : '#000000'
-                    }}
-                  >
-                    {minmaxVal?.max ?? '--'}
-                  </span>
-                </Stack>
-              </Stack>
+              ))}
             </Stack>
-          </Stack>{' '}
+          </Stack>
         </Stack>
         <Stack gap={1} border={'1px solid #662A2E'} padding={1}>
           <span>Material</span>
@@ -355,7 +379,7 @@ export default function FilterDrawer({
           }
         }}
         onClick={handleSubmit}
-        disabled={isFilterUnchanged()}
+        disabled={isDisabled}
       >
         Apply Filter
       </Button>

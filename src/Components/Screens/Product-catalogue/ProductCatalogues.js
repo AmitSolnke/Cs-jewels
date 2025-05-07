@@ -36,7 +36,7 @@ export const ProductCatalogues = () => {
   const [categories, setCategories] = useState([]);
   const [metals, setMetals] = useState([]);
   const [items, setItems] = useState([]);
-
+  const [page, setPage] = useState(1);
   const [chipData, setChipData] = useState([]);
 
   const sizes = ['5', '10', '15', '20', '25'];
@@ -66,6 +66,7 @@ export const ProductCatalogues = () => {
       !filteredPayload?.selectedCollections &&
       !filteredPayload?.sort_by
     ) {
+      setPage(pageNumber);
       setFilters((prevFilters) => {
         const updatedFilters = {
           ...prevFilters,
@@ -309,6 +310,7 @@ export const ProductCatalogues = () => {
       page: Number(page),
       limit: 12
     });
+    setPage(Number(page))
     try {
       if (metalId) {
         let result = await getMetalTypeById(metalId);
@@ -401,6 +403,9 @@ export const ProductCatalogues = () => {
           requestParams?.append(`collection_master_id[${ind}]`, item);
         });
       }
+      if(payload?.page){
+        setPage(payload?.page)
+      }
 
       const { data } = await getProducts(requestParams);
 
@@ -451,7 +456,7 @@ export const ProductCatalogues = () => {
       </Box>
       {products?.length > 0 && !loading ? (
         <Paginator
-          currentPage={filters.page}
+          currentPage={page}
           totalPage={totalPages}
           handleChangePage={handleChangePage}
         />

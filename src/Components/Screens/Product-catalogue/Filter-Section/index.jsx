@@ -18,9 +18,6 @@ export default function FilterSection({
     setSortBy(e.target.value);
     filterHandler({ ...filteredPayload, sort_by: e.target.value, page: 1 });
   };
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
-  };
 
   React.useEffect(() => {
     setSortBy(filteredPayload?.sort_by || '');
@@ -109,7 +106,7 @@ export default function FilterSection({
           }}
         >
           <Box
-            onClick={toggleDrawer(true)}
+            onClick={() => setOpen(true)}
             sx={{
               marginLeft: 'auto',
               display: 'flex',
@@ -123,7 +120,12 @@ export default function FilterSection({
               cursor: 'pointer',
               minWidth: '8rem',
               justifyContent: 'center',
-              fontSize: { md: '1.1rem', xs: '1rem' }
+              fontSize: { md: '1.1rem', xs: '1rem' },
+              transition: 'all 0.3s ease-in-out',
+              '&:hover': {
+                background: '#531f23',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.2)'
+              }
             }}
             role="button"
           >
@@ -133,7 +135,7 @@ export default function FilterSection({
       </Box>
       <Drawer
         open={open}
-        onClose={toggleDrawer(false)}
+        onClose={() => setOpen(false)}
         anchor="right"
         PaperProps={{
           sx: {
@@ -145,7 +147,7 @@ export default function FilterSection({
         <FilterDrawer
           filterHandler={filterHandler}
           metals={metals}
-          toggleDrawer={toggleDrawer}
+          setOpen={setOpen}
           filteredPayload={filteredPayload}
         />
       </Drawer>

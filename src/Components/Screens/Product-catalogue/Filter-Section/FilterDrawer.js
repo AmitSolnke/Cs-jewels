@@ -2,7 +2,12 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 
 import Button from '@mui/material/Button';
-import { Checkbox, FormControlLabel, Stack } from '@mui/material';
+import {
+  Checkbox,
+  CircularProgress,
+  FormControlLabel,
+  Stack
+} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { getCollectionDetails } from '../../../../services/FrontApp/index.service';
 import MultipleSelectChip from '../../../Common/MultiSelect';
@@ -11,6 +16,7 @@ import {
   prices,
   purityList
 } from '../../../../utilities/filterContants';
+import { isSameArray } from '../../../../utilities/CustomFunction';
 
 export default function FilterDrawer({
   filterHandler,
@@ -29,7 +35,10 @@ export default function FilterDrawer({
 
   const [minmaxVal, setMinMaxVal] = React.useState(
     filteredPayload?.min_price || filteredPayload?.max_price
-      ? { min: filteredPayload?.min_price || 0, max: filteredPayload?.max_price }
+      ? {
+          min: filteredPayload?.min_price || 0,
+          max: filteredPayload?.max_price
+        }
       : { min: 0, max: 0 }
   );
   const [selectedCollections, setSelectedCollections] = React.useState(
@@ -76,7 +85,7 @@ export default function FilterDrawer({
       gender,
       metal: material,
       purity: purity,
-      selectedCollections: selectedCollections,
+      selectedCollections: selectedCollections
     });
     toggleDrawer(false);
   };
@@ -107,6 +116,21 @@ export default function FilterDrawer({
   React.useEffect(() => {
     setSelectedCollections(filteredPayload?.selectedCollections);
   }, [filteredPayload?.selectedCollections?.length]);
+
+  const isFilterUnchanged = () => {
+    return (
+      gender === (filteredPayload?.gender || '') &&
+      isSameArray(material, filteredPayload?.metal || []) &&
+      isSameArray(purity, filteredPayload?.purity || []) &&
+      isSameArray(
+        selectedCollections,
+        filteredPayload?.selectedCollections || []
+      ) &&
+      minmaxVal.min === (filteredPayload?.min_price || 0) &&
+      minmaxVal.max === (filteredPayload?.max_price || 0)
+    );
+  };
+
   return (
     <Stack
       sx={{
@@ -268,21 +292,30 @@ export default function FilterDrawer({
         <Stack gap={1} border={'1px solid #662A2E'} padding={1}>
           <span>Material</span>
           <Stack flexWrap={'wrap'} display={'flex'} flexDirection={'row'}>
-            {materialLists?.map((item, ind) => (
-              <FormControlLabel
-                key={ind}
-                className="text-capitalize"
-                control={
-                  <Checkbox
-                    value={item?.id?.toString()}
-                    onChange={handleMaterialChange}
-                    checked={material.includes(item?.id?.toString())}
-                    inputProps={{ 'aria-label': 'controlled' }}
-                  />
-                }
-                label={item?.metal_type}
-              />
-            ))}
+            {materialLists?.length > 0 ? (
+              materialLists?.map((item, ind) => (
+                <FormControlLabel
+                  key={ind}
+                  className="text-capitalize"
+                  control={
+                    <Checkbox
+                      value={item?.id?.toString()}
+                      onChange={handleMaterialChange}
+                      checked={material.includes(item?.id?.toString())}
+                      inputProps={{ 'aria-label': 'controlled' }}
+                    />
+                  }
+                  label={item?.metal_type}
+                />
+              ))
+            ) : (
+              <span
+                style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
+              >
+                <CircularProgress size={'20px'} />
+                Loading!...
+              </span>
+            )}
           </Stack>
         </Stack>
         <Stack gap={1} border={'1px solid #662A2E'} padding={1}>
@@ -322,14 +355,7 @@ export default function FilterDrawer({
           }
         }}
         onClick={handleSubmit}
-        disabled={
-          !gender &&
-          !material?.length &&
-          !purity?.length &&
-          !selectedCollections?.length &&
-          minmaxVal.min === 0 &&
-          minmaxVal.max === 0
-        }
+        disabled={isFilterUnchanged()}
       >
         Apply Filter
       </Button>

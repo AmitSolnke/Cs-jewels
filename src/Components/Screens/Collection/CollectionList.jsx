@@ -4,19 +4,19 @@ import { useNavigate } from 'react-router-dom';
 
 const CollectionList = ({ collections, isLoading = false }) => {
   const navigate = useNavigate();
-
   const skeletonArray = Array.from({ length: 12 });
 
   return (
     <Container maxWidth="lg">
       <Grid
         container
-        gap={1}
-        className="p-3"
+        spacing={1}
+        className="p-3 product-item-wrapper"
         sx={{
           padding: '0px !important',
           marginInline: 'auto',
-          width: '100%'
+          width: '100%',
+          justifyContent: 'space-between'
         }}
       >
         {isLoading ? (
@@ -26,8 +26,13 @@ const CollectionList = ({ collections, isLoading = false }) => {
               key={index}
               md={3.9}
               sm={5.8}
-              xs={12}
+              xs={5.8}
               className="product-item-card border-0"
+              sx={{
+                borderRadius: '8px',
+                paddingTop: 0,
+                paddingLeft: 0
+              }}
             >
               <Box
                 sx={{
@@ -53,25 +58,26 @@ const CollectionList = ({ collections, isLoading = false }) => {
               key={key}
               md={3.9}
               sm={5.8}
-              xs={12}
-              style={{
-                cursor: 'pointer',
-                border: '1px solid #847f7f',
-                borderRadius: '15px',
-                overflow: 'hidden',
-                marginInline: 'auto'
-              }}
-              className="product-item-card"
+              xs={5.8}
               onClick={() =>
                 navigate('/collection?collectionId=' + collection.id)
               }
+              className="product-item-card"
+              sx={{
+                cursor: 'pointer',
+                border: '1px solid #847f7f',
+                borderRadius: '8px',
+                overflow: 'hidden',
+                paddingTop: '0 !important',
+                paddingLeft: '0 !important'
+              }}
             >
               <img
                 src={collection.image_path1}
                 alt={collection.collection_name || 'Collection Image'}
-                className="image"
-                style={{ width: '100%', borderRadius: '8px' }}
+                style={{ width: '100%', height: '100%', borderRadius: '8px' }}
               />
+
               <div className="text">{collection.name}</div>
             </Grid>
           ))

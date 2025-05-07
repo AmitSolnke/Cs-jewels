@@ -61,7 +61,7 @@ function Footer() {
         </a>
       </div> */}
       <ThemeProvider theme={theme}>
-        <Container maxWidth={'lg'}>
+        <Container maxWidth={'lg'} sx={{marginTop:'2rem'}}>
         <footer>
           <div className="footer-container">
             <div className="logo">

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import TuneIcon from '@mui/icons-material/Tune';
 import FilterDrawer from './FilterDrawer';
-import { Stack } from '@mui/material';
+import { Badge, Stack } from '@mui/material';
 import { sortbyList } from '../../../../utilities/filterContants';
 
 export default function FilterSection({
@@ -42,28 +42,19 @@ export default function FilterSection({
       alignItems={'center'}
       flexWrap={'wrap'}
     >
-      {filtersApplied > 0 && (
-        <Box
-          sx={{ textDecoration: 'underline' }}
-          role="button"
-          onClick={toggleDrawer(true)}
-        >
-          Filters({filtersApplied})
-        </Box>
-      )}
-
       <Box>
         <select
           className="form-select"
           aria-label="Default select example"
           style={{
             border: '1px solid #662A2E',
-            borderRadius: '0',
             cursor: 'pointer',
             boxShadow: 'none',
             outline: 'none',
-            minWidth: '15rem',
-            textTransform: 'capitalize'
+            minWidth: '13rem',
+            padding: '0.375rem 0.75rem',
+            textTransform: 'capitalize',
+            minHeight: '2.6rem'
           }}
           onChange={handleSortBy}
           value={sortby}
@@ -96,31 +87,52 @@ export default function FilterSection({
           ))}
         </select>
       </Box>
+
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'end',
           paddingRight: '1rem',
-          marginY: '1rem'
+          marginY: '1rem',
+          marginRight: '1.2rem'
         }}
       >
-        <Box
-          onClick={toggleDrawer(true)}
+        <Badge
+          badgeContent={filtersApplied}
+          color="secondary"
+          invisible={filtersApplied === 0}
           sx={{
-            marginLeft: 'auto',
-            display: 'flex',
-            gap: '0.5rem',
-            alignItems: 'center',
-            background: '#6D3439',
-            paddingX: '1rem',
-            paddingY: '0.5rem',
-            borderRadius: '5px',
-            color: '#fff'
+            '& .MuiBadge-badge': {
+              fontSize: '0.9rem',
+              height: '22px',
+              minWidth: '22px',
+              padding: '0 6px'
+            }
           }}
-          role="button"
         >
-          <TuneIcon /> <span>Filter</span>
-        </Box>
+          <Box
+            onClick={toggleDrawer(true)}
+            sx={{
+              marginLeft: 'auto',
+              display: 'flex',
+              gap: '0.5rem',
+              alignItems: 'center',
+              background: '#6D3439',
+              paddingX: '1rem',
+              paddingY: '0.5rem',
+              borderRadius: '5px',
+              color: '#fff',
+              cursor: 'pointer',
+              minWidth: '8rem',
+              justifyContent: 'center',
+              fontSize: { md: '1.1rem', xs: '1rem' }
+            }}
+            role="button"
+          >
+            <TuneIcon /> <span>Filter</span>
+          </Box>
+        </Badge>
+
         <Drawer
           open={open}
           onClose={toggleDrawer(false)}

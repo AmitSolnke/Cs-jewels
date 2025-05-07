@@ -392,7 +392,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                       <ul className="w-100">
                         <div
                           className="menu-link-items "
-                          style={{ marginTop: '0.7rem' }}
+                          style={{ marginTop: '1rem' }}
                         >
                           <li>
                             <Link to="/">Home</Link>

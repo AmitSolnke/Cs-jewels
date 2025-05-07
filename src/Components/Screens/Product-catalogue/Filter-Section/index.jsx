@@ -94,7 +94,7 @@ export default function FilterSection({
           justifyContent: 'end',
           paddingRight: '1rem',
           marginY: '1rem',
-          marginRight: '1.2rem'
+          marginRight: '0.6rem'
         }}
       >
         <Badge

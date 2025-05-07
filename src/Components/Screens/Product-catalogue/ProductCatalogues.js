@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Skeleton, Stack, useMediaQuery } from '@mui/material';
-import Paper from '@mui/material/Paper';
-import { BottomNavigation, BottomNavigationAction } from '@mui/material';
-import { BullionsFilter } from '../Bullions/BullionsFilter';
-import { FilterMenu } from '../Bullions/FilterMenu';
-import { SortMenu } from '../Bullions/SortMenu';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import {
   getMetals,
@@ -16,7 +11,7 @@ import {
 } from '../../../services/FrontApp/index.service';
 import { Paginator } from '../../Common/Paginator';
 import ProductList from '../../Common/ProductList';
-import FilterComponent from '../../Common/FilterComponent';
+import FilterSection from './Filter-Section';
 
 export const ProductCatalogues = () => {
   const navigate = useNavigate();
@@ -59,21 +54,32 @@ export const ProductCatalogues = () => {
   const [filteredPayload, setFilteredPayload] = useState(null);
   const [loading, setLoading] = useState(false);
   const isDesktop = useMediaQuery('(min-width: 1200px)');
-  const [sortby, setSortBy] = useState('');
   const handleChangePage = (event, newPage) => {
     const pageNumber = Number(newPage);
 
-    setFilters((prevFilters) => {
-      const updatedFilters = {
-        ...prevFilters,
-        page: pageNumber
-      };
-      navigate(
-        `/product-catalogues?page=${pageNumber}&type[0]=${updatedFilters['type[0]']}&metal=${updatedFilters['metal_type[0]']}&item_type=${updatedFilters['item_master_id']}&gender=${updatedFilters['gender']}&sort_by=${updatedFilters['sort_by']}`
-      );
+    if (
+      !filteredPayload?.metal &&
+      !filteredPayload?.gender &&
+      !filteredPayload?.min_price &&
+      !filteredPayload?.max_price &&
+      !filteredPayload?.purity &&
+      !filteredPayload?.collection &&
+      !filteredPayload?.sort_by
+    ) {
+      setFilters((prevFilters) => {
+        const updatedFilters = {
+          ...prevFilters,
+          page: pageNumber
+        };
+        navigate(
+          `/product-catalogues?page=${pageNumber}&type[0]=${updatedFilters['type[0]']}&metal=${updatedFilters['metal_type[0]']}&item_type=${updatedFilters['item_master_id']}&gender=${updatedFilters['gender']}&sort_by=${updatedFilters['sort_by']}`
+        );
 
-      return updatedFilters;
-    });
+        return updatedFilters;
+      });
+    } else {
+      filterHandler({ ...filteredPayload, page: pageNumber });
+    }
   };
 
   const getFiltersData = async () => {
@@ -93,9 +99,7 @@ export const ProductCatalogues = () => {
     getFiltersData();
   }, []);
   const getData = async (payload) => {
-    console.log(payload);
     if (loading) return;
-    console.log('calling api');
     setLoading(true);
     try {
       const requestParams = new FormData();
@@ -370,22 +374,30 @@ export const ProductCatalogues = () => {
   };
 
   const filterHandler = async (payload) => {
-    if (!payload) {
+    if (
+      !payload?.metal &&
+      !payload?.gender &&
+      !payload?.min_price &&
+      !payload?.max_price &&
+      !payload?.purity &&
+      !payload?.selectedCollections &&
+      !payload?.sort_by
+    ) {
       getData();
-      setSortBy('');
     }
     if (loading) return;
     setLoading(true);
     try {
       const requestParams = new FormData();
       const metalId = payload?.metal || '';
-      const gender = payload?.item_type || '';
+      const gender = payload?.gender || '';
       const sort_by = payload?.sort_by || '';
       const min_price = payload?.min_price ?? '';
       const max_price = payload?.max_price || '';
       const purity = payload?.purity || '';
-      const collection = payload?.collection || '';
-      if (metal) {
+      const selectedCollections = payload?.selectedCollections || '';
+      const page = Number(payload?.page) || 1;
+      if (metalId) {
         metalId?.forEach((item, ind) => {
           requestParams?.append(`metal_type[${ind}]`, item);
         });
@@ -399,6 +411,9 @@ export const ProductCatalogues = () => {
       if (min_price || min_price === 0) {
         requestParams.append('min_price', min_price);
       }
+      if (page) {
+        requestParams.append('page', page);
+      }
       if (max_price) {
         requestParams.append('max_price', max_price);
       }
@@ -407,8 +422,8 @@ export const ProductCatalogues = () => {
           requestParams?.append(`purity[${ind}]`, item);
         });
       }
-      if (collection) {
-        collection?.forEach((item, ind) => {
+      if (selectedCollections) {
+        selectedCollections?.forEach((item, ind) => {
           requestParams?.append(`collection[${ind}]`, item);
         });
       }
@@ -436,18 +451,6 @@ export const ProductCatalogues = () => {
     }
   };
 
-  const sortbyList = [
-    'popularity',
-    'new arrival',
-    'price low to high',
-    'price high to low'
-  ];
-
-  const handleSortBy = (e) => {
-    setSortBy(e.target.value);
-    filterHandler({ ...filteredPayload, sort_by: e.target.value });
-  };
-
   return (
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
@@ -457,60 +460,11 @@ export const ProductCatalogues = () => {
           <img src={banner} alt="Banner image" />
         )}
       </div>
-      <Stack
-        direction="row"
-        gap={'1rem'}
-        justifyContent={'end'}
-        width={'100%'}
-        alignItems={'center'}
-        flexWrap={'wrap'}
-      >
-        <Box>
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            style={{
-              border: '1px solid #662A2E',
-              borderRadius: '0',
-              cursor: 'pointer',
-              boxShadow: 'none',
-              outline: 'none',
-              minWidth: '15rem',
-              textTransform: 'capitalize'
-            }}
-            onChange={handleSortBy}
-            value={sortby}
-          >
-            <option
-              value=""
-              disabled
-              selected
-              style={{
-                border: '1px solid #662A2E',
-                borderRadius: '0',
-                cursor: 'pointer !important'
-              }}
-            >
-              --Sort By--
-            </option>
-            {sortbyList?.map((item, ind) => (
-              <option
-                value={item}
-                key={ind}
-                style={{
-                  border: '1px solid #662A2E',
-                  borderRadius: '0',
-                  cursor: 'pointer !important',
-                  textTransform: 'capitalize'
-                }}
-              >
-                {item}
-              </option>
-            ))}
-          </select>
-        </Box>
-        <FilterComponent filterHandler={filterHandler} metals={metals} />{' '}
-      </Stack>
+      <FilterSection
+        filterHandler={filterHandler}
+        metals={metals}
+        filteredPayload={filteredPayload}
+      />
       <div className="d-none d-md-block">
         <div className="filter-dropdowns d-flex container"></div>
         <hr />

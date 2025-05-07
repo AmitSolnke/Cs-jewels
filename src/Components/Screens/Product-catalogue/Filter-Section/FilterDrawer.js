@@ -1,83 +1,42 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
+
 import Button from '@mui/material/Button';
-import TuneIcon from '@mui/icons-material/Tune';
-import { Checkbox, FormControlLabel, Stack, TextField } from '@mui/material';
+import { Checkbox, FormControlLabel, Stack } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import MultipleSelectChip from './MultiSelect';
-import { getCollectionDetails } from '../../services/FrontApp/index.service';
+import { getCollectionDetails } from '../../../../services/FrontApp/index.service';
+import MultipleSelectChip from '../../../Common/MultiSelect';
+import {
+  genderList,
+  prices,
+  purityList
+} from '../../../../utilities/filterContants';
 
-const initialState = {
-  gender: '',
-  material: [],
-  purity: [],
-  collections: [],
-  minmaxVal: { min: 0, max: 0 }
-};
-export default function FilterComponent({ filterHandler, metals }) {
-  const [open, setOpen] = React.useState(false);
-
-  const [gender, setGender] = React.useState('');
-  const [material, setMaterial] = React.useState([]);
-  const [purity, setPurity] = React.useState([]);
+export default function FilterDrawer({
+  filterHandler,
+  metals,
+  toggleDrawer,
+  filteredPayload
+}) {
   const [collections, setCollections] = React.useState([]);
+  const [gender, setGender] = React.useState(filteredPayload?.gender || '');
+  const [material, setMaterial] = React.useState(
+    filteredPayload?.metal?.length > 0 ? filteredPayload?.metal : []
+  );
+  const [purity, setPurity] = React.useState(
+    filteredPayload?.purity?.length === 0 ? [] : filteredPayload?.purity || []
+  );
 
-  const [minmaxVal, setMinMaxVal] = React.useState({ min: 0, max: 0 });
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
-  };
-  const genderList = [
-    {
-      value: '0',
-      label: 'Male'
-    },
-    {
-      value: '1',
-      label: 'Female'
-    },
-    {
-      value: 'unisex',
-      label: 'Unisex'
-    }
-  ];
-  const prices = [
-    {
-      value: { min: 0, max: 25000 },
-      label: '< ₹25,000'
-    },
-    {
-      value: { min: 25000, max: 50000 },
-      label: '₹25,000 - ₹50,000'
-    },
-    {
-      value: { min: 50000, max: 100000 },
-      label: '₹50,000 - ₹1,00,000'
-    },
-    {
-      value: { min: 100000 },
-      label: '₹1,00,000+'
-    }
-  ];
-  const purityList = [
-    {
-      label: '14K',
-      value: '14'
-    },
-    {
-      label: '18K',
-      value: '18'
-    },
-    {
-      label: '22K',
-      value: '22'
-    },
-    {
-      label: '92.5K',
-      value: '92.5'
-    }
-  ];
-
+  const [minmaxVal, setMinMaxVal] = React.useState(
+    filteredPayload?.min_price || filteredPayload?.max_price
+      ? { min: filteredPayload?.min_price || 0, max: filteredPayload?.max_price }
+      : { min: 0, max: 0 }
+  );
+  const [selectedCollections, setSelectedCollections] = React.useState(
+    filteredPayload?.selectedCollections?.length > 0
+      ? filteredPayload?.selectedCollections
+      : []
+  );
   const materialLists = metals?.filter(
     (item) =>
       item?.metal_type?.toLowerCase() === 'gold' ||
@@ -117,9 +76,9 @@ export default function FilterComponent({ filterHandler, metals }) {
       gender,
       metal: material,
       purity: purity,
-      collection: selectedCollections
+      selectedCollections: selectedCollections,
     });
-    setOpen(false);
+    toggleDrawer(false);
   };
 
   const getCollectionData = async () => {
@@ -138,15 +97,17 @@ export default function FilterComponent({ filterHandler, metals }) {
     setPurity([]);
     setSelectedCollections([]);
     filterHandler();
-    setOpen(false);
+    toggleDrawer(false);
   };
 
-  const [selectedCollections, setSelectedCollections] = React.useState([]);
   React.useEffect(() => {
     getCollectionData();
   }, []);
 
-  const DrawerList = (
+  React.useEffect(() => {
+    setSelectedCollections(filteredPayload?.selectedCollections);
+  }, [filteredPayload?.selectedCollections?.length]);
+  return (
     <Stack
       sx={{
         width: '100% !important',
@@ -363,9 +324,9 @@ export default function FilterComponent({ filterHandler, metals }) {
         onClick={handleSubmit}
         disabled={
           !gender &&
-          !material.length &&
-          !purity.length &&
-          !selectedCollections.length &&
+          !material?.length &&
+          !purity?.length &&
+          !selectedCollections?.length &&
           minmaxVal.min === 0 &&
           minmaxVal.max === 0
         }
@@ -373,47 +334,5 @@ export default function FilterComponent({ filterHandler, metals }) {
         Apply Filter
       </Button>
     </Stack>
-  );
-
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'end',
-        paddingRight: '1rem',
-        marginY: '1rem'
-      }}
-    >
-      <Box
-        onClick={toggleDrawer(true)}
-        sx={{
-          marginLeft: 'auto',
-          display: 'flex',
-          gap: '0.5rem',
-          alignItems: 'center',
-          background: '#6D3439',
-          paddingX: '1rem',
-          paddingY: '0.5rem',
-          borderRadius: '5px',
-          color: '#fff'
-        }}
-        role="button"
-      >
-        <TuneIcon /> <span>Filter</span>
-      </Box>
-      <Drawer
-        open={open}
-        onClose={toggleDrawer(false)}
-        anchor="right"
-        PaperProps={{
-          sx: {
-            width: { sm: '25rem !important', xs: '90% !important' },
-            marginTop: '0px'
-          }
-        }}
-      >
-        {DrawerList}
-      </Drawer>
-    </Box>
   );
 }

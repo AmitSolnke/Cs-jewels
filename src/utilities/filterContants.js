@@ -8,7 +8,7 @@ export const genderList = [
     label: 'Female'
   },
   {
-    value: 'unisex',
+    value: '2',
     label: 'Unisex'
   }
 ];
@@ -50,10 +50,21 @@ export const purityList = [
     value: '92.5'
   }
 ];
-
  export const sortbyList = [
-    'popularity',
-    'new arrival',
-    'price low to high',
-    'price high to low'
+   {
+    label:'popularity',
+    value:'is_popular'
+   },
+   {
+    label:'new arrival',
+    value:'newly_added'
+   },
+   {
+    label:'price low to high',
+    value:'low_to_high'
+   },
+   {
+    label:'price high to low',
+    value:'high_to_low'
+   }
   ];

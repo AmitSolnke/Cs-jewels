@@ -26,6 +26,13 @@ export default function FilterSection({
     setSortBy(filteredPayload?.sort_by || '');
   }, [filteredPayload?.sort_by]);
 
+  const filtersApplied =
+    Number(!!filteredPayload?.metal?.length > 0) +
+    Number(!!filteredPayload?.gender?.trim()) +
+    Number(!!filteredPayload?.min_price || !!filteredPayload?.max_price) +
+    Number(!!filteredPayload?.purity?.length > 0) +
+    Number(!!filteredPayload?.selectedCollections?.length > 0);
+
   return (
     <Stack
       direction="row"
@@ -35,6 +42,16 @@ export default function FilterSection({
       alignItems={'center'}
       flexWrap={'wrap'}
     >
+      {filtersApplied > 0 && (
+        <Box
+          sx={{ textDecoration: 'underline' }}
+          role="button"
+          onClick={toggleDrawer(true)}
+        >
+          Filters({filtersApplied})
+        </Box>
+      )}
+
       <Box>
         <select
           className="form-select"
@@ -65,7 +82,7 @@ export default function FilterSection({
           </option>
           {sortbyList?.map((item, ind) => (
             <option
-              value={item}
+              value={item?.value}
               key={ind}
               style={{
                 border: '1px solid #662A2E',
@@ -74,7 +91,7 @@ export default function FilterSection({
                 textTransform: 'capitalize'
               }}
             >
-              {item}
+              {item?.label}
             </option>
           ))}
         </select>

@@ -63,7 +63,7 @@ export const ProductCatalogues = () => {
       !filteredPayload?.min_price &&
       !filteredPayload?.max_price &&
       !filteredPayload?.purity &&
-      !filteredPayload?.collection &&
+      !filteredPayload?.selectedCollections &&
       !filteredPayload?.sort_by
     ) {
       setFilters((prevFilters) => {
@@ -72,7 +72,7 @@ export const ProductCatalogues = () => {
           page: pageNumber
         };
         navigate(
-          `/product-catalogues?page=${pageNumber}&type[0]=${updatedFilters['type[0]']}&metal=${updatedFilters['metal_type[0]']}&item_type=${updatedFilters['item_master_id']}&gender=${updatedFilters['gender']}&sort_by=${updatedFilters['sort_by']}`
+          `/product-catalogues?page=${pageNumber}&type[0]=${updatedFilters['type[0]']}&metal=${updatedFilters['metal_type[0]']}&item_type=${updatedFilters['item_master_id']}`
         );
 
         return updatedFilters;
@@ -98,46 +98,28 @@ export const ProductCatalogues = () => {
   useEffect(() => {
     getFiltersData();
   }, []);
-  const getData = async (payload) => {
+  const getData = async () => {
     if (loading) return;
     setLoading(true);
     try {
       const requestParams = new FormData();
-      const metalId =
-        payload?.metal ||
-        (searchParams.get('metal') ? searchParams.get('metal') : '');
-      const itemTypeId =
-        payload?.item_type ||
-        (searchParams.get('item_type') ? searchParams.get('item_type') : '');
-      const gender =
-        payload?.item_type ||
-        (searchParams.get('gender') ? searchParams.get('gender') : '');
-      const sort_by =
-        payload?.sort_by ||
-        (searchParams.get('sort_by') ? searchParams.get('sort_by') : '');
-      const type =
-        payload?.type?.[0] ||
-        (searchParams.get('type[0]') ? searchParams.get('type[0]') : '');
-      const min_price =
-        payload?.min_price ||
-        (searchParams.get('min_price') ? searchParams.get('min_price') : '');
-      const max_price =
-        payload?.max_price ||
-        (searchParams.get('max_price') ? searchParams.get('max_price') : '');
-      const purity =
-        payload?.purity ||
-        (searchParams.get('purity') ? searchParams.get('purity') : '');
+      const metalId = searchParams.get('metal')
+        ? searchParams.get('metal')
+        : '';
+      const itemTypeId = searchParams.get('item_type')
+        ? searchParams.get('item_type')
+        : '';
+      const sort_by = searchParams.get('sort_by')
+        ? searchParams.get('sort_by')
+        : '';
+      const type = searchParams.get('type[0]')
+        ? searchParams.get('type[0]')
+        : '';
       if (type) {
         requestParams.append('type[0]', type);
       }
       if (metalId) {
-        if (payload?.metal) {
-          metalId?.forEach((item, ind) => {
-            requestParams?.append(`metal_type[${ind}]`, item);
-          });
-        } else {
-          requestParams.append('metal_type[0]', metalId);
-        }
+        requestParams.append('metal_type[0]', metalId);
       }
       if (sort_by) {
         requestParams.append('sort_by', sort_by);
@@ -147,18 +129,6 @@ export const ProductCatalogues = () => {
       }
       if (filters['size']) {
         requestParams.append('size', filters['size']);
-      }
-      if (gender) {
-        requestParams.append('gender', gender);
-      }
-      if (min_price) {
-        requestParams.append('min_price', min_price);
-      }
-      if (max_price) {
-        requestParams.append('max_price', max_price);
-      }
-      if (purity) {
-        requestParams.append('purity', purity);
       }
       if (filters.page) {
         requestParams.append('page', filters['page']);
@@ -202,7 +172,7 @@ export const ProductCatalogues = () => {
   };
   useEffect(() => {
     setParamsData();
-    //  getData();
+    getData();
   }, [location.search]);
 
   const handleFilterChange = (filterName, value) => {
@@ -375,16 +345,20 @@ export const ProductCatalogues = () => {
 
   const filterHandler = async (payload) => {
     if (
-      !payload?.metal &&
-      !payload?.gender &&
-      !payload?.min_price &&
-      !payload?.max_price &&
-      !payload?.purity &&
-      !payload?.selectedCollections &&
-      !payload?.sort_by
+      !payload ||
+      (!payload?.metal &&
+        !payload?.gender &&
+        !payload?.min_price &&
+        !payload?.max_price &&
+        !payload?.purity &&
+        !payload?.selectedCollections &&
+        !payload?.sort_by)
     ) {
       getData();
+      setFilteredPayload(null);
+      return;
     }
+
     if (loading) return;
     setLoading(true);
     try {
@@ -424,7 +398,7 @@ export const ProductCatalogues = () => {
       }
       if (selectedCollections) {
         selectedCollections?.forEach((item, ind) => {
-          requestParams?.append(`collection[${ind}]`, item);
+          requestParams?.append(`collection_master_id[${ind}]`, item);
         });
       }
 

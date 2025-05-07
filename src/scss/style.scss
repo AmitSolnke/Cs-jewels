@@ -84,3 +84,7 @@
 .custom-scrollbar::-webkit-scrollbar-track {
   background-color: #fafafa; /* off-white track */
 }
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

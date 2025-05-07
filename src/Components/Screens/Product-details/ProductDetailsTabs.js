@@ -98,8 +98,8 @@ const ProductDetailsTabs = ({ productDetails }) => {
                 transition: 'background-color 0.3s ease',
 
                 '&:hover': {
-                  backgroundColor: '#672A2F',
-                  color: '#fff !important',
+                  backgroundColor: '#f2f2f2',
+                  color: '#000 !important',
                   border: '1px solid #000'
                 },
 

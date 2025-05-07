@@ -32,16 +32,14 @@ footer {
   position: relative;
   // height: 620px;
   color: #333333;
-  font-family: "Afacad Flux", serif;
+  font-family: 'Afacad Flux', serif;
   font-size: 20px;
   background: #f8f6f0 0% 0% no-repeat padding-box;
 
   .footer-container {
-    padding: 48px 120px 5px 120px;
-
     .logo {
       img {
-        width:140px;
+        width: 140px;
         height: 80px;
       }
     }
@@ -72,7 +70,6 @@ footer {
     .footer-text {
       color: #666666;
     }
-    
 
     .sbscribe-wrapper {
       position: relative;
@@ -129,14 +126,14 @@ footer {
       width: 60%;
     }
   }
-  .footer-menu a, 
-.footer-menu Link {
+  .footer-menu a,
+  .footer-menu Link {
     font-size: 20px;
-}
-.btn-find-store{
-  font-family: "Afacad Flux", serif;
-  font-size: "20px";
-}
+  }
+  .btn-find-store {
+    font-family: 'Afacad Flux', serif;
+    font-size: '20px';
+  }
 
   @media (max-width: 1240px) {
     .footer-container {
@@ -165,8 +162,6 @@ footer {
     // height: 550px;
 
     .footer-container {
-      padding: 46.18px 20px 5px 20px;
-
       .logo {
         img {
           width: 80px;
@@ -192,12 +187,11 @@ footer {
         margin-top: 35px;
       }
     }
-
   }
 }
 // @media (max-width: 420px) {
 //   footer {
 //     height:750px;
-   
+
 //   }
 // }

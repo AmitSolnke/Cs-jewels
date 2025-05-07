@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Skeleton, Stack, useMediaQuery } from '@mui/material';
+import { Box, Container, Skeleton, Stack, useMediaQuery } from '@mui/material';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import {
   getMetals,
@@ -434,11 +434,13 @@ export const ProductCatalogues = () => {
           <img src={banner} alt="Banner image" />
         )}
       </div>
-      <FilterSection
-        filterHandler={filterHandler}
-        metals={metals}
-        filteredPayload={filteredPayload}
-      />
+      <Container maxWidth="lg">
+        <FilterSection
+          filterHandler={filterHandler}
+          metals={metals}
+          filteredPayload={filteredPayload}
+        />
+      </Container>
       <div className="d-none d-md-block">
         <div className="filter-dropdowns d-flex container"></div>
         <hr />

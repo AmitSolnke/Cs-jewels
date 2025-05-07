@@ -23,10 +23,18 @@ import { isLoggedIn } from '../services/auth.service';
 import { NavigationDropdown } from './Common/NavigationDropdown';
 import { SearchDropdown } from './Common/SearchDropdown';
 import { ShoppingBag } from './Screens/ShoppingBag';
-import { Box, Button, IconButton, Tooltip, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Tooltip,
+  useMediaQuery
+} from '@mui/material';
 import StoresIcon from '../images/icons/StoresIcon-1.png';
 import StoresIconBrown from '../images/icons/StoresIcon.png';
 import BasicMenu from './Common/Menu';
+import { DropdownWrapper } from './style';
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const isMobile = useMediaQuery('(max-width:768px)');
@@ -139,7 +147,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
   };
 
   return (
-    <>
+    <Container maxWidth="lg">
       <header className="page-header">
         <div className="header-content">
           <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
@@ -391,43 +399,19 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </li>
                           <div
                             onMouseEnter={() => setShowDropdown(true)}
-                            onMouseLeave={() => setShowDropdown(false)}
+                            // onMouseLeave={() => setShowDropdown(false)}
                             style={{
                               marginTop: '-0.2rem'
                             }}
                           >
-                            <Box
-                              sx={{
-                                opacity: showDropdown ? 1 : 0,
-                                transform: showDropdown
-                                  ? 'translateY(0)'
-                                  : 'translateY(-10px)',
-                                transition: showDropdown
-                                  ? 'opacity 0.4s ease-in, transform 0.4s ease-in'
-                                  : 'none',
-                                pointerEvents: showDropdown ? 'auto' : 'none',
-                                visibility: showDropdown ? 'visible' : 'hidden',
-                                position: 'absolute',
-                                left: {  lg:'-4.3%',md: '-4.5%',sm: '-6%' },
-                                top: { sm: '78%' },
-                                width: { lg:'98.5dvw',md:'99dvw',xs: '98dvw' },
-                                backgroundColor: '#fff',
-                                borderTop: '0.5px solid #d6d6d6',
-                                zIndex: 999999999999999,
-                                display: 'flex',
-                                flexDirection: 'row',
-                                justifyContent: 'center',
-                                px: 6,
-                                py: 4
-                              }}
-                            >
+                            <DropdownWrapper showDropdown={showDropdown}>
                               {showDropdown && (
                                 <NavigationDropdown
                                   metalData={metalTypesData}
                                   setShowDropdown={setShowDropdown}
                                 />
                               )}
-                            </Box>
+                            </DropdownWrapper>
 
                             <li>Jewellery</li>
                           </div>
@@ -478,7 +462,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
           <SearchDropdown setSearchDropdown={setSearchDropdown} />
         </div>
       )}
-    </>
+    </Container>
   );
 }
 

@@ -92,9 +92,7 @@ export default function FilterSection({
         sx={{
           display: 'flex',
           justifyContent: 'end',
-          paddingRight: '1rem',
-          marginY: '1rem',
-          marginRight: '0.6rem'
+          marginY: '1rem'
         }}
       >
         <Badge

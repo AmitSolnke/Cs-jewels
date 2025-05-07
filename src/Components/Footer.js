@@ -12,7 +12,7 @@ import InstagramIcon from "@mui/icons-material/Instagram"
 import FacebookIcon from "@mui/icons-material/Facebook"
 import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import PinterestIcon from "@mui/icons-material/Pinterest"
-import {createTheme, IconButton, ThemeProvider} from "@mui/material"
+import {Container, createTheme, IconButton, ThemeProvider} from "@mui/material"
 const theme = createTheme({
   palette: {
     primary: {
@@ -61,6 +61,7 @@ function Footer() {
         </a>
       </div> */}
       <ThemeProvider theme={theme}>
+        <Container maxWidth={'lg'}>
         <footer>
           <div className="footer-container">
             <div className="logo">
@@ -230,6 +231,7 @@ function Footer() {
             </div>
           </div>
         </footer>
+        </Container>
       </ThemeProvider>
     </>
   )

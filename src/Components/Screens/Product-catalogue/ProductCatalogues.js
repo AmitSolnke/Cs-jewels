@@ -115,6 +115,9 @@ export const ProductCatalogues = () => {
       const type = searchParams.get('type[0]')
         ? searchParams.get('type[0]')
         : '';
+      const page = searchParams.get('page')
+        ? searchParams.get('page')
+        : '';
       if (type) {
         requestParams.append('type[0]', type);
       }
@@ -130,12 +133,12 @@ export const ProductCatalogues = () => {
       if (filters['size']) {
         requestParams.append('size', filters['size']);
       }
-      if (filters.page) {
-        requestParams.append('page', filters['page']);
-      }
+
       if (filters.limit) {
         requestParams.append('limit', filters['limit']);
       }
+
+      requestParams.append('page', page || 1);
 
       const { data } = await getProducts(requestParams);
 
@@ -154,6 +157,7 @@ export const ProductCatalogues = () => {
       setLoading(false);
       setTotalPages(data.data.last_page);
       setProductCount(data.data.total);
+      setFilteredPayload(null);
       // setLoading(false)
     } catch (error) {
       console.log(error);
@@ -175,92 +179,6 @@ export const ProductCatalogues = () => {
     getData();
   }, [location.search]);
 
-  const handleFilterChange = (filterName, value) => {
-    if (filterName == 'type[0]' && value) {
-      navigate(
-        `/product-catalogues?type[0]=${value}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`
-      );
-    }
-    if (filterName == 'metal_type[0]' && value) {
-      navigate(
-        `/product-catalogues?type[0]=${filters['type[0]']}&metal=${value}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`
-      );
-    }
-    if (filterName == 'item_master_id' && value) {
-      navigate(
-        `/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${value}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`
-      );
-    }
-    if (filterName == 'sort_by' && value) {
-      navigate(
-        `/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${value}`
-      );
-    }
-    if (filterName == 'gender' && value) {
-      navigate(
-        `/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${value}&sort_by=${filters['sort_by']}`
-      );
-    }
-    setRefreshCount(refreshCount + 1);
-  };
-
-  const clearAll = () => {
-    setChipData([]);
-    navigate(`/product-catalogues`);
-    setRefreshCount(refreshCount + 1);
-  };
-  const handleOpenBullionsFilter = () => {
-    setBullionsFilterOpen(true);
-  };
-
-  const handleOpenFilterMenu = () => {
-    setOpenSortMenu(false);
-    handleOpenBullionsFilter();
-  };
-
-  const handleOpenSortMenu = () => {
-    handleOpenBullionsFilter();
-  };
-
-  const handleCloseBullionsFilter = () => {
-    setBullionsFilterValue(-1);
-    setBullionsFilterOpen(false);
-  };
-
-  const handleApplyFilter = () => {
-    // Todo : Apply filter logic
-    handleCloseBullionsFilter();
-  };
-
-  const handleChipDelete = (chipToDelete) => () => {
-    setChipData((chips) => chips.filter((chip) => chip !== chipToDelete));
-    if (chipToDelete == 'All') {
-      navigate(`/product-catalogues`);
-    } else {
-      if (chipToDelete == 'Category') {
-        navigate(
-          `/product-catalogues?metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`
-        );
-      } else if (chipToDelete == 'Metal Type') {
-        navigate(
-          `/product-catalogues?type[0]=${filters['type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`
-        );
-      } else if (chipToDelete == 'Item Type') {
-        navigate(
-          `/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&gender=${filters['gender']}&sort_by=${filters['sort_by']}`
-        );
-      } else if (chipToDelete == 'Sorted By') {
-        navigate(
-          `/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&gender=${filters['gender']}`
-        );
-      } else if (chipToDelete == 'Gender') {
-        navigate(
-          `/product-catalogues?type[0]=${filters['type[0]']}&metal=${filters['metal_type[0]']}&item_type=${filters['item_master_id']}&sort_by=${filters['sort_by']}`
-        );
-      }
-    }
-    setRefreshCount(refreshCount + 1);
-  };
 
   const setParamsData = async () => {
     const metalId = searchParams.get('metal') ? searchParams.get('metal') : '';
@@ -345,7 +263,7 @@ export const ProductCatalogues = () => {
   };
 
   const getFileredData = async (payload) => {
-     try {
+    try {
       setLoading(true);
       const requestParams = new FormData();
       const metalId = payload?.metal || '';
@@ -402,6 +320,7 @@ export const ProductCatalogues = () => {
       setProducts([]);
       setTotalPages(0);
       setProductCount(0);
+      setFilteredPayload(null);
     } finally {
       setLoading(false);
       window.scrollTo({
@@ -410,10 +329,9 @@ export const ProductCatalogues = () => {
         behavior: 'smooth'
       });
     }
-  }
+  };
 
   const filterHandler = (payload) => {
-
     if (
       !payload ||
       (!payload?.metal &&
@@ -425,20 +343,18 @@ export const ProductCatalogues = () => {
     ) {
       if (!payload?.sort_by) {
         getData();
-
       } else {
         //by default sort by given metal
         payload.metal = [];
-        payload.metal.push(searchParams.get('metal'))
-        getFileredData(payload)
+        payload.metal.push(searchParams.get('metal'));
+        getFileredData(payload);
       }
       setFilteredPayload(null);
       return;
     }
 
-    getFileredData(payload)
+    getFileredData(payload);
     setFilteredPayload(payload);
-
   };
 
   return (

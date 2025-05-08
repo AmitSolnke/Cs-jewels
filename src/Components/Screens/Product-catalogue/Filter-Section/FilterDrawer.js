@@ -17,6 +17,7 @@ import {
   purityList
 } from '../../../../utilities/filterContants';
 import { isSameArray } from '../../../../utilities/CustomFunction';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function FilterDrawer({
   filterHandler,
@@ -24,6 +25,8 @@ export default function FilterDrawer({
   setOpen,
   filteredPayload
 }) {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [collections, setCollections] = React.useState([]);
   const [gender, setGender] = React.useState(filteredPayload?.gender || '');
   const [material, setMaterial] = React.useState(
@@ -47,6 +50,7 @@ export default function FilterDrawer({
       ? filteredPayload?.selectedCollections
       : []
   );
+
   const materialLists = metals?.filter(
     (item) =>
       item?.metal_type?.toLowerCase() === 'gold' ||
@@ -88,8 +92,8 @@ export default function FilterDrawer({
       metal: material,
       purity: purity,
       selectedCollections: selectedCollections,
-      sort_by:"",
-      page:1,
+      sort_by: '',
+      page: 1
     });
     setOpen(false);
   };
@@ -103,13 +107,26 @@ export default function FilterDrawer({
     }
   };
 
+  const navigateToBasePage = () => {
+    const url = new URL(
+      window.location.origin + location.pathname + location.search
+    );
+    const searchParams = url.searchParams;
+
+    searchParams.set('page', 1);
+    const decodedUrl = decodeURI(`${location.pathname}?${searchParams.toString()}`)
+
+    navigate(decodedUrl);
+  };
   const clearFilters = () => {
+    setIsDisabled(true);
     setGender('');
     setMinMaxVal({ min: 0, max: 0 });
     setMaterial([]);
     setPurity([]);
     setSelectedCollections([]);
-    filterHandler();
+    setOpen(false)
+    navigateToBasePage();
   };
 
   React.useEffect(() => {
@@ -141,6 +158,13 @@ export default function FilterDrawer({
     minmaxVal.max
   ]);
 
+  const isInitialState =
+    !gender &&
+    !material?.length &&
+    !purity?.length &&
+    !selectedCollections?.length &&
+    minmaxVal.min === 0 &&
+    minmaxVal.max === 0;
   return (
     <Stack
       sx={{
@@ -165,33 +189,9 @@ export default function FilterDrawer({
           onClick={clearFilters}
           role="button"
           sx={{
-            color:
-              !gender &&
-              !material?.length &&
-              !purity?.length &&
-              !selectedCollections?.length &&
-              minmaxVal.min === 0 &&
-              minmaxVal.max === 0
-                ? '#999999' // Disabled color
-                : '#6D3439',
-            cursor:
-              !gender &&
-              !material?.length &&
-              !purity?.length &&
-              !selectedCollections?.length &&
-              minmaxVal.min === 0 &&
-              minmaxVal.max === 0
-                ? 'no-drop'
-                : 'pointer',
-            pointerEvents:
-              !gender &&
-              !material?.length &&
-              !purity?.length &&
-              !selectedCollections?.length &&
-              minmaxVal.min === 0 &&
-              minmaxVal.max === 0
-                ? 'none'
-                : 'all',
+            color: isInitialState ? '#999999' : '#6D3439',
+            cursor: isInitialState ? 'no-drop' : 'pointer',
+            pointerEvents: isInitialState ? 'none' : 'all',
             ':hover': {
               textDecoration: 'underline'
             }

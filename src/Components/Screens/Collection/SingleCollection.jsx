@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/material';
+import { Box, Skeleton, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ProductList from '../../Common/ProductList';
 import { getProducts } from '../../../services/FrontApp/index.service';
@@ -10,6 +10,7 @@ const SingleCollection = ({ collectionMasterId, page = 1 }) => {
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [banner, setBanner] = useState('');
 
   const getData = async () => {
     try {
@@ -26,8 +27,10 @@ const SingleCollection = ({ collectionMasterId, page = 1 }) => {
 
       setTotalPages(data.data.last_page);
       setProducts(data?.data?.data);
+      setBanner(data?.data?.data[0]?.collection_banner);
     } catch (error) {
       setProducts([]);
+      setBanner('');
     } finally {
       setIsLoading(false);
     }
@@ -44,7 +47,14 @@ const SingleCollection = ({ collectionMasterId, page = 1 }) => {
   }, [collectionMasterId, page]);
   return (
     <Stack gap={2} className="product-catalogues" sx={{ my: '1rem' }}>
-      <Box>
+      <div className="product-catalogue-banner">
+        {isLoading ? (
+          <Skeleton variant="rectangular" width={'100%'} height={'100vh'} />
+        ) : (
+          <img src={banner} alt="Banner image" />
+        )}
+      </div>
+      <Box marginY={'1rem'}>
         <ProductList products={products} isLoading={isLoading} />
       </Box>
       {products?.length > 0 && !isLoading ? (

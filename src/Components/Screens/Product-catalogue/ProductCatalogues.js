@@ -115,9 +115,7 @@ export const ProductCatalogues = () => {
       const type = searchParams.get('type[0]')
         ? searchParams.get('type[0]')
         : '';
-      const page = searchParams.get('page')
-        ? searchParams.get('page')
-        : '';
+      const page = searchParams.get('page') ? searchParams.get('page') : '';
       if (type) {
         requestParams.append('type[0]', type);
       }
@@ -178,7 +176,6 @@ export const ProductCatalogues = () => {
     setParamsData();
     getData();
   }, [location.search]);
-
 
   const setParamsData = async () => {
     const metalId = searchParams.get('metal') ? searchParams.get('metal') : '';
@@ -334,25 +331,19 @@ export const ProductCatalogues = () => {
   const filterHandler = (payload) => {
     if (
       !payload ||
-      (!payload?.metal &&
-        !payload?.gender &&
+      (!payload?.gender &&
         !payload?.min_price &&
         !payload?.max_price &&
         !payload?.purity &&
-        !payload?.selectedCollections)
+        !payload?.selectedCollections &&
+        !payload?.sort_by)
     ) {
-      if (!payload?.sort_by) {
         getData();
-      } else {
-        //by default sort by given metal
-        payload.metal = [];
-        payload.metal.push(searchParams.get('metal'));
-        getFileredData(payload);
-      }
       setFilteredPayload(null);
       return;
     }
-
+    payload.metal = [];
+    payload.metal.push(searchParams.get('metal'));
     getFileredData(payload);
     setFilteredPayload(payload);
   };
@@ -369,15 +360,10 @@ export const ProductCatalogues = () => {
       <Container maxWidth="lg">
         <FilterSection
           filterHandler={filterHandler}
-          metals={metals}
           filteredPayload={filteredPayload}
           isLoading={loading}
         />
       </Container>
-      <div className="d-none d-md-block">
-        <div className="filter-dropdowns d-flex container"></div>
-        <hr />
-      </div>
 
       <Box>
         <ProductList products={products} isLoading={loading} />

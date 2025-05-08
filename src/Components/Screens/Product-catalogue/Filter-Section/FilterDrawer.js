@@ -21,7 +21,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function FilterDrawer({
   filterHandler,
-  metals,
   setOpen,
   filteredPayload
 }) {
@@ -29,9 +28,6 @@ export default function FilterDrawer({
   const location = useLocation();
   const [collections, setCollections] = React.useState([]);
   const [gender, setGender] = React.useState(filteredPayload?.gender || '');
-  const [material, setMaterial] = React.useState(
-    filteredPayload?.metal?.length > 0 ? filteredPayload?.metal : []
-  );
   const [purity, setPurity] = React.useState(
     filteredPayload?.purity?.length === 0 ? [] : filteredPayload?.purity || []
   );
@@ -51,25 +47,8 @@ export default function FilterDrawer({
       : []
   );
 
-  const materialLists = metals?.filter(
-    (item) =>
-      item?.metal_type?.toLowerCase() === 'gold' ||
-      item?.metal_type?.toLowerCase() === 'silver' ||
-      item?.metal_type?.toLowerCase() === 'diamond'
-  );
   const handleMinMaxPriceChange = (value) => {
     setMinMaxVal(value);
-  };
-
-  const handleMaterialChange = (e) => {
-    const { value, checked } = e.target;
-    setMaterial((prev) =>
-      prev
-        ? checked
-          ? [...new Set([...prev, value])]
-          : prev?.filter((item) => item !== value)
-        : []
-    );
   };
 
   const handlePurityChange = (e) => {
@@ -89,7 +68,6 @@ export default function FilterDrawer({
       min_price: minmaxVal.min,
       max_price: minmaxVal.max,
       gender,
-      metal: material,
       purity: purity,
       selectedCollections: selectedCollections,
       sort_by: '',
@@ -111,21 +89,26 @@ export default function FilterDrawer({
     const url = new URL(
       window.location.origin + location.pathname + location.search
     );
+    const currentURL = decodeURI(location.pathname + location.search);
     const searchParams = url.searchParams;
 
     searchParams.set('page', 1);
-    const decodedUrl = decodeURI(`${location.pathname}?${searchParams.toString()}`)
+    const decodedUrl = decodeURI(
+      `${location.pathname}?${searchParams.toString()}`
+    );
 
     navigate(decodedUrl);
+    if(decodedUrl === currentURL){
+       filterHandler();
+    }
   };
   const clearFilters = () => {
     setIsDisabled(true);
     setGender('');
     setMinMaxVal({ min: 0, max: 0 });
-    setMaterial([]);
     setPurity([]);
     setSelectedCollections([]);
-    setOpen(false)
+    setOpen(false);
     navigateToBasePage();
   };
 
@@ -140,7 +123,6 @@ export default function FilterDrawer({
   React.useEffect(() => {
     setIsDisabled(
       gender === (filteredPayload?.gender || '') &&
-        isSameArray(material, filteredPayload?.metal || []) &&
         isSameArray(purity, filteredPayload?.purity || []) &&
         isSameArray(
           selectedCollections || [],
@@ -151,7 +133,6 @@ export default function FilterDrawer({
     );
   }, [
     gender,
-    material?.length,
     purity?.length,
     selectedCollections?.length,
     minmaxVal.min,
@@ -160,7 +141,6 @@ export default function FilterDrawer({
 
   const isInitialState =
     !gender &&
-    !material?.length &&
     !purity?.length &&
     !selectedCollections?.length &&
     minmaxVal.min === 0 &&
@@ -313,35 +293,6 @@ export default function FilterDrawer({
                 </Stack>
               ))}
             </Stack>
-          </Stack>
-        </Stack>
-        <Stack gap={1} border={'1px solid #662A2E'} padding={1}>
-          <span>Material</span>
-          <Stack flexWrap={'wrap'} display={'flex'} flexDirection={'row'}>
-            {materialLists?.length > 0 ? (
-              materialLists?.map((item, ind) => (
-                <FormControlLabel
-                  key={ind}
-                  className="text-capitalize"
-                  control={
-                    <Checkbox
-                      value={item?.id?.toString()}
-                      onChange={handleMaterialChange}
-                      checked={material.includes(item?.id?.toString())}
-                      inputProps={{ 'aria-label': 'controlled' }}
-                    />
-                  }
-                  label={item?.metal_type}
-                />
-              ))
-            ) : (
-              <span
-                style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
-              >
-                <CircularProgress size={'20px'} />
-                Loading!...
-              </span>
-            )}
           </Stack>
         </Stack>
         <Stack gap={1} border={'1px solid #662A2E'} padding={1}>

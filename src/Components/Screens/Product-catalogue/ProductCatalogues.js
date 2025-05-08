@@ -371,6 +371,7 @@ export const ProductCatalogues = () => {
           filterHandler={filterHandler}
           metals={metals}
           filteredPayload={filteredPayload}
+          isLoading={loading}
         />
       </Container>
       <div className="d-none d-md-block">

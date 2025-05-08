@@ -9,7 +9,8 @@ import { sortbyList } from '../../../../utilities/filterContants';
 export default function FilterSection({
   filterHandler,
   metals,
-  filteredPayload
+  filteredPayload,
+  isLoading = false
 }) {
   const [open, setOpen] = React.useState(false);
   const [sortby, setSortBy] = React.useState(filteredPayload?.sort_by || '');
@@ -67,6 +68,7 @@ export default function FilterSection({
           }}
           onChange={handleSortBy}
           value={sortby}
+          disabled={isLoading}
         >
           <option
             value=""
@@ -116,7 +118,6 @@ export default function FilterSection({
               display: 'flex',
               gap: '0.5rem',
               alignItems: 'center',
-              background: '#6D3439',
               paddingX: '1rem',
               paddingY: '0.5rem',
               borderRadius: '5px',
@@ -126,6 +127,10 @@ export default function FilterSection({
               justifyContent: 'center',
               fontSize: { md: '1.1rem', xs: '1rem' },
               transition: 'all 0.3s ease-in-out',
+              color: isLoading ? '#666' : '#fff',
+              cursor: isLoading ? 'no-drop' : 'pointer',
+              pointerEvents: isLoading ? 'none' : 'all',
+              background: isLoading ? '#ccc' : '#6D3439',
               '&:hover': {
                 background: '#531f23',
                 boxShadow: '0 4px 10px rgba(0,0,0,0.2)'

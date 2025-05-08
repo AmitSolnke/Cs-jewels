@@ -12,6 +12,7 @@ const CollectionCataloguePage = () => {
 
   const getData = async () => {
     try {
+      setIsLoading(true);
       const data = await getCollectionDetails();
       setCollections(data?.data?.data);
     } catch (error) {

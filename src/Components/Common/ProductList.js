@@ -74,7 +74,7 @@ const ProductList = ({ products, isLoading = false }) => {
             >
               <img
                 src={product.image_path}
-                alt={product.name || 'product Image'}
+                alt={product.product_name || 'product Image'}
                 className="image"
                 style={{ width: '100%', borderRadius: '8px' }}
               />

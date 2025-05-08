@@ -9,8 +9,7 @@ import { sortbyList } from '../../../../utilities/filterContants';
 export default function FilterSection({
   filterHandler,
   metals,
-  filteredPayload,
-  metalId = null
+  filteredPayload
 }) {
   const [open, setOpen] = React.useState(false);
   const [sortby, setSortBy] = React.useState(filteredPayload?.sort_by || '');
@@ -20,14 +19,7 @@ export default function FilterSection({
     filterHandler({
       ...filteredPayload,
       sort_by: e.target.value,
-      page: 1,
-      ...(metalId
-        ? {
-            metal: Array.from(
-              new Set([...(filteredPayload?.metal || []), metalId])
-            )
-          }
-        : {})
+      page: 1
     });
   };
 

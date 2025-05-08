@@ -87,7 +87,9 @@ export default function FilterDrawer({
       gender,
       metal: material,
       purity: purity,
-      selectedCollections: selectedCollections
+      selectedCollections: selectedCollections,
+      sort_by:"",
+      page:1,
     });
     setOpen(false);
   };

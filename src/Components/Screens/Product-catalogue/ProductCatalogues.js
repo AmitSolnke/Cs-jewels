@@ -52,7 +52,7 @@ export const ProductCatalogues = () => {
     limit: 12
   });
   const [filteredPayload, setFilteredPayload] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const isDesktop = useMediaQuery('(min-width: 1200px)');
   const handleChangePage = (event, newPage) => {
     const pageNumber = Number(newPage);
@@ -100,7 +100,6 @@ export const ProductCatalogues = () => {
     getFiltersData();
   }, []);
   const getData = async () => {
-    if (loading) return;
     setLoading(true);
     try {
       const requestParams = new FormData();
@@ -310,7 +309,7 @@ export const ProductCatalogues = () => {
       page: Number(page),
       limit: 12
     });
-    setPage(Number(page))
+    setPage(Number(page));
     try {
       if (metalId) {
         let result = await getMetalTypeById(metalId);
@@ -345,25 +344,9 @@ export const ProductCatalogues = () => {
     }
   };
 
-  const filterHandler = async (payload) => {
-    if (
-      !payload ||
-      (!payload?.metal &&
-        !payload?.gender &&
-        !payload?.min_price &&
-        !payload?.max_price &&
-        !payload?.purity &&
-        !payload?.selectedCollections &&
-        !payload?.sort_by)
-    ) {
-      getData();
-      setFilteredPayload(null);
-      return;
-    }
-
-    if (loading) return;
-    setLoading(true);
-    try {
+  const getFileredData = async (payload) => {
+     try {
+      setLoading(true);
       const requestParams = new FormData();
       const metalId = payload?.metal || '';
       const gender = payload?.gender || '';
@@ -403,8 +386,8 @@ export const ProductCatalogues = () => {
           requestParams?.append(`collection_master_id[${ind}]`, item);
         });
       }
-      if(payload?.page){
-        setPage(payload?.page)
+      if (payload?.page) {
+        setPage(payload?.page);
       }
 
       const { data } = await getProducts(requestParams);
@@ -414,7 +397,6 @@ export const ProductCatalogues = () => {
       setLoading(false);
       setTotalPages(data.data.last_page);
       setProductCount(data.data.total);
-      setFilteredPayload(payload);
     } catch (error) {
       console.log(error);
       setProducts([]);
@@ -428,6 +410,35 @@ export const ProductCatalogues = () => {
         behavior: 'smooth'
       });
     }
+  }
+
+  const filterHandler = (payload) => {
+
+    if (
+      !payload ||
+      (!payload?.metal &&
+        !payload?.gender &&
+        !payload?.min_price &&
+        !payload?.max_price &&
+        !payload?.purity &&
+        !payload?.selectedCollections)
+    ) {
+      if (!payload?.sort_by) {
+        getData();
+
+      } else {
+        //by default sort by given metal
+        payload.metal = [];
+        payload.metal.push(searchParams.get('metal'))
+        getFileredData(payload)
+      }
+      setFilteredPayload(null);
+      return;
+    }
+
+    getFileredData(payload)
+    setFilteredPayload(payload);
+
   };
 
   return (
@@ -444,7 +455,6 @@ export const ProductCatalogues = () => {
           filterHandler={filterHandler}
           metals={metals}
           filteredPayload={filteredPayload}
-          metalId={searchParams.get('metal')}
         />
       </Container>
       <div className="d-none d-md-block">

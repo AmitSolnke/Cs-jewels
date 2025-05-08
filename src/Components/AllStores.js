@@ -5,7 +5,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import plusIcon from "../images/icons/plusicon.svg";
 import minusIcon from "../images/icons/minusicon.svg";
-import { Link, useMediaQuery } from "@mui/material";
+import { Box, Link, useMediaQuery } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 export default function AllStores({ data, handleAccordionClick }) {
@@ -17,7 +17,7 @@ export default function AllStores({ data, handleAccordionClick }) {
   };
 
   return (
-    <div className="faqs-container">
+    <Box className="faqs-container" sx={{height:'25rem',overflowY:'scroll'}}>
       {data.map((element, index) => (
         <Accordion
           expanded={expanded === "panel" + index}
@@ -83,6 +83,6 @@ export default function AllStores({ data, handleAccordionClick }) {
           </AccordionDetails>
         </Accordion>
       ))}
-    </div>
+    </Box>
   );
 }

@@ -71,7 +71,8 @@ export default function Testimonial() {
           xs: `url(${TESTIMONIAL_BG_MOBILE})`,
           lg: `url(${TESTIMONIAL_BG_WEB})`
         },
-        flexGrow: 1
+        flexGrow: 1,
+        paddingY:'0 !important'
       }}
     >
       <ContainerWrapper>

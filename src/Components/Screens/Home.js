@@ -63,8 +63,8 @@ function Home() {
         <CarouselHome />
       </div>
       <ContainerWrapper>
-        <Box sx={{ flexGrow: 1 }}>
-          <Stack spacing={1} my={{ md: '2rem', xs: '1rem' }}>
+        <Box sx={{ flexGrow: 1, marginBottom: '1rem' }}>
+          <Stack gap={'0.9rem'}>
             <Box>
               <div className="image-slider-header">Dazzling Favorites</div>
             </Box>
@@ -125,9 +125,9 @@ function Home() {
           </Grid>}
         </Grid>
       </Box> */}
-      <Stack marginY={{ xs: '1rem' }}>
+      <Stack>
         <ContainerWrapper>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1 , marginBottom: '1rem'}}>
             <Stack gap={'0.9rem'}>
               <Box>
                 <div className="image-slider-header">Discover Your Shine</div>
@@ -138,7 +138,6 @@ function Home() {
                   blends sophistication and modern charm.
                 </div>
               </Box>
-              <Box></Box>
             </Stack>
           </Box>
         </ContainerWrapper>

@@ -61,7 +61,7 @@ const CollectionList = ({ collections, isLoading = false }) => {
               sm={5.8}
               xs={5.8}
               onClick={() =>
-                navigate('/collection?collectionId=' + collection.id)
+                navigate(`/collection?collectionId=${collection.id}&page=1`)
               }
               className="product-item-card"
               sx={{

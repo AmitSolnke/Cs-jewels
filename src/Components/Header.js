@@ -118,7 +118,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
             id: item.id,
             collectionName: item.collection_name,
             ...(item?.id
-              ? { url: `/collection?collectionId=${item.id}` }
+              ? { url: `/collection?collectionId=${item.id}&page=1` }
               : null)
           };
         })

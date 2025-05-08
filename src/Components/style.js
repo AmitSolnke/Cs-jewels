@@ -9,7 +9,7 @@ export const DropdownWrapper = styled(Box, {
   pointerEvents: showDropdown ? 'auto' : 'none',
   visibility: showDropdown ? 'visible' : 'hidden',
   position: 'fixed',
-  top: '25%',
+  top: '150px',
   left: 0,
   width: '100vw',
   height: 'calc(100vh - 23%)',

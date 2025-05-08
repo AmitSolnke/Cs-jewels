@@ -35,6 +35,7 @@ import StoresIcon from '../images/icons/StoresIcon-1.png';
 import StoresIconBrown from '../images/icons/StoresIcon.png';
 import BasicMenu from './Common/Menu';
 import { DropdownWrapper } from './style';
+import ContainerWrapper from './Common/ContainerWrapper';
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const isMobile = useMediaQuery('(max-width:768px)');
@@ -159,9 +160,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
   };
 
   return (
-    <Container maxWidth="lg" sx={{
-      paddingTop:'0.5rem'
-    }}>
+    <ContainerWrapper
+      sx={{
+        paddingTop: '0.5rem'
+      }}
+    >
       <header className="page-header">
         <div className="header-content">
           <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
@@ -476,7 +479,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
           <SearchDropdown setSearchDropdown={setSearchDropdown} />
         </div>
       )}
-    </Container>
+    </ContainerWrapper>
   );
 }
 

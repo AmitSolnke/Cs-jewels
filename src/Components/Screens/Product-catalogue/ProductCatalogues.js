@@ -12,6 +12,7 @@ import {
 import { Paginator } from '../../Common/Paginator';
 import ProductList from '../../Common/ProductList';
 import FilterSection from './Filter-Section';
+import ContainerWrapper from '../../Common/ContainerWrapper';
 
 export const ProductCatalogues = () => {
   const navigate = useNavigate();
@@ -357,13 +358,13 @@ export const ProductCatalogues = () => {
           <img src={banner} alt="Banner image" />
         )}
       </div>
-      <Container maxWidth="lg">
+      <ContainerWrapper>
         <FilterSection
           filterHandler={filterHandler}
           filteredPayload={filteredPayload}
           isLoading={loading}
         />
-      </Container>
+      </ContainerWrapper>
 
       <Box>
         <ProductList products={products} isLoading={loading} />

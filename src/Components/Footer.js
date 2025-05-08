@@ -13,6 +13,7 @@ import FacebookIcon from "@mui/icons-material/Facebook"
 import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import PinterestIcon from "@mui/icons-material/Pinterest"
 import {Container, createTheme, IconButton, ThemeProvider} from "@mui/material"
+import ContainerWrapper from "./Common/ContainerWrapper"
 const theme = createTheme({
   palette: {
     primary: {
@@ -61,7 +62,7 @@ function Footer() {
         </a>
       </div> */}
       <ThemeProvider theme={theme}>
-        <Container maxWidth={'lg'} sx={{marginTop:'2rem'}}>
+        <ContainerWrapper sx={{marginTop:'2rem'}}>
         <footer>
           <div className="footer-container">
             <div className="logo">
@@ -231,7 +232,7 @@ function Footer() {
             </div>
           </div>
         </footer>
-        </Container>
+        </ContainerWrapper>
       </ThemeProvider>
     </>
   )

@@ -1,6 +1,7 @@
 import { Grid, Skeleton, Box, Container } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import ContainerWrapper from './ContainerWrapper';
 
 const ProductList = ({ products, isLoading = false }) => {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ const ProductList = ({ products, isLoading = false }) => {
   const skeletonArray = Array.from({ length: 12 });
 
   return (
-    <Container maxWidth="lg">
+    <ContainerWrapper>
       <Grid
         container
         spacing={1}
@@ -17,7 +18,7 @@ const ProductList = ({ products, isLoading = false }) => {
           padding: '0px !important',
           marginInline: 'auto',
           width: '100%',
-          justifyContent:'space-between'
+          justifyContent: 'space-between'
         }}
       >
         {isLoading ? (
@@ -101,7 +102,7 @@ const ProductList = ({ products, isLoading = false }) => {
           </Box>
         )}
       </Grid>
-    </Container>
+    </ContainerWrapper>
   );
 };
 

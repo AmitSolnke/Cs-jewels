@@ -10,7 +10,7 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 export default function AllStores({ data, handleAccordionClick }) {
   const [expanded, setExpanded] = React.useState(false);
-  const mobileView = useMediaQuery("(max-width:600px)");
+  const tabView = useMediaQuery("(max-width:900px)");
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -53,8 +53,8 @@ export default function AllStores({ data, handleAccordionClick }) {
             <Typography>
               <Link
                 onClick={() => {
-                  if (mobileView) {
-                    window.scrollTo({ top: 1500, behavior: "smooth" });
+                  if (tabView) {
+                    window.scrollTo({ top: 1700, behavior: "smooth" });
                   } else {
                     window.scrollTo({ top: 450, behavior: "smooth" });
                   }

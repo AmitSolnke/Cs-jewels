@@ -1,13 +1,14 @@
 import { Grid, Skeleton, Box, Container } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import ContainerWrapper from '../../Common/ContainerWrapper';
 
 const CollectionList = ({ collections, isLoading = false }) => {
   const navigate = useNavigate();
   const skeletonArray = Array.from({ length: 12 });
 
   return (
-    <Container maxWidth="lg">
+    <ContainerWrapper>
       <Grid
         container
         spacing={1}
@@ -101,7 +102,7 @@ const CollectionList = ({ collections, isLoading = false }) => {
           </Box>
         )}
       </Grid>
-    </Container>
+    </ContainerWrapper>
   );
 };
 

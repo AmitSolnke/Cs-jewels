@@ -271,11 +271,15 @@ export const ProductCatalogues = () => {
       const max_price = payload?.max_price || '';
       const purity = payload?.purity || '';
       const selectedCollections = payload?.selectedCollections || '';
+      const itemTypeId = payload?.item_type || '';
       const page = Number(payload?.page) || 1;
       if (metalId) {
         metalId?.forEach((item, ind) => {
           requestParams?.append(`metal_type[${ind}]`, item);
         });
+      }
+      if (itemTypeId) {
+        requestParams.append('item_master_id', itemTypeId);
       }
       if (sort_by) {
         requestParams.append('sort_by', sort_by);
@@ -345,6 +349,7 @@ export const ProductCatalogues = () => {
     }
     payload.metal = [];
     payload.metal.push(searchParams.get('metal'));
+    payload.item_type = searchParams?.get('item_type');
     getFileredData(payload);
     setFilteredPayload(payload);
   };
@@ -362,6 +367,7 @@ export const ProductCatalogues = () => {
         <FilterSection
           filterHandler={filterHandler}
           filteredPayload={filteredPayload}
+          products={products}
           isLoading={loading}
         />
       </ContainerWrapper>

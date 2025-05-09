@@ -2,41 +2,34 @@ import { Box, Stack, styled } from '@mui/material';
 
 export const StyledRateTableWrapper = styled('div')(({ theme }) => ({
   position: 'absolute',
-  top: '-0.5rem',
-  left: '-100px',
+  top: '-0.8rem',
+  left: '-60px',
   zIndex: 3,
-  backgroundColor: '#672B30 !important',
+  backgroundColor: '#672B30',
   border: '1px solid',
-  width: '25rem',
-  color: 'white !important',
-  fontWeight: 'bold !important',
-
+  width: '23rem',
+  color: 'white',
+  fontWeight: 'bold',
   padding: '0.8rem',
-  '& table': {
-    backgroundColor: '#672B30 !important',
-    color: 'white !important'
-  },
 
-  '& table tbody': {
-    backgroundColor: '#672B30 !important',
-    color: 'white !important'
-  },
-
-  '& table td': {
-    backgroundColor: '#672B30 !important',
-    color: 'white !important',
-    textTransform: 'none !important'
-  },
   [theme.breakpoints.down(768)]: {
     top: '0.7rem',
     left: '-270px',
     width: '19rem',
     padding: '0.6rem'
   },
-  [theme.breakpoints.down(400)]: {
-    left: '-200px',
-    padding: '0.6rem',
-    width: '15rem'
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: '-10px',
+    left: '30px',
+    width: '20px',
+    height: '20px',
+    backgroundImage: 'url("/path/to/your/image.svg")',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    zIndex: 2
   }
 }));
 

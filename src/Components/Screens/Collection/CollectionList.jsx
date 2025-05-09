@@ -1,11 +1,10 @@
 import { Grid, Skeleton, Box, Container } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ContainerWrapper from './ContainerWrapper';
+import ContainerWrapper from '../../Common/ContainerWrapper';
 
-const ProductList = ({ products, isLoading = false }) => {
+const CollectionList = ({ collections, isLoading = false }) => {
   const navigate = useNavigate();
-
   const skeletonArray = Array.from({ length: 12 });
 
   return (
@@ -53,33 +52,34 @@ const ProductList = ({ products, isLoading = false }) => {
               </Box>
             </Grid>
           ))
-        ) : products?.length > 0 ? (
-          products.map((product, key) => (
+        ) : collections?.length > 0 ? (
+          collections.map((collection, key) => (
             <Grid
               item
               key={key}
               md={3.9}
               sm={5.8}
               xs={5.8}
-              style={{
+              onClick={() =>
+                navigate(`/collection?collectionId=${collection.id}&page=1`)
+              }
+              className="product-item-card"
+              sx={{
                 cursor: 'pointer',
                 border: '1px solid #847f7f',
-                borderRadius: '15px',
-                overflow: 'hidden',
                 borderRadius: '8px',
-                paddingTop: 0,
-                paddingLeft: 0
+                overflow: 'hidden',
+                paddingTop: '0 !important',
+                paddingLeft: '0 !important'
               }}
-              className="product-item-card"
-              onClick={() => navigate('/product-details/' + product.product_id)}
             >
               <img
-                src={product.image_path}
-                alt={product.product_name || 'product Image'}
-                className="image"
-                style={{ width: '100%', borderRadius: '8px' }}
+                src={collection.image_path1}
+                alt={collection.collection_name || 'Collection Image'}
+                style={{ width: '100%', height: '100%', borderRadius: '8px' }}
               />
-              <div className="text">{product.name}</div>
+
+              <div className="text">{collection.name}</div>
             </Grid>
           ))
         ) : (
@@ -98,7 +98,7 @@ const ProductList = ({ products, isLoading = false }) => {
               textTransform: 'capitalize'
             }}
           >
-            No products found
+            No Collections found
           </Box>
         )}
       </Grid>
@@ -106,4 +106,4 @@ const ProductList = ({ products, isLoading = false }) => {
   );
 };
 
-export default ProductList;
+export default CollectionList;

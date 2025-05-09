@@ -1,41 +1,50 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../images/icons/CSJ_Logo_Brand_color_Eng_final.webp";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../images/icons/CSJ_Logo_Brand_color_Eng_final.webp';
 
-import heartLogo from "../images/icons/heart.svg";
-import userLogo from "../images/icons/user.svg";
-import searchLogo from "../images/icons/search.svg";
-import shoppingBagLogo from "../images/icons/shopping-bag.svg";
-import menuOpen from "../images/icons/open-menu.svg";
-import closeMenu from "../images/icons/close.svg";
+import heartLogo from '../images/icons/heart.svg';
+import userLogo from '../images/icons/user.svg';
+import searchLogo from '../images/icons/search.svg';
+import shoppingBagLogo from '../images/icons/shopping-bag.svg';
+import menuOpen from '../images/icons/open-menu.svg';
+import closeMenu from '../images/icons/close.svg';
 import {
   getLiveRateForCSP,
   getMetals,
   getMetalItems,
   getCollectionData,
-  getCollectionDetails,
-} from "../services/FrontApp/index.service";
-import AuthModal from "./Screens/AuthModal";
-import { isLoggedIn } from "../services/auth.service";
+  getCollectionDetails
+} from '../services/FrontApp/index.service';
+import AuthModal from './Screens/AuthModal';
+import { isLoggedIn } from '../services/auth.service';
 // import LoginIcon from "@mui/icons-material/Login"
-import { NavigationDropdown } from "./Common/NavigationDropdown";
-import { SearchDropdown } from "./Common/SearchDropdown";
-import { ShoppingBag } from "./Screens/ShoppingBag";
-import { Box, Button, IconButton, Tooltip, useMediaQuery } from "@mui/material";
-import StoresIcon from "../images/icons/StoresIcon-1.png";
-import StoresIconBrown from "../images/icons/StoresIcon.png";
-import BasicMenu from "./Common/Menu";
+import { NavigationDropdown } from './Common/NavigationDropdown';
+import { SearchDropdown } from './Common/SearchDropdown';
+import { ShoppingBag } from './Screens/ShoppingBag';
+import {
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Tooltip,
+  useMediaQuery
+} from '@mui/material';
+import StoresIcon from '../images/icons/StoresIcon-1.png';
+import StoresIconBrown from '../images/icons/StoresIcon.png';
+import BasicMenu from './Common/Menu';
+import { DropdownWrapper } from './style';
+import ContainerWrapper from './Common/ContainerWrapper';
 
 function Header({ openDrawer, handleOpenDrawer }) {
-  const isMobile = useMediaQuery("(max-width:768px)");
+  const isMobile = useMediaQuery('(max-width:768px)');
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
     Silver1: 0,
     Silver2: 0,
-    gold: [],
+    gold: []
   });
 
   const [open, setOpen] = useState(false);
@@ -53,6 +62,18 @@ function Header({ openDrawer, handleOpenDrawer }) {
     setOpen(false);
   };
 
+  useEffect(() => {
+    if (showDropdown) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showDropdown]);
+
   const [metalTypesData, setMetalTypesData] = useState([]);
 
   const getMetalData = async () => {
@@ -64,14 +85,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
         let itemData = [];
         try {
           var bodyFormData = new FormData();
-          bodyFormData.append("metal_type_master_id[0]", data.id);
+          bodyFormData.append('metal_type_master_id[0]', data.id);
           const items = await getMetalItems(bodyFormData);
           itemData = items.data.data;
         } catch (error) {}
         temp.push({
           id: data.id,
           metal: data.metal_type,
-          metal_items: itemData,
+          metal_items: itemData
         });
       }
       setMetalTypesData(temp);
@@ -97,8 +118,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
             id: item.id,
             collectionName: item.collection_name,
             ...(item?.id
-              ? { url: `/collection?collectionId=${item.id}` }
-              : null),
+              ? { url: `/collection?collectionId=${item.id}&page=1` }
+              : null)
           };
         })
       );
@@ -116,36 +137,34 @@ function Header({ openDrawer, handleOpenDrawer }) {
   }, []);
 
   useEffect(() => {
-    $(".header-content .open-nav-btn").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "100%");
+    $('.header-content .open-nav-btn').click(function (e) {
+      $('.mobile-menu-overlay').css('width', '100%');
     });
     //close menu
-    $(".header-content .close-nav-btn").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "0");
+    $('.header-content .close-nav-btn').click(function (e) {
+      $('.mobile-menu-overlay').css('width', '0');
     });
 
-    $(".header-content .menu-links").click(function (e) {
-      $(".mobile-menu-overlay").css("width", "0");
+    $('.header-content .menu-links').click(function (e) {
+      $('.mobile-menu-overlay').css('width', '0');
     });
   });
 
   window.onclick = (event) => {
     if (
-      !$(event.target).closest("#navigation-dropdown-wrapper").length &&
-      event.target.id != "jewellery-link"
-    ) {
-      setShowDropdown(false);
-    }
-    if (
-      !$(event.target).closest("#search-dropdown-wrapper").length &&
-      event.target.id != "search-logo"
+      !$(event.target).closest('#search-dropdown-wrapper').length &&
+      event.target.id != 'search-logo'
     ) {
       setSearchDropdown(false);
     }
   };
 
   return (
-    <>
+    <ContainerWrapper
+      sx={{
+        paddingTop: '0.5rem'
+      }}
+    >
       <header className="page-header">
         <div className="header-content">
           <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
@@ -174,7 +193,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <Link to="/find-a-store">
                             <Tooltip arrow title="Stores" placement="left">
                               {/* <IconButton
-                          
+
                                 size="large"
                                 className="rounded"
                               > */}
@@ -259,9 +278,10 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     />
                   </div>
                   <nav className="navbar">
-                    <ul className="w-100">
-                      <div className="header-searchbar-wrapper w-100">
-                        {/* <div className="col-10 search-wrapper">
+                    {metalTypesData?.length > 0 && (
+                      <ul className="w-100">
+                        <div className="header-searchbar-wrapper w-100">
+                          {/* <div className="col-10 search-wrapper">
                           <input
                             type="text"
                             className="search-input col-9 col-md-9"
@@ -273,8 +293,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             className="search-logo"
                           />
                         </div> */}
-                        <div className="col-2">
-                          {/* <Link
+                          <div className="col-2">
+                            {/* <Link
                             to="#"
                             className="shopping-logo"
                             onClick={handleOpenDrawer}
@@ -285,15 +305,15 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               className="image"
                             />
                           </Link> */}
-                          {/* <ShoppingBag
+                            {/* <ShoppingBag
                               open={openDrawer}
                               handleDrawer={handleOpenDrawer}
                             /> */}
+                          </div>
                         </div>
-                      </div>
-                      {/* <h3 className="drawer-header>POPULAR SEARCHES</h3> */}
-                      <div className="d-lg-none">
-                        {/* <li className="w-100">
+                        {/* <h3 className="drawer-header>POPULAR SEARCHES</h3> */}
+                        <div className="d-lg-none">
+                          {/* <li className="w-100">
                           <Link to="/" className="menu-link">
                             Fancy Earrings
                           </Link>
@@ -318,57 +338,63 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             Office wear earrings
                           </Link>
                         </li> */}
-                        <li className="w-100">
-                          <Link className="menu-links" to="/">
-                            Home
-                          </Link>
-                        </li>
+                          <li className="w-100">
+                            <Link className="menu-links" to="/">
+                              Home
+                            </Link>
+                          </li>
 
-                        <li
-                          className="w-100"
-                          id="jewellery-link"
-                          onClick={() => {
-                            setShowDropdown((prev) => !prev);
-                          }}
-                        >
-                          Jewellery
-                        </li>
-                        <li className="w-100">
-                          <Link className="menu-links" to="/aboutus">
-                            About us
-                          </Link>
-                        </li>
-                        <li
-                          className="remove-underline"
-                        >
-                          <Tooltip
-                            title={
-                              !collections || collections.length === 0
-                                ? "No collections"
-                                : ""
-                            }
-                            disableHoverListener={
-                              collections && collections.length > 0
-                            }
-                            arrow
-                            placement="bottom"
-                          >
-                            <Box>
-                              <BasicMenu
-                                isLoading={isCollectionLoading}
-                                menuTitle="Collection"
-                                children={collections}
-                              />
-                            </Box>
-                          </Tooltip>
-                        </li>
-                        <li className="w-100">
-                          <Link className="menu-links" to="/enash">
-                            E-Mandate
-                          </Link>
-                        </li>
-                      </div>
-                    </ul>
+                          <div onClick={() => setShowDropdown(!showDropdown)}>
+                            {showDropdown && (
+                              <Box
+                                sx={{
+                                  position: 'absolute',
+                                  width: '99.8dvw',
+                                  backgroundColor: '#fff',
+                                  borderTop: '0.5px solid #d6d6d6',
+                                  zIndex: 9999,
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  justifyContent: 'center',
+                                  px: 6,
+                                  py: 4,
+                                  transform: showDropdown
+                                    ? 'translateY(35px)'
+                                    : 'translateY(-10px)'
+                                }}
+                              >
+                                <NavigationDropdown
+                                  metalData={metalTypesData}
+                                  setShowDropdown={setShowDropdown}
+                                />
+                              </Box>
+                            )}
+                            <li>Jewellery</li>
+                          </div>
+                          <li className="w-100">
+                            <Link className="menu-links" to="/aboutus">
+                              About us
+                            </Link>
+                          </li>
+                          {collections?.length > 0 && (
+                            <li className="remove-underline">
+                              <Box>
+                                <BasicMenu
+                                  isLoading={isCollectionLoading}
+                                  menuTitle="Collection"
+                                  children={collections}
+                                />
+                              </Box>
+                            </li>
+                          )}
+                          <li className="w-100">
+                            <Link className="menu-links" to="/enash">
+                              E-Mandate
+                            </Link>
+                          </li>
+                        </div>
+                      </ul>
+                    )}
                   </nav>
                 </div>
               </div>
@@ -379,53 +405,52 @@ function Header({ openDrawer, handleOpenDrawer }) {
               <div className="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-10">
                   <nav className="navbar">
-                    <ul className="w-100">
-                      <div
-                        className="menu-link-items "
-                        style={{ marginTop: "0.7rem" }}
-                      >
-                        <li>
-                          <Link to="/">Home</Link>
-                        </li>
-                        <li
-                          id="jewellery-link"
-                          onClick={() => {
-                            setShowDropdown((prev) => !prev);
-                          }}
+                    {metalTypesData?.length > 0 && (
+                      <ul className="w-100">
+                        <div
+                          className="menu-link-items "
+                          style={{ marginTop: '1.2rem' }}
                         >
-                          Jewellery
-                        </li>
-                        <li>
-                          <Link to="/aboutus">About us</Link>
-                        </li>
-                        <li
-                          className="remove-underline"
-                        >
-                          <Tooltip
-                            title={
-                              !collections || collections.length === 0
-                                ? "No collections"
-                                : ""
-                            }
-                            disableHoverListener={
-                              collections && collections.length > 0
-                            }
-                            arrow
-                            placement="bottom"
+                          <li>
+                            <Link to="/">Home</Link>
+                          </li>
+                          <div
+                            onMouseEnter={() => setShowDropdown(true)}
+                            onMouseLeave={() => setShowDropdown(false)}
+                            style={{
+                              marginTop: '-0.2rem'
+                            }}
                           >
-                            <Box>
-                              <BasicMenu
-                                isLoading={isCollectionLoading}
-                                menuTitle="Collection"
-                                children={collections}
-                              />
-                            </Box>
-                          </Tooltip>
-                        </li>
-                        <li>
-                          <Link to="/enash">E-Mandate</Link>
-                        </li>
-                        {/* <li>
+                            <DropdownWrapper showDropdown={showDropdown}>
+                              {showDropdown && (
+                                <NavigationDropdown
+                                  metalData={metalTypesData}
+                                  setShowDropdown={setShowDropdown}
+                                />
+                              )}
+                            </DropdownWrapper>
+
+                            <li>Jewellery</li>
+                          </div>
+
+                          <li>
+                            <Link to="/aboutus">About us</Link>
+                          </li>
+                          {collections?.length > 0 && (
+                            <li className="remove-underline">
+                              <Box>
+                                <BasicMenu
+                                  isLoading={isCollectionLoading}
+                                  menuTitle="Collection"
+                                  children={collections}
+                                />
+                              </Box>
+                            </li>
+                          )}
+                          <li>
+                            <Link to="/enash">E-Mandate</Link>
+                          </li>
+                          {/* <li>
                           <Link to="/bullions">Bullion</Link>
                         </li>
                         <li>
@@ -434,8 +459,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <li>
                             <Link to="gifting">Gifting</Link>
                         </li> */}
-                      </div>
-                    </ul>
+                        </div>
+                      </ul>
+                    )}
                   </nav>
                 </div>
               </div>
@@ -443,34 +469,17 @@ function Header({ openDrawer, handleOpenDrawer }) {
           </div>
         </div>
       </header>
-      <Box
-        sx={{
-          opacity: showDropdown ? 1 : 0,
-          transition: "opacity .4s ease, transform 0.4s ease",
-          transition: "all 0.9s",
-          position: "relative",
-          zIndex: 999,
-        }}
-      >
-        {showDropdown && (
-          <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
-            <NavigationDropdown
-              metalData={metalTypesData}
-              setShowDropdown={setShowDropdown}
-            />
-          </div>
-        )}
-      </Box>
+
       {searchDropdown && (
         <div
           id="search-dropdown-wrapper"
           className="dropdown-wrapper position-sticky"
-          style={{ position: "sticky", top: "120px", zIndex: "2" }}
+          style={{ position: 'sticky', top: '120px', zIndex: '2' }}
         >
           <SearchDropdown setSearchDropdown={setSearchDropdown} />
         </div>
       )}
-    </>
+    </ContainerWrapper>
   );
 }
 

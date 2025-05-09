@@ -212,27 +212,28 @@
 //   );
 // }
 
-import React, { useState, useEffect } from "react";
-import storeLocaterTitleImage from "../../images/storeLocaterTitleImageCropped.png";
-import { Button, Grid } from "@mui/material";
-import AllStores from "../AllStores";
-import { getStores, searchStores } from "../../services/FrontApp/index.service";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import DirectionsIcon from "@mui/icons-material/Directions";
-import PlaceIcon from "@mui/icons-material/Place";
+import React, { useState, useEffect } from 'react';
+import storeLocaterTitleImage from '../../images/storeLocaterTitleImageCropped.png';
+import { Button, Grid } from '@mui/material';
+import AllStores from '../AllStores';
+import { getStores, searchStores } from '../../services/FrontApp/index.service';
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+import DirectionsIcon from '@mui/icons-material/Directions';
+import PlaceIcon from '@mui/icons-material/Place';
+import ContainerWrapper from '../Common/ContainerWrapper';
 export default function FindAStore() {
   const [errors, setErrors] = useState([]);
   const center = { lat: 18.5204, lng: 73.8567 };
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_MAP_KEY,
+    googleMapsApiKey: process.env.REACT_APP_MAP_KEY
   });
 
   const [markers, setMarkers] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [map, setMap] = useState(null);
   const [info, setInfo] = useState(null);
-  const [searchData, setSearchData] = useState({ search: "" });
+  const [searchData, setSearchData] = useState({ search: '' });
   const [data, setData] = useState([]);
   const [initialData, setInitialData] = useState([]);
 
@@ -251,8 +252,8 @@ export default function FindAStore() {
         address: store.address,
         position: {
           lat: parseFloat(store.latitude),
-          lng: parseFloat(store.longitude),
-        },
+          lng: parseFloat(store.longitude)
+        }
       }));
       setMarkers(markerData);
     } catch (error) {
@@ -262,7 +263,7 @@ export default function FindAStore() {
 
   const handleAccordionClick = (position) => {
     setSelectedLocation(position);
-    console.log("position", position.element);
+    console.log('position', position.element);
     setInfo(position.element);
     if (map) {
       map.panTo(position);
@@ -294,8 +295,8 @@ export default function FindAStore() {
         address: store.address,
         position: {
           lat: parseFloat(store.latitude),
-          lng: parseFloat(store.longitude),
-        },
+          lng: parseFloat(store.longitude)
+        }
       }));
       setMarkers(markerData);
     } catch (error) {
@@ -343,7 +344,7 @@ export default function FindAStore() {
               value={searchData.search}
               onChange={handleChange}
               onKeyDown={(e) => {
-                if (e.key === "Enter") {
+                if (e.key === 'Enter') {
                   handleSubmit(e);
                 }
               }}
@@ -356,136 +357,144 @@ export default function FindAStore() {
       </div>
 
       {/* Main Content Section */}
-      <Grid container spacing={3} className="store-main-content">
-        <Grid className="all-store-container" item xs={12} md={5}>
-          <div className="all-store-titles p-3">ALL STORES</div>
-          <div className="store-locations-acordion">
-            <AllStores
-              data={data}
-              handleAccordionClick={handleAccordionClick}
-            />
-          </div>
-        </Grid>
-
-        {/* Google Map Section */}
+      <ContainerWrapper>
         <Grid
-          className="find-store-google-map-container p-3"
-          item
-          xs={12}
-          md={5}
+          container
+          gap={'1rem'}
+          className="store-main-content"
+          width={'100%'}
+          sx={{justifyContent:'start !important'}}
         >
-          <div style={{ position: "relative", marginTop: "40px" }}>
-            {/* Directions */}
-            {info && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  left: "10px",
-                  backgroundColor: "#fff",
-                  padding: "16px",
-                  borderRadius: "12px",
-                  boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-                  zIndex: 1,
-                  width: "260px",
-                  transition: "opacity 0.3s ease-in-out",
-                  fontFamily: "Arial, sans-serif",
-                }}
-              >
-                <h3
-                  style={{
-                    margin: "0 0 10px 0",
-                    fontSize: "18px",
-                    fontWeight: "700",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    textAlign: "center",
-                  }}
-                >
-                  <PlaceIcon style={{ fontSize: "20px", color: "red" }} />{" "}
-                  Chandukaka Saraf Jewels
-                </h3>
-                <h6
-                  style={{
-                    margin: "0 0 5px 0",
-                    fontSize: "14px",
-                    fontWeight: "500",
-                    borderRadius: "8px",
-                    textAlign: "center",
-                  }}
-                >
-                  {info.name || info.store_name}
-                </h6>
+          <Grid className="all-store-container" item xs={12} md={5.8}>
+            <div className="all-store-titles p-3">ALL STORES</div>
+            <div className="store-locations-acordion">
+              <AllStores
+                data={data}
+                handleAccordionClick={handleAccordionClick}
+              />
+            </div>
+          </Grid>
 
-                {/* Address */}
-                <p
+          {/* Google Map Section */}
+          <Grid
+            className="find-store-google-map-container p-3"
+            item
+            xs={12}
+            md={5.8}
+          >
+            <div style={{ position: 'relative', marginTop: '40px' }}>
+              {/* Directions */}
+              {info && (
+                <div
                   style={{
-                    margin: "10px 0 10px 0",
-                    fontSize: "14px",
-                    color: "#555",
+                    position: 'absolute',
+                    top: '10px',
+                    left: '10px',
+                    backgroundColor: '#fff',
+                    padding: '16px',
+                    borderRadius: '12px',
+                    boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+                    zIndex: 1,
+                    width: '260px',
+                    transition: 'opacity 0.3s ease-in-out',
+                    fontFamily: 'Arial, sans-serif'
                   }}
                 >
-                  {info.address}
-                </p>
+                  <h3
+                    style={{
+                      margin: '0 0 10px 0',
+                      fontSize: '18px',
+                      fontWeight: '700',
+                      padding: '10px',
+                      borderRadius: '8px',
+                      textAlign: 'center'
+                    }}
+                  >
+                    <PlaceIcon style={{ fontSize: '20px', color: 'red' }} />{' '}
+                    Chandukaka Saraf Jewels
+                  </h3>
+                  <h6
+                    style={{
+                      margin: '0 0 5px 0',
+                      fontSize: '14px',
+                      fontWeight: '500',
+                      borderRadius: '8px',
+                      textAlign: 'center'
+                    }}
+                  >
+                    {info.name || info.store_name}
+                  </h6>
 
-                {/* 🛣️ Stylish Get Directions Button */}
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${info.latitude},${info.longitude}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px",
-                    backgroundColor: "#007bff",
-                    color: "#fff",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    textDecoration: "none",
-                    fontWeight: "600",
-                    fontSize: "14px",
-                    transition: "background 0.3s",
+                  {/* Address */}
+                  <p
+                    style={{
+                      margin: '10px 0 10px 0',
+                      fontSize: '14px',
+                      color: '#555'
+                    }}
+                  >
+                    {info.address}
+                  </p>
+
+                  {/* 🛣️ Stylish Get Directions Button */}
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${info.latitude},${info.longitude}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      backgroundColor: '#007bff',
+                      color: '#fff',
+                      padding: '10px',
+                      borderRadius: '8px',
+                      textDecoration: 'none',
+                      fontWeight: '600',
+                      fontSize: '14px',
+                      transition: 'background 0.3s'
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = '#0056b3')
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = '#007bff')
+                    }
+                  >
+                    <DirectionsIcon style={{ fontSize: '18px' }} />
+                    Get Directions
+                  </a>
+
+                  {/* Close Button */}
+                </div>
+              )}
+              {/* Google Map */}
+              {isLoaded && markers.length >= 0 ? (
+                <GoogleMap
+                  onLoad={handleOnLoad}
+                  onClick={() => setInfo(null)}
+                  mapContainerStyle={{
+                    width: '100%',
+                    minHeight: '80vh',
+                    height: '100%'
                   }}
-                  onMouseEnter={(e) =>
-                    (e.target.style.backgroundColor = "#0056b3")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.target.style.backgroundColor = "#007bff")
-                  }
+                  center={selectedLocation || center}
+                  zoom={selectedLocation ? 20 : 10}
                 >
-                  <DirectionsIcon style={{ fontSize: "18px" }} />
-                  Get Directions
-                </a>
-
-                {/* Close Button */}
-              </div>
-            )}
-            {/* Google Map */}
-            {isLoaded && markers.length >= 0 ? (
-              <GoogleMap
-                onLoad={handleOnLoad}
-                onClick={() => setInfo(null)}
-                mapContainerStyle={{
-                  width: "100%",
-                  minHeight: "80vh",
-                  height: "100%",
-                }}
-                center={selectedLocation || center}
-                zoom={selectedLocation ? 20 : 10}
-              >
-                {markers.map((marker) => (
-                  <Marker
-                    key={marker.id}
-                    position={marker.position}
-                    // onClick={() => handleActiveMarker(marker)}
-                  />
-                ))}
-              </GoogleMap>
-            ) : null}
-          </div>
+                  {markers.map((marker) => (
+                    <Marker
+                      key={marker.id}
+                      position={marker.position}
+                      // onClick={() => handleActiveMarker(marker)}
+                    />
+                  ))}
+                </GoogleMap>
+              ) : null}
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
+      </ContainerWrapper>
     </div>
   );
 }

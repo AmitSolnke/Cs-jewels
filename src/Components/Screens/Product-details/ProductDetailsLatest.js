@@ -14,10 +14,10 @@ import ForwardIcon from '@mui/icons-material/Forward';
 import 'slick-carousel/slick/slick-theme.css';
 import ProductDetailsTabs from './ProductDetailsTabs';
 import { styled } from '@mui/material/styles';
-
+import ContainerWrapper from '../../Common/ContainerWrapper';
 
 const AnimatedIcon = styled(EastIcon)(({ theme }) => ({
-  transition: 'transform 0.3s ease',
+  transition: 'transform 0.3s ease'
 }));
 
 export const ProductDetailsLatest = () => {
@@ -83,11 +83,11 @@ export const ProductDetailsLatest = () => {
   const sliderData =
     imageItems && imageItems.length > 0
       ? imageItems
-        .filter((item) => item && item.original) // Filter out invalid items
-        .map((item) => ({
-          image: item.original, // Use `original` field for the `image`
-          description: '' // Add descriptions if needed, or leave empty
-        }))
+          .filter((item) => item && item.original) // Filter out invalid items
+          .map((item) => ({
+            image: item.original, // Use `original` field for the `image`
+            description: '' // Add descriptions if needed, or leave empty
+          }))
       : [];
 
   const [open, setOpen] = useState(false);
@@ -193,18 +193,21 @@ export const ProductDetailsLatest = () => {
     handleProductDetailsTab(productDetails);
   }, [active, JSON.stringify(productDetails)]);
   return (
-    <Box className="product-details-latest">
-      <Grid
-        container
-        spacing={3}
-        className="p-3 grid-container"
-        style={{ background: '#fff' }}
-      >
-        <Grid item md={6}>
-          <div className="">
-            {/* product images gallery */}
-            <div className="d-none product-gallery d-md-block">
-              {/* <ImageGallery
+    <ContainerWrapper sx={{marginY:'1rem'}}>
+      <Box className="product-details-latest">
+        <Grid
+          container
+          xs={12}
+          gap={'1rem'}
+          className="grid-container"
+          style={{ background: '#fff', marginInline: 'auto' }}
+          width={'100%'}
+        >
+          <Grid item md={5.8} width={'100%'} style={{padding:'0'}}>
+            <div className="">
+              {/* product images gallery */}
+              <div className="d-none product-gallery d-md-block">
+                {/* <ImageGallery
                 items={imageItems}
                 showNav={false}
                 showPlayButton={false}
@@ -212,49 +215,53 @@ export const ProductDetailsLatest = () => {
                 lscreenButton={false}
               /> */}
 
-              {imageItems?.length > 0 && (
-                <Slider {...sliderSettings}>
-                  {imageItems?.map((image, index) => (
-                    <div key={index}>
-                      <SideBySideMagnifier
-                        imageSrc={image.original}
-                        imageAlt={`Product Image ${index + 1}`}
-                        alwaysInPlace={true}
-                        zoomContainerBorder="1px solid #ccc"
-                        className="custom-magnifier"
-                        // overlayBackgroundColor="rgba(0,0,0,0.3)"
-                        // className="custom-magnifier"
-                        fillAvailableSpace={false}
-                      // transitionSpeed={0.2}
-                      // overlayBackgroundColor="rgba(0,0,0,0.6)"
-                      />
-                    </div>
-                  ))}
-                </Slider>
-              )}
-            </div>
+                {imageItems?.length > 0 && (
+                  <Slider {...sliderSettings}>
+                    {imageItems?.map((image, index) => (
+                      <div key={index}>
+                        <SideBySideMagnifier
+                          imageSrc={image.original}
+                          imageAlt={`Product Image ${index + 1}`}
+                          alwaysInPlace={true}
+                          zoomContainerBorder="1px solid #ccc"
+                          className="custom-magnifier"
+                          // overlayBackgroundColor="rgba(0,0,0,0.3)"
+                          // className="custom-magnifier"
+                          fillAvailableSpace={false}
+                          // transitionSpeed={0.2}
+                          // overlayBackgroundColor="rgba(0,0,0,0.6)"
+                        />
+                      </div>
+                    ))}
+                  </Slider>
+                )}
+              </div>
 
-            <div className="d-block product-gallery d-md-none">
-              <ImageGallery
-                items={imageItems}
-                showNav={false}
-                showPlayButton={false}
-                showFullscreenButton={false}
-                showBullets={true}
-                showThumbnails={false}
-              />
+              <div className="d-block product-gallery d-md-none">
+                <ImageGallery
+                  items={imageItems}
+                  showNav={false}
+                  showPlayButton={false}
+                  showFullscreenButton={false}
+                  showBullets={true}
+                  showThumbnails={false}
+                />
+              </div>
             </div>
-          </div>
-        </Grid>
+          </Grid>
 
-        <Grid
-          item
-          md={6}
-          sx={{ paddingLeft: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
-          className="product-details-wrapper pt-md-0"
-          width={'100%'}
-        >
-          {/* <span className="new-arrival-badge">NEW ARRIVAL</span>
+          <Grid
+            item
+            md={5.8}
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}
+            className="product-details-wrapper pt-md-0"
+            width={'100%'}
+          >
+            {/* <span className="new-arrival-badge">NEW ARRIVAL</span>
 
             <h2 className="product-title">{productDetails.product_name}</h2>
 
@@ -262,35 +269,35 @@ export const ProductDetailsLatest = () => {
               {productDetails.metal_description}
             </div> */}
 
-          {/* commented temporary
+            {/* commented temporary
             <div className="product-price"> &#8377; {productDetails.sales_price}</div> */}
 
-          {/* <div className="product-description">
+            {/* <div className="product-description">
               {productDetails.item_description}
             </div> */}
 
-          <div className=" m-2 product-details w-100 pt-md-0">
-            <div
-              className="product-details-title-link"
-              style={{
-                font: 'normal normal 900 17px/19px "Afacad Flux", serif'
-              }}
-            >
-              PRODUCT DETAILS
+            <div className=" m-2 product-details w-100 pt-md-0">
+              <div
+                className="product-details-title-link"
+                style={{
+                  font: 'normal normal 900 17px/19px "Afacad Flux", serif'
+                }}
+              >
+                PRODUCT DETAILS
+              </div>
+              <div className="product-description my-3">
+                <span style={{ color: '#666666', fontWeight: '600' }}>
+                  Regular Price(Starting From)
+                </span>
+                :
+                <span style={{ color: '#000', fontWeight: '600' }}>
+                  {productDetails?.regular_price || '--'}/-
+                </span>
+              </div>
+              <ProductDetailsTabs productDetails={productDetails} />
             </div>
-            <div className="product-description my-3">
-              <span style={{ color: '#666666', fontWeight: '600' }}>
-                Regular Price(Starting From)
-              </span>
-              :
-              <span style={{ color: '#000', fontWeight: '600' }}>
-                {productDetails.regular_price}/-
-              </span>
-            </div>
-            <ProductDetailsTabs productDetails={productDetails} />
-          </div>
 
-          {/* commented temporary
+            {/* commented temporary
           <table className="product-information-table my-2">
             <tr>
               <td>Rate:</td>
@@ -322,44 +329,47 @@ export const ProductDetailsLatest = () => {
               <td>&#8377; {productDetails.sales_price}</td>
             </tr>
           </table> */}
-          <Box>
-            <Button
-              className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6 mx-2"
-              variant="contained"
-              onClick={handleOpenEnquiryModal}
+            <Box
               sx={{
-                display: 'flex',
-                justifyContent: {
-                  xs: 'center',
-                  md: 'flex-start'
-                },
-                gap: {
-                  xs: 2,
-                  md: 15
-                },
-                marginTop: '30px',
                 width: {
                   xs: '95%',
-                  sm: '95%',
-                  md: '38%',
-                },
-                '&:hover .icon': {
-                  transform: 'translateX(28px)'
-                },
+                  sm: '38%'
+                }
               }}
             >
-              <span className="button-enquire">ENQUIRE</span>
-              <AnimatedIcon className="icon" />
-            </Button>
+              <Button
+                className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6 mx-2 "
+                variant="contained"
+                onClick={handleOpenEnquiryModal}
+                sx={{
+                  display: 'flex',
+                  justifyContent: {
+                    xs: 'center',
+                    md: 'space-between'
+                  },
+                  gap: {
+                    xs: 2
+                  },
+                  marginTop: '30px',
+                  width: '100%',
+                  '&:hover .icon': {
+                    transform: 'translateX(3px)'
+                  }
+                }}
+              >
+                <span className="button-enquire">ENQUIRE</span>
+                <AnimatedIcon className="icon" />
+              </Button>
 
-            <EnquiryModal
-              open={open}
-              handleClose={handleCloseEnquiryModal}
-              productId={id}
-            />
-          </Box>
+              <EnquiryModal
+                open={open}
+                handleClose={handleCloseEnquiryModal}
+                productId={id}
+              />
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </ContainerWrapper>
   );
 };

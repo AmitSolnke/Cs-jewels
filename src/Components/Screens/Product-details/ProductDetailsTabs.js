@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/material';
+import { Box, Fade, Stack } from '@mui/material';
 import ForwardIcon from '@mui/icons-material/Forward';
 import React, { useEffect, useState } from 'react';
 
@@ -30,11 +30,7 @@ const ProductDetailsTabs = ({ productDetails }) => {
     }
 
     if (active === 'product description') {
-      return (
-        <>
-          {productDetails?.description || '--'}
-        </>
-      );
+      return <>{productDetails?.description || '--'}</>;
     }
 
     return (
@@ -65,18 +61,19 @@ const ProductDetailsTabs = ({ productDetails }) => {
         direction="row"
         width="100%"
         sx={{
-          border: '1px solid #672A2F !important',
+          border: '1px solid #000 !important',
           p: '0 !important',
           overflow: 'hidden'
         }}
       >
         {/* Sidebar Tabs */}
+
         <Stack
           width="40%"
           sx={{
             p: '0 !important',
-            borderRight: '1px solid #672A2F !important',
-            overflow: 'hidden',
+            borderRight: '1px solid #000 !important',
+            overflow: 'hidden'
           }}
         >
           {tabs.map((tab) => (
@@ -85,6 +82,7 @@ const ProductDetailsTabs = ({ productDetails }) => {
               role="button"
               onClick={() => handleActiveTab(tab)}
               sx={{
+                position: 'relative',
                 backgroundColor: active === tab ? '#672A2F' : 'transparent',
                 color: active === tab ? '#fff !important' : '#000 !important',
                 p: '0.67rem !important',
@@ -94,33 +92,61 @@ const ProductDetailsTabs = ({ productDetails }) => {
                 textTransform: 'capitalize',
                 fontSize: '0.8rem',
                 borderRadius: 'none',
-                borderBottom: '1px solid #672A2F',
+                border: '1px solid #672A2F',
+                overflow: 'hidden',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s ease',
+
+                '&:hover': {
+                  backgroundColor: '#f2f2f2',
+                  color: '#000 !important',
+                  border: '1px solid #000'
+                },
+
+                '& span, svg': {
+                  position: 'relative',
+                  zIndex: 1,
+                  transition: 'transform 0.3s ease, opacity 0.3s ease'
+                },
+
+                '& svg': {
+                  opacity: active === tab ? 1 : 0,
+                  transform:
+                    active === tab ? 'translateX(0)' : 'translateX(-4px)'
+                },
+
+                '&:hover svg': {
+                  opacity: 1,
+                  transform: 'translateX(4px)'
+                },
+
                 '&:last-child': {
                   borderBottom: 'none'
-                },
+                }
               }}
             >
               <span>{tab}</span>
-              {active === tab && <ForwardIcon />}
+              <ForwardIcon />
             </Box>
           ))}
         </Stack>
-
-        <Stack
-          gap={1}
-          width="60%"
-          className="text-wrap"
-          sx={{
-            height: { xs: '9rem', md: '9rem' },
-            overflow: 'auto',
-            p: '0.7rem',
-            fontSize: '0.8rem'
-          }}
-        >
-          {content}
-        </Stack>
+        <Fade in={true} timeout={500} key={active}>
+          <Stack
+            gap={1}
+            width="60%"
+            className="text-wrap"
+            sx={{
+              height: { xs: '9rem', md: '9rem' },
+              overflow: 'auto',
+              p: '0.7rem',
+              fontSize: '0.8rem'
+            }}
+          >
+            {content}
+          </Stack>
+        </Fade>
       </Stack>
-    </Stack >
+    </Stack>
   );
 };
 

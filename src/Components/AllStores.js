@@ -5,19 +5,19 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import plusIcon from "../images/icons/plusicon.svg";
 import minusIcon from "../images/icons/minusicon.svg";
-import { Link, useMediaQuery } from "@mui/material";
+import { Box, Link, useMediaQuery } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 export default function AllStores({ data, handleAccordionClick }) {
   const [expanded, setExpanded] = React.useState(false);
-  const mobileView = useMediaQuery("(max-width:600px)");
+  const tabView = useMediaQuery("(max-width:900px)");
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
   return (
-    <div className="faqs-container">
+    <Box className="faqs-container" sx={{height:'25rem',overflowY:'scroll'}}>
       {data.map((element, index) => (
         <Accordion
           expanded={expanded === "panel" + index}
@@ -53,8 +53,8 @@ export default function AllStores({ data, handleAccordionClick }) {
             <Typography>
               <Link
                 onClick={() => {
-                  if (mobileView) {
-                    window.scrollTo({ top: 1500, behavior: "smooth" });
+                  if (tabView) {
+                    window.scrollTo({ top: 1700, behavior: "smooth" });
                   } else {
                     window.scrollTo({ top: 450, behavior: "smooth" });
                   }
@@ -83,6 +83,6 @@ export default function AllStores({ data, handleAccordionClick }) {
           </AccordionDetails>
         </Accordion>
       ))}
-    </div>
+    </Box>
   );
 }

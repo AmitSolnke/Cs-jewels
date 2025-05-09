@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { Box, styled } from '@mui/material';
 
 export const DropdownWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'showDropdown'
@@ -28,5 +28,8 @@ export const DropdownWrapper = styled(Box, {
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     padding: theme.spacing(2)
+  },
+  [theme.breakpoints.up(1024)]: {
+    height: 'auto'
   }
 }));

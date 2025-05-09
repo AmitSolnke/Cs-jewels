@@ -382,7 +382,7 @@ export default function FindAStore() {
             xs={12}
             md={5.8}
           >
-            <div style={{ position: 'relative', marginTop: '40px' }}>
+            <div style={{ position: 'relative'}}>
               {/* Directions */}
               {info && (
                 <div
@@ -476,7 +476,7 @@ export default function FindAStore() {
                   onClick={() => setInfo(null)}
                   mapContainerStyle={{
                     width: '100%',
-                    minHeight: '80vh',
+                    minHeight: '83vh',
                     height: '100%'
                   }}
                   center={selectedLocation || center}

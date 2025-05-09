@@ -17,7 +17,7 @@ export default function AllStores({ data, handleAccordionClick }) {
   };
 
   return (
-    <Box className="faqs-container" sx={{height:'25rem',overflowY:'scroll'}}>
+    <Box className="faqs-container" sx={{height:'76vh',overflowY:'scroll'}}>
       {data.map((element, index) => (
         <Accordion
           expanded={expanded === "panel" + index}

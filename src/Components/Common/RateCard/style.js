@@ -1,32 +1,62 @@
 import { Box, Stack, styled } from '@mui/material';
-
-export const StyledRateTableWrapper = styled('div')(({ theme }) => ({
+import RateCardImage from '../../../images/rateCard.png';
+export const StyledRateTableWrapper = styled(Stack)(({ theme }) => ({
+  height: '18rem',
+  overflowY: 'auto',
   position: 'absolute',
   top: '-0.8rem',
   left: '-60px',
   zIndex: 3,
   backgroundColor: '#672B30',
   border: '1px solid',
-  width: '23rem',
+  width: '25rem',
+  color: 'white',
+  fontWeight: 'bold',
+  padding: '0.8rem',
+  backgroundSize: 'contain',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  overflow: 'hidden',
+  backgroundImage: `url(${RateCardImage})`,
+  padding: '2rem 0.8rem',
+
+  [theme.breakpoints.down('sm')]: {
+    left: '-500px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    left: '-265px',
+    width: '18.5rem',
+    height: '13.25rem',
+  }
+}));
+
+export const StyledRateTableWrapper1 = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  top: '-0.8rem',
+  left: '-60px',
+  zIndex: 3,
+  backgroundColor: '#672B30',
+  border: '1px solid',
+  width: '27rem',
   color: 'white',
   fontWeight: 'bold',
   padding: '0.8rem',
 
-  [theme.breakpoints.down(768)]: {
-    top: '0.7rem',
-    left: '-270px',
-    width: '19rem',
-    padding: '0.6rem'
-  },
+  // [theme.breakpoints.down(768)]: {
+  // top: '0.7rem',
+  //left: '-270px',
+  //width: '19rem',
+  //padding: '0.6rem'
+  //},
 
   '&::before': {
     content: '""',
     position: 'absolute',
-    top: '-10px',
-    left: '30px',
-    width: '20px',
-    height: '20px',
-    backgroundImage: 'url("/path/to/your/image.svg")',
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
+    backgroundImage: `url(${RateCardImage})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     zIndex: 2

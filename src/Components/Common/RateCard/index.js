@@ -39,7 +39,7 @@ const RateCard = () => {
         />
       )}
 
-      <StyledAnimatedBox show={showRateCard}>
+      <StyledAnimatedBox show={true}>
         <RateTable />
       </StyledAnimatedBox>
     </StyledRateBox>

@@ -1,12 +1,6 @@
 import { Box, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
-import {
-  RateCardDateWrapper,
-  StyledBorderBox,
-  StyledRateTableWrapper,
-  StyledStack
-} from './style';
-import DataTable from '../DataTable';
+import { StyledRateTableWrapper } from './style'; // Assuming this is already updated as mentioned earlier
 import { getRateDetails } from '../../../services/FrontApp/index.service';
 
 const RateTable = () => {
@@ -58,94 +52,89 @@ const RateTable = () => {
     new Date(rateDetails?.updated_on?.trim())?.toTimeString().split(' ')[0];
 
   return (
-    <>
-      <StyledRateTableWrapper>
-        <Stack
-          gap={'0.7rem'}
-          marginY={'2rem'}
-          sx={{
-            maxHeight: '13.4rem',
-            overflowY: 'auto'
-          }}
+    <StyledRateTableWrapper
+      gap={{ xs: '0.5rem', sm: '0.7rem' }}
+      marginY={{ xs: '1rem',sm:'0rem' }}
+    >
+      <Stack flexDirection={'row'} width={'100%'}>
+        <Box
+          width={'100%'}
+          textAlign="center"
+          fontSize={{ xs: '0.7rem', }}
+          textTransform="capitalize"
         >
-          <Stack flexDirection={'row'} width={'100%'}>
-            <Box
-              width={'100%'}
-              textAlign="center"
-              fontSize={'0.8rem'}
-              textTransform={'capitalize'}
-            >
-              Date: {date}
-            </Box>
-            <Box
-              width={'100%'}
-              textAlign="center"
-              fontSize={'0.8rem'}
-              textTransform={'capitalize'}
-            >
-              Last Updated Time: {time}
-            </Box>
-          </Stack>
-          <Stack gap={'0.9rem'} width={'100%'}>
-            <Stack direction={'row'} width={'100%'} gap={'0.7rem'}>
-              <Box
-                width={'100%'}
-                textAlign="center"
-                borderRadius="1rem"
-                border="2px solid #fdd020"
-                color="#fdd020"
-                fontWeight={'bold'}
-              >
-                Material
-              </Box>
-              <Box
-                width={'100%'}
-                textAlign="center"
-                borderRadius="1rem"
-                border="2px solid #fdd020"
-                color="#fdd020"
-                fontWeight={'bold'}
-              >
-                Rates
-              </Box>
-            </Stack>
-            <Stack width={'100%'} gap={'1rem'}>
-              {rateDetails?.rateData?.map((rateIem, ind) => (
-                <Stack
-                  direction={'row'}
-                  key={ind}
-                  width={'100%'}
-                  gap={'0.7rem'}
-                >
-                  <Box
-                    width={'100%'}
-                    textAlign="center"
-                    color="#fdd020"
-                    className="text-truncate"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title={rateIem?.material_name || '--'}
-                  >
-                    {rateIem?.material_name}
-                  </Box>
-                  <Box
-                    width={'100%'}
-                    textAlign="center"
-                    color="#fdd020"
-                    className="text-truncate"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title={rateIem?.rate || '--'}
-                  >
-                    {rateIem?.rate || '--'}
-                  </Box>
-                </Stack>
-              ))}
-            </Stack>
-          </Stack>
+          Date: {date}
+        </Box>
+        <Box
+          width={'100%'}
+          textAlign="center"
+          fontSize={{ xs: '0.7rem', }}
+          textTransform="capitalize text-wrap"
+        >
+          Last Updated Time: {time}
+        </Box>
+      </Stack>
+      <Stack gap={{ xs: '0.7rem', sm: '0.9rem' }} width="100%">
+        <Stack direction="row" width="100%" gap="0.7rem">
+          <Box
+            width="100%"
+            textAlign="center"
+            borderRadius="1rem"
+
+            color="#fdd020"
+            fontWeight="bold"
+            fontSize={{ xs: '0.75rem', sm: '0.9rem' }}
+          >
+           <span style={{ border:"2px solid #fdd020",borderRadius:"1rem",padding:'0.2rem 1.5rem'}}> Material</span>
+          </Box>
+          <Box
+            width="100%"
+            textAlign="center"
+            borderRadius="1rem"
+            color="#fdd020"
+            fontWeight="bold"
+            fontSize={{ xs: '0.75rem', sm: '0.9rem' }}
+          >
+           <span style={{ border:"2px solid #fdd020",borderRadius:"1rem",padding:'0.2rem 2rem'}}> Rates</span>
+          </Box>
         </Stack>
-      </StyledRateTableWrapper>
-    </>
+        <Stack
+          width="100%"
+          gap={{ xs: '0.7rem' }}
+          style={{ height: '8rem', overflowY: 'auto' }}
+          className='custom-scrollbar'
+        >
+          {rateDetails?.rateData?.map((rateItem, ind) => (
+            <Stack direction="row" key={ind} width="100%" gap="0.7rem">
+              <Box
+                width="100%"
+                textAlign="center"
+                color="#fdd020"
+                className="text-truncate"
+                fontSize={{ xs: '0.75rem', sm: '0.85rem' }}
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title={rateItem?.material_name || '--'}
+              >
+                {rateItem?.material_name}
+              </Box>
+              <Box
+                width="100%"
+                textAlign="center"
+                color="#fdd020"
+                className="text-truncate"
+                fontSize={{ xs: '0.75rem', sm: '0.85rem' }}
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title={rateItem?.rate || '--'}
+              >
+                {rateItem?.rate || '--'}
+              </Box>
+            </Stack>
+          ))}
+        </Stack>
+      </Stack>
+    </StyledRateTableWrapper>
   );
 };
 

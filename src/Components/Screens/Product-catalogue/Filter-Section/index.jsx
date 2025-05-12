@@ -28,7 +28,7 @@ export default function FilterSection({
   }, [filteredPayload?.sort_by]);
 
   const filtersApplied =
-    Number(!!filteredPayload?.gender?.trim()) +
+    Number(!!filteredPayload?.genders?.length > 0) +
     Number(!!filteredPayload?.min_price || !!filteredPayload?.max_price) +
     Number(!!filteredPayload?.purity?.length > 0) +
     Number(!!filteredPayload?.selectedCollections?.length > 0);

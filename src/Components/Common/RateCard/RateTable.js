@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { StyledRateTableWrapper } from './style'; // Assuming this is already updated as mentioned earlier
 import { getRateDetails } from '../../../services/FrontApp/index.service';
 
-const RateTable = ({setIsRateDataPresent=()=>{}}) => {
+const RateTable = ({ setIsRateDataPresent = () => {} }) => {
   const [rateDetails, setRateDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const isMobile = useMediaQuery('(max-width:767px)');
@@ -15,7 +15,9 @@ const RateTable = ({setIsRateDataPresent=()=>{}}) => {
         ...rateData,
         ...(rateData?.rate &&
           unit_of_measurement && {
-            rate: `₹ ${rateData?.rate} per 1 ${unit_of_measurement?.toLowerCase()}`
+            rate: `₹ ${
+              rateData?.rate
+            } per 1 ${unit_of_measurement?.toLowerCase()}`
           })
       };
     });
@@ -73,18 +75,18 @@ const RateTable = ({setIsRateDataPresent=()=>{}}) => {
             <Box
               width={'100%'}
               textAlign="center"
-              fontSize={{ xs: '0.7rem' }}
-              textTransform="capitalize"
+              fontSize={{ xs: '0.7rem', md: '0.9rem' }}
+              textTransform="capitalize text-wrap"
             >
-              Date: {date}
+              Date: {date || '--'}
             </Box>
             <Box
               width={'100%'}
               textAlign="center"
-              fontSize={{ xs: '0.7rem' }}
+              fontSize={{ xs: '0.7rem', md: '0.9rem' }}
               textTransform="capitalize text-wrap"
             >
-              Last Updated Time: {time}
+              Time: {time || '--'}
             </Box>
           </Stack>
           <Stack gap={{ xs: '0.7rem', sm: '0.9rem' }} width="100%">

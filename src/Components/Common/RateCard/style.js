@@ -1,15 +1,15 @@
 import { Box, Stack, styled } from '@mui/material';
 import RateCardImage from '../../../images/rateCard.png';
 export const StyledRateTableWrapper = styled(Stack)(({ theme }) => ({
-  height: '18rem',
+  height: '17rem',
   overflowY: 'auto',
   position: 'absolute',
   top: '-0.8rem',
-  left: '-60px',
+  left: '-80px',
   zIndex: 3,
   backgroundColor: '#672B30',
   border: '1px solid',
-  width: '25rem',
+  width: '24rem',
   color: 'white',
   fontWeight: 'bold',
   padding: '0.8rem',
@@ -18,15 +18,10 @@ export const StyledRateTableWrapper = styled(Stack)(({ theme }) => ({
   backgroundRepeat: 'no-repeat',
   overflow: 'hidden',
   backgroundImage: `url(${RateCardImage})`,
-  padding: '2rem 0.8rem',
+  padding: '2.8rem 0.8rem',
 
-  [theme.breakpoints.down('sm')]: {
-    left: '-500px',
-  },
-  [theme.breakpoints.down('sm')]: {
-    left: '-265px',
-    width: '18.5rem',
-    height: '13.25rem',
+  [theme.breakpoints.down(768)]: {
+   left: '-350px',
   }
 }));
 

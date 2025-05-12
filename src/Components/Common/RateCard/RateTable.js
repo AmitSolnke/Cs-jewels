@@ -116,7 +116,7 @@ const RateTable = () => {
                 data-bs-placement="top"
                 title={rateItem?.material_name || '--'}
               >
-                {rateItem?.material_name}
+                {rateItem?.material_name || '--'}
               </Box>
               <Box
                 width="100%"

@@ -54,7 +54,7 @@ export default function AllStores({ data, handleAccordionClick }) {
               <Link
                 onClick={() => {
                   if (tabView) {
-                    window.scrollTo({ top: 1700, behavior: "smooth" });
+                    window.scrollTo({ top: 950, behavior: "smooth" });
                   } else {
                     window.scrollTo({ top: 450, behavior: "smooth" });
                   }

@@ -29,9 +29,11 @@ const SingleCollection = ({ collectionMasterId, page = 1 }) => {
       setTotalPages(data?.data?.last_page);
       setProducts(data?.data?.data);
       setBanner(
-        !isMobile
+        (!isMobile
           ? data?.collection_list_banner[0]?.image_path
-          : data?.collection_list_banner[0]?.mobile_image_path
+          : data?.collection_list_banner[0]?.mobile_image_path) ||
+          data?.collection_list_banner?.[0]?.image_path ||
+          data?.collection_list_banner?.[0]?.mobile_image_path
       );
     } catch (error) {
       setProducts([]);

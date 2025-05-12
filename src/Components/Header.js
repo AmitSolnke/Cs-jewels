@@ -36,6 +36,7 @@ import StoresIconBrown from '../images/icons/StoresIcon.png';
 import BasicMenu from './Common/Menu';
 import { DropdownWrapper } from './style';
 import ContainerWrapper from './Common/ContainerWrapper';
+import RateCard from './Common/RateCard';
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const isMobile = useMediaQuery('(max-width:768px)');
@@ -188,8 +189,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     </div>
 
                     <div className="header-icon-list">
-                      <ul>
-                        <li>
+                      <ul style={{gap:'0.3rem'}}>
+                        <li className="p-0">
                           <Link to="/find-a-store">
                             <Tooltip arrow title="Stores" placement="left">
                               {/* <IconButton
@@ -212,18 +213,24 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               {/* </IconButton> */}
                             </Tooltip>
                           </Link>
-                          {/* <Link onClick={handleOpenDrawer}>
+                        </li>
+                        <li className="p-0">
+                          <Tooltip arrow title="Rates" placement="left">
+                            <RateCard />
+                          </Tooltip>
+                        </li>
+                        {/* <Link onClick={handleOpenDrawer}>
                             <img
                               src={shoppingBagLogo}
                               alt="Logo"
                               className="image"
                             />
                           </Link> */}
-                          {/* <ShoppingBag
+                        {/* <ShoppingBag
                               open={openDrawer}
                               handleOpenDrawer={handleOpenDrawer}
                             /> */}
-                        </li>
+
                         {/* <li>
                           <Link to="/wishlist">
                             <img
@@ -255,8 +262,12 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <ul className="w-100">
                             <div className="quick-link-items">
                               <li>
+                                <RateCard />
+                              </li>
+                              <li>
                                 <Link to="/find-a-store">FIND A STORE</Link>
                               </li>
+
                               <li>
                                 <Link to="/contact-us">SUPPORT</Link>
                               </li>

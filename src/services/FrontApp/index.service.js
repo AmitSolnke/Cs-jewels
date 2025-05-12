@@ -122,3 +122,7 @@ export const PostCreateMandate = async (data) => {
 export const getCollectionDetails = async (tenantMasterId) => {
   return await httpService.get(`getcollectionData?tenant_master_id=${tenantMasterId || 1}`);
 };
+
+export const getRateDetails = async () => {
+  return  await httpService.get(`getUpdatedRate`);
+};

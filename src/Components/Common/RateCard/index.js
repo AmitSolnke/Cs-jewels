@@ -7,6 +7,7 @@ import { useMediaQuery } from '@mui/material';
 const RateCard = () => {
   const [showRateCard, setShowRateCard] = React.useState(false);
   const isMobile = useMediaQuery('(max-width:767px)');
+  const [isRateDataPresent, setIsRateDataPresent] = React.useState(false);
   const handleMouseEnter = () => {
     if (!isMobile) setShowRateCard(true);
   };
@@ -20,11 +21,13 @@ const RateCard = () => {
       setShowRateCard((prev) => !prev);
     }
   };
+
   return (
     <StyledRateBox
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={toggleRateCard}
+      visibility={isRateDataPresent ? 'visible' : 'hidden'}
     >
       <RateCardText>Rate Card</RateCardText>
       {isMobile && (
@@ -39,8 +42,8 @@ const RateCard = () => {
         />
       )}
 
-      <StyledAnimatedBox show={true}>
-        <RateTable />
+      <StyledAnimatedBox show={showRateCard}>
+        <RateTable setIsRateDataPresent={setIsRateDataPresent}/>
       </StyledAnimatedBox>
     </StyledRateBox>
   );

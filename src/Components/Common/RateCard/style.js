@@ -21,7 +21,10 @@ export const StyledRateTableWrapper = styled(Stack)(({ theme }) => ({
   padding: '2.8rem 0.8rem',
 
   [theme.breakpoints.down(768)]: {
-   left: '-350px',
+   left: '-280px',
+   top: '0.4rem',
+   width: '20rem',
+   height: '14rem'
   }
 }));
 

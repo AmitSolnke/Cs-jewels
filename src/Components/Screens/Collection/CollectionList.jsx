@@ -16,8 +16,7 @@ const CollectionList = ({ collections, isLoading = false }) => {
         sx={{
           padding: '0px !important',
           marginInline: 'auto',
-          width: '100%',
-          justifyContent: 'space-between'
+          width: '100%'
         }}
       >
         {isLoading ? (

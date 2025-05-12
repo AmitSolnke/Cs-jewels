@@ -18,7 +18,6 @@ const ProductList = ({ products, isLoading = false }) => {
           padding: '0px !important',
           marginInline: 'auto',
           width: '100%',
-          justifyContent: 'space-between'
         }}
       >
         {isLoading ? (

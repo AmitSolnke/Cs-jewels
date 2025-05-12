@@ -11,13 +11,10 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import { getCollectionDetails } from '../../../../services/FrontApp/index.service';
 import MultipleSelectChip from '../../../Common/MultiSelect';
-import {
-  genderList,
-  prices,
-  purityList
-} from '../../../../utilities/filterContants';
+import { prices, purityList } from '../../../../utilities/filterContants';
 import { isSameArray } from '../../../../utilities/CustomFunction';
 import { useLocation, useNavigate } from 'react-router-dom';
+import MultiDropdown from '../../../Common/MultiDropdown';
 
 export default function FilterDrawer({
   filterHandler,
@@ -27,7 +24,9 @@ export default function FilterDrawer({
   const navigate = useNavigate();
   const location = useLocation();
   const [collections, setCollections] = React.useState([]);
-  const [gender, setGender] = React.useState(filteredPayload?.gender || '');
+  const [genders, setGenders] = React.useState(
+    filteredPayload?.genders?.length === 0 ? [] : filteredPayload?.genders || []
+  );
   const [purity, setPurity] = React.useState(
     filteredPayload?.purity?.length === 0 ? [] : filteredPayload?.purity || []
   );
@@ -67,7 +66,7 @@ export default function FilterDrawer({
     filterHandler({
       min_price: minmaxVal.min,
       max_price: minmaxVal.max,
-      gender,
+      genders,
       purity: purity,
       selectedCollections: selectedCollections,
       sort_by: '',
@@ -98,13 +97,13 @@ export default function FilterDrawer({
     );
 
     navigate(decodedUrl);
-    if(decodedUrl === currentURL){
-       filterHandler();
+    if (decodedUrl === currentURL) {
+      filterHandler();
     }
   };
   const clearFilters = () => {
     setIsDisabled(true);
-    setGender('');
+    setGenders([]);
     setMinMaxVal({ min: 0, max: 0 });
     setPurity([]);
     setSelectedCollections([]);
@@ -122,7 +121,7 @@ export default function FilterDrawer({
 
   React.useEffect(() => {
     setIsDisabled(
-      gender === (filteredPayload?.gender || '') &&
+      isSameArray(genders, filteredPayload?.genders || []) &&
         isSameArray(purity, filteredPayload?.purity || []) &&
         isSameArray(
           selectedCollections || [],
@@ -132,7 +131,7 @@ export default function FilterDrawer({
         minmaxVal.max === (filteredPayload?.max_price || 0)
     );
   }, [
-    gender,
+    genders?.length,
     purity?.length,
     selectedCollections?.length,
     minmaxVal.min,
@@ -140,7 +139,7 @@ export default function FilterDrawer({
   ]);
 
   const isInitialState =
-    !gender &&
+    !genders?.length &&
     !purity?.length &&
     !selectedCollections?.length &&
     minmaxVal.min === 0 &&
@@ -187,45 +186,7 @@ export default function FilterDrawer({
         className="custom-scrollbar"
       >
         <Stack>
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            style={{
-              border: '1px solid #662A2E',
-              borderRadius: '0',
-              cursor: 'pointer',
-              boxShadow: 'none',
-              outline: 'none'
-            }}
-            onChange={(e) => setGender(e.target.value)}
-            value={gender}
-          >
-            <option
-              value=""
-              disabled
-              selected
-              style={{
-                border: '1px solid #662A2E',
-                borderRadius: '0',
-                cursor: 'pointer !important'
-              }}
-            >
-              --Select Gender--
-            </option>
-            {genderList?.map((item, ind) => (
-              <option
-                value={item?.value}
-                key={ind}
-                style={{
-                  border: '1px solid #662A2E',
-                  borderRadius: '0',
-                  cursor: 'pointer !important'
-                }}
-              >
-                {item.label}
-              </option>
-            ))}
-          </select>
+          <MultiDropdown genders={genders} setGenders={setGenders} />
         </Stack>
         <Stack gap={1} border={'1px solid #662A2E'} padding={1}>
           <span>Price</span>
@@ -314,12 +275,12 @@ export default function FilterDrawer({
               />
             ))}
           </Stack>
+        </Stack>
           <MultipleSelectChip
             collections={collections}
             setSelectedCollections={setSelectedCollections}
             selectedCollections={selectedCollections}
           />
-        </Stack>
       </Stack>
       <Button
         sx={{

@@ -60,7 +60,7 @@ export const ProductCatalogues = () => {
 
     if (
       !filteredPayload?.metal &&
-      !filteredPayload?.gender &&
+      !filteredPayload?.genders &&
       !filteredPayload?.min_price &&
       !filteredPayload?.max_price &&
       !filteredPayload?.purity &&
@@ -265,7 +265,7 @@ export const ProductCatalogues = () => {
       setLoading(true);
       const requestParams = new FormData();
       const metalId = payload?.metal || '';
-      const gender = payload?.gender || '';
+      const genders = payload?.genders || '';
       const sort_by = payload?.sort_by || '';
       const min_price = payload?.min_price ?? '';
       const max_price = payload?.max_price || '';
@@ -284,8 +284,10 @@ export const ProductCatalogues = () => {
       if (sort_by) {
         requestParams.append('sort_by', sort_by);
       }
-      if (gender) {
-        requestParams.append('gender', gender);
+      if (genders) {
+         genders?.forEach((item, ind) => {
+          requestParams?.append(`gender[${ind}]`, item);
+        });
       }
       if (min_price || min_price === 0) {
         requestParams.append('min_price', min_price);
@@ -336,7 +338,7 @@ export const ProductCatalogues = () => {
   const filterHandler = (payload) => {
     if (
       !payload ||
-      (!payload?.gender &&
+      (!payload?.genders &&
         !payload?.min_price &&
         !payload?.max_price &&
         !payload?.purity &&
@@ -367,7 +369,6 @@ export const ProductCatalogues = () => {
         <FilterSection
           filterHandler={filterHandler}
           filteredPayload={filteredPayload}
-          products={products}
           isLoading={loading}
         />
       </ContainerWrapper>

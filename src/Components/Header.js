@@ -371,11 +371,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             )}
                             <li>Jewellery</li>
                           </div>
-                          <li className="w-100">
-                            <Link className="menu-links" to="/aboutus">
-                              About us
-                            </Link>
-                          </li>
                           {collections?.length > 0 && (
                             <li className="remove-underline">
                               <Box>
@@ -387,6 +382,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               </Box>
                             </li>
                           )}
+                          <li className="w-100">
+                            <Link className="menu-links" to="/aboutus">
+                              About us
+                            </Link>
+                          </li>
                           <li className="w-100">
                             <Link className="menu-links" to="/enash">
                               E-Mandate
@@ -432,10 +432,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
                             <li>Jewellery</li>
                           </div>
-
-                          <li>
-                            <Link to="/aboutus">About us</Link>
-                          </li>
                           {collections?.length > 0 && (
                             <li className="remove-underline">
                               <Box>
@@ -447,6 +443,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               </Box>
                             </li>
                           )}
+                          <li>
+                            <Link to="/aboutus">About us</Link>
+                          </li>
                           <li>
                             <Link to="/enash">E-Mandate</Link>
                           </li>

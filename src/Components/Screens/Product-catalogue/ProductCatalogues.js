@@ -367,7 +367,6 @@ export const ProductCatalogues = () => {
         <FilterSection
           filterHandler={filterHandler}
           filteredPayload={filteredPayload}
-          products={products}
           isLoading={loading}
         />
       </ContainerWrapper>

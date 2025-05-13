@@ -1,17 +1,17 @@
-import React from "react";
-import Slider from "react-slick";
-import "../../scss/Components/Screens/_csPromises.scss";
+import React from 'react';
+import Slider from 'react-slick';
+import '../../scss/Components/Screens/_csPromises.scss';
 
-import DeductionIcon from "../../images/USP/DeductionIcon";
-import HallMarkIcon from "../../images/USP/HallMarkIcon";
+import DeductionIcon from '../../images/USP/DeductionIcon';
+import HallMarkIcon from '../../images/USP/HallMarkIcon';
 
-import DiamondsIcon from "../../images/USP/DiamondsIcon";
-import PurityIcon from "../../images/USP/PurityIcon";
-import DebitCardIcon from "../../images/USP/DebitCardIcon";
-import MeltingIcon from "../../images/USP/MeltingIcon";
-import AstrologyIcon from "../../images/USP/AstrologyIcon";
-import BIShallmark from "../../images/BISHallmark.webp";
-import GoldKeratometer from "../../images/gold&silver-keratometer.webp";
+import DiamondsIcon from '../../images/USP/DiamondsIcon';
+import PurityIcon from '../../images/USP/PurityIcon';
+import DebitCardIcon from '../../images/USP/DebitCardIcon';
+import MeltingIcon from '../../images/USP/MeltingIcon';
+import AstrologyIcon from '../../images/USP/AstrologyIcon';
+import BIShallmark from '../../images/BISHallmark.webp';
+import GoldKeratometer from '../../images/gold&silver-keratometer.webp';
 
 const CsPromises = () => {
   const settings = {
@@ -30,60 +30,60 @@ const CsPromises = () => {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
-        },
+          dots: true
+        }
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          initialSlide: 2,
-        },
+          initialSlide: 2
+        }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   const promises = [
     {
       imgComponent: <DeductionIcon />,
-      text: "NO-DEDUCTION<br/> EXCHANGE",
+      text: 'NO-DEDUCTION<br/> EXCHANGE'
     },
     {
       imgSrc: BIShallmark,
-      text: "BIS HALLMARKED<br/> JEWELLERY",
+      text: 'BIS HALLMARKED<br/> JEWELLERY'
     },
     {
       imgComponent: <DiamondsIcon />,
-      text: "CERTIFIED DIAMONDS &<br/>GEMSTONE",
+      text: 'CERTIFIED DIAMONDS &<br/>GEMSTONE'
     },
     {
       imgComponent: <PurityIcon />,
-      text: "SILVER RATE AS <br/>PER PURITY",
+      text: 'SILVER RATE AS <br/>PER PURITY'
     },
     {
       imgComponent: <DebitCardIcon />,
-      text: "NO CARD FEES",
+      text: 'NO CARD FEES'
     },
     {
       imgComponent: <MeltingIcon />,
-      text: "DIRECT DEPOSIT AFTER MELTING",
+      text: 'DIRECT DEPOSIT AFTER MELTING'
     },
     {
       imgSrc: GoldKeratometer,
-      text: "GOLD AND SILVER KARATOMETER",
+      text: 'GOLD AND SILVER KARATOMETER'
     },
     {
       imgComponent: <AstrologyIcon />,
-      text: "FREE ASTROLOGY CONSULTATION",
-    },
+      text: 'FREE ASTROLOGY CONSULTATION'
+    }
   ];
 
   return (
@@ -103,9 +103,14 @@ const CsPromises = () => {
                 {promise.imgComponent ? (
                   promise.imgComponent
                 ) : (
-                  <img className="w-100" src={promise.imgSrc} alt="" />
+                  <img
+                    className="w-100"
+                    src={promise.imgSrc}
+                    alt=""
+                    loading="lazy"
+                  />
                 )}
-                </div>
+              </div>
               <p
                 className="content-text"
                 dangerouslySetInnerHTML={{ __html: promise.text }}

@@ -259,6 +259,7 @@ const AuthModal = ({ open, handleClose }) => {
                         className="ms-2"
                         src={rightArrowIcon}
                         alt="rightArrowIcon"
+                        loading="lazy"
                       />
                     </Button>
                   </div>
@@ -325,7 +326,7 @@ const AuthModal = ({ open, handleClose }) => {
             {showThankYou && (
               <div className="container">
                 <div className="d-flex justify-content-center">
-                  <img src={successCheckIcon} alt="successful icon" />
+                  <img src={successCheckIcon} alt="successful icon" loading="lazy"/>
                 </div>
 
                 <Typography

@@ -112,6 +112,7 @@ export const ProductDetailsLatest = () => {
               // objectFit: "cover",
               borderRadius: '5px'
             }}
+            loading="lazy"
           />
         </a>
       );

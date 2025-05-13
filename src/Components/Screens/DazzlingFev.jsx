@@ -54,6 +54,7 @@ function DazzlingFev() {
                   src={item.img}
                   className="card-img rounded-0"
                   alt={item.name}
+                  loading="lazy"
                 />
               </Link>
             </div>

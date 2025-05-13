@@ -27,6 +27,7 @@ export const ExpansionCartView = () => {
                         <img
                             src={shoppingBagLogo}
                             style={{ height: "20px", width: "20px" }}
+                            loading="lazy"
                         />
                     </Badge>
                     <Typography style={{marginLeft: '5px'}}>

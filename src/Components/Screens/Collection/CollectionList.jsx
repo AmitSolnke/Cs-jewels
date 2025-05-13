@@ -81,6 +81,7 @@ const CollectionList = ({ collections, isLoading = false }) => {
                 src={collection.image_path1}
                 alt={collection.collection_name || 'Collection Image'}
                 style={{ width: '100%', height: '100%', borderRadius: '8px' }}
+                loading="lazy"
               />
 
               <div className="text">{collection.name}</div>

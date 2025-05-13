@@ -249,7 +249,7 @@ export default function ContactUs() {
                   className="carousel-explore-now-btn"
                   onClick={handleSubmit}
                 >
-                  SUBMIT <img src={rightArrowIcon} alt="rightArrowIcon" />
+                  SUBMIT <img src={rightArrowIcon} alt="rightArrowIcon" loading="lazy"/>
                 </button>
               </Grid>
             </Grid>

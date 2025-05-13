@@ -141,7 +141,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
               style={{ display: "flex", flexDirection: "row" }}
             >
               <div style={{ flex: "1" }}>
-                <img src={productImage} className="side-product-image" alt="" />
+                <img src={productImage} className="side-product-image" alt="" loading="lazy"/>
               </div>
               <div className="dialog-main" style={{ flex: "1" }}>
                 <DialogActions>
@@ -236,6 +236,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                       src={successCheckIcon}
                       style={{ width: "123px", height: "123px" }}
                       alt="Tick Mark"
+                      loading="lazy"
                     />
                     <Typography
                       variant="h3"

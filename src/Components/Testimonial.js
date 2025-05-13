@@ -28,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const TestimonialComponent = ({ data }) => {
   return (
     <div className="testimonial-wrapper">
-      <img src={data.image_path} alt="img" className="client-img" />
+      <img src={data.image_path} alt="img" className="client-img" loading="lazy"/>
       <div className="feedback-wrapper">
         {/* <p dangerouslySetInnerHTML={{ __html: data.description }} /> */}
         <p>{parseHtmlContent(data.description)}</p>

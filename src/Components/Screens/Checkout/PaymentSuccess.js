@@ -8,7 +8,7 @@ export const PaymentSuccess = () => {
         <div className="success-wrapper">
             <div className="container">
                 <div className="d-flex justify-content-center">
-                    <img src={successCheckIcon} alt="successful icon" />
+                    <img src={successCheckIcon} alt="successful icon" loading="lazy"/>
                 </div>
 
                 <Typography

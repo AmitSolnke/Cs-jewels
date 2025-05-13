@@ -222,7 +222,7 @@ export default function ProductDetails() {
         <h2 className="section-header">
           {" "}
           Customer Reviews{" "}
-          <img src={sectionHeaderIcons} alt="Customer Reviews" />{" "}
+          <img src={sectionHeaderIcons} alt="Customer Reviews" loading="lazy"/>{" "}
         </h2>
         <div className="avg-review-section">
           <div className="d-flex avg-review-wrapper">
@@ -248,7 +248,7 @@ export default function ProductDetails() {
         <h2 className="section-header">
           {" "}
           You might also like{" "}
-          <img src={sectionHeaderIcons} alt="Customer Reviews" />{" "}
+          <img src={sectionHeaderIcons} alt="Customer Reviews" loading="lazy"/>{" "}
         </h2>
         <p>
           Elevate your style with our exquisite bullion pieces, each crafted to

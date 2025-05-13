@@ -173,6 +173,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
               <img
                 src={shoppingBagLogo}
                 style={{ height: "20px", width: "20px" }}
+                loading="lazy"
               />
             </Badge>
           </div>

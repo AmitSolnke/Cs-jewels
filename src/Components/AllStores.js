@@ -30,9 +30,9 @@ export default function AllStores({ data, handleAccordionClick }) {
           <AccordionSummary
             expandIcon={
               expanded === 'panel' + index ? (
-                <img src={minusIcon} alt="rightArrowIcon" />
+                <img src={minusIcon} alt="rightArrowIcon" loading="lazy"/>
               ) : (
-                <img src={plusIcon} alt="rightArrowIcon" />
+                <img src={plusIcon} alt="rightArrowIcon" loading="lazy"/>
               )
             }
             aria-controls="panel1bh-content"

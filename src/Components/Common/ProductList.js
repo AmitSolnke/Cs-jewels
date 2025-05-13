@@ -81,6 +81,7 @@ const ProductList = ({ products, isLoading = false }) => {
                 alt={product.product_name || 'product Image'}
                 className="image"
                 style={{ width: '100%', borderRadius: '8px' }}
+                loading="lazy"
               />
               <div className="text">{product.name}</div>
             </Grid>

@@ -15,7 +15,7 @@ export default function BlogSectionWithSideImage({
           className="about-us-description-read-more our-specialities-image"
           style={{ width: '100%' }}
         >
-          <img src={imageSrc} style={{ width: '100%' }} />
+          <img src={imageSrc} style={{ width: '100%' }} loading="lazy"/>
         </div>
         <Box
           className="our-specialities-container"

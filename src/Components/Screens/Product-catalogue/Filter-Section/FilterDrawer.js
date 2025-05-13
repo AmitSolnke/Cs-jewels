@@ -128,7 +128,8 @@ export default function FilterDrawer({
           filteredPayload?.selectedCollections || []
         ) &&
         minmaxVal.min === (filteredPayload?.min_price || 0) &&
-        minmaxVal.max === (filteredPayload?.max_price || 0)
+        (minmaxVal.max === (filteredPayload?.max_price || 0) ||
+          minmaxVal.max === undefined)
     );
   }, [
     genders?.length,

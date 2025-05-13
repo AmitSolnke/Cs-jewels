@@ -1,5 +1,5 @@
 import { Box, Stack, styled } from '@mui/material';
-import RateCardImage from '../../../images/rateCard.png';
+import RateCardImage from '../../../images/rateCard.webp';
 export const StyledRateTableWrapper = styled(Stack)(({ theme }) => ({
   height: '17rem',
   overflowY: 'auto',
@@ -28,38 +28,6 @@ export const StyledRateTableWrapper = styled(Stack)(({ theme }) => ({
   }
 }));
 
-export const StyledRateTableWrapper1 = styled('div')(({ theme }) => ({
-  position: 'absolute',
-  top: '-0.8rem',
-  left: '-60px',
-  zIndex: 3,
-  backgroundColor: '#672B30',
-  border: '1px solid',
-  width: '27rem',
-  color: 'white',
-  fontWeight: 'bold',
-  padding: '0.8rem',
-
-  // [theme.breakpoints.down(768)]: {
-  // top: '0.7rem',
-  //left: '-270px',
-  //width: '19rem',
-  //padding: '0.6rem'
-  //},
-
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    backgroundImage: `url(${RateCardImage})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    zIndex: 2
-  }
-}));
 
 export const StyledRateBox = styled(Box)(() => ({
   cursor: 'pointer',

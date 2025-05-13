@@ -16,14 +16,14 @@ const ProductDetailsTabs = ({ productDetails }) => {
         <>
           <Box>
             <span className="fw-bolder">Gross weight</span>:{' '}
-            {productDetails?.gross_wt}g
+            {productDetails?.gross_wt ? `${productDetails?.gross_wt}g` : '--'}
           </Box>
           <Box>
             <span className="fw-bolder">Net weight</span>:{' '}
-            {productDetails?.net_wt}g
+            {productDetails?.net_wt ? `${productDetails?.net_wt}g` : '--'}
           </Box>
           <Box>
-            <span className="fw-bolder">Purity</span>: {productDetails?.purity}K
+            <span className="fw-bolder">Purity</span>: {productDetails?.purity ? `${productDetails?.purity}K` : '--'}
           </Box>
         </>
       );
@@ -56,7 +56,7 @@ const ProductDetailsTabs = ({ productDetails }) => {
   }, [active, JSON.stringify(productDetails)]);
 
   return (
-    <Stack sx={{ p: '0 !important' }} width="94%">
+    <Stack sx={{ p: '0 !important' }} width="100%">
       <Stack
         direction="row"
         width="100%"

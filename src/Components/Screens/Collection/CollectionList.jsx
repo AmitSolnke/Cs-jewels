@@ -63,9 +63,10 @@ const CollectionList = ({ collections, isLoading = false }) => {
               md={3.9}
               sm={5.9}
               xs={5.8}
-              onClick={() =>
-                navigate(`/collection?collectionId=${collection.id}&page=1`)
-              }
+              onClick={() => {
+                navigate(`/collection?collectionId=${collection.id}&page=1`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="product-item-card"
               sx={{
                 cursor: 'pointer',

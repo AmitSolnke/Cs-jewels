@@ -50,11 +50,11 @@ export const purityList = [
     value: '92.5'
   }
 ];
+//{
+ //label:'popularity',
+ //value:'is_popular'
+//},
  export const sortbyList = [
-   {
-    label:'popularity',
-    value:'is_popular'
-   },
    {
     label:'new arrival',
     value:'newly_added'

@@ -6,6 +6,7 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import ClearIcon from '@mui/icons-material/Clear';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Chip } from '@mui/material';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -59,7 +60,15 @@ export default function MultipleSelectChip({
       renderOption={(props, option, { selected }) => {
         const { key, ...optionProps } = props;
         return (
-          <li key={key} {...optionProps} style={{ width: 200 }}>
+          <li
+            key={key}
+            {...optionProps}
+            style={{ width: '100%',cursor:'pointer' }}
+            className="text-truncate"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title={option?.collection_name}
+          >
             <Checkbox
               icon={icon}
               checkedIcon={checkedIcon}
@@ -88,6 +97,30 @@ export default function MultipleSelectChip({
           children: <ArrowDropDownIcon />
         }
       }}
+      renderTags={(value, getTagProps) =>
+        value.map((option, index) => (
+          <Chip
+            label={option.collection_name}
+            {...getTagProps({ index })}
+            sx={{
+              backgroundColor: '#6D3439',
+              color: '#fff',
+              '& .MuiChip-deleteIcon': {
+                color: '#fff',
+                transition: 'color 0.2s ease'
+              },
+              '&:hover .MuiChip-deleteIcon': {
+                color: '#ffb3b3'
+              },
+              display:'flex',
+              gap:"0.4rem",
+              padding:'0.9rem 0.5rem'
+            }}
+            size="small"
+            variant="outlined"
+          />
+        ))
+      }
       style={{ width: '100%' }}
       renderInput={(params) => (
         <TextField {...params} label="Collections" placeholder="Collections" />

@@ -66,7 +66,7 @@ export default function FindAStore() {
         map.setZoom(20);
       }
     } else {
-      setToggleMap(false);
+      setToggleMap((prevToggleMap) => !prevToggleMap);
     }
   };
 

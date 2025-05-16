@@ -29,7 +29,7 @@ export default function BasicMenu({
     if (isMobile) {
       setIsOpen((prev) => !prev);
     } else {
-      navigate('/collection');
+      navigate(menuTitle.toLowerCase());
     }
   };
 

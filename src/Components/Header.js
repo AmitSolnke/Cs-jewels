@@ -160,6 +160,19 @@ function Header({ openDrawer, handleOpenDrawer }) {
     }
   };
 
+  const schemes = [
+    {
+      id: 1,
+      collectionName: 'Golden Era Scheme',
+      url: '/golden-era-scheme'
+    },
+    {
+      id: 2,
+      collectionName: 'Golden Dream Scheme',
+      url: '/golden-dream-scheme'
+    }
+  ];
+
   return (
     <ContainerWrapper
       sx={{
@@ -191,7 +204,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     </div>
 
                     <div className="header-icon-list">
-                      <ul style={{gap:'0.3rem'}}>
+                      <ul style={{ gap: '0.3rem' }}>
                         <li className="p-0">
                           <Link to="/find-a-store">
                             <Tooltip arrow title="Stores" placement="left">
@@ -398,6 +411,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               </Box>
                             </li>
                           )}
+                          <li className="remove-underline">
+                            <Box>
+                              <BasicMenu
+                                menuTitle="Schemes"
+                                children={schemes}
+                              />
+                            </Box>
+                          </li>
                           <li className="w-100">
                             <Link className="menu-links" to="/aboutus">
                               About us
@@ -459,6 +480,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               </Box>
                             </li>
                           )}
+                          <li className="remove-underline">
+                            <Box>
+                              <BasicMenu
+                                menuTitle="Schemes"
+                                children={schemes}
+                              />
+                            </Box>
+                          </li>
                           <li>
                             <Link to="/aboutus">About us</Link>
                           </li>

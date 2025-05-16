@@ -164,26 +164,21 @@ export default function TermsAndCondition() {
         </Grid>
       </Box>
 
-
-
-
       <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={1} md={4}>
             <div className="empty-container-section">xs=6 md=4</div>
           </Grid>
           <Grid item xs={10} md={4}>
-            <div className="privacy-policy-header-text">
-              E-Mandate
-            </div>
+            <div className="privacy-policy-header-text">E-Mandate</div>
             <div className="privacy-policy-header-text fs-5">
               1. General Information
             </div>
             <div className="privacy-policy-normal-text">
-              These Terms and Conditions ("T&Cs") govern the use of the website and services
-              provided by Chandukaka Saraf Jewels Pvt. Ltd. Company through its stores
-              located in Maharashtra and Karnataka. By using our website and services, you
-              agree to be bound by these T&Cs.
+              These Terms and Conditions ("T&Cs") govern the use of the website
+              and services provided by Chandukaka Saraf Jewels Pvt. Ltd. Company
+              through its stores located in Maharashtra and Karnataka. By using
+              our website and services, you agree to be bound by these T&Cs.
             </div>
             <Divider className="divider-privacy-policy" />
           </Grid>
@@ -192,7 +187,6 @@ export default function TermsAndCondition() {
           </Grid>
         </Grid>
       </Box>
-
 
       <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
@@ -204,12 +198,12 @@ export default function TermsAndCondition() {
               2. E-Mandate Enrollment
             </div>
             <div className="privacy-policy-normal-text">
-              2.1 Customers wishing to start a new scheme account at our stores may do so
-              and agree to make payments through the E-Mandate facility as provided on our
-              website.<br></br>
-              2.2 To enroll in a new scheme account through E-Mandate, customers must
-              provide the necessary documentation as required by the Company and complete
-              the enrollment form.
+              2.1 Customers wishing to start a new scheme account at our stores
+              may do so and agree to make payments through the E-Mandate
+              facility as provided on our website.<br></br>
+              2.2 To enroll in a new scheme account through E-Mandate, customers
+              must provide the necessary documentation as required by the
+              Company and complete the enrollment form.
             </div>
             <Divider className="divider-privacy-policy" />
           </Grid>
@@ -229,11 +223,13 @@ export default function TermsAndCondition() {
               3. Payment Terms
             </div>
             <div className="privacy-policy-normal-text">
-              3.1 Customers shall make payments as per the schedule agreed upon during the
-              setup of their Scheme Account. The payments will be automatically deducted
-              through the E-Mandate as per the agreed terms.<br></br> 3.2 It is the customer’s responsibility to ensure that sufficient funds are available
-              in the designated bank account to facilitate successful transactions. The Company
-              is not responsible for any failed transactions due to insufficient funds.
+              3.1 Customers shall make payments as per the schedule agreed upon
+              during the setup of their Scheme Account. The payments will be
+              automatically deducted through the E-Mandate as per the agreed
+              terms.<br></br> 3.2 It is the customer’s responsibility to ensure
+              that sufficient funds are available in the designated bank account
+              to facilitate successful transactions. The Company is not
+              responsible for any failed transactions due to insufficient funds.
             </div>
             <Divider className="divider-privacy-policy" />
           </Grid>
@@ -242,7 +238,6 @@ export default function TermsAndCondition() {
           </Grid>
         </Grid>
       </Box>
-
 
       <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
@@ -254,11 +249,15 @@ export default function TermsAndCondition() {
               4. Cancellation of E-Mandate
             </div>
             <div className="privacy-policy-normal-text">
-              4.1 If a customer wishes to cancel their E-Mandate, they must visit the nearest
-              branch of Chandukaka Saraf Jewels Pvt. Ltd. Company and fill and submit the E- Mandate Cancellation Form.<br></br> 4.2 The Company will process the cancellation request, and upon successful
-              processing, the E-Mandate will be cancelled. The customer will receive
-              confirmation of the cancellation by SMS.<br></br>4.3 Customers are advised to submit their cancellation requests well in advance
-              of the due payment date to avoid any unintended transactions.
+              4.1 If a customer wishes to cancel their E-Mandate, they must
+              visit the nearest branch of Chandukaka Saraf Jewels Pvt. Ltd.
+              Company and fill and submit the E- Mandate Cancellation Form.
+              <br></br> 4.2 The Company will process the cancellation request,
+              and upon successful processing, the E-Mandate will be cancelled.
+              The customer will receive confirmation of the cancellation by SMS.
+              <br></br>4.3 Customers are advised to submit their cancellation
+              requests well in advance of the due payment date to avoid any
+              unintended transactions.
             </div>
             <Divider className="divider-privacy-policy" />
           </Grid>
@@ -277,10 +276,13 @@ export default function TermsAndCondition() {
               5. Refund Policy
             </div>
             <div className="privacy-policy-normal-text">
-              5.1 All purchases made through the website or in-store are final. No refunds will
-              be issued for payments made unless expressly stated otherwise.<br></br> 5.2 In case of any disputes regarding payments or transactions, customers should
-              contact our customer service number or visit the nearest store of the Company
-              and the Company will investigate the matter in accordance with its discretion.
+              5.1 All purchases made through the website or in-store are final.
+              No refunds will be issued for payments made unless expressly
+              stated otherwise.<br></br> 5.2 In case of any disputes regarding
+              payments or transactions, customers should contact our customer
+              service number or visit the nearest store of the Company and the
+              Company will investigate the matter in accordance with its
+              discretion.
             </div>
             <Divider className="divider-privacy-policy" />
           </Grid>
@@ -299,8 +301,10 @@ export default function TermsAndCondition() {
               6. Limitation of Liability
             </div>
             <div className="privacy-policy-normal-text">
-              Chandukaka Saraf Jewels Pvt. Ltd.Company shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability
-              to use the E-Mandate service or any other services provided through the website.
+              Chandukaka Saraf Jewels Pvt. Ltd.Company shall not be liable for
+              any direct, indirect, incidental, or consequential damages
+              resulting from the use or inability to use the E-Mandate service
+              or any other services provided through the website.
             </div>
             <Divider className="divider-privacy-policy" />
           </Grid>
@@ -320,9 +324,36 @@ export default function TermsAndCondition() {
               7. Amendments to Terms
             </div>
             <div className="privacy-policy-normal-text">
-              The Company reserves the right to amend these T&Cs at any time without prior
-              notice. Customers are encouraged to review these T&Cs periodically for any
-              updates.
+              The Company reserves the right to amend these T&Cs at any time
+              without prior notice. Customers are encouraged to review these
+              T&Cs periodically for any updates.
+            </div>
+            <Divider className="divider-privacy-policy" />
+          </Grid>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
+        <Grid container spacing={1}>
+          <Grid item xs={1} md={4}>
+            <div className="empty-container-section">xs=6 md=4</div>
+          </Grid>
+          <Grid item xs={10} md={4}>
+            <div className="privacy-policy-header-text fs-5">
+              8. Scheme Cancellation Policy
+            </div>
+            <div className="privacy-policy-normal-text">
+              8.1 Customer will get full refund of the principal amount deposited in
+              the scheme by visiting nearest branch and after submission of
+              original Passbook with valid Id proof.
+            </div>
+
+            <div className="privacy-policy-normal-text">
+              8.2 The amount will be paid only through online transfer to
+              customer’s personal bank account only.
             </div>
             <Divider className="divider-privacy-policy" />
           </Grid>
@@ -338,12 +369,14 @@ export default function TermsAndCondition() {
           </Grid>
           <Grid item xs={10} md={4}>
             <div className="privacy-policy-header-text fs-5">
-              8. Contact Information
+              9. Contact Information
             </div>
             <div className="privacy-policy-normal-text">
-              For any queries regarding these T&Cs, please contact our customer service
-              number or visit the nearest branch of Chandukaka Saraf Jewels Pvt. Ltd. Company.
+              For any queries regarding these T&Cs, please contact our customer
+              service number or visit the nearest branch of Chandukaka Saraf
+              Jewels Pvt. Ltd. Company.
             </div>
+
             <Divider className="divider-privacy-policy" />
           </Grid>
           <Grid item xs={1} md={4}>
@@ -362,7 +395,7 @@ export default function TermsAndCondition() {
               <strong>Email :</strong> care@csjewels.com
             </div>
             <div className="">
-              <strong>Phone : </strong>  07969991827
+              <strong>Phone : </strong> 07969991827
             </div>
             <div className="">
               <strong>Address :</strong> Chandukaka Saraf Jewels Pvt. Ltd.

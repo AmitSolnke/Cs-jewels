@@ -23,7 +23,12 @@ const GoldenEraScheme = () => {
         <Box>
           <Stack gap={2}>
             <Box marginInline={'auto'}>
-              <Typography fontWeight={600} fontSize={{ xs: '1rem', sm: '2rem' }}>More Gold, More Gains-GES!</Typography>
+              <Typography
+                fontWeight={600}
+                fontSize={{ xs: '1rem', sm: '2rem' }}
+              >
+                More Gold, More Gains-GES!
+              </Typography>
             </Box>
             <img
               src={InvestingInGold}
@@ -58,8 +63,9 @@ const GoldenEraScheme = () => {
         <Box sx={{ width: '100%', height: '100%' }}>
           <HorizonatalBanner
             imageSrc={GoldenEraLogo}
-            desc={'To Enroll Now Connect our Representative On 07969991827'}
             title={'Book Your Gold Every Month'}
+            subtitle={'for additional benefits!'}
+            desc={'To Enroll Now Connect our Representative On 07969991827'}
           />
         </Box>
       </Stack>

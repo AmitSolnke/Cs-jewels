@@ -163,14 +163,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
   const schemes = [
     {
       id: 1,
-      collectionName: 'Golden Era Scheme',
-      url: '/golden-era-scheme'
+      collectionName: 'Golden Dream Plan',
+      url: '/golden-dream-scheme'
     },
     {
       id: 2,
-      collectionName: 'Golden Dream Scheme',
-      url: '/golden-dream-scheme'
-    }
+      collectionName: 'Golden Era Scheme',
+      url: '/golden-era-scheme'
+    },
   ];
 
   return (

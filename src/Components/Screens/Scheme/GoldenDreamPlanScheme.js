@@ -8,7 +8,7 @@ import {
 } from '../../../images/SchemeImages';
 import { handleDownload } from '../../../utilities/handleDownload';
 import HorizonatalBanner from '../../Common/HorizonatalBanner';
-const GoldenScheme = () => {
+const GoldenDreamPlanScheme = () => {
   return (
     <Container maxWidth="lg" sx={{ my: 2 }}>
       <Stack gap={2} sx={{ width: '100%', height: '100%' }}>
@@ -72,8 +72,8 @@ const GoldenScheme = () => {
         <Box sx={{ width: '100%', height: '100%' }}>
           <HorizonatalBanner
             imageSrc={GoldenDreamLogo}
-            desc={'Invest a Little, Achieve a Lot - GDP'}
-            title={'To Enroll Now Connect our Representative On 07969991827'}
+            title={'Invest a Little, Achieve a Lot - GDP'}
+            desc={'To Enroll Now Connect our Representative On 07969991827'}
           />
         </Box>
       </Stack>
@@ -81,4 +81,4 @@ const GoldenScheme = () => {
   );
 };
 
-export default GoldenScheme;
+export default GoldenDreamPlanScheme;

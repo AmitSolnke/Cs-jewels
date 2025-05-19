@@ -26,9 +26,9 @@ import RefundPolicy from './Components/Screens/RefundPolicy';
 import ImageCollage from './Components/Screens/ImageCollage ';
 import Enash from './Components/Screens/Enash';
 import Collection from './Components/Screens/Collection';
-import Schemes from './Components/Screens/Scheme/Scheme';
 import GoldenEraScheme from './Components/Screens/Scheme/GoldenEraScheme';
-import GoldenScheme from './Components/Screens/Scheme/GoldenScheme';
+import GoldenDreamPlanScheme from './Components/Screens/Scheme/GoldenDreamPlanScheme';
+
 
 export const normalRouts = [
   {
@@ -183,13 +183,6 @@ export const frontAppRoutes = [
     strict: false
   },
   {
-    path: '/schemes',
-    name: 'Scheme',
-    element: <Schemes />,
-    exact: true,
-    strict: false
-  },
-  {
     path: '/golden-era-scheme',
     name: 'Golden Era Scheme',
     element: <GoldenEraScheme />,
@@ -199,7 +192,7 @@ export const frontAppRoutes = [
   {
     path: '/golden-dream-scheme',
     name: 'Golden Dream Scheme',
-    element: <GoldenScheme />,
+    element: <GoldenDreamPlanScheme />,
     exact: true,
     strict: false
   },

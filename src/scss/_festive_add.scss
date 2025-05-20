@@ -1,0 +1,47 @@
+@keyframes showHideBanner {
+    0%, 40% {
+      opacity: 1;
+      transform: translateY(10px);
+    }
+    50%, 100% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes showHideOffer {
+    0%, 40% {
+      opacity: 0;
+      transform: translateY(0px);
+    }
+    50%, 90% {
+      opacity: 1;
+      transform: translateY(-30px);
+    }
+  }
+  
+  .festive-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease-in-out;
+    height: 50px;
+    background-color:#F2e9e9;
+  }
+  
+  .festive-banner {
+    animation: showHideBanner 4s linear infinite;
+  }
+  
+  .festive-offer {
+    animation: showHideOffer 4s linear infinite;
+  }
+  
+  .close-button {
+    position: absolute;
+    right:10px;
+    border: none;
+    font-size: 45px;
+    cursor: pointer;
+  }
+  

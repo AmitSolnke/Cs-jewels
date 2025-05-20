@@ -4,14 +4,13 @@
   position: sticky;
   top: 0;
   width: 100%;
-  height: 140px;
+  height: 110px;
   z-index: 5;
 }
 
 .header-content {
   position: relative;
   background-color: #ffffff;
-  height: 100%;
 
   .menu-open {
     width: 29px;
@@ -39,6 +38,7 @@
       position: relative;
       z-index: 1;
       background-color: #ffffff;
+      margin-top: 8px;
     }
   }
 
@@ -75,7 +75,6 @@
     ul {
       list-style: none;
       padding-left: 0px;
-      margin-top: 2.5rem;
 
       .menu-link-items {
         display: flex;

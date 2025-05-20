@@ -121,8 +121,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
     <>
       <header className="page-header">
         <div className="header-content">
-          <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
-            <div className="row">
+            <div className="row mb-3 mb-lg-0">
               <div className="col-12 col-md-12 col-lg-12">
                 <div className="brand-wrapper">
                   <div className="d-md-none d-lg-none mobile-header-bar d-flex justify-content-between align-items-center">
@@ -192,8 +191,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
                   </div>
 
                   <div className="col-12 col-lg-12  d-none d-md-block">
-                    <div className="logo-container relative d-flex justify-content-center align-items-center">
-                      <div className="logo d-flex justify-content-center">
+                    <div className="logo-container relative">
+                      <div className="logo ">
                         <Link to="/">
                           <img
                             src={logo}
@@ -321,14 +320,13 @@ function Header({ openDrawer, handleOpenDrawer }) {
                 </div>
               </div>
             </div>
-          </div>
           <div className="col-12 col-md-12 col-lg-12 order-1 order-md-1 d-none d-md-block ps-0">
             <div className="col-12 col-md-12 col-lg-12">
               <div className="row">
-                <div className="col-12 col-sm-10 col-md-10 col-lg-10">
+                <div className="col-12 col-sm-10 col-md-10 col-lg-6 m-auto">
                   <nav className="navbar">
                     <ul className="w-100">
-                      <div className="menu-link-items " style={{marginTop:'1.3rem'}}>
+                      <div className="menu-link-items " >
                         <li>
                           <Link to="/">Home</Link>
                         </li>
@@ -359,9 +357,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     </ul>
                   </nav>
                 </div>
-                <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
+                {/* <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
                   <div className="header-icon-list">
-                    {/* <ul className="w-100">
+                     <ul className="w-100">
                       <li>
                         <Link onClick={() => setSearchDropdown(true)}>
                           <img
@@ -417,9 +415,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           />
                         </li>
                       )}
-                    </ul> */}
+                    </ul> 
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

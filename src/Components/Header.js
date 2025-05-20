@@ -116,6 +116,18 @@ function Header({ openDrawer, handleOpenDrawer }) {
       setSearchDropdown(false);
     }
   };
+  const schemes = [
+    {
+      id: 1,
+      collectionName: 'Golden Dream Plan',
+      url: '/golden-dream-scheme'
+    },
+    {
+      id: 2,
+      collectionName: 'Golden Era Scheme',
+      url: '/golden-era-scheme'
+    },
+  ];
 
   return (
     <>
@@ -305,6 +317,15 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         >
                           Jewellery
                         </li>
+                        <li className="remove-underline">
+                            <Box>
+                              <BasicMenu
+                                menuTitle="Schemes"
+                                children={schemes}
+                                mainTabNaivagtion={false}
+                              />
+                            </Box>
+                          </li>
                         <li className="w-100">
                           <Link className="menu-links" to="/aboutus">
                             About us
@@ -340,6 +361,15 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         >
                           Jewellery
                         </li>
+                        <li className="remove-underline">
+                            <Box>
+                              <BasicMenu
+                                menuTitle="Schemes"
+                                children={schemes}
+                                mainTabNaivagtion={false}
+                              />
+                            </Box>
+                          </li>
                         <li>
                           <Link to="/aboutus">About us</Link>
                         </li>

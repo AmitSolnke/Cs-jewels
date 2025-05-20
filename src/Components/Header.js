@@ -24,6 +24,7 @@ import { ShoppingBag } from "./Screens/ShoppingBag";
 import { Box, Button, IconButton, Tooltip, useMediaQuery } from "@mui/material";
 import StoresIcon from "../images/icons/StoresIcon-1.png";
 import StoresIconBrown from "../images/icons/StoresIcon.png";
+import BasicMenu from "./Common/Menu";
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const isMobile = useMediaQuery("(max-width:768px)");

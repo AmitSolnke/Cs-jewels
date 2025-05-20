@@ -9,7 +9,7 @@ export const GDPButton = styled(Button)(({ theme }) => ({
     width: '7.5rem',
     fontSize: '0.6rem',
     background: '#76242c',
-    zIndex: 99,
+    zIndex: 2,
 
   [theme.breakpoints.up('sm')]: {
     right: '22%',

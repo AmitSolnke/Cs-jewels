@@ -43,7 +43,7 @@ export default function FilterSection({
       alignItems={'center'}
       flexWrap={'wrap'}
       marginTop={{ md: '2.5rem', xs: '2rem' }}
-      marginBottom={{ md: '1.5rem', xs: '1.5rem' }}
+      marginBottom={'0.5rem'}
     >
       <Box
         sx={{
@@ -133,7 +133,18 @@ export default function FilterSection({
                 sx={{
                   textTransform: 'capitalize',
                   outline: ' #847f7f',
-                  borderRadius: '5px'
+                  borderRadius: '5px',
+                  '&.MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: 'rgb(132, 127, 127)'
+                    },
+                    '&:hover fieldset': {
+                      borderColor: 'primary'
+                    },
+                    '&.Mui-focused fieldset': {
+                      borderColor: 'rgb(132, 127, 127)'
+                    }
+                  }
                 }}
                 MenuProps={{
                   PaperProps: {
@@ -153,7 +164,9 @@ export default function FilterSection({
                         backgroundColor: '#f5f5f5'
                       }
                     }
-                  }
+                  },
+                  borderRadius: '5px',
+                  border: '1px solid rgb(132, 127, 127)'
                 }}
               >
                 {sortbyList?.map((item, ind) => (

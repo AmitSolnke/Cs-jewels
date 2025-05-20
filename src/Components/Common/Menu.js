@@ -5,7 +5,8 @@ import { useNavigate, Link } from 'react-router-dom';
 export default function BasicMenu({
   menuTitle,
   children = [],
-  isLoading = false
+  isLoading = false,
+  mainTabNaivagtion = true
 }) {
   const isMobile = useMediaQuery('(max-width:768px)');
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,9 @@ export default function BasicMenu({
     if (isMobile) {
       setIsOpen((prev) => !prev);
     } else {
-      navigate(menuTitle.toLowerCase());
+      if (mainTabNaivagtion) {
+        navigate(menuTitle.toLowerCase());
+      }
     }
   };
 
@@ -101,7 +104,7 @@ export default function BasicMenu({
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
                 title={item?.collectionName}
-                className='text-truncate'
+                className="text-truncate"
                 sx={{
                   display: 'block',
                   padding: '0.75rem 1rem',

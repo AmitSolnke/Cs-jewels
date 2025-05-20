@@ -33,7 +33,7 @@ const ProductList = ({ products, isLoading = false }) => {
               xs={5.8}
               className="product-item-card border-0"
               sx={{
-                borderRadius: '8px',
+                borderRadius: '5px',
                 paddingTop: 0,
                 paddingLeft: 0
               }}
@@ -42,7 +42,7 @@ const ProductList = ({ products, isLoading = false }) => {
                 sx={{
                   width: '100%',
                   aspectRatio: '1640 / 1049',
-                  borderRadius: '8px',
+                  borderRadius: '5px',
                   overflow: 'hidden'
                 }}
               >
@@ -67,9 +67,8 @@ const ProductList = ({ products, isLoading = false }) => {
               style={{
                 cursor: 'pointer',
                 border: '1px solid #847f7f',
-                borderRadius: '15px',
+                borderRadius: '5px',
                 overflow: 'hidden',
-                borderRadius: '8px',
                 paddingTop: 0,
                 paddingLeft: 0
               }}
@@ -80,7 +79,7 @@ const ProductList = ({ products, isLoading = false }) => {
                 src={product.image_path}
                 alt={product.product_name || 'product Image'}
                 className="image"
-                style={{ width: '100%', borderRadius: '8px' }}
+                style={{ width: '100%', borderRadius: '5px' }}
                 loading="lazy"
               />
               <div className="text">{product.name}</div>

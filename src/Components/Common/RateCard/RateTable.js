@@ -142,7 +142,6 @@ const RateTable = ({ setIsRateDataPresent = () => {} }) => {
                   <Box
                     width="100%"
                     textAlign="center"
-                    color="#fdd020"
                     className="text-truncate"
                     fontSize={{ xs: '0.75rem', sm: '0.85rem' }}
                     data-bs-toggle="tooltip"
@@ -154,7 +153,6 @@ const RateTable = ({ setIsRateDataPresent = () => {} }) => {
                   <Box
                     width="100%"
                     textAlign="center"
-                    color="#fdd020"
                     className="text-truncate"
                     fontSize={{ xs: '0.75rem', sm: '0.85rem' }}
                     data-bs-toggle="tooltip"

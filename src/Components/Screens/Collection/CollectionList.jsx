@@ -32,7 +32,7 @@ const CollectionList = ({ collections, isLoading = false }) => {
               xs={5.8}
               className="product-item-card border-0"
               sx={{
-                borderRadius: '8px',
+                borderRadius: '5px',
                 paddingTop: 0,
                 paddingLeft: 0
               }}
@@ -41,7 +41,7 @@ const CollectionList = ({ collections, isLoading = false }) => {
                 sx={{
                   width: '100%',
                   aspectRatio: '1640 / 1049',
-                  borderRadius: '8px',
+                  borderRadius: '5px',
                   overflow: 'hidden'
                 }}
               >
@@ -71,7 +71,7 @@ const CollectionList = ({ collections, isLoading = false }) => {
               sx={{
                 cursor: 'pointer',
                 border: '1px solid #847f7f',
-                borderRadius: '8px',
+                borderRadius: '5px',
                 overflow: 'hidden',
                 paddingTop: '0 !important',
                 paddingLeft: '0 !important'
@@ -80,7 +80,7 @@ const CollectionList = ({ collections, isLoading = false }) => {
               <img
                 src={collection.image_path1}
                 alt={collection.collection_name || 'Collection Image'}
-                style={{ width: '100%', height: '100%', borderRadius: '8px' }}
+                style={{ width: '100%', height: '100%', borderRadius: '5px' }}
                 loading="lazy"
               />
 

@@ -51,15 +51,22 @@ export default function FindAStore() {
   };
 
   const handleAccordionClick = (position) => {
-    setToggleMap(true);
-    setSelectedLocation(position);
+    if (
+      selectedLocation === null ||
+      position?.element?.store_name !== selectedLocation?.element?.store_name
+    ) {
+      setToggleMap(true);
+      setSelectedLocation(position, selectedLocation);
 
-    setStoreName(position.element.store_name);
+      setStoreName(position.element.store_name);
 
-    setInfo(position.element);
-    if (map) {
-      map.panTo(position);
-      map.setZoom(20);
+      setInfo(position.element);
+      if (map) {
+        map.panTo(position);
+        map.setZoom(20);
+      }
+    } else {
+      setToggleMap((prevToggleMap) => !prevToggleMap);
     }
   };
 
@@ -173,8 +180,7 @@ export default function FindAStore() {
                   onClick={() => setInfo(null)}
                   mapContainerStyle={{
                     width: '100%',
-                    minHeight: '65vh',
-                    height: '100%',
+                    height: '450px',
                     marginTop: '1rem'
                   }}
                   center={selectedLocation || center}
@@ -200,7 +206,7 @@ export default function FindAStore() {
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCWQuSQc-B9Rl_Gmm9IrqXcafPJxhEEo-U&q=Chandu+Kaka+Saraf+Jewels,${storeName}`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GMAP_API_KEY}&q=Chandu+Kaka+Saraf+Jewels,${storeName}`}
                   ></iframe>
                 </div>
               )}

@@ -47,7 +47,11 @@ export default function FilterDrawer({
   );
 
   const handleMinMaxPriceChange = (value) => {
-    setMinMaxVal(value);
+    if (JSON.stringify(value) === JSON.stringify(minmaxVal)) {
+      setMinMaxVal({ min: 0, max: 0 });
+    } else {
+      setMinMaxVal(value);
+    }
   };
 
   const handlePurityChange = (e) => {
@@ -128,7 +132,8 @@ export default function FilterDrawer({
           filteredPayload?.selectedCollections || []
         ) &&
         minmaxVal.min === (filteredPayload?.min_price || 0) &&
-        minmaxVal.max === (filteredPayload?.max_price || 0)
+        (minmaxVal.max === (filteredPayload?.max_price || 0) ||
+          minmaxVal.max === undefined)
     );
   }, [
     genders?.length,
@@ -216,7 +221,7 @@ export default function FilterDrawer({
                     backgroundColor: '#6D3439',
                     color: '#fff'
                   },
-                  borderRadius: '8px',
+                  borderRadius: '5px',
                   padding: '0.4rem 0.9rem'
                 }}
               >
@@ -276,11 +281,11 @@ export default function FilterDrawer({
             ))}
           </Stack>
         </Stack>
-          <MultipleSelectChip
-            collections={collections}
-            setSelectedCollections={setSelectedCollections}
-            selectedCollections={selectedCollections}
-          />
+        <MultipleSelectChip
+          collections={collections}
+          setSelectedCollections={setSelectedCollections}
+          selectedCollections={selectedCollections}
+        />
       </Stack>
       <Button
         sx={{

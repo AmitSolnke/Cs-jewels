@@ -54,6 +54,7 @@ export const ProductCatalogues = () => {
   });
   const [filteredPayload, setFilteredPayload] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
   const isDesktop = useMediaQuery('(min-width: 1200px)');
   const handleChangePage = (event, newPage) => {
     const pageNumber = Number(newPage);
@@ -166,6 +167,7 @@ export const ProductCatalogues = () => {
       setProductCount(0);
     } finally {
       setLoading(false);
+      setIsBannerLoading(false);
       window.scrollTo({
         left: 0,
         top: isDesktop ? 500 : 0,
@@ -176,6 +178,7 @@ export const ProductCatalogues = () => {
   useEffect(() => {
     setParamsData();
     getData();
+    setIsBannerLoading(true);
   }, [location.search]);
 
   const setParamsData = async () => {
@@ -327,6 +330,7 @@ export const ProductCatalogues = () => {
       setFilteredPayload(null);
     } finally {
       setLoading(false);
+      setIsBannerLoading(false);
       window.scrollTo({
         left: 0,
         top: isDesktop ? 500 : 0,
@@ -359,10 +363,10 @@ export const ProductCatalogues = () => {
   return (
     <div className="product-catalogues">
       <div className="product-catalogue-banner">
-        {loading ? (
+        {isBannerLoading ? (
           <Skeleton variant="rectangular" width={'100%'} height={'100vh'} />
         ) : (
-          <img src={banner} alt="Banner image" />
+          <img src={banner} alt="Banner image" loading="lazy" />
         )}
       </div>
       <ContainerWrapper>

@@ -36,12 +36,12 @@ export default function FAQs() {
             {data.map((element, index) => (
                 <Accordion key={index} expanded={expanded === 'panel' + index} onChange={handleChange('panel' + index)}>
                     <AccordionSummary
-                        expandIcon={expanded === 'panel' + index ? <img src={minusIcon} alt="rightArrowIcon" /> : <img src={plusIcon} alt="rightArrowIcon" />}
+                        expandIcon={expanded === 'panel' + index ? <img src={minusIcon} alt="rightArrowIcon" loading="lazy"/> : <img src={plusIcon} alt="rightArrowIcon" loading="lazy"/>}
                         aria-controls="panel1bh-content"
                         id="panel1bh-header"
                     >
                         <Typography sx={{ width: '90%', flexShrink: 0 }}>
-                           <h6 className='faqs-question'>{element.question}</h6> 
+                           <h6 className='faqs-question'>{element.question}</h6>
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>

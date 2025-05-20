@@ -1133,6 +1133,7 @@ export default function Enash() {
               padding: "0px",
               height: "600px",
             }}
+            loading="lazy"
           />
           <div
             style={{

@@ -22,7 +22,6 @@ const AnimatedIcon = styled(EastIcon)(({ theme }) => ({
 
 export const ProductDetailsLatest = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [productDetails, setProductDetails] = useState({
     product_name: '',
     metal_description: '',
@@ -113,6 +112,7 @@ export const ProductDetailsLatest = () => {
               // objectFit: "cover",
               borderRadius: '5px'
             }}
+            loading="lazy"
           />
         </a>
       );
@@ -140,70 +140,18 @@ export const ProductDetailsLatest = () => {
     // ],
   };
 
-  const [active, setActive] = useState('general details');
-  const [content, setContent] = useState('');
-
-  const handleProductDetailsTab = (product) => {
-    if (active.toLowerCase() === 'metal details') {
-      setContent(
-        <>
-          <Box>
-            <span className="fw-bolder"> Gross weight</span>:{product?.gross_wt}
-            g
-          </Box>
-          <Box>
-            <span className="fw-bolder"> Net weight</span> :{product?.net_wt}g
-          </Box>
-          <Box>
-            <span className="fw-bolder"> Purity</span> : {product?.purity}K
-          </Box>
-        </>
-      );
-    } else if (active.toLowerCase() === 'product description') {
-      setContent(
-        <>
-          {product?.description ||
-            'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
-        </>
-      );
-    } else {
-      setContent(
-        <>
-          <Box>
-            <span className="fw-bolder"> Product Product Name</span> :{' '}
-            {product?.product_name || '--'}
-          </Box>
-          <Box>
-            <span className="fw-bolder"> Product Code </span> :{' '}
-            {product?.product_code || '--'}
-          </Box>
-          <Box>
-            <span className="fw-bolder"> Gender </span> :{' '}
-            {product?.gender || '--'}
-          </Box>
-        </>
-      );
-    }
-  };
-  const handleActiveTab = (tab) => {
-    setActive(tab);
-  };
-
-  useEffect(() => {
-    handleProductDetailsTab(productDetails);
-  }, [active, JSON.stringify(productDetails)]);
   return (
-    <ContainerWrapper sx={{marginY:'1rem'}}>
+    <ContainerWrapper sx={{ marginY: '1rem' }}>
       <Box className="product-details-latest">
         <Grid
           container
           xs={12}
           gap={'1rem'}
           className="grid-container"
-          style={{ background: '#fff', marginInline: 'auto' }}
+          style={{ background: '#fff', marginInline: 'auto' ,alignItems:'start'}}
           width={'100%'}
         >
-          <Grid item md={5.8} width={'100%'} style={{padding:'0'}}>
+          <Grid item md={5.83} width={'100%'} style={{ padding: '0' }}>
             <div className="">
               {/* product images gallery */}
               <div className="d-none product-gallery d-md-block">
@@ -252,7 +200,7 @@ export const ProductDetailsLatest = () => {
 
           <Grid
             item
-            md={5.8}
+            md={5.83}
             sx={{
               display: 'flex',
               flexDirection: 'column',

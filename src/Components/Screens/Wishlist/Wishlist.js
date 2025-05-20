@@ -105,9 +105,9 @@ export const Wishlist = () => {
     <div className="wishlist">
       <Box sx={{ flexGrow: 1 }} className="text-center mt-5">
         <div className="section-title">
-          <img src={headerLeftIcon} alt="" />
+          <img src={headerLeftIcon} alt="" loading="lazy"/>
           <h2>Your wishlist</h2>
-          <img src={headerRightIcon} alt="" />
+          <img src={headerRightIcon} alt="" loading="lazy"/>
         </div>
 
         <small>

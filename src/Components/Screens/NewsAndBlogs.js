@@ -93,7 +93,7 @@ const NewsAndBlogs = () => {
         <div className="row-news">
           <div className="column-news">
             <div className="image-container-news">
-              <img src={newimages} alt="Snow" className="gallery-image-news" />
+              <img src={newimages} alt="Snow" className="gallery-image-news" loading="lazy"/>
               <div className="image-text-news ">
                 <span> HOW TO TAKE CARE OF OXIDIZED JEWELLERY </span>
                 <p className="text-center">READ ON</p>
@@ -102,7 +102,7 @@ const NewsAndBlogs = () => {
           </div>
           <div className="column-news">
             <div className="image-container-news">
-              <img src={newimages} alt="Snow" className="gallery-image-news" />
+              <img src={newimages} alt="Snow" className="gallery-image-news" loading="lazy"/>
               <div className="image-text-news text-center">
                 HOW TO TAKE CARE OF OXIDIZED JEWELLERY
                 <p className="text-center">READ ON</p>
@@ -111,7 +111,7 @@ const NewsAndBlogs = () => {
           </div>
           <div className="column-news">
             <div className="image-container-news">
-              <img src={newimages} alt="Snow" className="gallery-image-news" />
+              <img src={newimages} alt="Snow" className="gallery-image-news" loading="lazy"/>
               <div className="image-text-news text-center">
                 HOW TO TAKE CARE OF OXIDIZED JEWELLERY
                 <p className="text-center">hsdv</p>
@@ -139,6 +139,7 @@ const NewsAndBlogs = () => {
                 width={50}
                 height={50}
                 className="gallery-image-blog"
+                loading="lazy"
               />
             </div>
             <div
@@ -175,7 +176,7 @@ const NewsAndBlogs = () => {
         <p className="image-text-blog"> <b>THING TO CONSIDER</b></p>
 
         <p className="image-text-blog"> <b>READ ON</b></p>
- 
+
       </div>
   </div>  */}
       </Box>
@@ -186,16 +187,19 @@ const NewsAndBlogs = () => {
           src={facebookIcon}
           alt="facebookIcon"
           className="social-media-icon icon-space "
+          loading="lazy"
         />
         <img
           src={instagramIcon}
           alt="instagramIcon"
           className="social-media-icon icon-space"
+          loading="lazy"
         />
         <img
           src={twitterIcon}
           alt="twitterIcon"
           className="social-media-icon icon-space"
+          loading="lazy"
         />
         <div style={{ display: "flex", alignItems: "center" }}>
           <Divider style={{ flex: "1", marginLeft: "10px", color: "black" }} />{" "}

@@ -56,6 +56,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose, product }) => {
                   <img
                     src={product.images[0].image_path}
                     style={{ height: "81px", width: "81px" }}
+                    loading="lazy"
                   />
                 </Grid>
                 <Grid

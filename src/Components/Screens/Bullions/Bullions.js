@@ -176,9 +176,9 @@ export default function Bullions() {
               </div>
               <div className="product-dash-board-image-header-text-container">
                 <div className="product-dash-board-header text-only-grid-header">
-                  <img src={fillWhiteLeftIcon} alt="React Logo" />
+                  <img src={fillWhiteLeftIcon} alt="React Logo" loading="lazy"/>
                   {"  "}
-                  Bullion <img src={fillWhiteRightIcon} alt="React Logo" />
+                  Bullion <img src={fillWhiteRightIcon} alt="React Logo" loading="lazy"/>
                 </div>
                 <div className="product-dash-board-description">
                   Discover the timeless beauty and enduring value of bullion, a
@@ -354,7 +354,7 @@ export default function Bullions() {
                   key={element.id}
                   onDelete={() => handleDeleteFilterData(element.id)}
                   label={element.name}
-                  deleteIcon={<img src={ClearFilterIcon} />}
+                  deleteIcon={<img src={ClearFilterIcon} loading="lazy"/>}
                 />
               ))}
               <Button className="product-page-clear-all-button">

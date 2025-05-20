@@ -63,13 +63,14 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
         delete newErrors.city;
       }
     }
-    if (field === "pincode" && !value) {
-      if (!value) {
-        newErrors.pincode = "Pincode is required";
-      } else if (field === "pincode") {
+    if (field === "pincode" && value) {
+      if (!/^\d{6}$/.test(value)) {
+        newErrors.pincode = "Pincode must be a 6-digit number";
+      } else {
         delete newErrors.pincode;
       }
     }
+
     return newErrors;
   };
 
@@ -141,7 +142,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
               style={{ display: "flex", flexDirection: "row" }}
             >
               <div style={{ flex: "1" }}>
-                <img src={productImage} className="side-product-image" alt="" />
+                <img src={productImage} className="side-product-image" alt="" loading="lazy"/>
               </div>
               <div className="dialog-main" style={{ flex: "1" }}>
                 <DialogActions>
@@ -210,7 +211,6 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                       label="Pin Code"
                       className="mb-4"
                       fullWidth
-                      required
                       name="pincode"
                       value={data.pincode}
                       onChange={handleChange}
@@ -236,6 +236,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                       src={successCheckIcon}
                       style={{ width: "123px", height: "123px" }}
                       alt="Tick Mark"
+                      loading="lazy"
                     />
                     <Typography
                       variant="h3"

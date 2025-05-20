@@ -31,7 +31,7 @@ export default function AboutUs() {
   const mobileView=useMediaQuery('(max-width:600px)');
   return (
     <div className="col-12 about-us">
-      <img src={aboutUsTitleImage} alt="about us" className="img-fluid"></img>
+      <img src={aboutUsTitleImage} alt="about us" className="img-fluid" loading="lazy"></img>
 
       <Box className="box-about-us" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>

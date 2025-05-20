@@ -45,7 +45,7 @@ const CollectionCataloguePage = () => {
         {isLoading ? (
           <Skeleton variant="rectangular" width={'100%'} height={'100vh'} />
         ) : (
-          <img src={banner} alt="Banner image" />
+          <img src={banner} alt="Banner image" loading="lazy" />
         )}
       </div>
       <Box marginY={'3rem'}>

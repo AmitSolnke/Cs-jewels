@@ -64,7 +64,7 @@ export default function MyOrder() {
                         <TableCell component="th" scope="row">
                           <div className="d-flex">
                             <div>
-                              <img width={60} height={60} src={web} />
+                              <img width={60} height={60} src={web} loading="lazy"/>
                             </div>
                             <div className="ms-3">
                               <div>
@@ -85,7 +85,7 @@ export default function MyOrder() {
               </TableContainer>
             </div>
           ))}
-          {data.length <= 0 ? 
+          {data.length <= 0 ?
             (
               <div className="p-4">
                 <div className="d-flex p-3 no-data-wrapper" style={{ backgroundColor: "rgb(254 251 255)" }}>

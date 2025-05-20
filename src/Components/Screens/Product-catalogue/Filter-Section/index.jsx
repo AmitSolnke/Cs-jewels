@@ -5,6 +5,7 @@ import TuneIcon from '@mui/icons-material/Tune';
 import FilterDrawer from './FilterDrawer';
 import { Badge, Skeleton, Stack } from '@mui/material';
 import { sortbyList } from '../../../../utilities/filterContants';
+import { Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
 export default function FilterSection({
   filterHandler,
@@ -42,7 +43,7 @@ export default function FilterSection({
       alignItems={'center'}
       flexWrap={'wrap'}
       marginTop={{ md: '2.5rem', xs: '2rem' }}
-      marginBottom={{ md: '1.5rem', xs: '1.5rem' }}
+      marginBottom={'0.5rem'}
     >
       <Box
         sx={{
@@ -63,7 +64,7 @@ export default function FilterSection({
             />
             <Skeleton
               variant="rectangular"
-              width={168}
+              width={192}
               height={42}
               sx={{ borderRadius: '4px' }}
             />
@@ -114,50 +115,74 @@ export default function FilterSection({
               </Box>
             </Badge>
 
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              style={{
-                border: '1px solid #662A2E',
-                cursor: 'pointer',
-                boxShadow: 'none',
-                outline: 'none',
-                width: '11rem',
-                padding: '0.375rem 0.75rem',
-                textTransform: 'capitalize',
+            <FormControl
+              variant="outlined"
+              size="small"
+              sx={{
+                width: '12rem',
                 minHeight: '2.6rem'
               }}
-              onChange={handleSortBy}
-              value={sortby}
-              disabled={isLoading}
             >
-              <option
-                value=""
-                disabled
-                selected
-                style={{
-                  border: '1px solid #662A2E',
-                  borderRadius: '0',
-                  cursor: 'pointer !important'
+              <InputLabel id="sort-by-label">Sort By</InputLabel>
+              <Select
+                labelId="sort-by-label"
+                value={sortby}
+                onChange={handleSortBy}
+                disabled={isLoading}
+                label="Sort By"
+                sx={{
+                  textTransform: 'capitalize',
+                  outline: ' #847f7f',
+                  borderRadius: '5px',
+                  '&.MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: 'rgb(132, 127, 127)'
+                    },
+                    '&:hover fieldset': {
+                      borderColor: 'primary'
+                    },
+                    '&.Mui-focused fieldset': {
+                      borderColor: 'rgb(132, 127, 127)'
+                    }
+                  }
+                }}
+                MenuProps={{
+                  PaperProps: {
+                    sx: {
+                      '& .MuiMenuItem-root': {
+                        margin: '0',
+                        backgroundColor: 'transparent',
+                        '&:hover': {
+                          background: (theme) => theme.palette.action.selected
+                        },
+                        '&.Mui-selected': {
+                          background: (theme) => theme.palette.action.selected
+                        }
+                      },
+                      '& .css-6hp17o-MuiList-root-MuiMenu-list': {
+                        padding: '0',
+                        backgroundColor: '#f5f5f5'
+                      }
+                    }
+                  },
+                  borderRadius: '5px',
+                  border: '1px solid rgb(132, 127, 127)'
                 }}
               >
-                --Sort By--
-              </option>
-              {sortbyList?.map((item, ind) => (
-                <option
-                  value={item?.value}
-                  key={ind}
-                  style={{
-                    border: '1px solid #662A2E',
-                    borderRadius: '0',
-                    cursor: 'pointer !important',
-                    textTransform: 'capitalize'
-                  }}
-                >
-                  {item?.label}
-                </option>
-              ))}
-            </select>
+                {sortbyList?.map((item, ind) => (
+                  <MenuItem
+                    key={ind}
+                    value={item?.value}
+                    sx={{
+                      textTransform: 'capitalize',
+                      padding: '0.6rem'
+                    }}
+                  >
+                    {item?.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </>
         )}
       </Box>

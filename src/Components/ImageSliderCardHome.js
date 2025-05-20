@@ -23,6 +23,7 @@ export default function ImageSliderCardHome({
           height={height}
           src={`${CardImage}`}
           alt="slider image"
+          loading="lazy"
         />
       </div>
       {padding == 0 && <Divider variant="middle" />}

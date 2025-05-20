@@ -6,7 +6,7 @@ import {
   GemOfTheYearAward,
   GJTCIExcellenceAward2014,
   LokmatCorporateExcellenceAward2017,
-  
+
   BestSilverDesignerJewellery2016,
   YoungAcheversAward,
   TrustedJewellers,
@@ -54,10 +54,10 @@ export default function AwardsAndRecognition({ Item }) {
       </Grid>
       <Grid item xs={10} md={8} className="about-us-awards-header-container">
         <div className="about-us-awards-header">
-        
-          
+
+
           Award-Winning Craftsmanship: Excellence Recognized
-         
+
         </div>
         <div className="about-us-awards-description">
           We are honored to be recognized as a premier jeweller in India. Our
@@ -90,6 +90,7 @@ export default function AwardsAndRecognition({ Item }) {
                 src={element.imageUrl}
                 className="img-fluid award-image"
                 alt={element.imageSecription}
+                loading="lazy"
               />
               <p className="about-us-award-details">{element.imageSecription}</p>
             </Grid>

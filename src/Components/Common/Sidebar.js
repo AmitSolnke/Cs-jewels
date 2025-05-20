@@ -41,7 +41,7 @@ export default function Sidebar() {
         <div className="d-none d-md-block">
           <ul className="menu-wrapper">
             <li className="w-100 d-flex profile-wrapper">
-              <img className="profile-img" src={web} />
+              <img className="profile-img" src={web} loading="lazy"/>
               <div className="profile-info">
                 <b className="name">Hi {data.first_name} {data.last_name}</b>
                 <small>{data.mobile}</small>
@@ -54,6 +54,7 @@ export default function Sidebar() {
                     src={orderIcon}
                     alt="Logo"
                     className="image"
+                    loading="lazy"
                   />
                   MY ORDERS
                 </Link>
@@ -64,6 +65,7 @@ export default function Sidebar() {
                     src={personalDetailsIcon}
                     alt="Logo"
                     className="image"
+                    loading="lazy"
                   />
                   PERSONAL DETAILS
                 </Link>
@@ -74,6 +76,7 @@ export default function Sidebar() {
                     src={addressBookIcon}
                     alt="Logo"
                     className="image"
+                    loading="lazy"
                   />
                   ADDRESS BOOK
                 </Link>
@@ -84,6 +87,7 @@ export default function Sidebar() {
                     src={heartIcon}
                     alt="Logo"
                     className="image"
+                    loading="lazy"
                   />
                   WISHLIST
                   <OpenInNewIcon className="new-tab-icon" />
@@ -95,6 +99,7 @@ export default function Sidebar() {
                     src={helpIcon}
                     alt="Logo"
                     className="image"
+                    loading="lazy"
                   />
                   SUPPORT
                   <OpenInNewIcon className="new-tab-icon" />
@@ -107,6 +112,7 @@ export default function Sidebar() {
                   src={logoutIcon}
                   alt="Logo"
                   className="image"
+                  loading="lazy"
                 />
                 SIGN OUT
               </a>
@@ -118,7 +124,7 @@ export default function Sidebar() {
             <ul className="menu-wrapper">
               <li className="w-100 d-flex profile-wrapper">
                 <div className="profile-section w-100 d-flex">
-                  <img className="profile-img" src={web} />
+                  <img className="profile-img" src={web} loading="lazy"/>
                   <div className="profile-info">
                     <b className="name">Hi {data.first_name} {data.last_name}</b>
                     <small>{data.mobile}</small>
@@ -132,6 +138,7 @@ export default function Sidebar() {
                       src={orderIcon}
                       alt="Logo"
                       className="image"
+                      loading="lazy"
                     />
                     MY ORDERS
                   </Link>
@@ -142,6 +149,7 @@ export default function Sidebar() {
                       src={personalDetailsIcon}
                       alt="Logo"
                       className="image"
+                      loading="lazy"
                     />
                     PERSONAL DETAILS
                   </Link>
@@ -152,6 +160,7 @@ export default function Sidebar() {
                       src={addressBookIcon}
                       alt="Logo"
                       className="image"
+                      loading="lazy"
                     />
                     ADDRESS BOOK
                   </Link>
@@ -162,6 +171,7 @@ export default function Sidebar() {
                       src={heartIcon}
                       alt="Logo"
                       className="image"
+                      loading="lazy"
                     />
                     WISHLIST
                   </Link>
@@ -172,6 +182,7 @@ export default function Sidebar() {
                       src={helpIcon}
                       alt="Logo"
                       className="image"
+                      loading="lazy"
                     />
                     SUPPORT
                   </Link>
@@ -183,6 +194,7 @@ export default function Sidebar() {
                     src={logoutIcon}
                     alt="Logo"
                     className="image"
+                    loading="lazy"
                   />
                   SIGN OUT
                 </a>

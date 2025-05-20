@@ -190,7 +190,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
                       src={menuOpen}
                       alt="menu-open"
                       className="menu-open open-nav-btn"
-                      loading="lazy"
                     />
                     <div className="logo">
                       <Link to="/">
@@ -198,7 +197,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           src={logo}
                           alt="Logo"
                           className="site-logo image text-center"
-                          loading="lazy"
                         />
                       </Link>
                     </div>
@@ -223,7 +221,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                   onMouseLeave={(e) => {
                                     e.currentTarget.src = StoresIcon;
                                   }}
-                                  loading="lazy"
                                 />
                               )}
                               {/* </IconButton> */}
@@ -269,7 +266,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             onClick={() => window.scrollTo(0, 0)}
                             alt="Logo"
                             className="site-logo image"
-                            loading="lazy"
                           />
                         </Link>
                       </div>
@@ -303,7 +299,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
                       src={closeMenu}
                       alt="close-menu-img"
                       className="menu-close"
-                      loading="lazy"
                     />
                   </div>
                   <nav className="navbar">
@@ -416,6 +411,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               <BasicMenu
                                 menuTitle="Schemes"
                                 children={schemes}
+                                mainTabNaivagtion={false}
                               />
                             </Box>
                           </li>
@@ -485,6 +481,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               <BasicMenu
                                 menuTitle="Schemes"
                                 children={schemes}
+                                mainTabNaivagtion={false}
                               />
                             </Box>
                           </li>

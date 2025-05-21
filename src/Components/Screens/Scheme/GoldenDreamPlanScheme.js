@@ -11,14 +11,22 @@ import { handleDownload } from "../../../utilities/handleDownload";
 import { ImageButtonGDS } from "./style";
 const GoldenDreamPlanScheme = () => {
   return (
-      <Stack gap={2} sx={{ width: "100%", height: "100%" , my: 2 }}>
-        <Box sx={{ width: "100%", height: "100%" }}>
-          <img
-            src={GoldenDreams}
-            alt="GoldenDreams"
-            style={{ width: "100%", height: "100%" }}
-          />
-        </Box>
+    <Stack gap={2} sx={{ width: "100%", height: "100%", my: 2 }}>
+      <Box sx={{ width: "100%", height: "100%" }}>
+        <img
+          src={GoldenDreams}
+          alt="GoldenDreams"
+          style={{ width: "100%", height: "100%" }}
+        />
+      </Box>
+      <Stack
+        gap={2}
+        sx={{
+          width: "100%",
+          height: "100%",
+          paddingX: { md: "5rem", xs: "0" },
+        }}
+      >
         <Box>
           <Stack gap={2}>
             <Box marginInline={"auto"}>
@@ -81,6 +89,7 @@ const GoldenDreamPlanScheme = () => {
           />
         </Box>
       </Stack>
+    </Stack>
   );
 };
 

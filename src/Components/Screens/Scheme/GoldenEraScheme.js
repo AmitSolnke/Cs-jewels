@@ -6,18 +6,19 @@ import {
   MoreFeatures,
 } from "../../../images/SchemeImages";
 import { handleDownload } from "../../../utilities/handleDownload";
-import {  ImageButton } from "./style";
+import { ImageButton } from "./style";
 
 const GoldenEraScheme = () => {
   return (
-      <Stack gap={2} sx={{ width: "100%", height: "100%" , my: 2 }}>
-        <Box sx={{ width: "100%", height: "100%" }}>
-          <img
-            src={GoldenEra}
-            alt="GoldenEra"
-            style={{ width: "100%", height: "100%" }}
-          />
-        </Box>
+    <Stack gap={2} sx={{ width: "100%", height: "100%", my: 2 }}>
+      <Box sx={{ width: "100%", height: "100%" }}>
+        <img
+          src={GoldenEra}
+          alt="GoldenEra"
+          style={{ width: "100%", height: "100%" }}
+        />
+      </Box>
+      <Stack gap={2} sx={{ width: "100%", height: "100%", paddingX: {md:"5rem",xs:'0'} }}>
         <Box>
           <Stack gap={2}>
             <Box marginInline={"auto"}>
@@ -64,9 +65,13 @@ const GoldenEraScheme = () => {
             alt="BookYourGold"
             style={{ width: "100%", height: "100%" }}
           />
-          <ImageButton role="button" onClick={() => window.location.href = 'tel:+917969991827'}/>
+          <ImageButton
+            role="button"
+            onClick={() => (window.location.href = "tel:+917969991827")}
+          />
         </Box>
       </Stack>
+    </Stack>
   );
 };
 

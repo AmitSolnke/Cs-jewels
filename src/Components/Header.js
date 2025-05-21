@@ -362,21 +362,52 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             Office wear earrings
                           </Link>
                         </li> */}
-                        <li className="w-100">
-                          <Link className="menu-links" to="/">
-                            Home
-                          </Link>
-                        </li>
-                        <li
-                          className="w-100"
-                          id="jewellery-link"
-                          onClick={() => {
-                            setShowDropdown((prev) => !prev);
-                          }}
-                        >
-                          Jewellery
-                        </li>
-                        <li className="remove-underline">
+                          <li className="w-100">
+                            <Link className="menu-links" to="/">
+                              Home
+                            </Link>
+                          </li>
+
+                          <div onClick={() => setShowDropdown(!showDropdown)}>
+                            {showDropdown && (
+                              <Box
+                                sx={{
+                                  position: 'absolute',
+                                  width: '99.8dvw',
+                                  backgroundColor: '#fff',
+                                  borderTop: '0.5px solid #d6d6d6',
+                                  zIndex: 9999,
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  justifyContent: 'center',
+                                  px: 6,
+                                  py: 4,
+                                  transform: showDropdown
+                                    ? 'translateY(35px)'
+                                    : 'translateY(-10px)'
+                                }}
+                              >
+                                <NavigationDropdown
+                                  metalData={metalTypesData}
+                                  setShowDropdown={setShowDropdown}
+                                />
+                              </Box>
+                            )}
+                            <li>Jewellery</li>
+                          </div>
+                          {collections?.length > 0 && (
+                            <li className="remove-underline" style={{display:'block'}}>
+                              <Box>
+                                <BasicMenu
+                                  isLoading={isCollectionLoading}
+                                  menuTitle="Collection"
+                                  children={collections}
+                                  mainTabNaivagtion={false}
+                                />
+                              </Box>
+                            </li>
+                          )}
+                          <li className="remove-underline" style={{display:'block'}}>
                             <Box>
                               <BasicMenu
                                 menuTitle="Schemes"
@@ -385,18 +416,19 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               />
                             </Box>
                           </li>
-                        <li className="w-100">
-                          <Link className="menu-links" to="/aboutus">
-                            About us
-                          </Link>
-                        </li>
-                        <li className="w-100">
-                          <Link className="menu-links" to="/enash">
-                            E-Mandate
-                          </Link>
-                        </li>
-                      </div>
-                    </ul>)}
+                          <li className="w-100">
+                            <Link className="menu-links" to="/aboutus">
+                              About us
+                            </Link>
+                          </li>
+                          <li className="w-100">
+                            <Link className="menu-links" to="/enash">
+                              E-Mandate
+                            </Link>
+                          </li>
+                        </div>
+                      </ul>
+                    )}
                   </nav>
                 </div>
               </div>
@@ -441,6 +473,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                   isLoading={isCollectionLoading}
                                   menuTitle="Collection"
                                   children={collections}
+                                  mainTabNaivagtion={false}
                                 />
                               </Box>
                             </li>

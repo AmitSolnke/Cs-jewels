@@ -2,19 +2,15 @@ import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import {
   BookYourGold,
   GoldenEra,
-  GoldenEraLogo,
   InvestingInGold,
   MoreFeatures,
 } from "../../../images/SchemeImages";
 import { handleDownload } from "../../../utilities/handleDownload";
-import HorizonatalBanner from "../../Common/HorizonatalBanner";
-import { GDPButton, ImageButton } from "./style";
-import { Link } from "react-router-dom";
+import {  ImageButton } from "./style";
 
 const GoldenEraScheme = () => {
   return (
-    <Container maxWidth="lg" sx={{ my: 2 }}>
-      <Stack gap={2} sx={{ width: "100%", height: "100%" }}>
+      <Stack gap={2} sx={{ width: "100%", height: "100%" , my: 2 }}>
         <Box sx={{ width: "100%", height: "100%" }}>
           <img
             src={GoldenEra}
@@ -68,12 +64,9 @@ const GoldenEraScheme = () => {
             alt="BookYourGold"
             style={{ width: "100%", height: "100%" }}
           />
-
           <ImageButton role="button" onClick={() => window.location.href = 'tel:+917969991827'}/>
-          
         </Box>
       </Stack>
-    </Container>
   );
 };
 

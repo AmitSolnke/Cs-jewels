@@ -8,13 +8,10 @@ import {
   SchemeApplicable,
 } from "../../../images/SchemeImages";
 import { handleDownload } from "../../../utilities/handleDownload";
-import { useNavigate } from "react-router-dom";
-import { GDPButton, ImageButton, ImageButtonGDS } from "./style";
+import { ImageButtonGDS } from "./style";
 const GoldenDreamPlanScheme = () => {
-  const navigate = useNavigate();
   return (
-    <Container maxWidth="lg" sx={{ my: 2 }}>
-      <Stack gap={2} sx={{ width: "100%", height: "100%" }}>
+      <Stack gap={2} sx={{ width: "100%", height: "100%" , my: 2 }}>
         <Box sx={{ width: "100%", height: "100%" }}>
           <img
             src={GoldenDreams}
@@ -84,7 +81,6 @@ const GoldenDreamPlanScheme = () => {
           />
         </Box>
       </Stack>
-    </Container>
   );
 };
 

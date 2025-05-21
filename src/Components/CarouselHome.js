@@ -69,6 +69,7 @@ function CarouselHome() {
                     className="carousel-img"
                     src={item.image_path}
                     alt="banner carousel img"
+                    loading="lazy"
                   />
                   {/* <div className="service-slide-text-wrapper"> */}
                   {/* <h2 className="service-slide-text">{item.name}</h2>
@@ -95,6 +96,7 @@ function CarouselHome() {
                     className="carousel-img"
                     src={item.image_path}
                     alt="banner carousel img"
+                    loading="lazy"
                   />
                   {/* <div className="service-slide-text-wrapper">
                   <h2 className="service-slide-text">{item.name}</h2>

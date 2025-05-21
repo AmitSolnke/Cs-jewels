@@ -37,11 +37,13 @@ function CarouselJewellery() {
 		    src={img1}
 		    onLoad={() => setDesktopImgLoaded(true)}
 		    style={{ display: "none" }}
+        loading="lazy"
 		  />
       <img
 		    src={imageMobileView}
 		    onLoad={() => setMobileImgLoaded(true)}
 		    style={{ display: "none" }}
+        loading="lazy"
 		  />
       {firstDesktopLoaded && firstMobileLoaded && (
         <Carousel
@@ -67,14 +69,14 @@ function CarouselJewellery() {
           {
             items.map((item) => (
               <Paper key={item.name} className="carouselPaper" >
-                <img className="carousel-img" src={windoDimensions[0] <= 768 ? `${imageMobileView}`:  `${item.imagepath}` } />
+                <img className="carousel-img" src={windoDimensions[0] <= 768 ? `${imageMobileView}`:  `${item.imagepath}` } loading="lazy"/>
                 <div className="service-slide-text-wrapper">
                   <h2 className="service-slide-text">{item.name}</h2>
                   <p className="service-slide-description">{item.description}</p>
                   <button type="button" className="carousel-explore-now-btn">
                     EXPORE NOW
                     {' '}
-                    <img src={rightArrowIcon} alt="rightArrowIcon" />
+                    <img src={rightArrowIcon} alt="rightArrowIcon" loading="lazy"/>
                   </button>
                 </div>
               </Paper>

@@ -31,7 +31,7 @@ export default function AboutUs() {
   const mobileView=useMediaQuery('(max-width:600px)');
   return (
     <div className="col-12 about-us">
-      <img src={aboutUsTitleImage} alt="about us" className="img-fluid"></img>
+      <img src={aboutUsTitleImage} alt="about us" className="img-fluid" loading="lazy"></img>
 
       <Box className="box-about-us" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
@@ -76,36 +76,10 @@ export default function AboutUs() {
           descriptionText={
             "Renowned for our exclusive jewellery collections, we epitomize a tradition of excellence that spans generations. Pioneers in the industry, we were the first jeweller in India to introduce the revolutionary karatmeter, ensuring unparalleled transparency and purity in every creation. Our approach seamlessly blends contemporary aesthetics with timeless craftsmanship, resulting in a fusion of styles that captivates the discerning eye.. This extensive range includes jewellery crafted from gold, silver, platinum, diamonds, gemstones, and pearls.Our jewellery reflects our distinctive touch, combining innovative designs with traditional craftsmanship to create pieces that are both timeless and contemporary."
           }
-          Item={Item}
           imageSrc={mobileView ? ourSpecialityMobile : ourSpecialityDesktop}
-          isImageFirst={true}
-          mobileViewImageFirst={true}
         />
       </Box>
 
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1}>
-          <Grid item xs={1} md={1}>
-            <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid>
-
-          <Grid item xs={1} md={1}>
-            <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid>
-          <Grid item xs={1} md={1}>
-            <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid>
-          <Grid
-            className="our-specialities-container about-us-full-screen-description"
-            item
-            xs={10}
-            md={10}
-          ></Grid>
-          <Grid item xs={1} md={1}>
-            <Item className="empty-container-section">xs=6 md=4</Item>
-          </Grid>
-        </Grid>
-      </Box>
       <Box
         className="large-image-slider-container treasured-stories-background"
         sx={{ flexGrow: 1 }}
@@ -145,10 +119,7 @@ export default function AboutUs() {
               .
             </>
           }
-          Item={Item}
           imageSrc={SocietyContributionImage}
-          isImageFirst={true}
-          mobileViewImageFirst={true}
         />
       </Box>
     </div>

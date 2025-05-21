@@ -57,7 +57,7 @@ const allProduct = [
     {
         productImage: jewellerysImage,
         Description:"10% of on Siliver rings"
-        
+
     },
     {
         productImage: jewellerysImage,
@@ -66,7 +66,7 @@ const allProduct = [
     {
         productImage: jewellerysImage,
         Description:"10% of on Siliver rings"
-        
+
     },
     {
         productImage: jewellerysImage,
@@ -75,7 +75,7 @@ const allProduct = [
     {
         productImage: jewellerysImage,
          Description:"10% of on Siliver rings"
-        
+
     },
     {
         productImage: jewellerysImage,
@@ -84,7 +84,7 @@ const allProduct = [
     {
         productImage: jewellerysImage,
          Description:"10% of on Siliver rings"
-        
+
     },
     {
         productImage: jewellerysImage,
@@ -93,7 +93,7 @@ const allProduct = [
     {
         productImage: jewellerysImage,
          Description:"10% of on Siliver rings"
-       
+
     },
     {
         productImage: jewellerysImage,
@@ -102,11 +102,11 @@ const allProduct = [
     {
         productImage: jewellerysImage,
          Description:"10% of on Siliver rings"
-       
+
     },
 
 
-  
+
 ]
 export default function Jewellerys() {
     const [typeNameSelected, setTypeName] = React.useState([
@@ -195,8 +195,8 @@ export default function Jewellerys() {
                                 </MenuItem>
                             ))}
                         </Select>
-                      
-                   
+
+
                     </Grid>
                     <Grid className='product-page-sort-by-container' item xs={1} md={6}>
                         <Select
@@ -234,7 +234,7 @@ export default function Jewellerys() {
                             key={element.id}
                             onDelete={() => handleDeleteFilterData(element.id)}
                             label={element.name}
-                            deleteIcon={<img src={ClearFilterIcon} />}
+                            deleteIcon={<img src={ClearFilterIcon} loading="lazy"/>}
                         />)
                         )}
                         <Button className='product-page-clear-all-button' >CLEAR ALL</Button>

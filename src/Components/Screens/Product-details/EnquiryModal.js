@@ -33,6 +33,8 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
   const [data, setData] = useState({
     name: "",
     mobile_no: "",
+    city: "",
+    pincode: "",
     product_id: productId,
   });
   const [showEnquiryScreen, setShowEnquiryScreen] = useState(true);
@@ -54,6 +56,21 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
         delete newErrors.mobile_no;
       }
     }
+    if (field === "city" && !value) {
+      if (!value) {
+        newErrors.city = "City is required";
+      } else if (field === "city") {
+        delete newErrors.city;
+      }
+    }
+    if (field === "pincode" && value) {
+      if (!/^\d{6}$/.test(value)) {
+        newErrors.pincode = "Pincode must be a 6-digit number";
+      } else {
+        delete newErrors.pincode;
+      }
+    }
+
     return newErrors;
   };
 
@@ -72,6 +89,8 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
     setData({
       name: "",
       mobile_no: "",
+      city: "",
+      pincode: "",
       product_id: productId,
     });
     handleClose();
@@ -81,7 +100,14 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
     event.preventDefault();
     const validationErrors = validate("name", data.name);
     const mobileErrors = validate("mobile_no", data.mobile_no);
-    const allErrors = { ...validationErrors, ...mobileErrors };
+    const cityErrors = validate("city", data.city);
+    const pincodeErrors = validate("pincode", data.pincode);
+    const allErrors = {
+      ...validationErrors,
+      ...mobileErrors,
+      ...cityErrors,
+      ...pincodeErrors,
+    };
     if (Object.keys(allErrors).length > 0) {
       setErrors(allErrors);
       return;
@@ -109,15 +135,14 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
         <Fade in={open}>
           <Box
             className="box-container"
-            sx={Boxstyle}
-            style={{ border: "12px solid #ede5e5", width: "50em" }}
+            sx={{...Boxstyle, border: "12px solid #ede5e5", width: "50rem",height:{xs:"100%",sm:'auto'}}}
           >
             <div
               className="side-product-image-wrapper"
               style={{ display: "flex", flexDirection: "row" }}
             >
               <div style={{ flex: "1" }}>
-                <img src={productImage} className="side-product-image" alt="" />
+                <img src={productImage} className="side-product-image" alt="" loading="lazy"/>
               </div>
               <div className="dialog-main" style={{ flex: "1" }}>
                 <DialogActions>
@@ -126,7 +151,9 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                   </IconButton>
                 </DialogActions>
                 {showEnquiryScreen && (
-                  <div className="container enquiry-form">
+                  <div
+                    className="container enquiry-form"
+                  >
                     <Typography
                       variant="h3"
                       className="form-title"
@@ -142,9 +169,14 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                     >
                       Soon we will reach out to you!!
                     </Typography>
+                    <Box    sx={{
+                      overflowY: "scroll",
+                      height: '15rem',
+                      margin:'0.2rem 0'
+                    }}>
                     <TextField
                       label="Name"
-                      className="mb-2"
+                      className="mb-4"
                       fullWidth
                       required
                       name="name"
@@ -164,6 +196,28 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                       error={!!errors.mobile_no}
                       helperText={errors.mobile_no}
                     />
+                    <TextField
+                      label="City"
+                      className="mb-4"
+                      fullWidth
+                      required
+                      name="city"
+                      value={data.city}
+                      onChange={handleChange}
+                      error={!!errors.city}
+                      helperText={errors.city}
+                    />
+                    <TextField
+                      label="Pin Code"
+                      className="mb-4"
+                      fullWidth
+                      name="pincode"
+                      value={data.pincode}
+                      onChange={handleChange}
+                      error={!!errors.pincode}
+                      helperText={errors.pincode}
+                    />
+                    </Box>
                     <Button
                       className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"
                       variant="contained"
@@ -182,6 +236,7 @@ const EnquiryModal = ({ open, handleClose, productId }) => {
                       src={successCheckIcon}
                       style={{ width: "123px", height: "123px" }}
                       alt="Tick Mark"
+                      loading="lazy"
                     />
                     <Typography
                       variant="h3"

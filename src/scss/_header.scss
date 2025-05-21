@@ -1,10 +1,9 @@
 .page-header {
-  padding: 9px 40px;
   background-color: #ffffff;
   position: sticky;
   top: 0;
   width: 100%;
-  height: 140px;
+  height: 131px;
   z-index: 5;
 }
 
@@ -51,12 +50,12 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      text-align: right; 
+      text-align: right;
       float: right;
       li {
         display: inline-block;
         padding: 0 10px;
-        font-family:"Afacad Flux", serif;
+        font-family: 'Afacad Flux', serif;
         font-size: 15px;
         letter-spacing: 0.5px;
         color: #525252;
@@ -79,7 +78,7 @@
 
       .menu-link-items {
         display: flex;
-        column-gap: 8%;
+        column-gap: 6%;
         text-align: right;
       }
 
@@ -87,14 +86,14 @@
         display: inline-block;
         font-size: 16px;
         text-transform: uppercase;
-        font: normal normal 900 17px/19px "Afacad Flux", serif;
+        font: normal normal 900 17px/19px 'Afacad Flux', serif;
         letter-spacing: 2px;
-        color: #672A2F;
+        color: #672a2f;
 
         a {
           opacity: 1;
           text-decoration: none;
-          color: #672A2F;
+          color: #672a2f;
           width: 100%;
           height: 100%;
         }
@@ -103,7 +102,6 @@
   }
 
   .header-icon-list {
-
     ul {
       list-style: none;
       display: flex;
@@ -168,7 +166,7 @@
           box-sizing: border-box;
           border: none;
           border-bottom: 1px solid #707070;
-          font-family: "Afacad Flux", serif;
+          font-family: 'Afacad Flux', serif;
           font-size: 14px;
           letter-spacing: 2.1px;
           height: 100%;
@@ -222,15 +220,15 @@
       font-size: 17px;
       font-weight: 900;
       margin-bottom: 25px;
-      font-family: "Afacad Flux", serif;
+      font-family: 'Afacad Flux', serif;
       margin-top: 28px;
     }
 
     li a {
-      color: #672A2F;
+      color: #672a2f;
       font-size: 17px;
       letter-spacing: 2.1px;
-      font-family: "Afacad Flux", serif;
+      font-family: 'Afacad Flux', serif;
     }
 
     ul li.add-toggle-menu-link {
@@ -251,61 +249,59 @@
     cursor: pointer;
   }
 }
-  @media (min-width: 767px) {
+@media (min-width: 767px) {
+  .navbar {
+    ul {
+      list-style: none;
+      padding-left: 0px;
 
-    .navbar {
-      ul {
-        list-style: none;
-        padding-left: 0px;
-  
-        .menu-link-items {
-          display: flex;
-          column-gap: 8%;
-          text-align: right;
-        }
-  
-        li {
-          display: inline-block;
-          font-size: 16px;
-          text-transform: uppercase;
-          font: normal normal 900 17px/19px "Afacad Flux", serif;
-          letter-spacing: 2px;
+      .menu-link-items {
+        display: flex;
+        column-gap: 6%;
+        text-align: right;
+      }
+
+      li {
+        display: inline-block;
+        font-size: 16px;
+        text-transform: uppercase;
+        font: normal normal 900 17px/19px 'Afacad Flux', serif;
+        letter-spacing: 2px;
+        color: #692526;
+        position: relative;
+        cursor: pointer;
+        padding-bottom: 3px;
+
+        a {
+          opacity: 1;
+          text-decoration: none;
           color: #692526;
-          position: relative;
-          cursor: pointer; 
-          padding-bottom: 3px;
-  
-          a {
-            opacity: 1;
-            text-decoration: none;
-            color:#692526;
-            width: 100%;
-            height: 100%;
-          }
-          &::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background-color: #672A2F;
-            transform-origin: center;
-            transition: all 0.2s ease-in-out;
-          }
-    
-          &:hover::after {
-            left: 0;
-            width: 100%;
-          }
+          width: 100%;
+          height: 100%;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 3px;
+          background-color: #672a2f;
+          transform-origin: center;
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:hover::after {
+          left: 0;
+          width: 100%;
         }
       }
     }
   }
+}
 
 @media (max-width: 767px) {
   .page-header {
-    padding: 9px 18px;
     height: 70px;
     display: grid;
     align-content: center;
@@ -316,8 +312,14 @@
       padding: 0;
       margin: 0;
       margin-top: 0 !important;
-    
     }
   }
 }
 
+.remove-underline {
+  cursor: pointer;
+}
+
+.remove-underline::after {
+  content: none !important;
+}

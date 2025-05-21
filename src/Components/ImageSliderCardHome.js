@@ -17,12 +17,15 @@ export default function ImageSliderCardHome({
         "" + CardImageType + "-item-section image-slide-card-container"
       }
     >
-      <img
-        width={width}
-        height={height}
-        src={`${CardImage}`}
-        alt="slider image"
-      />
+      <div style={{ overflow: 'hidden', width: '100%' }} >
+        <img
+          width={width}
+          height={height}
+          src={`${CardImage}`}
+          alt="slider image"
+          loading="lazy"
+        />
+      </div>
       {padding == 0 && <Divider variant="middle" />}
       <p
         className={

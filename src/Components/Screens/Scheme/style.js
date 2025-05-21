@@ -84,6 +84,12 @@ export const ImageButton = styled(Box)(({ theme }) => ({
     height: "2.4rem",
     width: "14rem",
   },
+  [theme.breakpoints.up("xl")]: {
+    right: "26%",
+    top: "60%",
+    height: "5rem",
+    width: "20rem",
+  },
   [theme.breakpoints.down(450)]: {
     right: "25%",
     width: "5rem",
@@ -113,14 +119,19 @@ export const ImageButtonGDS = styled(Box)(({ theme }) => ({
     right: "23%",
     top: "54%",
     height: "2.4rem",
-    width: "10rem",
+    width: "12rem",
   },
 
   [theme.breakpoints.up("lg")]: {
     right: "23%",
     top: "54%",
     height: "2.4rem",
-    width: "12rem",
+    width: "15rem",
+  },
+  [theme.breakpoints.up("xl")]: {
+
+    height: "5rem",
+    width: "20rem",
   },
 
   [theme.breakpoints.down(450)]: {

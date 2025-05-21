@@ -67,7 +67,7 @@ export default function BasicMenu({
             backgroundColor: '#fff',
             border: '1px solid rgba(112,112,112,0.25)',
             boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.3)',
-            width: { lg: '18vw', md: '25dvw', sm: '30vw', xs: '50dvw' },
+            width: { lg: '18vw', md: '25dvw', xs: 'fit-content' },
             textAlign: 'left',
             zIndex: 10,
             maxHeight: '13.4rem',

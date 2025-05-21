@@ -8,7 +8,7 @@ import {
 } from "../../../images/SchemeImages";
 import { handleDownload } from "../../../utilities/handleDownload";
 import HorizonatalBanner from "../../Common/HorizonatalBanner";
-import { GDPButton } from "./style";
+import { GDPButton, ImageButton } from "./style";
 import { Link } from "react-router-dom";
 
 const GoldenEraScheme = () => {
@@ -62,15 +62,16 @@ const GoldenEraScheme = () => {
             style={{ width: "100%", height: "100%" }}
           />
         </Box>
-        <a href={'tel:+917969991827'}>
         <Box sx={{ width: "100%", height: "100%", position: "relative" }}>
           <img
             src={BookYourGold}
             alt="BookYourGold"
             style={{ width: "100%", height: "100%" }}
           />
+
+          <ImageButton role="button" onClick={() => window.location.href = 'tel:+917969991827'}/>
+          
         </Box>
-        </a>
       </Stack>
     </Container>
   );

@@ -9,7 +9,7 @@ import {
 } from "../../../images/SchemeImages";
 import { handleDownload } from "../../../utilities/handleDownload";
 import { useNavigate } from "react-router-dom";
-import { GDPButton } from "./style";
+import { GDPButton, ImageButton, ImageButtonGDS } from "./style";
 const GoldenDreamPlanScheme = () => {
   const navigate = useNavigate();
   return (
@@ -72,15 +72,17 @@ const GoldenDreamPlanScheme = () => {
             />
           </Stack>
         </Box>
-        <a href={"tel:+917969991827"}>
-          <Box sx={{ width: "100%", height: "100%", position: "relative" }}>
-            <img
-              src={InvestLittle}
-              alt="InvestLittle"
-              style={{ width: "100%", height: "100%" }}
-            />
-          </Box>
-        </a>
+        <Box sx={{ width: "100%", height: "100%", position: "relative" }}>
+          <img
+            src={InvestLittle}
+            alt="InvestLittle"
+            style={{ width: "100%", height: "100%" }}
+          />
+          <ImageButtonGDS
+            role="button"
+            onClick={() => (window.location.href = "tel:+917969991827")}
+          />
+        </Box>
       </Stack>
     </Container>
   );

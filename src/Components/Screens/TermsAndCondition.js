@@ -343,33 +343,7 @@ export default function TermsAndCondition() {
           </Grid>
           <Grid item xs={10} md={4}>
             <div className="privacy-policy-header-text fs-5">
-              8. Scheme Cancellation Policy
-            </div>
-            <div className="privacy-policy-normal-text">
-              8.1 Customer will get full refund of the principal amount deposited in
-              the scheme by visiting nearest branch and after submission of
-              original Passbook with valid Id proof.
-            </div>
-
-            <div className="privacy-policy-normal-text">
-              8.2 The amount will be paid only through online transfer to
-              customer’s personal bank account only.
-            </div>
-            <Divider className="divider-privacy-policy" />
-          </Grid>
-          <Grid item xs={1} md={4}>
-            <div className="empty-container-section">xs=6 md=4</div>
-          </Grid>
-        </Grid>
-      </Box>
-      <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1}>
-          <Grid item xs={1} md={4}>
-            <div className="empty-container-section">xs=6 md=4</div>
-          </Grid>
-          <Grid item xs={10} md={4}>
-            <div className="privacy-policy-header-text fs-5">
-              9. Contact Information
+              8. Contact Information
             </div>
             <div className="privacy-policy-normal-text">
               For any queries regarding these T&Cs, please contact our customer

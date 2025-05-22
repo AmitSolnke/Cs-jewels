@@ -24,6 +24,7 @@ import { ShoppingBag } from "./Screens/ShoppingBag";
 import { Box, Button, IconButton, Tooltip, useMediaQuery } from "@mui/material";
 import StoresIcon from "../images/icons/StoresIcon-1.png";
 import StoresIconBrown from "../images/icons/StoresIcon.png";
+import BasicMenu from "./Common/Menu";
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const isMobile = useMediaQuery("(max-width:768px)");
@@ -116,6 +117,18 @@ function Header({ openDrawer, handleOpenDrawer }) {
       setSearchDropdown(false);
     }
   };
+  const schemes = [
+    {
+      id: 1,
+      collectionName: 'Golden Dream Plan',
+      url: '/golden-dream-scheme'
+    },
+    {
+      id: 2,
+      collectionName: 'Golden Era Scheme',
+      url: '/golden-era-scheme'
+    },
+  ];
 
   return (
     <>
@@ -305,6 +318,15 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         >
                           Jewellery
                         </li>
+                        <li className="remove-underline">
+                            <Box>
+                              <BasicMenu
+                                menuTitle="Schemes"
+                                children={schemes}
+                                mainTabNaivagtion={false}
+                              />
+                            </Box>
+                          </li>
                         <li className="w-100">
                           <Link className="menu-links" to="/aboutus">
                             About us
@@ -340,6 +362,15 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         >
                           Jewellery
                         </li>
+                        <li className="remove-underline">
+                            <Box>
+                              <BasicMenu
+                                menuTitle="Schemes"
+                                children={schemes}
+                                mainTabNaivagtion={false}
+                              />
+                            </Box>
+                          </li>
                         <li>
                           <Link to="/aboutus">About us</Link>
                         </li>

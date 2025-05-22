@@ -25,6 +25,8 @@ import { ProductDetailsLatest } from "./Components/Screens/Product-details/Produ
 import RefundPolicy from "./Components/Screens/RefundPolicy";
 import ImageCollage from "./Components/Screens/ImageCollage ";
 import Enash from "./Components/Screens/Enash";
+import GoldenDreamPlanScheme from "./Components/Screens/Scheme/GoldenDreamPlanScheme";
+import GoldenEraScheme from "./Components/Screens/Scheme/GoldenEraScheme";
 
 export const normalRouts = [
   {
@@ -107,6 +109,20 @@ export const frontAppRoutes = [
     element: <AuthModal />,
     exact: true,
     strict: false,
+  },
+  {
+    path: '/golden-era-scheme',
+    name: 'Golden Era Scheme',
+    element: <GoldenEraScheme />,
+    exact: true,
+    strict: false
+  },
+  {
+    path: '/golden-dream-scheme',
+    name: 'Golden Dream Scheme',
+    element: <GoldenDreamPlanScheme />,
+    exact: true,
+    strict: false
   },
   // {
   //   path: '/news-&-blog',

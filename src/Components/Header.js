@@ -1,9 +1,8 @@
-/** @format */
 
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../images/icons/CSJ_Logo_Brand_color_Eng_final.webp';
-
+import CloseIcon from '@mui/icons-material/Close';
 import heartLogo from '../images/icons/heart.svg';
 import userLogo from '../images/icons/user.svg';
 import searchLogo from '../images/icons/search.svg';
@@ -24,11 +23,15 @@ import { NavigationDropdown } from './Common/NavigationDropdown';
 import { SearchDropdown } from './Common/SearchDropdown';
 import { ShoppingBag } from './Screens/ShoppingBag';
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
   Container,
   IconButton,
   Tooltip,
+  Typography,
   useMediaQuery
 } from '@mui/material';
 import StoresIcon from '../images/icons/StoresIcon-1.png';
@@ -37,7 +40,8 @@ import BasicMenu from './Common/Menu';
 import { DropdownWrapper } from './style';
 import ContainerWrapper from './Common/ContainerWrapper';
 import RateCard from './Common/RateCard';
-
+import { useScrollToTop } from '../hooks';
+import MobileMenu from './Common/MobileMenu';
 function Header({ openDrawer, handleOpenDrawer }) {
   const isMobile = useMediaQuery('(max-width:768px)');
   const $ = window.jQuery;
@@ -54,6 +58,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
   const [searchDropdown, setSearchDropdown] = useState(false);
   const [collections, setCollections] = useState([]);
   const [isCollectionLoading, setIsCollectionLoading] = useState(false);
+  const containerRef = useRef(null);
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -89,7 +94,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
           bodyFormData.append('metal_type_master_id[0]', data.id);
           const items = await getMetalItems(bodyFormData);
           itemData = items.data.data;
-        } catch (error) {}
+        } catch (error) { }
         temp.push({
           id: data.id,
           metal: data.metal_type,
@@ -97,9 +102,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
         });
       }
       setMetalTypesData(temp);
-    } catch (error) {}
+    } catch (error) { }
   };
-
   const getData = async () => {
     try {
       const result = await getLiveRateForCSP();
@@ -172,6 +176,72 @@ function Header({ openDrawer, handleOpenDrawer }) {
       url: '/golden-era-scheme'
     },
   ];
+
+
+
+
+  const page = 1;
+
+
+  const navMenu = [
+    {
+      title: 'Jewellery',
+      options: metalTypesData?.map((item) => {
+        return {
+          // ...item,
+          id: item?.id,
+          name: item?.metal,
+          url: null,
+          children: item?.metal_items?.map((child) => {
+            return {
+              ...child,
+              name: child.item_name,
+              url: `/product-catalogues?page=${page}&metal=${item.id}&item_type=${child.id}`
+            }
+          })
+        }
+      }),
+    }, {
+      title: 'Collection',
+      options: collections?.map((item) => {
+        return {
+          //...item,
+          id: item.id,
+          name: item.collectionName,
+          url: item?.url,
+          children: []
+        }
+      })
+    }, {
+      title: 'Schemes',
+      options: schemes.map((item) => {
+        return {
+          id: item.id,
+          name: item.collectionName,
+          url: item.url,
+          children: []
+        }
+      })
+    }
+  ];
+
+  const handleClickOutside = (event) => {
+
+    if (
+      containerRef?.current &&
+      !containerRef?.current?.contains(event?.target)
+    ) {
+
+      document.querySelector('.mobile-menu-overlay').style.width = '0';
+      return true;
+
+    }
+    return false;
+  };
+
+
+
+  useScrollToTop();
 
   return (
     <ContainerWrapper
@@ -295,15 +365,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
               <div className="col-12 col-md-2 col-lg-7 p-0">
                 <div className="mobile-menu-overlay">
                   <div className="close-nav-btn d-lg-none">
-                    <img
-                      src={closeMenu}
-                      alt="close-menu-img"
-                      className="menu-close"
-                    />
+                    <CloseIcon fontSize='medium' />
                   </div>
-                  <nav className="navbar">
+                  <nav className="navbar" ref={containerRef}>
                     {metalTypesData?.length > 0 && (
-                      <ul className="w-100">
+                      <ul className="w-100 h-100">
                         <div className="header-searchbar-wrapper w-100">
                           {/* <div className="col-10 search-wrapper">
                           <input
@@ -336,7 +402,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </div>
                         </div>
                         {/* <h3 className="drawer-header>POPULAR SEARCHES</h3> */}
-                        <div className="d-lg-none">
+                        <div className="d-lg-none" style={{
+                          backgroundColor: '#fff',
+                        }}>
                           {/* <li className="w-100">
                           <Link to="/" className="menu-link">
                             Fancy Earrings
@@ -367,8 +435,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               Home
                             </Link>
                           </li>
+                          <MobileMenu navMenu={navMenu} handleClickOutside={handleClickOutside} />
 
-                          <div onClick={() => setShowDropdown(!showDropdown)}>
+
+
+                          {/* <div onClick={() => setShowDropdown(!showDropdown)}>
                             {showDropdown && (
                               <Box
                                 sx={{
@@ -394,8 +465,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               </Box>
                             )}
                             <li>Jewellery</li>
-                          </div>
-                          {collections?.length > 0 && (
+                          </div> */}
+                          {/* {collections?.length > 0 && (
                             <li className="remove-underline">
                               <Box>
                                 <BasicMenu
@@ -414,13 +485,13 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 mainTabNaivagtion={false}
                               />
                             </Box>
-                          </li>
-                          <li className="w-100">
+                          </li> */}
+                          <li className="w-100 my-3">
                             <Link className="menu-links" to="/aboutus">
                               About us
                             </Link>
                           </li>
-                          <li className="w-100">
+                          <li className="w-100 my-3">
                             <Link className="menu-links" to="/enash">
                               E-Mandate
                             </Link>

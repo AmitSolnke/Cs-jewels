@@ -50,7 +50,6 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   const [open, setOpen] = useState(false);
   // const [openDrawer, setOpenDrawer] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [searchDropdown, setSearchDropdown] = useState(false);
   const [collections, setCollections] = useState([]);
   const [isCollectionLoading, setIsCollectionLoading] = useState(false);
@@ -63,19 +62,10 @@ function Header({ openDrawer, handleOpenDrawer }) {
     setOpen(false);
   };
 
-  useEffect(() => {
-    if (showDropdown) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
 
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [showDropdown]);
 
   const [metalTypesData, setMetalTypesData] = useState([]);
+  const [showNav, setShowNav] = useState(false);
 
   const getMetalData = async () => {
     try {
@@ -170,7 +160,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
       id: 2,
       collectionName: 'Golden Era Scheme',
       url: '/golden-era-scheme'
-    },
+    }
   ];
 
   return (
@@ -367,47 +357,40 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               Home
                             </Link>
                           </li>
+                          <NavigationDropdown
+                            tabName="Jewellery"
+                            navigationData={metalTypesData?.map((item) => {
+                              return {
+                                id: item?.id,
+                                name: item?.name,
+                                title: item?.metal,
+                                children: item?.metal_items?.map((subtitle) => {
+                                  return {
+                                    id: subtitle?.id,
+                                    subtitle: subtitle?.item_name,
+                                    url: `/product-catalogues?metal=${item?.id}&item_type=${subtitle?.id}`
+                                  };
+                                })
+                              };
+                            })}
+                          />
 
-                          <div onClick={() => setShowDropdown(!showDropdown)}>
-                            {showDropdown && (
-                              <Box
-                                sx={{
-                                  position: 'absolute',
-                                  width: '99.8dvw',
-                                  backgroundColor: '#fff',
-                                  borderTop: '0.5px solid #d6d6d6',
-                                  zIndex: 9999,
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  justifyContent: 'center',
-                                  px: 6,
-                                  py: 4,
-                                  transform: showDropdown
-                                    ? 'translateY(35px)'
-                                    : 'translateY(-10px)'
-                                }}
-                              >
-                                <NavigationDropdown
-                                  metalData={metalTypesData}
-                                  setShowDropdown={setShowDropdown}
-                                />
-                              </Box>
-                            )}
-                            <li>Jewellery</li>
-                          </div>
                           {collections?.length > 0 && (
-                            <li className="remove-underline" style={{display:'block'}}>
-                              <Box>
-                                <BasicMenu
-                                  isLoading={isCollectionLoading}
-                                  menuTitle="Collection"
-                                  children={collections}
-                                  mainTabNaivagtion={false}
-                                />
-                              </Box>
-                            </li>
+                            <NavigationDropdown
+                              navigationData={collections?.map((item) => {
+                                return {
+                                  id: item?.id,
+                                  title: item?.collectionName,
+                                  url: item?.url
+                                };
+                              })}
+                              tabName="Collection"
+                            />
                           )}
-                          <li className="remove-underline" style={{display:'block'}}>
+                          <li
+                            className="remove-underline"
+                            style={{ display: 'block' }}
+                          >
                             <Box>
                               <BasicMenu
                                 menuTitle="Schemes"
@@ -448,36 +431,33 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <li>
                             <Link to="/">Home</Link>
                           </li>
-                          <div
-                            onMouseEnter={() => setShowDropdown(true)}
-                            onMouseLeave={() => setShowDropdown(false)}
-                            style={{
-                              marginTop: '-0.2rem'
-                            }}
-                          >
-                            <DropdownWrapper showDropdown={showDropdown}>
-                              {showDropdown && (
-                                <NavigationDropdown
-                                  metalData={metalTypesData}
-                                  setShowDropdown={setShowDropdown}
-                                />
-                              )}
-                            </DropdownWrapper>
-
-                            <li>Jewellery</li>
-                          </div>
-                          {collections?.length > 0 && (
-                            <li className="remove-underline">
-                              <Box>
-                                <BasicMenu
-                                  isLoading={isCollectionLoading}
-                                  menuTitle="Collection"
-                                  children={collections}
-                                  mainTabNaivagtion={false}
-                                />
-                              </Box>
-                            </li>
-                          )}
+                          <NavigationDropdown
+                            navigationData={metalTypesData?.map((item) => {
+                              return {
+                                id: item?.id,
+                                name: item?.name,
+                                title: item?.metal,
+                                children: item?.metal_items?.map((subtitle) => {
+                                  return {
+                                    id: subtitle?.id,
+                                    subtitle: subtitle?.item_name,
+                                    url: `/product-catalogues?metal=${item?.id}&item_type=${subtitle?.id}`
+                                  };
+                                })
+                              };
+                            })}
+                            tabName="Jewellery"
+                          />
+                          <NavigationDropdown
+                            navigationData={collections?.map((item) => {
+                              return {
+                                id: item?.id,
+                                title: item?.collectionName,
+                                url: item?.url
+                              };
+                            })}
+                            tabName="Collection"
+                          />
                           <li className="remove-underline">
                             <Box>
                               <BasicMenu

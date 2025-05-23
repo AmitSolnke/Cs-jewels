@@ -25,11 +25,13 @@ export const DropdownWrapper = styled(Box, {
   paddingTop: theme.spacing(4),
   paddingBottom: theme.spacing(4),
 
+
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     padding: theme.spacing(2)
   },
-  [theme.breakpoints.up(1024)]: {
+
+  [theme.breakpoints.up('xl')]: {
     height: 'auto'
-  }
+  },
 }));

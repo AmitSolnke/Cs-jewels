@@ -1,55 +1,109 @@
-import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { useScrollToTop } from "../../hooks";
+import { Box, Grid, Typography, useMediaQuery } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useScrollToTop } from '../../hooks';
+import { DropdownWrapper } from '../style';
+import { useEffect, useState } from 'react';
 
-export const NavigationDropdown = ({ metalData, setShowDropdown }) => {
+export const NavigationDropdown = ({ navigationData, tabName = '',mainTabNaivagtion = false }) => {
+  const isMobile = useMediaQuery('(max-width:768px)');
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
-  const page = 1;
 
-  const closeModal = (metalId, itemId) => {
-    navigate(`/product-catalogues?page=${page}&metal=${metalId}&item_type=${itemId}`);
-    setShowDropdown(false);
+  const closeModal = (url) => {
+    if (url) {
+      navigate(url);
+      setShowDropdown(false);
+    }
   };
+
+  useEffect(() => {
+    if (showDropdown) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showDropdown]);
 
   useScrollToTop();
 
-  return (
-    <Grid container spacing={4} className="custom-scrollbar">
-      {metalData.map((data, index) => (
-        <Grid
-          item
-          key={index}
-          xs={12}
-          md={3}
-          sm={6}
-           sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-          }}
-        >
-          <Typography
-            className="jewellwery-type"
-          >
-            {data.metal}
-          </Typography>
+  const handleClick = () => {
+    if (isMobile) {
+      setShowDropdown((prev) => !prev);
+    } else {
+      if (mainTabNaivagtion) {
+        navigate(tabName.toLowerCase());
+      }
+    }
+  };
 
-          <div
-           className='jewelleries'
-          >
-            {data.metal_items.map((item, key) => (
-              <div
-                key={key}
-                onClick={() => closeModal(data.id, item.id)}
-                className='jewellery-link'
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setShowDropdown(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setShowDropdown(false);
+    }
+  };
+  return (
+    <Box
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+      role="button"
+      style={{
+        marginTop: isMobile ? '0rem' : '-0.2rem'
+      }}
+    >
+      <DropdownWrapper showDropdown={showDropdown}>
+        <Grid container spacing={4} className="custom-scrollbar">
+          {navigationData?.map(({ title, url = '', children = [] }, index) => (
+            <Grid
+              item
+              key={index}
+              xs={12}
+              md={3}
+              sm={6}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2
+              }}
+            >
+              <Typography
+                className="jewellwery-type"
+                sx={{
+                  cursor: url && 'pointer'
+                }}
+                onClick={() => closeModal(url)}
               >
-                {item.item_name}
-              </div>
-            ))}
-          </div>
+                {title}
+              </Typography>
+
+              {children?.length > 0 && (
+                <div className="jewelleries">
+                  {children?.map((item, key) => (
+                    <div
+                      key={key}
+                      onClick={() => closeModal(item?.url)}
+                      className="jewellery-link"
+                    >
+                      {item.subtitle}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </Grid>
+          ))}
         </Grid>
-      ))}
-    </Grid>
+      </DropdownWrapper>
+      <li>{tabName}</li>
+    </Box>
   );
 };

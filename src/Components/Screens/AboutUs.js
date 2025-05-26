@@ -43,29 +43,10 @@ export default function AboutUs() {
               // useReadMore={true}
               // limit={350}
               headerText={
-                " Crafting Trust, Adorning Generations: 198 Years of Timeless Elegance"
+                "Chandukaka Saraf Jewels: A Legacy of Trust and Elegance India’s Oldest jewellery Brand, Shining Since 1827"
               }
             >
-              Welcome to Chandukaka Saraf Jewels - India's Premier Jeweller
-              Since 1827. Step into a world where tradition meets elegance. For
-              almost 200 years, we've been creating stunning jewellery and
-              earning the trust of customers across India. Our journey began in
-              1827 when Shri Chandulal Shah opened our first store near Pune.
-              His dedication to quality and honest business set the stage for
-              our long-standing success. With nearly two centuries of
-              experience, we've become a household name in Western Indian
-              jewellery. Recognized as the 'Most Trusted Jewellery Brand of
-              Maharashtra' our family-owned business takes pride in its rich
-              heritage, passing down expertise and values through generations.
-              We're not just about beautiful jewellery – we're about trust,
-              ethics, and making our customers happy. At Chandukaka Saraf
-              Jewels, we love blending old-world craftsmanship with fresh,
-              modern designs. Our goal is to create jewellery that adds sparkle
-              to life's special moments. Whether you're celebrating a milestone
-              or treating yourself, our jewellery tells a story – one that's
-              been in the making since 1827. Come explore our collection and be
-              part of our continuing legacy. At Chandukaka Saraf Jewels, you're
-              not just a customer – you're family.
+              Welcome to Chandukaka Saraf Jewels India’s most trusted  and oldest jewellery brand since 1827. Step into a world where tradition meets elegance. For almost 200 years, we've been creating stunning jewellery and earning the trust of customers across India. Our journey began in 1827 when Shri Chandulal Shah opened our first store near Pune. His dedication to quality and honest business set the stage for our long-standing success. With almost two centuries of experience, we've become a household name in Western Indian jewellery. Chandukaka Saraf Jewels, established in 1827, is the oldest jewellery brand in India, carrying forward a legacy of trust and excellence. Recognized as the 'Most Trusted Jewellery Brand of Maharashtra,' our family-owned business takes pride in its rich heritage, passing down expertise and values through generations. We're not just about beautiful jewellery – we're about trust, ethics, and making our customers happy. At Chandukaka Saraf Jewels, we love blending old-world craftsmanship with fresh, modern designs. Our goal is to create jewellery that adds sparkle to life's special moments. Whether you're celebrating a milestone or treating yourself, our jewellery tells a story – one that's been in the making since 1827. Come explore our collection and be part of our continuing legacy. At Chandukaka Saraf Jewels, you're not just a customer – you're family. 
             </ReadMoreText>
           </Grid>
         </Grid>

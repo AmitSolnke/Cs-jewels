@@ -126,7 +126,8 @@ font-family: "Vidaloka", serif;
   margin: 0 5px;
 
 }
-.slick-dots.slick-thumb li.slick-active a img {
+.slick-dots.slick-thumb li.slick-active a .image-thumb,
+.slick-dots.slick-thumb li.slick-active a .video-thumb {
   border: 2px solid gray
 
 }

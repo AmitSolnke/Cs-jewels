@@ -114,6 +114,7 @@ export const ProductDetailsLatest = () => {
         <a>
           {mediaItems[i]?.type === "video" ? (
             <div
+              className="video-thumb"
               style={{
                 width: "60px",
                 height: "45px",
@@ -143,6 +144,7 @@ export const ProductDetailsLatest = () => {
           ) : (
             <img
               src={mediaItems[i]?.thumbnail}
+              className='image-thumb'
               style={{
                 width: "60px",
                 height: "45px",

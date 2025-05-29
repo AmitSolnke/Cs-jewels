@@ -87,6 +87,9 @@ font-family: "Vidaloka", serif;
 }
 
 .slick-dots{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
   bottom: -14px;
 }
 

@@ -1,5 +1,11 @@
-import { Box, Stack, Typography, Button } from "@mui/material";
-import { RitiCollectionBanner, RitiLogo } from "../../../images/imageConstants";
+import { Box, Stack, Typography, Button, useMediaQuery } from "@mui/material";
+import {
+  CSJEWELS_Light,
+  MobRitiCollectionBanner,
+  RitiCollectionBanner,
+  RitiCollectionCoverBanner,
+  RitiLogo,
+} from "../../../images/imageConstants";
 import { Link } from "react-router-dom";
 import VideoPlayer from "../../Common/VideoPlayer";
 import logo from "../../../images/icons/CSJ_Logo_Brand_color_Eng_final.webp";
@@ -86,8 +92,8 @@ const compaignTAC = [
     id: 1,
     condition: (
       <>
-        <strong>Eligibility Criteria:</strong> Open to all participants aged{" "}
-        <strong>18</strong> years and above.
+        <strong>Eligibility Criteria:</strong> Open to all participants aged 18
+        years and above.
       </>
     ),
   },
@@ -139,6 +145,7 @@ const compaignTAC = [
 ];
 
 const RitiJewellery = () => {
+  const isMobile = useMediaQuery("(max-width:450px)");
   const pdfURL =
     "https://drive.google.com/uc?export=download&id=14Wn-KblBBTYlPg6aOs8faFjXbKjFNej9";
 
@@ -160,7 +167,7 @@ const RitiJewellery = () => {
           }}
         >
           <img
-            src={RitiCollectionBanner}
+            src={isMobile ? MobRitiCollectionBanner : RitiCollectionBanner}
             alt="RitiCollectionBanner"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
@@ -226,176 +233,146 @@ const RitiJewellery = () => {
               textAlign={"start"}
               fontFamily={'"Vidaloka", serif'}
             >
-              Prizes
+              Hook Step Video
             </Typography>
-            <Typography
-              variant="body1"
-              lineHeight={1.8}
-              sx={{ fontFamily: "'Poppins', 'Arial, sans-serif'" }}
-            >
-              Top 2 Winners will receive{" "}
-              <strong>exclusive Riti Jewellery pieces</strong> from the Riti
-              collection and get <strong>featured on our social media</strong>{" "}
-              pages.
-            </Typography>
-          </Stack>
-
-          <Stack gap={"1rem"}>
-            <VideoPlayer />
-            <Stack textAlign="center" gap={"0.3rem"}>
-              <Box>
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#662a2e",
-                    fontFamily: '"Poppins", serif',
-                    textTransform: "none",
-                    height: "2.5rem",
-                    padding: "0.7rem 1.5rem",
-                    "&:hover": {
-                      backgroundColor: "#5b2429",
-                    },
-                  }}
-                  onClick={() =>
-                    window.open(
-                      "https://www.instagram.com/reels/audio/511362965366790?igsh=MWRwOTR5enQ5dGNicA==",
-                      "_blank"
-                    )
-                  }
-                >
-                  Use this Audio 🎵
-                </Button>
-              </Box>
-            </Stack>
-          </Stack>
-
-          <Stack gap={2}>
-            <Typography
-              variant="h4"
-              fontWeight={700}
-              textAlign="start"
-              fontFamily={'"Vidaloka", serif'}
-            >
-              Terms & Conditions
-            </Typography>
-            <Stack component="ul" gap={1} pl={"1.5rem"}>
-              {compaignTAC.map((item) => (
-                <li key={item.id}>
-                  <Typography
-                    variant="body1"
-                    lineHeight={1.8}
-                    sx={{ fontFamily: "'Poppins', 'Arial, sans-serif'" }}
+            <Stack gap={"1rem"}>
+              <VideoPlayer />
+              <Stack textAlign="center" gap={"0.3rem"}>
+                <Box>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#662a2e",
+                      fontFamily: '"Poppins", serif',
+                      textTransform: "none",
+                      height: { md: "2.5rem", xs: "auto" },
+                      padding: "0.7rem 1.5rem",
+                      "&:hover": {
+                        backgroundColor: "#5b2429",
+                      },
+                    }}
+                    onClick={() =>
+                      window.open(
+                        "https://www.instagram.com/reels/audio/511362965366790?igsh=MWRwOTR5enQ5dGNicA==",
+                        "_blank"
+                      )
+                    }
                   >
-                    {item.condition}
-                  </Typography>
-                </li>
-              ))}
+                    Use this Audio 🎵
+                  </Button>
+                </Box>
+              </Stack>
             </Stack>
-          </Stack>
 
-          <Stack
-            width={"100%"}
-            position={"relative"}
-            height={"80vh"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            sx={{
-              borderRadius: "12px",
-              overflow: "hidden",
-              color: "white",
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${RitiCollectionBanner})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                zIndex: 1,
-                boxShadow: "inset 0 0 50px rgba(0,0,0,0.7)",
-              },
-            }}
-          >
-            <Stack gap={2} textAlign="center" px={2} zIndex={2}>
+            <Stack gap={2}>
               <Typography
-                variant="h5"
+                variant="h4"
                 fontWeight={700}
+                textAlign={"start"}
                 fontFamily={'"Vidaloka", serif'}
-                textTransform={"capitalize"}
               >
-                For any queries
+                Prizes
               </Typography>
               <Typography
                 variant="body1"
+                lineHeight={1.8}
                 sx={{ fontFamily: "'Poppins', 'Arial, sans-serif'" }}
               >
-                DM us on{" "}
-                <a
-                  href="https://www.instagram.com/csjewelsofficial/"
-                  style={{ textDecoration: "none", color: "#90caf9" }}
-                >
-                  @csjewelsofficial
-                </a>{" "}
-                or call Customer Care at{" "}
-                <a
-                  href="tel:+917969991827"
-                  style={{ textDecoration: "none", color: "#90caf9" }}
-                >
-                  +91 7969991827
-                </a>
+                Top 2 Winners will receive{" "}
+                <strong>exclusive Riti Jewellery pieces</strong> from the Riti
+                collection and get <strong>featured on our social media</strong>{" "}
+                pages.
               </Typography>
-              <a
-                href={pdfURL}
-                download
-                style={{
-                  textDecoration: "none",
-                  width: "fit-content",
-                  marginInline: "auto",
+            </Stack>
+            <Stack gap={2}>
+              <Typography
+                variant="h4"
+                fontWeight={700}
+                textAlign="start"
+                fontFamily={'"Vidaloka", serif'}
+              >
+                Terms & Conditions
+              </Typography>
+              <Stack component="ul" gap={1} pl={"1.5rem"}>
+                {compaignTAC.map((item) => (
+                  <li key={item.id}>
+                    <Typography
+                      variant="body1"
+                      lineHeight={1.8}
+                      sx={{ fontFamily: "'Poppins', 'Arial, sans-serif'" }}
+                    >
+                      {item.condition}
+                    </Typography>
+                  </li>
+                ))}
+              </Stack>
+            </Stack>
+
+            <Box position={"relative"}>
+              <img
+                src={RitiCollectionCoverBanner}
+                alt="RitiCollectionCoverBanner"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+              <Box
+                component={"a"}
+                href="https://www.instagram.com/csjewelsofficial/"
+                sx={{
+                  position: "absolute",
+                  bottom: { xs: "12%", lg: "13%" },
+                  left: "35%",
+                  height: { xs: "1rem", lg: "2rem", xl: "3rem" },
+                  width: { xs: "6rem", sm: "10rem", lg: "15rem", xl: "20rem" },
+                }}
+              ></Box>
+            </Box>
+
+            <a
+              href={pdfURL}
+              download
+              style={{
+                textDecoration: "none",
+                width: "fit-content",
+                marginInline: "auto",
+              }}
+            >
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#662a2e",
+                  fontFamily: '"Poppins", serif',
+                  textTransform: "none",
+                  height: { sm: "3rem", xs: "auto" },
+                  padding: "0.7rem 1.5rem",
+                  display: "flex",
+                  gap: "0.3rem",
+                  "&:hover": {
+                    backgroundColor: "#5b2429",
+                  },
                 }}
               >
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#662a2e",
+                <span
+                  style={{
+                    textTransform: "capitalize",
                     fontFamily: '"Poppins", serif',
-                    textTransform: "none",
-                    height: "3rem",
-                    padding: "0.7rem 1.5rem",
-                    display: "flex",
-                    gap: "0.3rem",
-                    "&:hover": {
-                      backgroundColor: "#5b2429",
-                    },
+                    color: "#fff",
+                    fontWeight: 600,
                   }}
                 >
-                  <Typography
-                    variant="subtitle1"
-                    fontWeight={600}
-                    color="#333"
-                    sx={{
-                      textTransform: "capitalize",
-                      fontFamily: '"Poppins", serif',
-                      color: "#fff",
-                    }}
-                  >
-                    Download the Riti Collection
-                  </Typography>
-                  <img
-                    src={RitiLogo}
-                    alt="Riti Logo"
-                    style={{
-                      width: "2.2rem",
-                      height: "2.2rem",
-                      objectFit: "cover",
-                      overflow: "hidden",
-                    }}
-                  />
-                </Button>
-              </a>
-            </Stack>
+                  Download Riti Collection
+                </span>
+                <img
+                  src={RitiLogo}
+                  alt="Riti Logo"
+                  style={{
+                    width: "2.2rem",
+                    height: "2.2rem",
+                    objectFit: "cover",
+                    overflow: "hidden",
+                  }}
+                />
+              </Button>
+            </a>
           </Stack>
         </Stack>
       </Stack>

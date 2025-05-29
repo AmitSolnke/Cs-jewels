@@ -2,6 +2,7 @@ import { Box, Stack, Typography, Button, useMediaQuery } from "@mui/material";
 import {
   CSJEWELS_Light,
   MobRitiCollectionBanner,
+  MobRitiCollectionCoverBanner,
   RitiCollectionBanner,
   RitiCollectionCoverBanner,
   RitiLogo,
@@ -28,9 +29,12 @@ const participationSteps = [
           @csjewelsofficial
         </a>{" "}
         and{" "}
-        <span style={{ color: "#0d6efd", fontWeight: 600 }}>
+        <a
+          href="https://www.instagram.com/csmusicoriginals?igsh=MWlzOHEzZ293c3E0Zg=="
+          style={{ textDecoration: "none", fontWeight: 600 }}
+        >
           @csmusicoriginals
-        </span>{" "}
+        </a>{" "}
         on Instagram.
       </>
     ),
@@ -48,13 +52,22 @@ const participationSteps = [
     id: 3,
     step: (
       <>
-        Use traditional or fusion outfits to reflect your{" "}
-        <strong>personal style</strong> and the song’s vibe.
+        Wear a <strong>saree</strong> to bring out your individuality while
+        resonating with the song’s <strong>cultural</strong> rhythm.
       </>
     ),
   },
   {
     id: 4,
+    step: (
+      <>
+        Please ensure your profile is set to <strong> public </strong>so we can
+        view your entry.
+      </>
+    ),
+  },
+  {
+    id: 5,
     step: (
       <>
         Post on your Instagram, tag{" "}
@@ -65,9 +78,12 @@ const participationSteps = [
           @csjewelsofficial
         </a>{" "}
         &{" "}
-        <span style={{ color: "#0d6efd", fontWeight: 600 }}>
+        <a
+          href="https://www.instagram.com/csmusicoriginals?igsh=MWlzOHEzZ293c3E0Zg=="
+          style={{ textDecoration: "none", fontWeight: 600 }}
+        >
           @csmusicoriginals
-        </span>{" "}
+        </a>{" "}
         and use{" "}
         <span style={{ color: "#0d6efd", fontWeight: 600 }}>
           #SadichaPadarChallenge
@@ -77,7 +93,7 @@ const participationSteps = [
     ),
   },
   {
-    id: 5,
+    id: 6,
     step: (
       <>
         <strong>Every look has a story.</strong> Share yours in the caption —
@@ -197,8 +213,8 @@ const RitiJewellery = () => {
               with the <strong>Riti Collection</strong> by{" "}
               <strong>Chandukaka Saraf Jewels</strong>, this campaign honors
               culture, heritage, and the bride’s emotional journey — inviting
-              you to express it through dance and stand a chance to win a{" "}
-              <strong>beautiful piece</strong> from the collection.
+              you to express it through dance and stand a chance to win{" "}
+              <strong>beautiful prizes</strong> from the collection.
             </Typography>
           </Stack>
 
@@ -278,10 +294,9 @@ const RitiJewellery = () => {
                 lineHeight={1.8}
                 sx={{ fontFamily: "'Poppins', 'Arial, sans-serif'" }}
               >
-                Top 2 Winners will receive{" "}
-                <strong>exclusive Riti Jewellery pieces</strong> from the Riti
-                collection and get <strong>featured on our social media</strong>{" "}
-                pages.
+                Winners will receive <strong>exclusive prizes</strong> from the
+                Riti collection and get{" "}
+                <strong>featured on our social media</strong> pages.
               </Typography>
             </Stack>
             <Stack gap={2}>
@@ -310,7 +325,11 @@ const RitiJewellery = () => {
 
             <Box position={"relative"}>
               <img
-                src={RitiCollectionCoverBanner}
+                src={
+                  isMobile
+                    ? MobRitiCollectionCoverBanner
+                    : RitiCollectionCoverBanner
+                }
                 alt="RitiCollectionCoverBanner"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
@@ -345,22 +364,12 @@ const RitiJewellery = () => {
                   height: { sm: "3rem", xs: "auto" },
                   padding: "0.7rem 1.5rem",
                   display: "flex",
-                  gap: "0.3rem",
+                  gap: "0.5rem",
                   "&:hover": {
                     backgroundColor: "#5b2429",
                   },
                 }}
               >
-                <span
-                  style={{
-                    textTransform: "capitalize",
-                    fontFamily: '"Poppins", serif',
-                    color: "#fff",
-                    fontWeight: 600,
-                  }}
-                >
-                  Download Riti Collection
-                </span>
                 <img
                   src={RitiLogo}
                   alt="Riti Logo"
@@ -371,6 +380,16 @@ const RitiJewellery = () => {
                     overflow: "hidden",
                   }}
                 />
+                <span
+                  style={{
+                    textTransform: "capitalize",
+                    fontFamily: '"Poppins", serif',
+                    color: "#fff",
+                    fontWeight: 600,
+                  }}
+                >
+                  Download E-Catalogue 
+                </span>
               </Button>
             </a>
           </Stack>

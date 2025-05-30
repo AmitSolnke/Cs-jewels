@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import QRCode from 'react-qr-code';
 
 const FixedQRCodeGenerator = () => {
-  const FIXED_URL = "http://localhost:3000/riti-jewellery-collection"; 
+  const FIXED_URL = "https://csjewels.com/sadicha-padar-challenge";
 
   const qrCodeRef = useRef(null);
 

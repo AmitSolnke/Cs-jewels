@@ -46,7 +46,7 @@ function App() {
               {renderRoutes(orderRoutes)}
             </Route>
             <Route
-              path="/riti-jewellery-collection"
+              path="/sadicha-padar-challenge"
               element={<RitiJewellery />}
             />
             <Route path="/" element={<HomeLayout />}>

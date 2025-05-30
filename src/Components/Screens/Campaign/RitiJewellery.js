@@ -189,10 +189,14 @@ const RitiJewellery = () => {
           />
         </Box>
 
-        <Stack gap={4} sx={{ width: "100%", px: { md: "15rem", xs: "1rem" } }}>
+        <Stack
+          gap={{ xs: 4.5, md: 4 }}
+          sx={{ width: "100%", px: { md: "15rem", xs: "1rem" } }}
+        >
           <Stack gap={2}>
             <Typography
               variant="h4"
+              fontSize={{ xs: "1.8rem", sm: "2.1rem" }}
               fontWeight={700}
               textAlign="start"
               fontFamily={'"Vidaloka", serif'}
@@ -221,13 +225,14 @@ const RitiJewellery = () => {
           <Stack gap={2}>
             <Typography
               variant="h4"
+              fontSize={{ xs: "1.8rem", sm: "2.1rem" }}
               fontWeight={700}
               textAlign="start"
               fontFamily={'"Vidaloka", serif'}
             >
               How to Participate
             </Typography>
-            <Stack component="ul" gap={1} pl={"1.5rem"}>
+            <Stack component="ul" gap={1} pl={"1.5rem"} margin={0}>
               {participationSteps.map((item) => (
                 <li key={item.id}>
                   <Typography
@@ -245,6 +250,7 @@ const RitiJewellery = () => {
           <Stack gap={2}>
             <Typography
               variant="h4"
+              fontSize={{ xs: "1.8rem", sm: "2.1rem" }}
               fontWeight={700}
               textAlign={"start"}
               fontFamily={'"Vidaloka", serif'}
@@ -279,120 +285,121 @@ const RitiJewellery = () => {
                 </Box>
               </Stack>
             </Stack>
-
-            <Stack gap={2}>
-              <Typography
-                variant="h4"
-                fontWeight={700}
-                textAlign={"start"}
-                fontFamily={'"Vidaloka", serif'}
-              >
-                Prizes
-              </Typography>
-              <Typography
-                variant="body1"
-                lineHeight={1.8}
-                sx={{ fontFamily: "'Poppins', 'Arial, sans-serif'" }}
-              >
-                Winners will receive <strong>exclusive prizes</strong> from the
-                Riti collection and get{" "}
-                <strong>featured on our social media</strong> pages.
-              </Typography>
+          </Stack>
+          <Stack gap={2}>
+            <Typography
+              variant="h4"
+              fontSize={{ xs: "1.8rem", sm: "2.1rem" }}
+              fontWeight={700}
+              textAlign={"start"}
+              fontFamily={'"Vidaloka", serif'}
+            >
+              Prizes
+            </Typography>
+            <Typography
+              variant="body1"
+              lineHeight={1.8}
+              sx={{ fontFamily: "'Poppins', 'Arial, sans-serif'" }}
+            >
+              Winners will receive <strong>exclusive prizes</strong> from the
+              Riti collection and get{" "}
+              <strong>featured on our social media</strong> pages.
+            </Typography>
+          </Stack>
+          <Stack gap={2}>
+            <Typography
+              variant="h4"
+              fontSize={{ xs: "1.8rem", sm: "2.1rem" }}
+              fontWeight={700}
+              textAlign="start"
+              fontFamily={'"Vidaloka", serif'}
+            >
+              Terms & Conditions
+            </Typography>
+            <Stack component="ul" gap={1} pl={"1.5rem"} margin={0}>
+              {compaignTAC.map((item) => (
+                <li key={item.id}>
+                  <Typography
+                    variant="body1"
+                    lineHeight={1.8}
+                    sx={{ fontFamily: "'Poppins', 'Arial, sans-serif'" }}
+                  >
+                    {item.condition}
+                  </Typography>
+                </li>
+              ))}
             </Stack>
-            <Stack gap={2}>
-              <Typography
-                variant="h4"
-                fontWeight={700}
-                textAlign="start"
-                fontFamily={'"Vidaloka", serif'}
-              >
-                Terms & Conditions
-              </Typography>
-              <Stack component="ul" gap={1} pl={"1.5rem"}>
-                {compaignTAC.map((item) => (
-                  <li key={item.id}>
-                    <Typography
-                      variant="body1"
-                      lineHeight={1.8}
-                      sx={{ fontFamily: "'Poppins', 'Arial, sans-serif'" }}
-                    >
-                      {item.condition}
-                    </Typography>
-                  </li>
-                ))}
-              </Stack>
-            </Stack>
+          </Stack>
 
-            <Box position={"relative"}>
-              <img
-                src={
-                  isMobile
-                    ? MobRitiCollectionCoverBanner
-                    : RitiCollectionCoverBanner
-                }
-                alt="RitiCollectionCoverBanner"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-              <Box
-                component={"a"}
-                href="https://www.instagram.com/csjewelsofficial/"
-                sx={{
-                  position: "absolute",
-                  bottom: { xs: "12%", lg: "13%" },
-                  left: "35%",
-                  height: { xs: "1rem", lg: "2rem", xl: "3rem" },
-                  width: { xs: "6rem", sm: "10rem", lg: "15rem", xl: "20rem" },
-                }}
-              ></Box>
-            </Box>
+          <Box position={"relative"}>
+            <img
+              src={
+                isMobile
+                  ? MobRitiCollectionCoverBanner
+                  : RitiCollectionCoverBanner
+              }
+              alt="RitiCollectionCoverBanner"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+            <Box
+              component={"a"}
+              href="https://www.instagram.com/csjewelsofficial/"
+              sx={{
+                position: "absolute",
+                bottom: { xs: "12%", lg: "13%" },
+                left: "35%",
+                height: { xs: "1rem", lg: "2rem", xl: "3rem" },
+                width: { xs: "6rem", sm: "10rem", lg: "15rem", xl: "20rem" },
+              }}
+            ></Box>
+          </Box>
 
-            <a
-              href={pdfURL}
-              download
-              style={{
-                textDecoration: "none",
-                width: "fit-content",
-                marginInline: "auto",
+          <a
+            href={pdfURL}
+            download
+            style={{
+              textDecoration: "none",
+              width: "fit-content",
+              marginInline: "auto",
+            }}
+          >
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#662a2e",
+                fontFamily: '"Poppins", serif',
+                textTransform: "none",
+                height: { sm: "3rem", xs: "auto" },
+                padding: "0.7rem 1.5rem",
+                display: "flex",
+                gap: "0.5rem",
+                "&:hover": {
+                  backgroundColor: "#5b2429",
+                },
               }}
             >
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#662a2e",
+              <img
+                src={RitiLogo}
+                alt="Riti Logo"
+                style={{
+                  width: "2.2rem",
+                  height: "2.2rem",
+                  objectFit: "cover",
+                  overflow: "hidden",
+                }}
+              />
+              <span
+                style={{
+                  textTransform: "capitalize",
                   fontFamily: '"Poppins", serif',
-                  textTransform: "none",
-                  height: { sm: "3rem", xs: "auto" },
-                  padding: "0.7rem 1.5rem",
-                  display: "flex",
-                  gap: "0.5rem",
-                  "&:hover": {
-                    backgroundColor: "#5b2429",
-                  },
+                  color: "#fff",
+                  fontWeight: 600,
                 }}
               >
-                <img
-                  src={RitiLogo}
-                  alt="Riti Logo"
-                  style={{
-                    width: "2.2rem",
-                    height: "2.2rem",
-                    objectFit: "cover",
-                    overflow: "hidden",
-                  }}
-                />
-                <span
-                  style={{
-                    textTransform: "capitalize",
-                    fontFamily: '"Poppins", serif',
-                    color: "#fff",
-                    fontWeight: 600,
-                  }}
-                >
-                  Download E-Catalogue 
-                </span>
-              </Button>
-            </a>
-          </Stack>
+                Download E-Catalogue 
+              </span>
+            </Button>
+          </a>
         </Stack>
       </Stack>
       <Stack

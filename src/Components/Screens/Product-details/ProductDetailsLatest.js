@@ -188,7 +188,7 @@ export const ProductDetailsLatest = () => {
         className="p-3 grid-container"
         style={{ background: "#fff" }}
       >
-        <Grid item md={6}>
+        <Grid item sm={6}>
           <div className="">
             {/* product images gallery */}
             <div className="d-none product-gallery d-md-block">
@@ -221,7 +221,7 @@ export const ProductDetailsLatest = () => {
                           playsInline
                           style={{ width: "100%", height: "100%", objectFit: "cover" }}
                           className="custom-magnifier"
-                          title={`Product Video ${index + 1}`}
+                          // title={`Product Video ${index + 1}`}
                           poster={media.thumbnail}
                         >
                           <source src={media.original} type={`video/${media.original.split('.').pop()?.toLowerCase() || 'mp4'}`} />
@@ -273,7 +273,7 @@ export const ProductDetailsLatest = () => {
 
         <Grid
           item
-          md={6}
+          sm={6}
           style={{ paddingLeft: "1rem" }}
           className="product-details-wrapper"
         >

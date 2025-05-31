@@ -13,6 +13,7 @@ import OrderLayout from "./OrderLayout";
 import NormalLayout from "./NormalLayout";
 
 import "./scss/style.scss";
+import RitiJewellery from "./Components/Screens/Campaign/RitiJewellery";
 
 const renderRoutes = (routes) =>
   routes.map((route, indx) =>
@@ -44,6 +45,10 @@ function App() {
             <Route path="/order" element={<OrderLayout />}>
               {renderRoutes(orderRoutes)}
             </Route>
+            <Route
+              path="/sadicha-padar-challenge"
+              element={<RitiJewellery />}
+            />
             <Route path="/" element={<HomeLayout />}>
               {renderRoutes(frontAppRoutes)}
             </Route>

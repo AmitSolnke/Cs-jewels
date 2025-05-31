@@ -117,7 +117,7 @@ const compaignTAC = [
     id: 2,
     condition: (
       <>
-        <strong>Contest Period:</strong> 2nd June to 11th June 2025.
+        <strong>Contest Period:</strong> 31st May to 11th June 2025.
       </>
     ),
   },

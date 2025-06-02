@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/icons/CSJ_Logo_Brand_color_Eng_final.webp";
 
@@ -25,6 +25,9 @@ import { Box, Button, IconButton, Tooltip, useMediaQuery } from "@mui/material";
 import StoresIcon from "../images/icons/StoresIcon-1.png";
 import StoresIconBrown from "../images/icons/StoresIcon.png";
 import BasicMenu from "./Common/Menu";
+import MobileMenu from "./Common/MobileMenu";
+import CloseIcon from '@mui/icons-material/Close';
+
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const isMobile = useMediaQuery("(max-width:768px)");
@@ -40,7 +43,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
   // const [openDrawer, setOpenDrawer] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchDropdown, setSearchDropdown] = useState(false);
-
+  const containerRef = useRef(null);
   const handleOpenDialog = () => {
     setOpen(true);
   };
@@ -63,7 +66,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
           bodyFormData.append("metal_type_master_id[0]", data.id);
           const items = await getMetalItems(bodyFormData);
           itemData = items.data.data;
-        } catch (error) {}
+        } catch (error) { }
         temp.push({
           id: data.id,
           metal: data.metal_type,
@@ -71,7 +74,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
         });
       }
       setMetalTypesData(temp);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const getData = async () => {
@@ -129,6 +132,50 @@ function Header({ openDrawer, handleOpenDrawer }) {
       url: '/golden-era-scheme'
     },
   ];
+  const navMenu = [
+    {
+      title: 'Jewellery',
+      options: metalTypesData?.map((item) => {
+        return {
+          // ...item,
+          id: item?.id,
+          name: item?.metal,
+          url: null,
+          children: item?.metal_items?.map((child) => {
+            return {
+              ...child,
+              name: child.item_name,
+              url: `/product-catalogues?page=${1}&metal=${item.id}&item_type=${child.id}`
+            }
+          })
+        }
+      }),
+    }, {
+      title: 'Schemes',
+      options: schemes.map((item) => {
+        return {
+          id: item.id,
+          name: item.collectionName,
+          url: item.url,
+          children: []
+        }
+      })
+    }
+  ];
+  const handleClickOutside = (event) => {
+
+    if (
+      containerRef?.current &&
+      !containerRef?.current?.contains(event?.target)
+    ) {
+
+      document.querySelector('.mobile-menu-overlay').style.width = '0';
+      return true;
+
+    }
+    return false;
+  };
+
 
   return (
     <>
@@ -238,13 +285,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
               <div className="col-12 col-md-2 col-lg-7 p-0">
                 <div className="mobile-menu-overlay">
                   <div className="close-nav-btn d-lg-none">
-                    <img
+                    {/* <img
                       src={closeMenu}
                       alt="close-menu-img"
                       className="menu-close"
-                    />
+                    /> */}
+                    <CloseIcon sx={{ position: 'absolute', right: '50px', zIndex: '1' }} color="white" fontSize='medium' />
                   </div>
-                  <nav className="navbar">
+                  <nav className="navbar" ref={containerRef}>
                     <ul className="w-100">
                       <div className="header-searchbar-wrapper w-100">
                         {/* <div className="col-10 search-wrapper">
@@ -278,7 +326,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         </div>
                       </div>
                       {/* <h3 className="drawer-header">POPULAR SEARCHES</h3> */}
-                      <div className="d-lg-none">
+                      <div className="d-lg-none" style={{ background: 'white' }}>
                         {/* <li className="w-100">
                           <Link to="/" className="menu-link">
                             Fancy Earrings
@@ -304,12 +352,13 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             Office wear earrings
                           </Link>
                         </li> */}
-                        <li className="w-100">
+                        <li className="w-100 mb-2">
                           <Link className="menu-links" to="/">
                             Home
                           </Link>
                         </li>
-                        <li
+                        <MobileMenu navMenu={navMenu} handleClickOutside={handleClickOutside} />
+                        {/* <li
                           className="w-100"
                           id="jewellery-link"
                           onClick={() => {
@@ -319,15 +368,15 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           Jewellery
                         </li>
                         <li className="remove-underline">
-                            <Box>
-                              <BasicMenu
-                                menuTitle="Schemes"
-                                children={schemes}
-                                mainTabNaivagtion={false}
-                              />
-                            </Box>
-                          </li>
-                        <li className="w-100">
+                          <Box>
+                            <BasicMenu
+                              menuTitle="Schemes"
+                              children={schemes}
+                              mainTabNaivagtion={false}
+                            />
+                          </Box>
+                        </li> */}
+                        <li className="w-100 mt-2">
                           <Link className="menu-links" to="/aboutus">
                             About us
                           </Link>
@@ -350,7 +399,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                 <div className="col-12 col-sm-10 col-md-10 col-lg-10">
                   <nav className="navbar">
                     <ul className="w-100">
-                      <div className="menu-link-items " style={{marginTop:'1.3rem'}}>
+                      <div className="menu-link-items " style={{ marginTop: '1.3rem' }}>
                         <li>
                           <Link to="/">Home</Link>
                         </li>
@@ -363,14 +412,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           Jewellery
                         </li>
                         <li className="remove-underline">
-                            <Box>
-                              <BasicMenu
-                                menuTitle="Schemes"
-                                children={schemes}
-                                mainTabNaivagtion={false}
-                              />
-                            </Box>
-                          </li>
+                          <Box>
+                            <BasicMenu
+                              menuTitle="Schemes"
+                              children={schemes}
+                              mainTabNaivagtion={false}
+                            />
+                          </Box>
+                        </li>
                         <li>
                           <Link to="/aboutus">About us</Link>
                         </li>
@@ -466,14 +515,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
         }}
       >
 
-      {showDropdown && (
-        <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
-          <NavigationDropdown
-            metalData={metalTypesData}
-            setShowDropdown={setShowDropdown}
-          />
-        </div>
-      )}
+        {showDropdown && (
+          <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
+            <NavigationDropdown
+              metalData={metalTypesData}
+              setShowDropdown={setShowDropdown}
+            />
+          </div>
+        )}
       </Box>
       {searchDropdown && (
         <div

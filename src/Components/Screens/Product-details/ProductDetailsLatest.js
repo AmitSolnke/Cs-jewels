@@ -11,6 +11,7 @@ import { SideBySideMagnifier } from "react-image-magnifiers";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 export const ProductDetailsLatest = () => {
   const { id } = useParams();
@@ -68,19 +69,33 @@ export const ProductDetailsLatest = () => {
   }, []);
 
   // Todo: this is the image array refactor code to use images from the api call
-  const imageItems = productDetails.images.map((image) => ({
-    original: image.image_path,
-    thumbnail: image.image_path,
-  }));
+  const mediaItems = [
+    ...productDetails.images.map((img) => ({
+      type: "image",
+      original: img.image_path,
+      thumbnail: img.image_path,
+    })),
+    ...(productDetails.videos || []).map((vid) => ({
+      type: "video",
+      original: vid.image_path,
+      thumbnail: vid.thumbnail || vid.image_path,
+    })),
+    // ...(productDetails.products || []).map((product) => ({
+    //   type: "products",
+    //   original: product.image_path,
+    //   thumbnail: product.thumbnail || product.image_path,
+    // })),
+  ];
+  const productImage = productDetails?.products?.map((product) => product.image_path)
 
   const sliderData =
-    imageItems && imageItems.length > 0
-      ? imageItems
-          .filter((item) => item && item.original) // Filter out invalid items
-          .map((item) => ({
-            image: item.original, // Use `original` field for the `image`
-            description: "", // Add descriptions if needed, or leave empty
-          }))
+    mediaItems && mediaItems.length > 0
+      ? mediaItems
+        .filter((item) => item && item.original) // Filter out invalid items
+        .map((item) => ({
+          image: item.original, // Use `original` field for the `image`
+          description: "", // Add descriptions if needed, or leave empty
+        }))
       : [];
 
   const [open, setOpen] = useState(false);
@@ -97,16 +112,48 @@ export const ProductDetailsLatest = () => {
     customPaging: function (i) {
       return (
         <a>
-          <img
-            src={imageItems[i]?.original}
-            alt={`Thumbnail ${i + 1}`}
-            style={{
-              width: "60px",
-              height: "45px",
-              // objectFit: "cover",
-              borderRadius: "5px",
-            }}
-          />
+          {mediaItems[i]?.type === "video" ? (
+            <div
+              className="video-thumb"
+              style={{
+                width: "60px",
+                height: "45px",
+                borderRadius: "5px",
+                backgroundImage: `url(${productImage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                position: "relative",
+                overflow: "hidden",
+                opacity: 0.8, // To dim the background image slightly
+              }}
+            >
+              <PlayCircleOutlineIcon
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  color: "#672A2F",
+                  fontSize: "24px",
+                  backgroundColor: "white",
+                  borderRadius: "50%",
+                  padding: "2px",
+                }}
+              />
+            </div>
+          ) : (
+            <img
+              src={mediaItems[i]?.thumbnail}
+              className='image-thumb'
+              style={{
+                width: "60px",
+                height: "45px",
+                objectFit: "cover",
+                borderRadius: "5px",
+              }}
+              alt={`Thumbnail ${i + 1}`}
+            />
+          )}
         </a>
       );
     },
@@ -141,7 +188,7 @@ export const ProductDetailsLatest = () => {
         className="p-3 grid-container"
         style={{ background: "#fff" }}
       >
-        <Grid item md={6}>
+        <Grid item sm={6}>
           <div className="">
             {/* product images gallery */}
             <div className="d-none product-gallery d-md-block">
@@ -153,36 +200,72 @@ export const ProductDetailsLatest = () => {
                 lscreenButton={false}
               /> */}
 
-              {imageItems?.length > 0 && (
+              {mediaItems?.length > 0 && (
                 <Slider {...sliderSettings}>
-                  {imageItems.map((image, index) => (
+                  {mediaItems.map((media, index) => (
                     <div key={index}>
-                      <SideBySideMagnifier
-                        imageSrc={image.original}
-                        imageAlt={`Product Image ${index + 1}`}
-                        alwaysInPlace={true}
-                        zoomContainerBorder="1px solid #ccc"
-                        className="custom-magnifier"
-                        // overlayBackgroundColor="rgba(0,0,0,0.3)"
-                        // className="custom-magnifier"
-                        fillAvailableSpace={false}
-                        // transitionSpeed={0.2}
-                        // overlayBackgroundColor="rgba(0,0,0,0.6)"
-                      />
+                      {media.type === "image" ? (
+                        <SideBySideMagnifier
+                          imageSrc={media.original}
+                          imageAlt={`Product Image ${index + 1}`}
+                          alwaysInPlace={true}
+                          zoomContainerBorder="1px solid #ccc"
+                          className="custom-magnifier"
+                          fillAvailableSpace={false}
+                        />
+                      ) : media.type === "video" ? (
+                        <video
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                          className="custom-magnifier"
+                          // title={`Product Video ${index + 1}`}
+                          poster={media.thumbnail}
+                        >
+                          <source src={media.original} type={`video/${media.original.split('.').pop()?.toLowerCase() || 'mp4'}`} />
+                          Your browser does not support the video tag.
+                        </video>
+                      ) : null}
                     </div>
                   ))}
                 </Slider>
               )}
+
             </div>
 
             <div className="d-block product-gallery d-md-none">
               <ImageGallery
-                items={imageItems}
+                items={mediaItems}
                 showNav={false}
                 showPlayButton={false}
                 showFullscreenButton={false}
                 showBullets={true}
                 showThumbnails={false}
+                renderItem={(item) => (
+                  item.type === 'video' ? (
+                    <div className="image-gallery-image">
+                      <video
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        style={{ width: "100%", height: "auto", borderRadius: "10px" }}
+                        poster={typeof item.thumbnail === 'string' ? item.thumbnail : undefined}
+                      >
+                        <source src={item.original} type={`video/${item.original.split('.').pop()?.toLowerCase() || 'mp4'}`} />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  ) : (
+                    <img
+                      src={item.original}
+                      alt="product media"
+                      style={{ width: "100%", height: "auto", borderRadius: "10px" }}
+                      className="image-gallery-image"
+                    />
+                  ))}
               />
             </div>
           </div>
@@ -190,7 +273,7 @@ export const ProductDetailsLatest = () => {
 
         <Grid
           item
-          md={6}
+          sm={6}
           style={{ paddingLeft: "1rem" }}
           className="product-details-wrapper"
         >

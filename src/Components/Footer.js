@@ -1,9 +1,9 @@
 /** @format */
 
-import React, {useState} from "react"
+import React, { useState } from "react"
 import logo from "../images/icons/CSJ_Logo_Brand_color_Eng_final.webp"
-import {Link, useNavigate} from "react-router-dom"
-import {subscribeEmail} from "../services/FrontApp/index.service"
+import { Link, useNavigate } from "react-router-dom"
+import { subscribeEmail } from "../services/FrontApp/index.service"
 import ErrorList from "./Common/ErrorList"
 import SuccessMsg from "./Common/SuccessMsg"
 import WhatsAppIcon from "@mui/icons-material/WhatsApp"
@@ -12,7 +12,7 @@ import InstagramIcon from "@mui/icons-material/Instagram"
 import FacebookIcon from "@mui/icons-material/Facebook"
 import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import PinterestIcon from "@mui/icons-material/Pinterest"
-import {createTheme, IconButton, ThemeProvider} from "@mui/material"
+import { createTheme, IconButton, ThemeProvider } from "@mui/material"
 const theme = createTheme({
   palette: {
     primary: {
@@ -27,7 +27,7 @@ function Footer() {
     email: "",
   })
 
-  const handleChange = ({target}) => {
+  const handleChange = ({ target }) => {
     data[target.name] = target.value
     const temp = Object.assign({}, data)
     setData(temp)
@@ -77,11 +77,11 @@ function Footer() {
                         <div className="col-lg-12">
                           <p className="mb-2">
                             <span className="d-block d-sm-inline">Email: </span>{" "}
-                            care@csjewels.com
+                            <a className="text-decoration-none text-reset" href="mailto:care@csjewels.com">care@csjewels.com</a>
                           </p>
                           <p className="mb-4">
                             <span className="d-block d-sm-inline">Phone: </span>{" "}
-                            0796-999-1827
+                            <a className="text-decoration-none text-reset" href="tel:07969991827">0796-999-1827</a>
                           </p>
                           <p className="address">
                             Chandukaka Saraf Jewels Pvt. Ltd. Office no. 17 &
@@ -178,7 +178,7 @@ function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                      <FacebookIcon color="primary" fontSize="large" />
+                    <FacebookIcon color="primary" fontSize="large" />
                   </a>
 
                   <a
@@ -221,7 +221,7 @@ function Footer() {
                 2025 © Chandukaka Saraf Jewels Pvt. Ltd. Powered by{" "}
                 <a
                   className="text-secondary text-decoration-none"
-                  href="https://www.techneai.com/"
+                  href="https://techneai.com"
                   target="_blank"
                 >
                   Techne ai
